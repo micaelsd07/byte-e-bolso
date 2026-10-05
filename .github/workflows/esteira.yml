@@ -60,12 +60,15 @@ jobs:
           npm run build
           diff -r --exclude=version.json "$RUNNER_TEMP/dist-primeiro" dist
 
-      - name: GDD.pdf
+      - name: GDD.pdf e relatorio.pdf
         run: |
           sudo apt-get install -y -qq poppler-utils
           npx playwright install --with-deps chromium
           npm run gdd:pdf
           pdfinfo docs/GDD.pdf
+          # INT-10: o relatório técnico tem no máximo 12 páginas; o script falha acima disso.
+          npm run relatorio:pdf
+          [ "$(pdfinfo docs/relatorio.pdf | awk '/^Pages:/ { print $2 }')" -le 12 ]
 
       - name: Empacotar build.zip
         run: |
@@ -91,6 +94,7 @@ jobs:
             build.zip
             build.zip.sha256
             docs/GDD.pdf
+            docs/relatorio.pdf
             reports/
 
   e2e:

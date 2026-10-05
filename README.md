@@ -44,7 +44,7 @@ tests/
   e2e/          Playwright: regressao.spec.ts e smoke.spec.ts
 pages/       carregador de produção (lê rollout.json) e painel /status/
 scripts/     publicação, rollout, versão, validação de conteúdo, GDD, monitor e DORA
-docs/        GDD e matriz de conformidade
+docs/        GDD, relatório técnico, roteiro do vídeo e matriz de conformidade
 ```
 
 O ESLint impede que `src/core/` use `window`, `document`, `localStorage` ou `fetch`: é o que mantém as regras testáveis sem navegador. O conteúdo é validado por schema como primeiro passo do build; um JSON inválido interrompe a pipeline.

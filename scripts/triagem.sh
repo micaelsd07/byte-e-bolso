@@ -72,7 +72,7 @@ elif ! pdfinfo "$PASTA/GDD.pdf" >/dev/null 2>&1; then
   nok "GDD.pdf corrompido: o pdfinfo não abriu"
 else
   ok "GDD.pdf abre ($(pdfinfo "$PASTA/GDD.pdf" | awk '/^Pages:/ { print $2 }') páginas)"
-  texto="$(pdftotext -q "$PASTA/GDD.pdf" - 2>/dev/null || true)"
+  texto="$(pdftotext -q -enc UTF-8 "$PASTA/GDD.pdf" - 2>/dev/null || true)"
   for secao in "${SECOES[@]}"; do
     if printf '%s' "$texto" | grep -qiF "$secao"; then ok "seção \"$secao\""; else nok "GDD sem a seção \"$secao\""; fi
   done
