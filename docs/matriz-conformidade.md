@@ -140,8 +140,8 @@ Cada requisito dos dois documentos oficiais (Regulamento do Framework Arcade, ed
 
 | Requisito | Implementação | Arquivo | Status |
 |---|---|---|---|
-| `pitch.mp4` ≤ 90 s, com gameplay real e legendas | n/a | n/a | Pendente (roteiro); gravação depende do squad |
-| Relatório técnico em PDF, até 12 páginas | n/a | n/a | Pendente: precisa das evidências reais da esteira |
+| `pitch.mp4` ≤ 90 s, com gameplay real e legendas | Roteiro de 85 s com narração, legendas e lista de conferência; a triagem mede a duração | `docs/pitch.md`, `scripts/triagem.sh` | Roteiro pronto. Gravação, edição e `docs/pitch.mp4` dependem do squad |
+| Relatório técnico em PDF, até 12 páginas | Markdown convertido em PDF no job `ci`, que falha acima de 12 páginas; campos sem evidência real ficam como `PREENCHER` | `docs/relatorio.md`, `scripts/relatorio-pdf.mjs`, `esteira.yml` | PDF gerado local. Evidências, DORA, retrospectiva e contribuições dependem do squad e de a esteira rodar na `main` |
 
 ## Decisões em que os documentos oficiais prevaleceram sobre o conceito original
 

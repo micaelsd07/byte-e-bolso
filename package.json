@@ -17,7 +17,8 @@
     "build": "npm run content:check && vite build && node scripts/versao.mjs",
     "preview": "vite preview --port 4173 --strictPort",
     "e2e": "playwright test",
-    "gdd:pdf": "node scripts/gdd-pdf.mjs"
+    "gdd:pdf": "node scripts/gdd-pdf.mjs",
+    "relatorio:pdf": "node scripts/relatorio-pdf.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
