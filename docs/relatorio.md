@@ -1,4 +1,4 @@
-# Byte & Bolso · Relatório técnico
+# Byte · Relatório técnico
 
 **Desafio Arcade · Integração e Entrega Contínua (DevOps) · 2º ADS** · versão {{versao}} ({{sha}}) · {{data}}
 
@@ -8,7 +8,7 @@ Repositório: {{repositorio}}
 
 ## 1. Resumo
 
-Byte & Bolso é um jogo de programação para celular, no formato de trilha de idiomas: o jogador escolhe uma linguagem (Python, JavaScript, Java, C, C++, HTML ou CSS, além da trilha de carreira e dinheiro), joga lições curtas com três tipos de exercício (escolher, montar o código com peças, digitar o trecho que falta) e fecha cada unidade com uma prova cronometrada. O que ganha vira o caixa de uma empresa com custo fixo e juros.
+Byte é um jogo de programação para celular, no formato de trilha de idiomas: o jogador escolhe uma linguagem (Python, JavaScript, Java, C, C++, HTML ou CSS, além da trilha de carreira e dinheiro), joga lições curtas com três tipos de exercício (escolher, montar o código com peças, digitar o trecho que falta) e fecha cada unidade com uma prova cronometrada. O que ganha vira o caixa de uma empresa com custo fixo e juros.
 
 O jogo é a carga da esteira. Ele é um site estático em TypeScript, sem dependência de execução, e chega à produção só pela pipeline do repositório: um `build.zip` gerado uma vez é promovido de homologação a produção, com canário, smoke, rollback e monitoramento.
 

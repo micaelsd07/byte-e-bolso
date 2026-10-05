@@ -52,7 +52,7 @@ jobs:
           notas=()
           # Notas de versão escritas e revisadas pelo squad, quando existirem.
           [ -f "docs/notas/$TAG.md" ] && notas=(--notes-file "docs/notas/$TAG.md")
-          gh release create "$TAG" --verify-tag --title "Byte & Bolso $TAG" --generate-notes "${notas[@]}" \
+          gh release create "$TAG" --verify-tag --title "Byte $TAG" --generate-notes "${notas[@]}" \
             artefato/build.zip \
             artefato/build.zip.sha256 \
             artefato/reports/sbom.json \

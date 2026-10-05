@@ -454,14 +454,16 @@ button {
 }
 
 .marca h1 {
-  font-size: clamp(2rem, 10.5vw, 2.7rem);
+  font-size: clamp(2.6rem, 15vw, 3.6rem);
   line-height: 1;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.e-comercial {
+/* O cursor de terminal depois do nome: é enfeite, e não entra no nome lido em voz alta. */
+.marca .cursor {
   color: var(--amarelo);
+  animation: pisca 1.4s steps(2, jump-none) infinite;
 }
 
 .slogan {
