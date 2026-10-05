@@ -1,0 +1,10 @@
+# Varredura de segredos (INT-05). Usa todas as regras padrão do gitleaks;
+# segredo detectado quebra o build.
+title = "byte-e-bolso"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Somente o lockfile, que contém hashes de integridade e nenhum segredo"
+paths = ['''package-lock\.json$''']

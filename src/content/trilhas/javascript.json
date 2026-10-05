@@ -1,0 +1,964 @@
+{
+  "id": "javascript",
+  "nome": "JavaScript",
+  "sigla": "JS",
+  "resumo": "A linguagem dos navegadores: dá vida às páginas e também roda em servidores.",
+  "unidades": [
+    {
+      "id": "javascript-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em JavaScript.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "javascript-saida",
+          "titulo": "Primeiro programa",
+          "resumo": "Mostre texto e contas com console.log.",
+          "explicacao": [
+            {
+              "titulo": "console.log",
+              "texto": "console.log mostra no console o que está entre os parênteses. Texto vai entre aspas. Cada instrução termina com ponto e vírgula.",
+              "codigo": "console.log(\"Olá, mundo!\");\nconsole.log(2 + 3);"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "console.log(\"Oi\");",
+              "opcoes": [
+                "Oi",
+                "console.log(\"Oi\")",
+                "\"Oi\""
+              ],
+              "correta": 0,
+              "explicacao": "As aspas marcam o texto, mas não aparecem.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o código que mostra JS no console.",
+              "pecas": [
+                "console.log",
+                "(",
+                "\"JS\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "print",
+                "echo"
+              ],
+              "explicacao": "console.log, parênteses, texto entre aspas e ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o nome do comando.",
+              "antes": "console.",
+              "depois": "(7);",
+              "respostas": [
+                "log"
+              ],
+              "explicacao": "O comando completo é console.log.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual linha tem erro?",
+              "opcoes": [
+                "console.log(\"Oi\");",
+                "console.log(Oi\");",
+                "console.log(7);"
+              ],
+              "correta": 1,
+              "explicacao": "Falta a aspa que abre o texto.",
+              "id": "e4"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Mostre o resultado de 10 menos 4.",
+              "pecas": [
+                "console.log",
+                "(",
+                "10",
+                "-",
+                "4",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "+",
+                "print"
+              ],
+              "explicacao": "Sem aspas, o JavaScript faz a conta e mostra 6.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-variaveis",
+          "titulo": "Variáveis",
+          "resumo": "Guarde valores com let e const.",
+          "explicacao": [
+            {
+              "titulo": "let e const",
+              "texto": "let cria uma variável que pode mudar. const cria uma constante: depois de receber um valor, não muda mais.",
+              "codigo": "let idade = 18;\nconst nome = \"Ana\";\nidade = 19;"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece no console?",
+              "codigo": "let x = 5;\nx = x + 2;\nconsole.log(x);",
+              "opcoes": [
+                "5",
+                "7",
+                "x + 2"
+              ],
+              "correta": 1,
+              "explicacao": "x começa em 5 e passa a valer 5 + 2.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Crie a variável pontos com o valor 10.",
+              "pecas": [
+                "let",
+                "pontos",
+                "=",
+                "10",
+                ";"
+              ],
+              "extras": [
+                "==",
+                "int"
+              ],
+              "explicacao": "let, o nome, sinal de igual, o valor e ponto e vírgula. JavaScript não declara tipo.",
+              "id": "e2"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que acontece neste código?",
+              "codigo": "const PI = 3.14;\nPI = 3;",
+              "opcoes": [
+                "PI passa a valer 3",
+                "Dá erro: constante não pode mudar",
+                "PI vira texto"
+              ],
+              "correta": 1,
+              "explicacao": "const não aceita um segundo valor.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para criar uma constante.",
+              "antes": "",
+              "depois": " nome = \"Ana\";",
+              "respostas": [
+                "const"
+              ],
+              "explicacao": "Use const para o que não vai mudar.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o tipo do valor \"42\", com aspas?",
+              "opcoes": [
+                "number",
+                "string (texto)",
+                "boolean"
+              ],
+              "correta": 1,
+              "explicacao": "Entre aspas é texto, mesmo que pareça número.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-condicoes",
+          "titulo": "Condições",
+          "resumo": "Faça o programa decidir com if e else.",
+          "explicacao": [
+            {
+              "titulo": "if e else",
+              "texto": "O if executa o bloco entre chaves só quando a condição entre parênteses é verdadeira. O else cuida do caso contrário.",
+              "codigo": "if (idade >= 18) {\n  console.log(\"Maior\");\n} else {\n  console.log(\"Menor\");\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "let nota = 6;\nif (nota >= 7) {\n  console.log(\"Aprovado\");\n} else {\n  console.log(\"Recuperação\");\n}",
+              "opcoes": [
+                "Aprovado",
+                "Recuperação",
+                "Nada"
+              ],
+              "correta": 1,
+              "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo da condição: se x for maior que 10.",
+              "pecas": [
+                "if",
+                "(",
+                "x",
+                ">",
+                "10",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "then",
+                ":"
+              ],
+              "explicacao": "A condição vai entre parênteses e o bloco abre com chave.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o operador que compara se dois números são iguais.",
+              "antes": "if (x ",
+              "depois": " 10) {",
+              "respostas": [
+                "===",
+                "=="
+              ],
+              "explicacao": "Em JavaScript, prefira ===: ele compara valor e tipo. Um = sozinho guarda valor.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código faz?",
+              "codigo": "if (x = 5) { }",
+              "opcoes": [
+                "Compara x com 5",
+                "Guarda 5 em x: é um erro comum",
+                "Dá erro de sintaxe"
+              ],
+              "correta": 1,
+              "explicacao": "Um = sozinho guarda valor. Para comparar, use ===.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quanto vale 5 > 3 && 2 > 4?",
+              "opcoes": [
+                "true",
+                "false",
+                "5"
+              ],
+              "correta": 1,
+              "explicacao": "O && só é verdadeiro quando os dois lados são. 2 > 4 é falso.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-lacos",
+          "titulo": "Laços",
+          "resumo": "Repita um bloco com for e while.",
+          "explicacao": [
+            {
+              "titulo": "for",
+              "texto": "O for tem três partes: onde começa, até quando repete e o que muda a cada volta. Aqui, i vale 0, 1 e 2.",
+              "codigo": "for (let i = 0; i < 3; i++) {\n  console.log(i);\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas vezes Oi aparece?",
+              "codigo": "for (let i = 0; i < 4; i++) {\n  console.log(\"Oi\");\n}",
+              "opcoes": [
+                "3",
+                "4",
+                "5"
+              ],
+              "correta": 1,
+              "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais números aparecem?",
+              "codigo": "for (let i = 0; i < 3; i++) {\n  console.log(i);\n}",
+              "opcoes": [
+                "1, 2, 3",
+                "0, 1, 2",
+                "0, 1, 2, 3"
+              ],
+              "correta": 1,
+              "explicacao": "Começa em 0 e para antes de chegar a 3.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo do laço em que i vai de 0 a 4.",
+              "pecas": [
+                "for",
+                "(",
+                "let i = 0",
+                ";",
+                "i < 5",
+                ";",
+                "i++",
+                ")"
+              ],
+              "extras": [
+                "i--",
+                "i > 5"
+              ],
+              "explicacao": "Começa em 0, repete enquanto i for menor que 5 e soma 1 a cada volta.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para repetir enquanto x for menor que 10.",
+              "antes": "",
+              "depois": " (x < 10) {",
+              "respostas": [
+                "while"
+              ],
+              "explicacao": "O while repete o bloco enquanto a condição for verdadeira.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o problema deste laço?",
+              "codigo": "for (let i = 0; i < 5; i--) { }",
+              "opcoes": [
+                "i diminui e nunca chega a 5: o laço não termina",
+                "Falta declarar o i",
+                "5 é um número grande demais"
+              ],
+              "correta": 0,
+              "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "javascript-funcoes-dados",
+      "numero": 2,
+      "titulo": "Funções, listas e objetos",
+      "resumo": "Reaproveite código com funções, organize dados em listas e objetos e mexa na página.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "javascript-funcoes",
+          "titulo": "Funções",
+          "resumo": "Dê nome a um trecho de código e use quantas vezes quiser.",
+          "explicacao": [
+            {
+              "titulo": "function, parâmetros e return",
+              "texto": "Uma função guarda um trecho de código para usar várias vezes. Os parâmetros ficam entre parênteses e o return devolve o resultado. A função de seta é um jeito mais curto de escrever a mesma coisa.",
+              "codigo": "function dobro(n) {\n  return n * 2;\n}\n\nconst triplo = (n) => n * 3;\n\nconsole.log(dobro(4));  // 8\nconsole.log(triplo(4)); // 12"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "function soma(a, b) {\n  return a + b;\n}\nconsole.log(soma(2, 3));",
+              "opcoes": [
+                "5",
+                "23",
+                "undefined"
+              ],
+              "correta": 0,
+              "explicacao": "soma devolve 2 + 3.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a primeira linha de uma função chamada saudar que recebe nome.",
+              "pecas": [
+                "function",
+                "saudar",
+                "(",
+                "nome",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "def",
+                "return"
+              ],
+              "explicacao": "function, depois o nome e os parâmetros entre parênteses.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para a função devolver o resultado.",
+              "antes": "function metade(n) {\n  ",
+              "depois": " n / 2;\n}",
+              "respostas": [
+                "return"
+              ],
+              "explicacao": "Sem return, a função devolve undefined.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "function aviso() {\n  console.log(\"Oi\");\n}\nconst r = aviso();\nconsole.log(r);",
+              "opcoes": [
+                "Oi e depois undefined",
+                "Oi e depois Oi",
+                "Só undefined"
+              ],
+              "correta": 0,
+              "explicacao": "A função mostra Oi, mas não tem return: o valor devolvido é undefined.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual função de seta devolve o quadrado de n?",
+              "opcoes": [
+                "(n) => n * n",
+                "(n) -> n * n",
+                "(n) => { n * n }"
+              ],
+              "correta": 0,
+              "explicacao": "A seta é =>. Com chaves, seria preciso escrever o return.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-arrays",
+          "titulo": "Listas",
+          "resumo": "Guarde vários valores em ordem em um array.",
+          "explicacao": [
+            {
+              "titulo": "Arrays",
+              "texto": "Um array guarda vários valores em ordem, entre colchetes. A posição começa em 0. length diz quantos itens há, e push acrescenta um item no fim.",
+              "codigo": "const frutas = [\"maçã\", \"uva\"];\nfrutas.push(\"kiwi\");\n\nconsole.log(frutas[0]);     // maçã\nconsole.log(frutas.length); // 3"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que cores[2] vale?",
+              "codigo": "const cores = [\"azul\", \"verde\", \"roxo\"];",
+              "opcoes": [
+                "verde",
+                "roxo",
+                "undefined"
+              ],
+              "correta": 1,
+              "explicacao": "A contagem começa em 0: a posição 2 é o terceiro item.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha que acrescenta 7 no fim do array numeros.",
+              "pecas": [
+                "numeros",
+                ".",
+                "push",
+                "(",
+                "7",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "add",
+                "append"
+              ],
+              "explicacao": "push é o método do array. add e append são de outras linguagens.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para mostrar quantos itens a lista tem.",
+              "antes": "console.log(nomes.",
+              "depois": ");",
+              "respostas": [
+                "length"
+              ],
+              "explicacao": "length é uma propriedade: não leva parênteses.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "const v = [10, 20];\nv.push(30);\nconsole.log(v.length);",
+              "opcoes": [
+                "2",
+                "3",
+                "30"
+              ],
+              "correta": 1,
+              "explicacao": "Eram 2 itens e o push acrescentou mais um.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como pegar o último item de um array chamado lista?",
+              "opcoes": [
+                "lista[lista.length - 1]",
+                "lista[lista.length]",
+                "lista[-1]"
+              ],
+              "correta": 0,
+              "explicacao": "A última posição é o tamanho menos 1. lista[-1] não funciona em JavaScript.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-objetos",
+          "titulo": "Objetos",
+          "resumo": "Agrupe dados com nome em um objeto.",
+          "explicacao": [
+            {
+              "titulo": "Chave e valor",
+              "texto": "Um objeto agrupa dados com nome, entre chaves: cada propriedade tem uma chave e um valor, separados por dois-pontos. O ponto acessa uma propriedade, e a mesma sintaxe serve para mudar o valor ou criar uma propriedade nova.",
+              "codigo": "const jogador = { nome: \"Ana\", pontos: 10 };\n\nconsole.log(jogador.nome); // Ana\njogador.pontos = 15;\njogador.nivel = 2;"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "const carro = { tipo: \"sedã\", ano: 2015 };\nconsole.log(carro.ano);",
+              "opcoes": [
+                "2015",
+                "ano",
+                "sedã"
+              ],
+              "correta": 0,
+              "explicacao": "carro.ano pega o valor da propriedade ano.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte um objeto com a propriedade nome valendo \"Bia\".",
+              "pecas": [
+                "{",
+                "nome",
+                ":",
+                "\"Bia\"",
+                "}"
+              ],
+              "extras": [
+                "=",
+                "["
+              ],
+              "explicacao": "Entre a chave e o valor vão dois-pontos, não o sinal de igual.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para mostrar a idade da pessoa.",
+              "antes": "const pessoa = { nome: \"Leo\", idade: 20 };\nconsole.log(pessoa",
+              "depois": ");",
+              "respostas": [
+                ".idade",
+                "[\"idade\"]"
+              ],
+              "explicacao": "O ponto acessa a propriedade pelo nome.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quanto vale conta.saldo no fim?",
+              "codigo": "const conta = { saldo: 100 };\nconta.saldo = conta.saldo - 30;",
+              "opcoes": [
+                "100",
+                "70",
+                "30"
+              ],
+              "correta": 1,
+              "explicacao": "A propriedade recebe o valor antigo menos 30.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual destes é um objeto com duas propriedades?",
+              "opcoes": [
+                "{ x: 1, y: 2 }",
+                "[1, 2]",
+                "(x: 1, y: 2)"
+              ],
+              "correta": 0,
+              "explicacao": "Objeto usa chaves e pares de chave e valor. Colchetes criam um array.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-dom",
+          "titulo": "Página viva",
+          "resumo": "Encontre um elemento da página, mude o texto dele e reaja ao clique.",
+          "explicacao": [
+            {
+              "titulo": "querySelector e eventos",
+              "texto": "No navegador, document representa a página. querySelector encontra o primeiro elemento que combina com um seletor de CSS. textContent é o texto do elemento. addEventListener manda executar uma função quando um evento acontece, como o clique.",
+              "codigo": "const botao = document.querySelector(\"#enviar\");\nconst aviso = document.querySelector(\".aviso\");\n\nbotao.addEventListener(\"click\", () => {\n  aviso.textContent = \"Enviado!\";\n});"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que document.querySelector(\".menu\") procura?",
+              "opcoes": [
+                "O primeiro elemento com a classe menu",
+                "O elemento com id menu",
+                "Todas as tags <menu>"
+              ],
+              "correta": 0,
+              "explicacao": "O ponto é o seletor de classe, igual ao do CSS. Para id, usa-se #.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha que encontra o elemento de id titulo.",
+              "pecas": [
+                "document",
+                ".",
+                "querySelector",
+                "(",
+                "\"#titulo\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "\".titulo\"",
+                "getElement"
+              ],
+              "explicacao": "Id usa # no seletor. O ponto seria para uma classe.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para trocar o texto do elemento.",
+              "antes": "const titulo = document.querySelector(\"h1\");\ntitulo.",
+              "depois": " = \"Novo título\";",
+              "respostas": [
+                "textContent",
+                "innerText"
+              ],
+              "explicacao": "textContent guarda o texto do elemento; atribuir um valor troca o que aparece.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quando a função passada ao addEventListener é executada?",
+              "codigo": "botao.addEventListener(\"click\", () => {\n  console.log(\"Oi\");\n});",
+              "opcoes": [
+                "Cada vez que o botão é clicado",
+                "Uma vez, quando a página abre",
+                "Nunca"
+              ],
+              "correta": 0,
+              "explicacao": "A função fica guardada e roda a cada clique.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual seletor encontra o elemento <p id=\"aviso\">?",
+              "opcoes": [
+                "\"#aviso\"",
+                "\".aviso\"",
+                "\"aviso\""
+              ],
+              "correta": 0,
+              "explicacao": "# seleciona por id; ponto, por classe; sem nada, pelo nome da tag.",
+              "id": "e5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "javascript-js-world-3",
+      "numero": 3,
+      "titulo": "Transformar listas",
+      "resumo": "Transforme e filtre listas com .map() e .filter().",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "javascript-js-level-7",
+          "titulo": "Transformando Listas com .map()",
+          "resumo": "Gere novos arrays transformando cada elemento sem alterar o array original.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "O método .map() percorre a lista e devolve um NOVO array com os resultados da função aplicada a cada item."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O método .map() modifica o array original onde foi chamado?",
+              "opcoes": [
+                "Sim, altera os dados no lugar",
+                "Não, ele sempre retorna um novo array transformado",
+                "Apenas se os itens forem números",
+                "Somente no modo estrito"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! .map() é uma função pura e imutável que preserva o array original intacto.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "nums.map(n => n * 2); // retorno implícito",
+                "nums.map(n => { n * 2 }); // sem return dentro de bloco {}"
+              ],
+              "correta": 0,
+              "explicacao": "Se você abrir chaves {} na arrow function, a palavra \"return\" torna-se obrigatória.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Dada a lista const valores = [10, 20, 30], use .map(x => x + 5) e imprima o novo array.",
+              "pecas": [
+                "valores.map",
+                "(",
+                "x",
+                "=>",
+                "x",
+                "+",
+                "5",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "nums.map",
+                "n"
+              ],
+              "explicacao": "Use .map() com arrow function.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-js-level-8",
+          "titulo": "Filtrando com .filter()",
+          "resumo": "Selecione apenas os elementos que atendem a um critério booleano.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "O método .filter() testa cada item contra uma condição e devolve um novo array contendo apenas os elementos onde o retorno foi verdadeiro (true)."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que o callback passado para .filter() deve retornar para cada item?",
+              "opcoes": [
+                "O novo item modificado",
+                "Um valor booleano (true para manter, false para descartar)",
+                "Um número de índice",
+                "Uma string formatada"
+              ],
+              "correta": 1,
+              "explicacao": "Correto! Se o callback retornar true, o item é mantido no novo array resultante.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: idades.filter(idade => idade = 18); // atribuicao",
+              "pecas": [
+                "idades.filter",
+                "(",
+                "idade",
+                "=>",
+                "idade",
+                "===",
+                "18",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "=",
+                "/"
+              ],
+              "explicacao": "O teste deve retornar um booleano (use operadores de comparação).",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Dada a lista const notas = [4, 8, 9, 3, 10], filtre as notas aprovadas (nota >= 7) e imprima o novo array.",
+              "pecas": [
+                "notas.filter",
+                "(",
+                "n",
+                "=>",
+                "n",
+                ">=",
+                "7",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "idades.filter",
+                "idade"
+              ],
+              "explicacao": "As notas >= 7 são 8, 9 e 10.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "javascript-js-world-4",
+      "numero": 4,
+      "titulo": "Código assíncrono",
+      "resumo": "Entenda Promises e async/await e feche a trilha com um desafio.",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "javascript-js-level-10",
+          "titulo": "Promises & Código Assíncrono",
+          "resumo": "Aprenda como JavaScript lida com operações demoradas (como chamadas de rede) sem congelar a interface.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Uma Promise representa um valor que pode estar disponível agora, no futuro ou nunca. Ela possui 3 estados: pendente, resolvida (.then) ou rejeitada (.catch)."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais são os três estados fundamentais de uma Promise em JavaScript?",
+              "opcoes": [
+                "Pending (Pendente), Fulfilled (Resolvida) e Rejected (Rejeitada)",
+                "Iniciada, Parada e Cancelada",
+                "Loop, Thread e Kill",
+                "Draft, Review e Done"
+              ],
+              "correta": 0,
+              "explicacao": "Exatamente! Toda Promise transita de Pending para Fulfilled ou Rejected.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "const dado = promessa; // a variavel recebe o objeto Promise pendente",
+                "promessa.then(dado => ...); ou com await"
+              ],
+              "correta": 1,
+              "explicacao": "O valor da Promise só pode ser acessado após sua resolução.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Ordene a cadeia de resolução de uma Promise:",
+              "pecas": [
+                "promessa",
+                ".then(res => console.log(res))",
+                ".catch(err => console.error(err))"
+              ],
+              "extras": [],
+              "explicacao": "Primeiro a Promise, depois o .then() de sucesso e por fim o .catch() de erro.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "javascript-js-level-12",
+          "titulo": "Desafio final de JavaScript",
+          "resumo": "Construa um pipeline de dados integrando objetos, desestruturação, métodos funcionais e saída no console.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Parabéns por conquistar a trilha de JavaScript! Você aprendeu a linguagem mais dinâmica e versátil do mundo, capacitado para criar desde interfaces web reativas até servidores e inteligência artificial."
+            },
+            {
+              "titulo": "O Ecossistema JS",
+              "texto": "JavaScript domina a web através de React, Node.js, Express, Vue e milhares de frameworks globais.",
+              "codigo": "console.log(\"JavaScript Master: Missão Concluída!\");"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Onde o JavaScript pode ser executado hoje em dia?",
+              "opcoes": [
+                "Tanto no Navegador (Client-side) quanto no Servidor (Node.js/Backend), Mobile e IOT",
+                "Apenas no Internet Explorer 6",
+                "Apenas para validar formulários simples",
+                "Apenas no terminal Linux"
+              ],
+              "correta": 0,
+              "explicacao": "Exatamente! JavaScript é onipresente em todas as camadas da computação moderna.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: usar == em vez de ===",
+              "pecas": [
+                "usar",
+                "===",
+                "sempre"
+              ],
+              "extras": [
+                "==",
+                "em"
+              ],
+              "explicacao": "A igualdade estrita evita coerções implícitas de tipo bizarras.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Finalize a trilha de JavaScript imprimindo exatamente: \"JavaScript Master: Missão Concluída!\".",
+              "pecas": [
+                "console.log",
+                "(",
+                "\"JavaScript Master: Missão Concluída!\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "usar",
+                "=="
+              ],
+              "explicacao": "console.log(\"JavaScript Master: Missão Concluída!\");",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Ecossistema JS",
+              "antes": "",
+              "depois": "(\"JavaScript Master: Missão Concluída!\");",
+              "respostas": [
+                "console.log"
+              ],
+              "explicacao": "JavaScript domina a web através de React, Node.js, Express, Vue e milhares de frameworks globais.",
+              "id": "e4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

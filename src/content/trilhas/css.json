@@ -1,0 +1,928 @@
+{
+  "id": "css",
+  "nome": "CSS",
+  "sigla": "CSS",
+  "resumo": "A aparência das páginas: cores, tamanhos, espaços e a posição de cada coisa.",
+  "unidades": [
+    {
+      "id": "css-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em CSS.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-seletores",
+          "titulo": "Seletores",
+          "resumo": "Escolha quais elementos uma regra vai mudar.",
+          "explicacao": [
+            {
+              "titulo": "Quem, o quê e como",
+              "texto": "Uma regra tem um seletor (quem muda) e declarações com propriedade e valor. Nome de tag seleciona a tag; ponto seleciona uma classe; cerquilha seleciona um id.",
+              "codigo": "p {\n  color: blue;\n}\n\n.destaque {\n  font-weight: bold;\n}\n\n#topo {\n  margin: 0;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual seletor pega todos os parágrafos?",
+              "opcoes": [
+                "p",
+                ".p",
+                "#p"
+              ],
+              "correta": 0,
+              "explicacao": "Sem ponto nem cerquilha, o seletor é o nome da tag.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como selecionar a classe destaque?",
+              "opcoes": [
+                ".destaque",
+                "#destaque",
+                "destaque"
+              ],
+              "correta": 0,
+              "explicacao": "Classe começa com ponto.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a regra que deixa os parágrafos vermelhos.",
+              "pecas": [
+                "p",
+                "{",
+                "color",
+                ":",
+                "red",
+                ";",
+                "}"
+              ],
+              "extras": [
+                "=",
+                "font"
+              ],
+              "explicacao": "Seletor, chave, propriedade, dois-pontos, valor, ponto e vírgula e chave.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o seletor do elemento com o id topo.",
+              "antes": "",
+              "depois": "topo { margin: 0; }",
+              "respostas": [
+                "#"
+              ],
+              "explicacao": "Id começa com cerquilha.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que separa a propriedade do valor?",
+              "opcoes": [
+                "Dois-pontos :",
+                "Igual =",
+                "Seta ->"
+              ],
+              "correta": 0,
+              "explicacao": "Em CSS se escreve propriedade: valor;",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-texto",
+          "titulo": "Cores e texto",
+          "resumo": "Mude cor, tamanho e alinhamento do texto.",
+          "explicacao": [
+            {
+              "titulo": "color, font-size e text-align",
+              "texto": "color muda a cor do texto, font-size muda o tamanho e text-align alinha. Cores podem ter nome (red) ou código (#1f6feb).",
+              "codigo": "h1 {\n  color: #1f6feb;\n  font-size: 32px;\n  text-align: center;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade muda a cor do texto?",
+              "opcoes": [
+                "color",
+                "text-color",
+                "font-color"
+              ],
+              "correta": 0,
+              "explicacao": "É só color.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade muda a cor do fundo?",
+              "opcoes": [
+                "background-color",
+                "color",
+                "fill"
+              ],
+              "correta": 0,
+              "explicacao": "color é a cor do texto; background-color, a do fundo.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a declaração que centraliza o texto.",
+              "pecas": [
+                "text-align",
+                ":",
+                "center",
+                ";"
+              ],
+              "extras": [
+                "align",
+                "middle"
+              ],
+              "explicacao": "A propriedade é text-align e o valor é center.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a propriedade do tamanho da letra.",
+              "antes": "",
+              "depois": ": 20px;",
+              "respostas": [
+                "font-size"
+              ],
+              "explicacao": "font-size define o tamanho da fonte.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Que cor é #000000?",
+              "opcoes": [
+                "Branco",
+                "Preto",
+                "Transparente"
+              ],
+              "correta": 1,
+              "explicacao": "Zero de vermelho, de verde e de azul: preto. Branco é #ffffff.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-caixa",
+          "titulo": "Espaços e bordas",
+          "resumo": "Controle o espaço por dentro e por fora dos elementos.",
+          "explicacao": [
+            {
+              "titulo": "padding, border e margin",
+              "texto": "Todo elemento é uma caixa. padding é o espaço por dentro, entre o conteúdo e a borda. border é a borda. margin é o espaço por fora, até o vizinho.",
+              "codigo": ".cartao {\n  padding: 16px;\n  border: 1px solid gray;\n  margin: 8px;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade cria espaço por dentro, entre a borda e o conteúdo?",
+              "opcoes": [
+                "margin",
+                "padding",
+                "border"
+              ],
+              "correta": 1,
+              "explicacao": "padding é o enchimento da caixa.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "E o espaço por fora, entre um elemento e o vizinho?",
+              "opcoes": [
+                "margin",
+                "padding",
+                "outside"
+              ],
+              "correta": 0,
+              "explicacao": "margin é a margem externa.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte uma borda de 2px, sólida e preta.",
+              "pecas": [
+                "border",
+                ":",
+                "2px solid black",
+                ";"
+              ],
+              "extras": [
+                "2px black",
+                "margin"
+              ],
+              "explicacao": "A borda precisa de espessura, estilo e cor. Sem o estilo (solid), ela não aparece.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a propriedade que arredonda os cantos.",
+              "antes": "",
+              "depois": ": 8px;",
+              "respostas": [
+                "border-radius"
+              ],
+              "explicacao": "border-radius define o raio dos cantos.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Do conteúdo para fora, qual é a ordem?",
+              "opcoes": [
+                "conteúdo, padding, borda, margin",
+                "conteúdo, margin, borda, padding",
+                "conteúdo, borda, padding, margin"
+              ],
+              "correta": 0,
+              "explicacao": "O padding fica dentro da borda e a margin, fora.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-flexbox",
+          "titulo": "Flexbox",
+          "resumo": "Coloque elementos lado a lado e alinhe sem esforço.",
+          "explicacao": [
+            {
+              "titulo": "display: flex",
+              "texto": "Com display: flex no elemento pai, os filhos ficam em linha. justify-content alinha ao longo da linha e gap cria espaço entre eles.",
+              "codigo": ".linha {\n  display: flex;\n  justify-content: center;\n  gap: 12px;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que display: flex faz com os filhos do elemento?",
+              "opcoes": [
+                "Coloca lado a lado, em linha",
+                "Esconde todos",
+                "Deixa em negrito"
+              ],
+              "correta": 0,
+              "explicacao": "Por padrão, o flex organiza os filhos em uma linha.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a declaração que liga o flexbox.",
+              "pecas": [
+                "display",
+                ":",
+                "flex",
+                ";"
+              ],
+              "extras": [
+                "flexbox",
+                "float"
+              ],
+              "explicacao": "A propriedade é display e o valor é flex.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a propriedade que alinha os itens ao longo da linha.",
+              "antes": "",
+              "depois": ": center;",
+              "respostas": [
+                "justify-content"
+              ],
+              "explicacao": "justify-content cuida da direção principal; align-items, da direção cruzada.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade cria espaço entre os itens?",
+              "opcoes": [
+                "gap",
+                "space",
+                "between"
+              ],
+              "correta": 0,
+              "explicacao": "gap separa os itens sem precisar de margin em cada um.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como empilhar os itens na vertical?",
+              "opcoes": [
+                "flex-direction: column;",
+                "display: vertical;",
+                "flex: down;"
+              ],
+              "correta": 0,
+              "explicacao": "flex-direction troca a direção principal de linha para coluna.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "css-css-world-1",
+      "numero": 2,
+      "titulo": "Fontes e box model",
+      "resumo": "Ajuste o texto e entenda as camadas de toda caixa: padding, border e margin.",
+      "dificuldade": "facil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-css-level-2",
+          "titulo": "Tipografia: font-size e font-weight",
+          "resumo": "Ajuste o tamanho, peso e espaçamento dos textos da sua página.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "A tipografia dita a elegância visual. Use rem ou px para font-size e números como 400, 600 ou 700 para font-weight."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual valor de font-weight representa o peso em negrito (bold) padrão?",
+              "opcoes": [
+                "100",
+                "400",
+                "700",
+                "900"
+              ],
+              "correta": 2,
+              "explicacao": "Correto! 400 é normal (regular) e 700 é negrito (bold).",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "font-size: ",
+              "depois": ";",
+              "respostas": [
+                "24px"
+              ],
+              "explicacao": "Medidas em CSS precisam de unidade (ex: px, rem, %).",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Configure o seletor .texto com font-size: 18px; e font-weight: 700;.",
+              "pecas": [
+                "font-size",
+                ":",
+                "18px",
+                ";",
+                "font-weight",
+                ":",
+                "700",
+                ";"
+              ],
+              "extras": [
+                "24"
+              ],
+              "explicacao": "Sempre inclua px na unidade de font-size.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-css-level-3",
+          "titulo": "O Sagrado Box Model: Padding, Border & Margin",
+          "resumo": "Aprenda a anatomia de caixas: preenchimento interno, bordas e margens externas.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Cada elemento no CSS é uma caixa retangular: o Conteúdo no centro, envolvido por Padding (espaço interno), Border (contorno) e Margin (espaço externo)."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade cria espaçamento DENTRO da caixa, entre o conteúdo e a borda?",
+              "opcoes": [
+                "margin",
+                "padding",
+                "outline",
+                "gap"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! Padding é o preenchimento interno.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: margin para afastar o texto interno da borda",
+              "pecas": [
+                "padding",
+                "para",
+                "afastar",
+                "o",
+                "conte",
+                "ú",
+                "do",
+                "interno"
+              ],
+              "extras": [
+                "margin",
+                "texto"
+              ],
+              "explicacao": "Padding é o espaço de dentro da caixa; margin é o espaço de fora.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Na classe .card, defina padding: 20px; e border-radius: 12px;.",
+              "pecas": [
+                "padding",
+                ":",
+                "20px",
+                ";",
+                "border-radius",
+                ":",
+                "12px",
+                ";"
+              ],
+              "extras": [
+                "margin",
+                "para"
+              ],
+              "explicacao": "border-radius arredonda os cantos da caixa.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "css-layout-interacao",
+      "numero": 3,
+      "titulo": "Posição, estados e telas",
+      "resumo": "Tire elementos do fluxo, reaja ao mouse e adapte a página ao tamanho da tela.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-posicao",
+          "titulo": "Posicionamento",
+          "resumo": "Mova um elemento com position, top e left.",
+          "explicacao": [
+            {
+              "titulo": "relative, absolute e fixed",
+              "texto": "Por padrão, cada elemento fica onde o fluxo da página o coloca. Com position: relative, ele se desloca a partir do próprio lugar. Com absolute, sai do fluxo e se posiciona em relação ao ancestral posicionado mais próximo. Com fixed, fica preso à janela, mesmo quando a página rola. top, right, bottom e left dizem a distância.",
+              "codigo": ".selo {\n  position: absolute;\n  top: 8px;\n  right: 8px;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual valor mantém o elemento preso à janela enquanto a página rola?",
+              "opcoes": [
+                "relative",
+                "absolute",
+                "fixed"
+              ],
+              "correta": 2,
+              "explicacao": "fixed usa a janela como referência, então não acompanha a rolagem.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a regra que tira o elemento do fluxo da página.",
+              "pecas": [
+                "position",
+                ":",
+                "absolute",
+                ";"
+              ],
+              "extras": [
+                "static",
+                "float"
+              ],
+              "explicacao": "absolute tira o elemento do fluxo. static é o valor padrão.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para afastar o elemento 10px do topo.",
+              "antes": ".aviso {\n  position: absolute;\n  ",
+              "depois": ": 10px;\n}",
+              "respostas": [
+                "top"
+              ],
+              "explicacao": "top é a distância a partir da borda de cima.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Um elemento absolute se posiciona em relação a quê?",
+              "opcoes": [
+                "Ao ancestral posicionado mais próximo",
+                "Sempre ao elemento anterior",
+                "Ao centro da tela"
+              ],
+              "correta": 0,
+              "explicacao": "Por isso é comum pôr position: relative no elemento pai.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Dois elementos se sobrepõem. Qual propriedade decide quem fica na frente?",
+              "opcoes": [
+                "z-index",
+                "order",
+                "top"
+              ],
+              "correta": 0,
+              "explicacao": "Entre elementos posicionados, o z-index maior fica na frente.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-estados",
+          "titulo": "Estados e transições",
+          "resumo": "Mude o estilo quando o ponteiro passa e suavize a mudança.",
+          "explicacao": [
+            {
+              "titulo": ":hover, :focus e transition",
+              "texto": "Uma pseudoclasse aplica o estilo só em um estado do elemento. :hover vale enquanto o ponteiro está em cima; :focus, enquanto o elemento está com o foco do teclado. A propriedade transition faz a mudança acontecer aos poucos, no tempo indicado.",
+              "codigo": ".botao {\n  background: blue;\n  transition: background 0.3s;\n}\n.botao:hover {\n  background: navy;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quando o estilo de .botao:hover é aplicado?",
+              "opcoes": [
+                "Enquanto o ponteiro está sobre o botão",
+                "Depois que o botão é clicado, para sempre",
+                "Só no celular"
+              ],
+              "correta": 0,
+              "explicacao": "Quando o ponteiro sai, o estilo normal volta.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o seletor do link com o ponteiro em cima.",
+              "pecas": [
+                "a",
+                ":",
+                "hover"
+              ],
+              "extras": [
+                "#",
+                ".hover"
+              ],
+              "explicacao": "A pseudoclasse vem colada ao seletor, depois de dois-pontos.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para a mudança durar meio segundo.",
+              "antes": ".cartao {\n  ",
+              "depois": ": opacity 0.5s;\n}",
+              "respostas": [
+                "transition"
+              ],
+              "explicacao": "transition recebe a propriedade que muda e o tempo da mudança.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Por que estilizar também o :focus, e não só o :hover?",
+              "opcoes": [
+                "Quem navega pelo teclado não tem ponteiro",
+                "O :hover não funciona em botões",
+                "O :focus deixa a página mais leve"
+              ],
+              "correta": 0,
+              "explicacao": "O foco mostra onde a pessoa está na página quando ela usa o Tab.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quanto tempo leva a mudança de cor?",
+              "codigo": "a {\n  color: black;\n  transition: color 2s;\n}\na:hover {\n  color: red;\n}",
+              "opcoes": [
+                "2 segundos",
+                "2 milissegundos",
+                "É instantânea"
+              ],
+              "correta": 0,
+              "explicacao": "O s é de segundos. Milissegundos seriam escritos como ms.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-unidades",
+          "titulo": "Unidades de medida",
+          "resumo": "Escolha entre px, %, rem e vw.",
+          "explicacao": [
+            {
+              "titulo": "px, %, rem e vw",
+              "texto": "px é um tamanho fixo. % é uma parte do tamanho do elemento pai. rem é relativo ao tamanho da fonte da página: se ela vale 16px, 2rem são 32px. vw é uma parte da largura da janela: 50vw é metade dela. Medidas relativas se adaptam melhor a telas e a preferências diferentes.",
+              "codigo": ".caixa {\n  width: 50%;\n  max-width: 600px;\n  font-size: 1.5rem;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "A fonte da página é 16px. Quanto vale 2rem?",
+              "opcoes": [
+                "18px",
+                "32px",
+                "2px"
+              ],
+              "correta": 1,
+              "explicacao": "rem multiplica o tamanho da fonte da página: 2 × 16 = 32.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a regra que deixa a largura com metade do elemento pai.",
+              "pecas": [
+                "width",
+                ":",
+                "50%",
+                ";"
+              ],
+              "extras": [
+                "50px",
+                "height"
+              ],
+              "explicacao": "% é sempre em relação ao elemento pai.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para a caixa nunca passar de 600px de largura.",
+              "antes": ".caixa {\n  width: 100%;\n  ",
+              "depois": ": 600px;\n}",
+              "respostas": [
+                "max-width"
+              ],
+              "explicacao": "max-width é o teto: a caixa ocupa tudo até 600px e para de crescer.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual unidade acompanha o tamanho de fonte que a pessoa configurou no navegador?",
+              "opcoes": [
+                "px",
+                "rem",
+                "vw"
+              ],
+              "correta": 1,
+              "explicacao": "Quem aumenta a fonte do navegador vê os tamanhos em rem crescerem junto.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual largura ocupa a janela inteira?",
+              "opcoes": [
+                "100vw",
+                "100px",
+                "1rem"
+              ],
+              "correta": 0,
+              "explicacao": "vw é um centésimo da largura da janela: 100vw é ela inteira.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-responsivo",
+          "titulo": "Telas diferentes",
+          "resumo": "Mude o layout conforme a largura da tela com @media.",
+          "explicacao": [
+            {
+              "titulo": "@media",
+              "texto": "Uma media query aplica um bloco de regras só quando a condição é verdadeira. Com (max-width: 600px), as regras valem em telas de até 600px de largura; com (min-width: 600px), valem de 600px para cima. É assim que a mesma página serve ao celular e ao computador.",
+              "codigo": ".menu {\n  display: flex;\n}\n@media (max-width: 600px) {\n  .menu {\n    flex-direction: column;\n  }\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quando as regras de @media (max-width: 600px) valem?",
+              "opcoes": [
+                "Em telas de até 600px de largura",
+                "Em telas com mais de 600px",
+                "Só na impressão"
+              ],
+              "correta": 0,
+              "explicacao": "max-width é o limite de cima: até 600px.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a abertura de uma media query para telas a partir de 900px.",
+              "pecas": [
+                "@media",
+                "(",
+                "min-width",
+                ":",
+                "900px",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "max-width",
+                "@screen"
+              ],
+              "explicacao": "min-width é o limite de baixo: de 900px para cima.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para as regras valerem em telas de até 480px.",
+              "antes": "@media (",
+              "depois": ": 480px) {\n  .lateral { display: none; }\n}",
+              "respostas": [
+                "max-width"
+              ],
+              "explicacao": "max-width: 480px cobre de zero até 480px.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Em uma tela de 400px de largura, qual é a cor do título?",
+              "codigo": "h1 {\n  color: blue;\n}\n@media (min-width: 800px) {\n  h1 {\n    color: green;\n  }\n}",
+              "opcoes": [
+                "Azul",
+                "Verde",
+                "Nenhuma"
+              ],
+              "correta": 0,
+              "explicacao": "400px é menos do que 800px, então a media query não entra e vale a regra de fora.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que é escrever o CSS \"mobile-first\"?",
+              "opcoes": [
+                "Fazer primeiro a tela pequena e ampliar com min-width",
+                "Fazer um site separado para celular",
+                "Esconder o site no computador"
+              ],
+              "correta": 0,
+              "explicacao": "A base atende o celular, e as media queries acrescentam o que as telas maiores permitem.",
+              "id": "e5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "css-css-world-4",
+      "numero": 4,
+      "titulo": "Grid e desafio final",
+      "resumo": "Monte layouts em linhas e colunas com CSS Grid e feche a trilha com um desafio.",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-css-level-10",
+          "titulo": "CSS Grid Layout (grid-template-columns)",
+          "resumo": "Construa layouts bidimensionais em linhas e colunas com a poderosa propriedade display: grid.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Enquanto o Flexbox é ideal para alinhamentos unidimensionais (uma linha ou uma coluna), o CSS Grid domina o controle bidimensional simultâneo."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que a unidade 1fr representa no CSS Grid?",
+              "opcoes": [
+                "Uma fração proporcional do espaço disponível",
+                "Um pixel fixo",
+                "Um frame de animação por segundo",
+                "Uma fonte relativa"
+              ],
+              "correta": 0,
+              "explicacao": "Exatamente! 1fr significa \"1 fraction\", dividindo o espaço restante de forma elástica.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: grid-template-columns: 3;",
+              "pecas": [
+                "grid-template-columns",
+                ":",
+                "repeat",
+                "(",
+                "3",
+                ",",
+                "1fr",
+                ")",
+                ";"
+              ],
+              "extras": [],
+              "explicacao": "Use unidades fr (fração) ou repeat(3, 1fr) para distribuir colunas proporcionais.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Ordene as propriedades para criar um grid de 2 colunas com espaçamento:",
+              "pecas": [
+                "display: grid;",
+                "grid-template-columns: 1fr 1fr;",
+                "gap: 20px;"
+              ],
+              "extras": [],
+              "explicacao": "Primeiro ativa-se display: grid, em seguida define-se as colunas e o gap.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-css-level-12",
+          "titulo": "Desafio final de CSS",
+          "resumo": "Construa a folha de estilo definitiva combinando Glassmorphism, CSS Grid, Flexbox e sombras neon.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Parabéns por dominar o design da web! No Chefão de CSS3 você unirá todos os poderes visuais em um design espetacular e moderno."
+            },
+            {
+              "titulo": "O Estilo Cyberpunk Clean",
+              "texto": "Fundos escuros, vidro fosco e acentos brilhantes definem interfaces de altíssimo valor percebido.",
+              "codigo": "background: rgba(15, 23, 42, 0.8);\nbackdrop-filter: blur(20px);\nborder: 1px solid rgba(6, 182, 212, 0.3);"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade CSS produz o efeito de vidro fosco em elementos sobrepostos?",
+              "opcoes": [
+                "backdrop-filter: blur(20px)",
+                "filter: invert(100%)",
+                "opacity: 0",
+                "text-shadow"
+              ],
+              "correta": 0,
+              "explicacao": "Exatamente! backdrop-filter desfoca o conteúdo que está atrás do elemento.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: cores puras saturadas sem transparência",
+              "pecas": [
+                "fundos",
+                "transl",
+                "ú",
+                "cidos",
+                "com",
+                "blur",
+                "e",
+                "acentos",
+                "vibrantes"
+              ],
+              "extras": [
+                "cores",
+                "puras"
+              ],
+              "explicacao": "Transparência e blur criam sensação espacial de profundidade e sofisticação.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: O Estilo Cyberpunk Clean",
+              "pecas": [
+                "backdrop-filter",
+                ":",
+                "blur",
+                "(",
+                "20px",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "background",
+                "rgba"
+              ],
+              "explicacao": "Fundos escuros, vidro fosco e acentos brilhantes definem interfaces de altíssimo valor percebido.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

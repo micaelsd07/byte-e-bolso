@@ -34,10 +34,10 @@ Para testar contra um ambiente publicado: `BASE_URL=https://USUARIO.github.io/RE
 ```text
 src/
   core/      regras puras do jogo, sem DOM, rede ou armazenamento (cobertura >= 70%)
-  content/   fases, habilidades e conquistas em JSON + schema
-  scenes/    telas: início, jogo e fim
-  ui/        componentes e estilos
-  services/  persistência (porta + implementação local)
+  content/   trilhas por linguagem (lições e exercícios) e melhorias da empresa em JSON + schema
+  scenes/    telas: início, escolha da trilha, lista de fases, lição, fases, empresa, mercado, notícias, perfil e resultado
+  ui/        ilustração inicial em SVG, ícones, efeitos e estilos
+  services/  save local e busca dos dados ao vivo
 tests/
   unit/         regras do core e máquina de estados do rollout
   integration/  schema do conteúdo, gate do build, partida completa
@@ -109,15 +109,31 @@ Credenciais ficam só em *secrets* e *variables*. A esteira usa apenas o `GITHUB
 
 ## Privacidade (LGPD)
 
-O jogo **não coleta nenhum dado**. Não há cadastro, login, telemetria, cookie de terceiros nem chamada de rede depois que a página carrega.
+O jogo **não coleta nenhum dado do jogador**. Não há cadastro, login, telemetria nem cookie de terceiros, e nenhuma informação do jogador sai do aparelho.
 
 | O que fica guardado | Onde | Para quê |
 |---|---|---|
 | Apelido (opcional, até 16 caracteres, só letras, números, espaço, hífen e sublinhado) | `localStorage` do navegador | Identificar a partida neste aparelho |
-| Progresso da partida | `localStorage` do navegador | Continuar depois de fechar a página |
+| Progresso: saldo, melhor pontuação de cada fase e melhorias compradas | `localStorage` do navegador | Continuar depois de fechar a página |
+| Ranking do aparelho: apelido, personagem, estrelas e MVP de até 10 jogadores que usaram este navegador | `localStorage` do navegador | Comparar quem jogou no mesmo aparelho; só aparece para quem escolheu um apelido |
+| Última cotação e últimas notícias buscadas | `localStorage` do navegador | Mostrar o último valor quando não há internet |
 | Versão sorteada pelo carregador | `localStorage` do navegador | Manter o jogador na mesma versão durante o canário |
 
-Nada disso sai do aparelho. Limpar os dados do site apaga tudo.
+Limpar os dados do site apaga tudo.
+
+### Dados ao vivo
+
+As telas **Mercado** e **Notícias** buscam dados públicos em três serviços, direto do navegador do jogador e só quando a tela é aberta:
+
+| Dado | Serviço | O que é enviado |
+|---|---|---|
+| Câmbio | AwesomeAPI (`economia.awesomeapi.com.br`) | Nada além da própria requisição |
+| Bolsa (4 códigos da B3) | brapi (`brapi.dev`) | Nada além da própria requisição |
+| Notícias de tecnologia | TabNews (`www.tabnews.com.br`) | Nada além da própria requisição |
+
+As requisições não levam apelido, progresso, cookie nem endereço de origem (`credentials: omit`, `referrerPolicy: no-referrer`). Como em qualquer acesso à internet, o serviço enxerga o endereço IP de quem pede. Nenhum dos três exige chave, então não há credencial no repositório. O que chega é tratado como entrada não confiável (`src/core/mercado.ts`): cada campo é conferido e os links são montados pelo jogo, só em `https`.
+
+Essa camada é opcional: sem internet, as fases, a empresa e o save funcionam normalmente, e as duas telas mostram o último valor guardado ou um aviso.
 
 ## Segurança
 

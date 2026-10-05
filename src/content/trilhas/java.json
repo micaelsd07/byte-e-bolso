@@ -1,0 +1,1634 @@
+{
+  "id": "java",
+  "nome": "Java",
+  "sigla": "Jv",
+  "resumo": "Linguagem de grandes sistemas e de aplicativos Android, com tipos declarados.",
+  "unidades": [
+    {
+      "id": "java-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em Java.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "java-saida",
+          "titulo": "Primeiro programa",
+          "resumo": "Conheça o main e mostre texto com println.",
+          "explicacao": [
+            {
+              "titulo": "main e println",
+              "texto": "Todo programa Java começa pelo método main, que fica dentro de uma classe. System.out.println mostra uma linha na tela.",
+              "codigo": "public class Ola {\n  public static void main(String[] args) {\n    System.out.println(\"Olá, mundo!\");\n  }\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "System.out.println(\"Oi\");",
+              "opcoes": [
+                "Oi",
+                "println(\"Oi\")",
+                "\"Oi\""
+              ],
+              "correta": 0,
+              "explicacao": "As aspas marcam o texto, mas não aparecem.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o código que mostra Java na tela.",
+              "pecas": [
+                "System.out.println",
+                "(",
+                "\"Java\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "print",
+                "console.log"
+              ],
+              "explicacao": "System.out.println, parênteses, texto entre aspas e ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o nome do comando que mostra uma linha.",
+              "antes": "System.out.",
+              "depois": "(7);",
+              "respostas": [
+                "println",
+                "print"
+              ],
+              "explicacao": "println mostra e pula de linha; print mostra sem pular.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que termina uma instrução em Java?",
+              "opcoes": [
+                "Dois-pontos :",
+                "Ponto e vírgula ;",
+                "Nada"
+              ],
+              "correta": 1,
+              "explicacao": "Sem o ponto e vírgula, o código não compila.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Por onde um programa Java começa a rodar?",
+              "opcoes": [
+                "Pelo método main",
+                "Pela primeira linha do arquivo",
+                "Pela classe System"
+              ],
+              "correta": 0,
+              "explicacao": "O main é o ponto de entrada do programa.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-variaveis",
+          "titulo": "Variáveis e tipos",
+          "resumo": "Em Java, toda variável declara o tipo do que guarda.",
+          "explicacao": [
+            {
+              "titulo": "Tipo antes do nome",
+              "texto": "Antes do nome da variável vem o tipo: int para inteiro, double para número com casas decimais, String para texto e boolean para verdadeiro ou falso.",
+              "codigo": "int idade = 18;\ndouble preco = 9.90;\nString nome = \"Ana\";\nboolean ativo = true;"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tipo guarda o texto \"Ana\"?",
+              "opcoes": [
+                "int",
+                "String",
+                "boolean"
+              ],
+              "correta": 1,
+              "explicacao": "String é o tipo de texto, e começa com letra maiúscula.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Declare a variável inteira pontos com o valor 10.",
+              "pecas": [
+                "int",
+                "pontos",
+                "=",
+                "10",
+                ";"
+              ],
+              "extras": [
+                "String",
+                "=="
+              ],
+              "explicacao": "Tipo, nome, sinal de igual, valor e ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o tipo para número com casas decimais.",
+              "antes": "",
+              "depois": " preco = 9.90;",
+              "respostas": [
+                "double"
+              ],
+              "explicacao": "double guarda números com casas decimais.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que acontece neste código?",
+              "codigo": "int x = \"dez\";",
+              "opcoes": [
+                "x passa a valer 10",
+                "Erro: texto não cabe em int",
+                "x passa a valer \"dez\""
+              ],
+              "correta": 1,
+              "explicacao": "O tipo é conferido antes de o programa rodar: int só aceita número inteiro.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "int x = 5;\nx = x + 2;\nSystem.out.println(x);",
+              "opcoes": [
+                "5",
+                "7",
+                "52"
+              ],
+              "correta": 1,
+              "explicacao": "x começa em 5 e passa a valer 5 + 2.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-condicoes",
+          "titulo": "Condições",
+          "resumo": "Faça o programa decidir com if e else.",
+          "explicacao": [
+            {
+              "titulo": "if e else",
+              "texto": "O if executa o bloco entre chaves só quando a condição entre parênteses é verdadeira. O else cuida do caso contrário.",
+              "codigo": "if (idade >= 18) {\n  System.out.println(\"Maior\");\n} else {\n  System.out.println(\"Menor\");\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "int nota = 6;\nif (nota >= 7) {\n  System.out.println(\"Aprovado\");\n} else {\n  System.out.println(\"Recuperação\");\n}",
+              "opcoes": [
+                "Aprovado",
+                "Recuperação",
+                "Nada"
+              ],
+              "correta": 1,
+              "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo da condição: se x for maior que 10.",
+              "pecas": [
+                "if",
+                "(",
+                "x",
+                ">",
+                "10",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "then",
+                ":"
+              ],
+              "explicacao": "A condição vai entre parênteses e o bloco abre com chave.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o operador que compara se dois números são iguais.",
+              "antes": "if (x ",
+              "depois": " 10) {",
+              "respostas": [
+                "=="
+              ],
+              "explicacao": "Dois sinais de igual comparam. Um só guarda valor na variável.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como comparar o conteúdo de dois textos (String) em Java?",
+              "opcoes": [
+                "a == b",
+                "a.equals(b)",
+                "a = b"
+              ],
+              "correta": 1,
+              "explicacao": "Em String, == confere se é o mesmo objeto. equals compara o conteúdo.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quanto vale 5 > 3 || 2 > 4?",
+              "opcoes": [
+                "true",
+                "false",
+                "erro"
+              ],
+              "correta": 0,
+              "explicacao": "O || é verdadeiro quando pelo menos um lado é. 5 > 3 é verdadeiro.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-lacos",
+          "titulo": "Laços",
+          "resumo": "Repita um bloco com for e while.",
+          "explicacao": [
+            {
+              "titulo": "for",
+              "texto": "O for tem três partes: onde começa, até quando repete e o que muda a cada volta. Aqui, i vale 0, 1 e 2.",
+              "codigo": "for (int i = 0; i < 3; i++) {\n  System.out.println(i);\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas vezes Oi aparece?",
+              "codigo": "for (int i = 0; i < 4; i++) {\n  System.out.println(\"Oi\");\n}",
+              "opcoes": [
+                "3",
+                "4",
+                "5"
+              ],
+              "correta": 1,
+              "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais números aparecem?",
+              "codigo": "for (int i = 0; i < 3; i++) {\n  System.out.println(i);\n}",
+              "opcoes": [
+                "1, 2, 3",
+                "0, 1, 2",
+                "0, 1, 2, 3"
+              ],
+              "correta": 1,
+              "explicacao": "Começa em 0 e para antes de chegar a 3.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo do laço em que i vai de 0 a 4.",
+              "pecas": [
+                "for",
+                "(",
+                "int i = 0",
+                ";",
+                "i < 5",
+                ";",
+                "i++",
+                ")"
+              ],
+              "extras": [
+                "i--",
+                "i > 5"
+              ],
+              "explicacao": "Começa em 0, repete enquanto i for menor que 5 e soma 1 a cada volta.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para repetir enquanto x for menor que 10.",
+              "antes": "",
+              "depois": " (x < 10) {",
+              "respostas": [
+                "while"
+              ],
+              "explicacao": "O while repete o bloco enquanto a condição for verdadeira.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o problema deste laço?",
+              "codigo": "for (int i = 0; i < 5; i--) { }",
+              "opcoes": [
+                "i diminui e nunca chega a 5: o laço não termina",
+                "Falta declarar o i",
+                "5 é um número grande demais"
+              ],
+              "correta": 0,
+              "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "java-world-1",
+      "numero": 2,
+      "titulo": "Primeiros passos em Java",
+      "resumo": "A anatomia de um programa Java, o método main, variáveis e operações.",
+      "dificuldade": "facil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "java-level-1",
+          "titulo": "Olá, Mundo Java!",
+          "resumo": "Aprenda a anatomia básica de um programa Java e imprima sua primeira mensagem na tela.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Bem-vindo ao Java! Java é uma linguagem fortemente tipada e orientada a objetos. Tudo em Java mora dentro de uma Classe (class), e todo programa independente precisa de uma porta de entrada chamada método \"main\"."
+            },
+            {
+              "titulo": "O Invólucro: public class Main",
+              "texto": "Em Java, todo código precisa de um nome de classe. Por convenção, o nome de uma classe começa com letra Maiúscula (PascalCase).",
+              "codigo": "public class Main {\n    // Seu código vive aqui dentro\n}"
+            },
+            {
+              "titulo": "A Porta de Entrada: o método main",
+              "texto": "Quando você manda o Java executar, o computador procura exatamente esta linha para saber por onde começar a ler.",
+              "codigo": "public static void main(String[] args) {\n    // Comandos a serem executados\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual caractere é obrigatório no final de uma instrução em Java?",
+              "opcoes": [
+                "Dois pontos (:)",
+                "Ponto e vírgula (;)",
+                "Ponto final (.)",
+                "Vírgula (,)"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! O ponto e vírgula (;) diz ao compilador Java que aquela ordem ou instrução terminou.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "System.out.println(",
+              "depois": ");",
+              "respostas": [
+                "\"Olá, Mundo!\""
+              ],
+              "explicacao": "Em Java, aspas simples ' ' são reservadas para um único caractere (char). Para textos use aspas duplas \" \".",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: system.out.println(\"Oi\");",
+              "pecas": [
+                "System.out.println",
+                "(",
+                "\"Oi\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "system.out.println"
+              ],
+              "explicacao": "Java é case-sensitive (diferencia maiúsculas e minúsculas). \"System\" começa com \"S\" maiúsculo!",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: System.out.println(\"Sem ponto e virgula\")",
+              "pecas": [
+                "System.out.println",
+                "(",
+                "\"Com ponto e virgula\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "\"Sem ponto e virgula\""
+              ],
+              "explicacao": "Sem o ponto e vírgula (;) o compilador acusa erro e recusa a gerar o programa.",
+              "id": "e4"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Invólucro: public class Main",
+              "antes": "",
+              "depois": " class Main {",
+              "respostas": [
+                "public"
+              ],
+              "explicacao": "Em Java, todo código precisa de um nome de classe. Por convenção, o nome de uma classe começa com letra Maiúscula (PascalCase).",
+              "id": "e5"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "public",
+              "opcoes": [
+                "Indica que essa classe é acessível por qualquer parte do programa.",
+                "Palavra-chave sagrada que define um molde/estrutura de código.",
+                "O nome da classe. Deve bater com o nome do arquivo Java."
+              ],
+              "correta": 0,
+              "explicacao": "Em Java, todo código precisa de um nome de classe. Por convenção, o nome de uma classe começa com letra Maiúscula (PascalCase).",
+              "id": "e6"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "public static void",
+              "opcoes": [
+                "Modificadores que permitem ao Java rodar este método sem instanciar a classe e sem esperar retorno.",
+                "Indica que essa classe é acessível por qualquer parte do programa.",
+                "Palavra-chave sagrada que define um molde/estrutura de código."
+              ],
+              "correta": 0,
+              "explicacao": "Quando você manda o Java executar, o computador procura exatamente esta linha para saber por onde começar a ler.",
+              "id": "e7"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-2",
+          "titulo": "Variáveis e Tipos Primitivos",
+          "resumo": "Guarde números, textos e valores lógicos na memória do computador usando tipos primitivos.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Uma variável é como uma caixa etiquetada na memória do computador. Em Java, você deve declarar o TIPO exato de coisa que vai guardar dentro dessa caixa antes de usá-la."
+            },
+            {
+              "titulo": "Principais Tipos de Dados",
+              "texto": "Java possui tipos para cada categoria de informação:",
+              "codigo": "int idade = 20;            // Números inteiros (-1, 0, 42)\ndouble preco = 19.99;      // Números com casas decimais\nboolean vivo = true;       // Verdadeiro ou Falso (true / false)\nchar inicial = 'J';        // Um único caractere (com aspas simples)\nString nome = \"Aventureiro\"; // Texto (String é uma classe especial com S maiúsculo)"
+            },
+            {
+              "titulo": "A Fórmula da Criação",
+              "texto": "A sintaxe é sempre: [TIPO] [NOME_DA_VARIAVEL] = [VALOR];",
+              "codigo": "int pontuacao = 100;"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tipo de variável deve ser usado para armazenar a vida de um herói (ex: 85)?",
+              "opcoes": [
+                "boolean",
+                "String",
+                "int",
+                "double"
+              ],
+              "correta": 2,
+              "explicacao": "Correto! 85 é um número inteiro, então o tipo \"int\" é a escolha ideal e mais eficiente.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "",
+              "depois": " preco = 19.99;",
+              "respostas": [
+                "double"
+              ],
+              "explicacao": "int aceita apenas números inteiros. Para decimais (ponto flutuante), use double ou float.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: string nome = \"Java\";",
+              "pecas": [
+                "String",
+                "nome",
+                "=",
+                "\"Java\"",
+                ";"
+              ],
+              "extras": [
+                "string"
+              ],
+              "explicacao": "String em Java começa com \"S\" maiúsculo porque é uma classe de referência, não um tipo primitivo primitivo.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Principais Tipos de Dados",
+              "antes": "",
+              "depois": " idade = 20;",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "Java possui tipos para cada categoria de informação:",
+              "id": "e4"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: A Fórmula da Criação",
+              "pecas": [
+                "int",
+                "pontuacao",
+                "=",
+                "100",
+                ";"
+              ],
+              "extras": [
+                "idade",
+                "20"
+              ],
+              "explicacao": "A sintaxe é sempre: [TIPO] [NOME_DA_VARIAVEL] = [VALOR];",
+              "id": "e5"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "int",
+              "opcoes": [
+                "O identificador: o nome que você usará para acessar esse valor.",
+                "Operador de atribuição: guarda o valor da direita dentro da variável da esquerda.",
+                "O tipo: diz ao Java que armazenará um número inteiro."
+              ],
+              "correta": 2,
+              "explicacao": "A sintaxe é sempre: [TIPO] [NOME_DA_VARIAVEL] = [VALOR];",
+              "id": "e6"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-3",
+          "titulo": "Operadores Matemáticos",
+          "resumo": "Faça cálculos com soma (+), subtração (-), multiplicação (*), divisão (/) e resto (%).",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Computadores foram inventados para calcular! Java suporta as operações matemáticas fundamentais e segue a precedência padrão da matemática (multiplicação e divisão antes de soma e subtração)."
+            },
+            {
+              "titulo": "Os 5 Operadores Essenciais",
+              "texto": "Veja os símbolos matemáticos em Java:",
+              "codigo": "int soma = 10 + 5;        // 15\nint subtracao = 20 - 7;   // 13\nint multiplicacao = 4 * 3; // 12\nint divisao = 10 / 2;     // 5\nint resto = 11 % 3;       // 2 (o resto da divisão de 11 por 3)"
+            },
+            {
+              "titulo": "A Pegadinha da Divisão Inteira",
+              "texto": "Se você dividir dois inteiros em Java, o resultado também será inteiro, descartando as casas decimais! Dica: Para manter casas decimais na divisão, ao menos um dos números precisa ser double (ex: 5.0 / 2).",
+              "codigo": "int a = 7 / 2; // Dá 3! O .5 é jogado fora.\ndouble b = 7.0 / 2; // Dá 3.5! Porque 7.0 é double."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual o valor da variável \"resultado\" após: int resultado = 10 + 2 * 3; ?",
+              "opcoes": [
+                "36",
+                "16",
+                "15",
+                "20"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! A multiplicação tem precedência: 2 * 3 = 6, depois 10 + 6 = 16.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "int x = 10; x = x ",
+              "depois": " 2;",
+              "respostas": [
+                "*"
+              ],
+              "explicacao": "Em programação, a multiplicação usa o asterisco (*), nunca a letra \"x\".",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Os 5 Operadores Essenciais",
+              "pecas": [
+                "int",
+                "soma",
+                "=",
+                "10",
+                "+",
+                "5",
+                ";"
+              ],
+              "extras": [
+                "/",
+                "15"
+              ],
+              "explicacao": "Veja os símbolos matemáticos em Java:",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: A Pegadinha da Divisão Inteira",
+              "antes": "",
+              "depois": " a = 7 / 2;",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "Se você dividir dois inteiros em Java, o resultado também será inteiro, descartando as casas decimais!",
+              "id": "e4"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-4",
+          "titulo": "Concatenação de Textos",
+          "resumo": "Junte mensagens e valores numéricos usando o poderoso operador de concatenação (+).",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Na maioria dos programas, queremos apresentar dados formatados, como \"Você tem 3 vidas restantes\" ou \"Nível: 5\". Em Java, unimos textos e números com o sinal de +."
+            },
+            {
+              "titulo": "O Operador + com Strings",
+              "texto": "Quando um dos lados do operador + for um texto (String), o Java automaticamente converte o outro lado para texto e \"cola\" (concatena) os dois.",
+              "codigo": "String guerreiro = \"Arthur\";\nint nivel = 7;\nSystem.out.println(\"Guerreiro: \" + guerreiro + \" | Nivel: \" + nivel);\n// Saída: Guerreiro: Arthur | Nivel: 7"
+            },
+            {
+              "titulo": "Cuidado com Parênteses!",
+              "texto": "Se você fizer \"Total: \" + 5 + 5, o Java fará \"Total: 5\" e depois \"Total: 55\"! Para somar matematicamente primeiro, use parênteses: \"Total: \" + (5 + 5). Dica: Parênteses têm a prioridade mais alta em qualquer expressão matemática ou de texto."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que o comando System.out.println(\"Java\" + 10 + 20); irá imprimir?",
+              "opcoes": [
+                "Java30",
+                "Java1020",
+                "Erro de compilação",
+                "Java 30"
+              ],
+              "correta": 1,
+              "explicacao": "Muito bem! Como começa com texto (\"Java\"), ele junta com \"10\" virando \"Java10\", e depois junta com \"20\" virando \"Java1020\". Se quisesse somar, usaria (10 + 20).",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: System.out.println(\"Pontos: \" pontos);",
+              "pecas": [
+                "System.out.println",
+                "(",
+                "\"Pontos: \"",
+                "+",
+                "pontos",
+                ")",
+                ";"
+              ],
+              "extras": [],
+              "explicacao": "Faltou o sinal de + entre o texto e a variável para concatená-los.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Operador + com Strings",
+              "antes": "",
+              "depois": " guerreiro = \"Arthur\";",
+              "respostas": [
+                "String"
+              ],
+              "explicacao": "Quando um dos lados do operador + for um texto (String), o Java automaticamente converte o outro lado para texto e \"cola\" (concatena) os dois.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-world-2",
+      "numero": 3,
+      "titulo": "Decisões",
+      "resumo": "Faça o programa escolher o caminho com if, else, operadores lógicos e switch.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "java-level-5",
+          "titulo": "Tomando Decisões com if e else",
+          "resumo": "Controle o destino do seu programa executando códigos diferentes dependendo de uma condição.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Programas inteligentes precisam reagir ao ambiente: \"se a vida for zero, game over; se não, continue\". Em Java, a estrutura fundamental para isso é o bloco if / else."
+            },
+            {
+              "titulo": "A Estrutura do if",
+              "texto": "O if avalia uma expressão booleana (verdadeira ou falsa). Se for true, ele executa o bloco dentro das chaves {}.",
+              "codigo": "int vida = 100;\nif (vida > 0) {\n    System.out.println(\"Personagem esta vivo!\");\n}"
+            },
+            {
+              "titulo": "Operadores de Comparação",
+              "texto": "Usamos operadores especiais para comparar valores: Dica: Um único sinal de igual (=) ATRIBUI valor. Dois sinais (==) COMPARAM igualdade!",
+              "codigo": "a == b  // Igual a (ATENÇÃO: dois sinais de igual ==!)\na != b  // Diferente de\na > b   // Maior que\na < b   // Menor que\na >= b  // Maior ou igual a\na <= b  // Menor ou igual a"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual operador testa se duas variáveis têm valores IGUAIS em Java?",
+              "opcoes": [
+                "=",
+                "==",
+                "===",
+                "equals"
+              ],
+              "correta": 1,
+              "explicacao": "Isso aí! Em Java usamos \"==\" para comparar tipos primitivos. Um único \"=\" serve para guardar valor.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "if (pontos ",
+              "depois": " 100) { ... }",
+              "respostas": [
+                "=="
+              ],
+              "explicacao": "Um único = é atribuição. Para testar igualdade dentro do if, use sempre == duplo!",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: A Estrutura do if",
+              "pecas": [
+                "int",
+                "vida",
+                "=",
+                "100",
+                ";"
+              ],
+              "extras": [
+                "a",
+                "=="
+              ],
+              "explicacao": "O if avalia uma expressão booleana (verdadeira ou falsa). Se for true, ele executa o bloco dentro das chaves {}.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Operadores de Comparação",
+              "pecas": [
+                "a",
+                "==",
+                "b"
+              ],
+              "extras": [
+                "int",
+                "vida"
+              ],
+              "explicacao": "Usamos operadores especiais para comparar valores:",
+              "id": "e4"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Bloco else",
+              "antes": "",
+              "depois": " (vida > 0) {",
+              "respostas": [
+                "if"
+              ],
+              "explicacao": "O else é o plano B: se a condição do if for falsa, o bloco do else será executado.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-6",
+          "titulo": "Operadores Lógicos (E, OU, NÃO)",
+          "resumo": "Combine múltiplas condições em uma única decisão usando && (E), || (OU) e ! (NÃO).",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Nem sempre uma única condição basta. Para abrir um baú mágico, talvez você precise ter a Chave Dourada E ter nível acima de 10. Para isso usamos operadores lógicos!"
+            },
+            {
+              "titulo": "O Operador E (&&)",
+              "texto": "Retorna verdadeiro APENAS se ambas as condições forem verdadeiras.",
+              "codigo": "boolean temChave = true;\nint nivel = 12;\nif (temChave && nivel >= 10) {\n    System.out.println(\"Bau destrancado!\");\n}"
+            },
+            {
+              "titulo": "O Operador OU (||)",
+              "texto": "Retorna verdadeiro se PELO MENOS UMA das condições for verdadeira. O símbolo || é feito com duas barras verticais (Shift + tecla ao lado do Z ou Enter).",
+              "codigo": "boolean ehVIP = false;\nint moedas = 500;\nif (ehVIP || moedas >= 100) {\n    System.out.println(\"Entrada permitida no castelo!\");\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Se a = true e b = false, qual é o resultado da expressão (a && b)?",
+              "opcoes": [
+                "true",
+                "false",
+                "null",
+                "1"
+              ],
+              "correta": 1,
+              "explicacao": "Exatamente! No operador && (E), se qualquer um dos lados for false, todo o resultado se torna false.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "if (nivel > 5 ",
+              "depois": " nivel < 10)",
+              "respostas": [
+                "&&"
+              ],
+              "explicacao": "Java não usa a palavra \"AND\" ou \"OR\". Use os símbolos && e ||.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: O Operador E (&&)",
+              "pecas": [
+                "boolean",
+                "temChave",
+                "=",
+                "true",
+                ";"
+              ],
+              "extras": [
+                "ehVIP",
+                "false"
+              ],
+              "explicacao": "Retorna verdadeiro APENAS se ambas as condições forem verdadeiras.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Operador OU (||)",
+              "antes": "",
+              "depois": " ehVIP = false;",
+              "respostas": [
+                "boolean"
+              ],
+              "explicacao": "Retorna verdadeiro se PELO MENOS UMA das condições for verdadeira. O símbolo || é feito com duas barras verticais (Shift + tecla ao lado do Z ou Enter).",
+              "id": "e4"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: O Operador NÃO (!)",
+              "pecas": [
+                "boolean",
+                "estaChovendo",
+                "=",
+                "false",
+                ";"
+              ],
+              "extras": [
+                "temChave",
+                "true"
+              ],
+              "explicacao": "Inverte o valor lógico: o que era true vira false e vice-versa.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-7",
+          "titulo": "Múltiplos Caminhos com else if",
+          "resumo": "Avalie várias alternativas em sequência usando a cadeia if, else if e else.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Muitas vezes a vida não é apenas \"sim ou não\". Em um jogo, um jogador pode tirar nota S, A, B ou C. Para encadear várias verificações em ordem, usamos o \"else if\"."
+            },
+            {
+              "titulo": "Como funciona a cadeia",
+              "texto": "O Java testa de cima para baixo. Assim que encontrar o primeiro verdadeiro, ele executa aquele bloco e ignora todos os seguintes!",
+              "codigo": "int nota = 85;\nif (nota >= 90) {\n    System.out.println(\"Classificacao: S\");\n} else if (nota >= 80) {\n    System.out.println(\"Classificacao: A\");\n} else if (nota >= 70) {\n    System.out.println(\"Classificacao: B\");\n} else {\n    System.out.println(\"Classificacao: C\");\n}"
+            },
+            {
+              "titulo": "O else final como rede de segurança",
+              "texto": "O else no final é opcional, mas serve para capturar qualquer caso que não tenha caído em nenhum dos if ou else if anteriores."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que acontece quando uma condição de um else if é verdadeira?",
+              "opcoes": [
+                "Ele executa aquele bloco e pula todos os outros blocos restantes da cadeia.",
+                "Ele continua testando todos os outros else if abaixo.",
+                "O programa trava.",
+                "Ele executa também o else."
+              ],
+              "correta": 0,
+              "explicacao": "Perfeito! A cadeia if-else if é exclusiva: o primeiro teste satisfeito encerra a avaliação da estrutura.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "elseif (x > 10) { ... }",
+                "else if (x > 10) { ... }"
+              ],
+              "correta": 1,
+              "explicacao": "Em Java, \"else\" e \"if\" são duas palavras separadas por um espaço.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Como funciona a cadeia",
+              "antes": "",
+              "depois": " nota = 85;",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "O Java testa de cima para baixo. Assim que encontrar o primeiro verdadeiro, ele executa aquele bloco e ignora todos os seguintes!",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-8",
+          "titulo": "A Escolha Limpa: switch e case",
+          "resumo": "Substitua vários if encadeados por um switch elegante ao comparar uma variável contra valores fixos.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Quando você quer comparar uma mesma variável com valores exatos (ex: 1 para Espada, 2 para Arco, 3 para Cajado), o switch deixa seu código muito mais limpo e legível."
+            },
+            {
+              "titulo": "Sintaxe do switch",
+              "texto": "Você passa a variável no switch e lista os \"case\" com os valores possíveis.",
+              "codigo": "int opcao = 2;\nswitch (opcao) {\n    case 1:\n        System.out.println(\"Espada equipada\");\n        break; // Crucial!\n    case 2:\n        System.out.println(\"Arco equipado\");\n        break;\n    default:\n        System.out.println(\"Item invalido\");\n}"
+            },
+            {
+              "titulo": "Por que o break; é vital?",
+              "texto": "Se você esquecer o \"break;\", o Java continuará executando os cases de baixo mesmo que o valor não seja correspondente (efeito fall-through)! Dica: Sempre coloque break; no fim de cada case para interromper a execução."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual palavra-chave é usada no switch para agir como opção padrão quando nenhum case bate?",
+              "opcoes": [
+                "else",
+                "default",
+                "finally",
+                "catch"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! A cláusula \"default:\" é a rota padrão quando nenhum valor coincide.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "case 1: System.out.println(\"Oi\"); break;",
+                "case 1: System.out.println(\"Oi\"); // sem break"
+              ],
+              "correta": 0,
+              "explicacao": "Sem o break, o código escorrega e executa o case 2 também.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Sintaxe do switch",
+              "antes": "",
+              "depois": " opcao = 2;",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "Você passa a variável no switch e lista os \"case\" com os valores possíveis.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-world-3",
+      "numero": 4,
+      "titulo": "Repetição e arrays",
+      "resumo": "Repita tarefas com for e while e guarde vários valores em arrays.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "java-level-9",
+          "titulo": "O Laço for (Contadores)",
+          "resumo": "Repita blocos de código um número definido de vezes com o loop for.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Imagine que você precisa fazer 100 flexões ou imprimir os números de 1 a 10. Em vez de escrever 100 linhas de código, o loop \"for\" faz isso em apenas 3 linhas!"
+            },
+            {
+              "titulo": "A Trindade do for",
+              "texto": "O loop for reúne 3 instruções separadas por ponto e vírgula:",
+              "codigo": "for (int i = 1; i <= 5; i++) {\n    System.out.println(\"Contagem: \" + i);\n}"
+            },
+            {
+              "titulo": "Como o computador pensa no for",
+              "texto": "1º: inicializa i. 2º: testa condição. 3º: executa o bloco interno {}. 4º: executa o incremento i++. 5º: testa condição de novo. Repete até a condição virar false! Dica: A letra \"i\" vem de \"index\" ou \"iterador\", mas você pode usar qualquer nome válido."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas vezes o loop \"for (int i = 0; i < 3; i++)\" será executado?",
+              "opcoes": [
+                "2 vezes",
+                "3 vezes",
+                "4 vezes",
+                "Infinitas vezes"
+              ],
+              "correta": 1,
+              "explicacao": "Muito bem! Ele roda para i=0, i=1 e i=2 (3 voltas). Quando i atinge 3, a condição i < 3 é falsa e ele para.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "for (int i = 0; i < 5; i++)",
+                "for (int i = 0, i < 5, i++)"
+              ],
+              "correta": 0,
+              "explicacao": "Os 3 elementos dentro do parênteses do for são separados por ponto e vírgula (;), não por vírgula!",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: A Trindade do for",
+              "antes": "",
+              "depois": "(\"Contagem: \" + i);",
+              "respostas": [
+                "System.out.println"
+              ],
+              "explicacao": "O loop for reúne 3 instruções separadas por ponto e vírgula:",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "int i = 1",
+              "opcoes": [
+                "Condição: roda enquanto \"i\" for menor ou igual a 5.",
+                "Incremento: soma +1 em \"i\" a cada volta (i++ é o mesmo que i = i + 1).",
+                "Inicialização: cria o contador \"i\" começando em 1."
+              ],
+              "correta": 2,
+              "explicacao": "O loop for reúne 3 instruções separadas por ponto e vírgula:",
+              "id": "e4"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-10",
+          "titulo": "O Laço while (Enquanto)",
+          "resumo": "Repita uma ação enquanto uma condição for verdadeira, ideal quando você não sabe quantas voltas serão necessárias.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Se o \"for\" é ótimo quando sabemos a quantidade exata de repetições, o \"while\" brilha quando repetimos \"enquanto o monstro tiver vida\" ou \"enquanto o jogador não apertar sair\"."
+            },
+            {
+              "titulo": "Anatomia do while",
+              "texto": "O while avalia a condição antes de cada volta. Se for verdadeira, ele entra;",
+              "codigo": "int moedas = 0;\nwhile (moedas < 3) {\n    System.out.println(\"Pegou moeda! Total: \" + moedas);\n    moedas++; // Sem isso, teriamos um loop infinito!\n}"
+            },
+            {
+              "titulo": "O Perigo do Loop Infinito!",
+              "texto": "Se a condição do while nunca se tornar falsa, o programa ficará rodando eternamente até travar o navegador ou a máquina! Dica: Sempre certifique-se de que alguma variável dentro do bloco do while se aproxima do encerramento da condição."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que acontece se a condição do while começar sendo FALSA logo no início?",
+              "opcoes": [
+                "Ele executa pelo menos uma vez.",
+                "Ele nunca executa o bloco interno.",
+                "Dá erro de compilação.",
+                "Executa infinitas vezes."
+              ],
+              "correta": 1,
+              "explicacao": "Correto! Como o while testa antes de entrar, se começar falso, ele simplesmente pula todo o bloco.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "int x = 0; while (x < 5) { System.out.println(x); }",
+                "int x = 0; while (x < 5) { System.out.println(x); x++; }"
+              ],
+              "correta": 1,
+              "explicacao": "Esquecer de incrementar \"x\" faz o loop rodar para sempre porque x sempre continuará valendo 0.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Anatomia do while",
+              "antes": "",
+              "depois": " moedas = 0;",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "O while avalia a condição antes de cada volta. Se for verdadeira, ele entra;",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-11",
+          "titulo": "Vetores (Arrays) em Java",
+          "resumo": "Armazene uma lista de elementos do mesmo tipo em uma única variável indexada.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Imagine guardar o inventário de um herói com 10 itens. Criar item1, item2, item3 seria um pesadelo! Arrays permitem guardar múltiplos valores em uma sequência numerada."
+            },
+            {
+              "titulo": "Declarando e Inicializando Arrays",
+              "texto": "Usamos colchetes [] para indicar que é um array.",
+              "codigo": "// Maneira direta com valores iniciais:\nint[] notas = { 10, 8, 9, 7 };\n\n// Maneira definindo tamanho vazio:\nint[] numeros = new int[5]; // Cria espaço para 5 números inteiros (todos iniciam com 0)"
+            },
+            {
+              "titulo": "Índices começam em ZERO!",
+              "texto": "Em Java (e na maioria das linguagens), a contagem de posições começa no índice 0! Dica: Se você tentar acessar poderes[3] em um array de 3 posições, o Java lançará o famoso erro: ArrayIndexOutOfBoundsException!",
+              "codigo": "int[] poderes = { 50, 100, 150 };\nSystem.out.println(poderes[0]); // 50 (primeiro item)\nSystem.out.println(poderes[1]); // 100 (segundo item)\nSystem.out.println(poderes[2]); // 150 (terceiro item)"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Em um array chamado \"itens\" com 4 elementos, qual é o índice do último elemento?",
+              "opcoes": [
+                "4",
+                "3",
+                "0",
+                "1"
+              ],
+              "correta": 1,
+              "explicacao": "Perfeito! Como os índices começam em 0, os 4 elementos ficam nas posições 0, 1, 2 e 3.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "int[] lista = new int[5];",
+                "int[5] lista = new int[];"
+              ],
+              "correta": 0,
+              "explicacao": "O tamanho do array vai no lado direito, dentro de new int[5].",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Índices começam em ZERO!",
+              "antes": "",
+              "depois": "(poderes[0]);",
+              "respostas": [
+                "System.out.println"
+              ],
+              "explicacao": "Em Java (e na maioria das linguagens), a contagem de posições começa no índice 0!",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-12",
+          "titulo": "Percorrendo Arrays com for-each",
+          "resumo": "A forma mais elegante e segura de iterar por todos os elementos de uma coleção.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Percorrer arrays com contador (i=0; i < arr.length; i++) é clássico, mas Java oferece o laço for-each (ou \"for melhorado\"), que lê cada item automaticamente sem perigo de estourar o índice!"
+            },
+            {
+              "titulo": "Sintaxe do for-each",
+              "texto": "Lê-se: \"para cada [tipo] [item] dentro de [colecao]\":",
+              "codigo": "String[] pocoes = { \"Cura\", \"Mana\", \"Velocidade\" };\n\nfor (String pocao : pocoes) {\n    System.out.println(\"Pocao no bolso: \" + pocao);\n}"
+            },
+            {
+              "titulo": "Quando usar?",
+              "texto": "Use for-each sempre que você só precisar ler os dados sem alterar a posição deles. É mais legível e à prova de falhas."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual símbolo é usado no for-each do Java para separar a variável temporária do array?",
+              "opcoes": [
+                "in",
+                ":",
+                "->",
+                "of"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! Em Java usamos \":\" (dois pontos). Exemplo: for (int x : lista).",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "for (int num ",
+              "depois": " numeros)",
+              "respostas": [
+                ":"
+              ],
+              "explicacao": "Em Java usa-se dois pontos (:), não a palavra \"in\".",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Sintaxe do for-each",
+              "pecas": [
+                "for",
+                "(",
+                "String",
+                "pocao",
+                ":",
+                "pocoes",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "[",
+                "]"
+              ],
+              "explicacao": "Lê-se: \"para cada [tipo] [item] dentro de [colecao]\":",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "String pocao",
+              "opcoes": [
+                "Lê-se \"dentro de\" ou \"em\".",
+                "Cria uma variável temporária que recebe um item a cada volta.",
+                "O array que será percorrido do primeiro ao último item."
+              ],
+              "correta": 1,
+              "explicacao": "Lê-se: \"para cada [tipo] [item] dentro de [colecao]\":",
+              "id": "e4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-world-4",
+      "numero": 5,
+      "titulo": "Orientação a objetos",
+      "resumo": "Modele classes, objetos, métodos, construtores e encapsulamento.",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "java-level-13",
+          "titulo": "Classes e Objetos (POO)",
+          "resumo": "Aprenda o coração do Java: crie moldes (Classes) e instancie entidades (Objetos) com o operador new.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Programação Orientada a Objetos (POO) é a forma como modelamos o mundo real no código. Uma Classe é a \"planta baixa\" (molde) de um carro, e o Objeto é o carro real construído a partir dessa planta."
+            },
+            {
+              "titulo": "O que é uma Classe?",
+              "texto": "Uma classe define os atributos (características) e comportamentos que os objetos daquele tipo terão.",
+              "codigo": "class Guerreiro {\n    String nome;\n    int vida;\n}"
+            },
+            {
+              "titulo": "Criando um Objeto com new",
+              "texto": "Para transformar a ideia em realidade na memória do computador, usamos o operador \"new\":",
+              "codigo": "Guerreiro g1 = new Guerreiro();\ng1.nome = \"Thor\";\ng1.vida = 100;\n\nSystem.out.println(g1.nome + \" tem \" + g1.vida + \" de vida.\");"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual palavra-chave do Java é usada para instanciar (criar) um novo objeto na memória?",
+              "opcoes": [
+                "create",
+                "new",
+                "make",
+                "instance"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! A palavra-chave \"new\" é o feitiço construtor que aloca espaço na memória para novos objetos.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "Guerreiro g1 = new Guerreiro(); g1.vida = 100;",
+                "Guerreiro g1; g1.vida = 100;"
+              ],
+              "correta": 0,
+              "explicacao": "Sem o \"new Guerreiro()\", a variável g1 aponta para \"null\" e causa o famoso NullPointerException!",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O que é uma Classe?",
+              "antes": "",
+              "depois": " Guerreiro {",
+              "respostas": [
+                "class"
+              ],
+              "explicacao": "Uma classe define os atributos (características) e comportamentos que os objetos daquele tipo terão.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Criando um Objeto com new",
+              "pecas": [
+                "Guerreiro",
+                "g1",
+                "=",
+                "new",
+                "Guerreiro",
+                "(",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "class",
+                "{"
+              ],
+              "explicacao": "Para transformar a ideia em realidade na memória do computador, usamos o operador \"new\":",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "Guerreiro g1",
+              "opcoes": [
+                "Aloca um novo objeto na memória Heap do Java.",
+                "Declara uma variável de referência do tipo Guerreiro.",
+                "O ponto (.) é usado para acessar os atributos daquele objeto específico."
+              ],
+              "correta": 1,
+              "explicacao": "Para transformar a ideia em realidade na memória do computador, usamos o operador \"new\":",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-14",
+          "titulo": "Métodos e Retornos",
+          "resumo": "Adicione ações aos seus objetos criando métodos com parâmetros e retornos.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Se os atributos são as características de um objeto, os Métodos são suas ações ou habilidades (o que ele sabe fazer)."
+            },
+            {
+              "titulo": "Métodos que fazem algo (void)",
+              "texto": "Quando um método só executa uma ação e não precisa devolver nenhuma resposta numérica ou textual, seu tipo de retorno é \"void\" (vazio).",
+              "codigo": "class Mago {\n    void soltarFogo() {\n        System.out.println(\"Bola de fogo lancada!\");\n    }\n}"
+            },
+            {
+              "titulo": "Métodos que devolvem um valor (return)",
+              "texto": "Quando um método calcula ou busca algo, você especifica o tipo (ex: int, String) e usa a palavra \"return\".",
+              "codigo": "class Calculadora {\n    int somar(int a, int b) {\n        return a + b;\n    }\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tipo de retorno indica que um método NÃO devolve nenhum valor?",
+              "opcoes": [
+                "null",
+                "void",
+                "empty",
+                "blank"
+              ],
+              "correta": 1,
+              "explicacao": "Muito bem! \"void\" significa que o método executa suas linhas sem retornar dados para quem o chamou.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "int dobro(int n) { System.out.println(n * 2); }",
+                "int dobro(int n) { return n * 2; }"
+              ],
+              "correta": 1,
+              "explicacao": "Se o método declara retorno \"int\", ele é OBRIGADO a ter a instrução \"return\" com um número inteiro.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Métodos que fazem algo (void)",
+              "antes": "",
+              "depois": " Mago {",
+              "respostas": [
+                "class"
+              ],
+              "explicacao": "Quando um método só executa uma ação e não precisa devolver nenhuma resposta numérica ou textual, seu tipo de retorno é \"void\" (vazio).",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Métodos que devolvem um valor (return)",
+              "pecas": [
+                "class",
+                "Calculadora",
+                "{"
+              ],
+              "extras": [
+                "Mago",
+                "calc"
+              ],
+              "explicacao": "Quando um método calcula ou busca algo, você especifica o tipo (ex: int, String) e usa a palavra \"return\".",
+              "id": "e4"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Invocando o método",
+              "pecas": [
+                "Calculadora",
+                "calc",
+                "=",
+                "new",
+                "Calculadora",
+                "(",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "class",
+                "Mago"
+              ],
+              "explicacao": "Para chamar o método, usamos o nome do objeto seguido de ponto (.) e parênteses:",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-15",
+          "titulo": "Construtores e a palavra this",
+          "resumo": "Garanta que seus objetos nasçam prontos e consistentes usando construtores e o pronome this.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Imagine criar um Personagem sem nome ou sem vida inicial por esquecimento. O Construtor é um método especial que roda automaticamente no momento do \"new\" para inicializar os atributos!"
+            },
+            {
+              "titulo": "O que é um Construtor?",
+              "texto": "O construtor tem o MESMO NOME da classe e NÃO possui tipo de retorno (nem mesmo void):",
+              "codigo": "class Heroi {\n    String nome;\n    int vida;\n\n    // Construtor:\n    Heroi(String nome, int vida) {\n        this.nome = nome;\n        this.vida = vida;\n    }\n}"
+            },
+            {
+              "titulo": "O Papel do \"this\"",
+              "texto": "A palavra \"this\" significa \"deste objeto aqui\". Quando o parâmetro do construtor tem o mesmo nome do atributo, \"this.nome\" se refere ao atributo da classe, evitando confusão!"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual deve ser o nome de um método Construtor em Java?",
+              "opcoes": [
+                "constructor()",
+                "init()",
+                "O mesmo nome exato da classe",
+                "new()"
+              ],
+              "correta": 2,
+              "explicacao": "Exato! Em Java, todo construtor compartilha o mesmo nome da classe em que foi criado.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "void Heroi(String n) { ... }",
+                "Heroi(String n) { ... }"
+              ],
+              "correta": 1,
+              "explicacao": "Construtores NUNCA têm tipo de retorno. Colocar void transforma o construtor em um método normal!",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O que é um Construtor?",
+              "antes": "",
+              "depois": " Heroi {",
+              "respostas": [
+                "class"
+              ],
+              "explicacao": "O construtor tem o MESMO NOME da classe e NÃO possui tipo de retorno (nem mesmo void):",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "java-level-16",
+          "titulo": "Encapsulamento (Getters & Setters)",
+          "resumo": "Proteja os dados internos das suas classes com o modificador private e métodos de acesso.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "No mundo real, você não mexe diretamente nos circuitos do motor do seu carro; você usa o acelerador e o freio. O Encapsulamento esconde os detalhes internos e protege os dados contra valores absurdos (como vida = -9999)."
+            },
+            {
+              "titulo": "O Modificador private",
+              "texto": "Ao marcar um atributo como private, nenhuma outra classe de fora consegue alterá-lo diretamente.",
+              "codigo": "class Conta {\n    private double saldo; // Ninguem pode fazer c.saldo = 9999999!\n}"
+            },
+            {
+              "titulo": "Getters (Para ler) e Setters (Para alterar)",
+              "texto": "Criamos métodos públicos para ler (get) e alterar com regras de validação (set):",
+              "codigo": "public double getSaldo() {\n    return this.saldo;\n}\n\npublic void depositar(double valor) {\n    if (valor > 0) {\n        this.saldo += valor;\n    }\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual modificador de acesso impede que outras classes alterem diretamente um atributo?",
+              "opcoes": [
+                "public",
+                "private",
+                "static",
+                "final"
+              ],
+              "correta": 1,
+              "explicacao": "Perfeito! O modificador \"private\" tranca o atributo dentro da própria classe, garantindo segurança.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "conta.depositar(50); // usando o método de acesso",
+                "conta.saldo = 50; // quando saldo é private"
+              ],
+              "correta": 0,
+              "explicacao": "Atributos privados não podem ser acessados diretamente com ponto de fora da classe.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Modificador private",
+              "antes": "",
+              "depois": " Conta {",
+              "respostas": [
+                "class"
+              ],
+              "explicacao": "Ao marcar um atributo como private, nenhuma outra classe de fora consegue alterá-lo diretamente.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Getters (Para ler) e Setters (Para alterar)",
+              "pecas": [
+                "public",
+                "double",
+                "getSaldo",
+                "(",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "class",
+                "Conta"
+              ],
+              "explicacao": "Criamos métodos públicos para ler (get) e alterar com regras de validação (set):",
+              "id": "e4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

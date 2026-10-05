@@ -20,3 +20,6 @@ docs/relatorio.pdf
 Thumbs.db
 .vscode/
 .idea/
+
+# configuração local de ferramentas
+.claude/
