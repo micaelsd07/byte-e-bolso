@@ -131,8 +131,10 @@ Cada requisito dos dois documentos oficiais (Regulamento do Framework Arcade, ed
 | Requisito | Implementação | Arquivo | Status |
 |---|---|---|---|
 | URL pública | Depende do primeiro deploy | n/a | Depende do squad (repositório e Pages) |
-| Pasta `submissao/` com GDD, link, zip, vídeo e manifesto | n/a | n/a | Pendente |
-| `triagem.sh` com as seis conferências | n/a | n/a | Pendente |
+| Pasta `submissao/` com GDD, link, zip, vídeo e manifesto | Montada pela pipeline com o artefato que está em produção; `LEIA-ME.txt` dentro do `build.zip` | `scripts/submissao.sh`, `triagem.yml`, `public/LEIA-ME.txt` | Verificado local (sem o vídeo, que ainda não existe). Falta rodar no GitHub |
+| `triagem.sh` com as seis conferências | Prazo, squad, GDD, build pública com smoke, build offline, vídeo e manifesto | `scripts/triagem.sh` | Verificado local: prazo, squad (4, 3 e `PREENCHER`), URL com smoke, zip bom e corrompido, manifesto. Não verificado aqui: `pdfinfo` e `ffprobe`, que só existem no runner |
+| Triagem agendada, que avisa se a URL cair até a banca | A cada 3 horas; abre e fecha a Issue `TriagemReprovada` | `triagem.yml` | Falta rodar no GitHub |
+| Triagem aprovada | Hoje reprova, e pelos motivos certos: `SQUAD.md` com `PREENCHER`, Pages desligado e `pitch.mp4` ausente | n/a | Depende do squad |
 
 ### INT-10 · Vídeo pitch e relatório técnico (5%, prazo 09/10)
 

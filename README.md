@@ -77,6 +77,7 @@ tag vX.Y.Z -> release.yml -> GitHub Release com build.zip, checksum, SBOM e GDD.
 | `rollback.yml` | manual (`workflow_dispatch`) | Volta `estavel` para a release anterior |
 | `release.yml` | tag `vX.Y.Z` | Publica a GitHub Release com o artefato da esteira |
 | `monitor.yml` | a cada 15 minutos e manual | Sonda produção e homologação, mantém os alertas e recalcula o DORA |
+| `triagem.yml` | a cada 3 horas e manual | Monta o pacote de submissão e reproduz a triagem do concurso |
 
 O `build.zip` gerado no job `ci` é o único artefato: homologação, produção e GitHub Release usam o mesmo arquivo. O deploy de produção confere que o checksum publicado é o do artefato, e o `publicar.sh` recusa um zip cujo `version.json` não seja do commit esperado.
 
@@ -107,6 +108,24 @@ O workflow `monitor` roda a cada 15 minutos (o GitHub pode atrasar ou pular exec
 - **DORA:** `node scripts/dora.mjs --dias 30` calcula frequência de deploy, lead time, taxa de falha e tempo de recuperação a partir dos deploys do environment `producao`, dos rollbacks e das Issues de alerta, e compara o lead time com a linha de base de 11 dias da Carparts.
 
 O monitoramento não coleta nada do jogador: mede só a resposta do próprio site.
+
+### Pacote de submissão e triagem
+
+O workflow `triagem` baixa o artefato que está em produção, monta a pasta `submissao/` e roda a triagem como código. O pacote sai como artefato da execução (`submissao-<execução>`).
+
+| Arquivo do pacote | De onde vem |
+|---|---|
+| `GDD.pdf` | Artefato da esteira, gerado de `docs/gdd.md` |
+| `LINK_DO_JOGO.txt` | Variável `SITE_URL` |
+| `build.zip` | O mesmo artefato que está em produção (o hash é comparado com o publicado); traz o `LEIA-ME.txt` com as instruções para rodar offline |
+| `pitch.mp4` | `docs/pitch.mp4`, gravado pelo squad |
+| `MANIFESTO.sha256` | Hash de cada arquivo acima |
+
+`scripts/triagem.sh` confere: prazo, squad com exatamente 4 integrantes e sem `PREENCHER`, GDD que abre e tem as 4 seções, URL pública que responde 200 e passa no smoke, `build.zip` que descompacta com `index.html`, vídeo de até 90 s e manifesto com os hashes certos. Ferramenta ausente conta como falha: a triagem não aprova o que não conseguiu conferir.
+
+Se a triagem reprova, abre a Issue `TriagemReprovada` com o label `alerta`; quando volta a passar, fecha sozinha. O prazo padrão é 09/10/2026 às 19h; para outro horário, ou para o prazo do concurso, crie a variável `PRAZO_ENTREGA` (ex.: `2026-10-21T23:59:00-03:00`).
+
+Para rodar na sua máquina (precisa de `poppler-utils` e `ffmpeg`): `SITE_URL=... bash scripts/submissao.sh && bash scripts/triagem.sh`.
 
 ### Configuração do repositório (uma vez)
 
