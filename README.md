@@ -1,4 +1,4 @@
-# Byte & Bolso
+# Byte 
 
 Jogo educativo mobile-first sobre tecnologia, dinheiro e carreira, feito para o concurso Framework Arcade e para a avaliação de Integração e Entrega Contínua (DevOps). O jogador começa com R$ 2.500 e a vontade de trabalhar com tecnologia; cada decisão mexe no dinheiro, na energia e no que ele sabe, e cada resultado vem com a explicação do porquê.
 
