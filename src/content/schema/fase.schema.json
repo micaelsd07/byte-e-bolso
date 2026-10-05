@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fase.schema.json",
+  "title": "Fase",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "numero", "titulo", "resumo", "objetivo", "passos"],
+  "properties": {
+    "id": { "$ref": "#/definitions/id" },
+    "numero": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "titulo": { "$ref": "#/definitions/textoCurto" },
+    "resumo": { "$ref": "#/definitions/texto" },
+    "objetivo": { "$ref": "#/definitions/texto" },
+    "passos": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 12,
+      "items": { "oneOf": [{ "$ref": "#/definitions/decisao" }, { "$ref": "#/definitions/orcamento" }] }
+    }
+  },
+  "definitions": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 40 },
+    "textoCurto": { "type": "string", "minLength": 3, "maxLength": 60 },
+    "texto": { "type": "string", "minLength": 10, "maxLength": 320 },
+    "categoria": { "enum": ["tecnologia", "financas", "seguranca", "carreira"] },
+    "efeitos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dinheiro": { "type": "integer", "minimum": -20000, "maximum": 20000 },
+        "energia": { "$ref": "#/definitions/delta" },
+        "conhecimento": { "$ref": "#/definitions/delta" },
+        "tecnica": { "$ref": "#/definitions/delta" },
+        "reputacao": { "$ref": "#/definitions/delta" },
+        "saudeFinanceira": { "$ref": "#/definitions/delta" },
+        "seguranca": { "$ref": "#/definitions/delta" },
+        "networking": { "$ref": "#/definitions/delta" }
+      }
+    },
+    "delta": { "type": "integer", "minimum": -40, "maximum": 40 },
+    "opcao": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "texto", "efeitos", "merito", "aprendizado"],
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "texto": { "type": "string", "minLength": 3, "maxLength": 90 },
+        "efeitos": { "$ref": "#/definitions/efeitos" },
+        "merito": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "aprendizado": { "$ref": "#/definitions/texto" }
+      }
+    },
+    "decisao": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tipo", "id", "categoria", "titulo", "contexto", "dica", "opcoes"],
+      "properties": {
+        "tipo": { "const": "decisao" },
+        "id": { "$ref": "#/definitions/id" },
+        "categoria": { "$ref": "#/definitions/categoria" },
+        "titulo": { "$ref": "#/definitions/textoCurto" },
+        "contexto": { "$ref": "#/definitions/texto" },
+        "dica": { "$ref": "#/definitions/texto" },
+        "opcoes": { "type": "array", "minItems": 2, "maxItems": 5, "items": { "$ref": "#/definitions/opcao" } }
+      }
+    },
+    "orcamento": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tipo", "id", "categoria", "titulo", "contexto", "dica", "renda", "metaReserva", "itens", "aprendizado"],
+      "properties": {
+        "tipo": { "const": "orcamento" },
+        "id": { "$ref": "#/definitions/id" },
+        "categoria": { "const": "financas" },
+        "titulo": { "$ref": "#/definitions/textoCurto" },
+        "contexto": { "$ref": "#/definitions/texto" },
+        "dica": { "$ref": "#/definitions/texto" },
+        "renda": { "type": "integer", "minimum": 1, "maximum": 100000 },
+        "metaReserva": { "type": "integer", "minimum": 0, "maximum": 100000 },
+        "itens": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "nome", "valor", "classe"],
+            "properties": {
+              "id": { "$ref": "#/definitions/id" },
+              "nome": { "type": "string", "minLength": 3, "maxLength": 40 },
+              "valor": { "type": "integer", "minimum": 1, "maximum": 100000 },
+              "classe": { "enum": ["essencial", "desejo", "futuro"] }
+            }
+          }
+        },
+        "aprendizado": { "$ref": "#/definitions/texto" }
+      }
+    }
+  }
+}
