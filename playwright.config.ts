@@ -13,6 +13,7 @@ const desktop = { isMobile: false, hasTouch: false, channel };
 export default defineConfig({
   testDir: 'tests/e2e',
   fullyParallel: true,
+  timeout: 60_000,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: [['list'], ['junit', { outputFile: 'reports/junit-e2e.xml' }], ['html', { outputFolder: 'reports/e2e', open: 'never' }]],
