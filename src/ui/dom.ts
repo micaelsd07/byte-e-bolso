@@ -28,3 +28,13 @@ export function vibrar(ms = 12): void {
     /* aparelho sem vibração */
   }
 }
+
+/**
+ * Roda a função quando o elemento entrar no documento. As telas são montadas
+ * antes de serem inseridas (a troca passa por uma transição), então o que
+ * depende de estar na página espera por aqui.
+ */
+export function aoEntrar(el: HTMLElement, fn: () => void, tentativas = 180): void {
+  if (el.isConnected) fn();
+  else if (tentativas > 0) requestAnimationFrame(() => aoEntrar(el, fn, tentativas - 1));
+}

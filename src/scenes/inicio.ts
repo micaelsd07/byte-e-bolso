@@ -1,6 +1,6 @@
-import { FASES } from '../content';
-import { APELIDO_MAX } from '../core/partida';
+import { APELIDO_MAX } from '../core/jogo';
 import type { Estado } from '../core/tipos';
+import { svgCidade } from '../ui/cidade';
 import { h } from '../ui/dom';
 
 export interface AcoesInicio {
@@ -9,8 +9,8 @@ export interface AcoesInicio {
 }
 
 export function telaInicio(salvo: Estado | null, acoes: AcoesInicio): HTMLElement {
-  const emAndamento = salvo !== null && salvo.status === 'jogando';
-  const fase = salvo === null ? undefined : FASES.find((f) => f.id === salvo.faseId);
+  const fundo = h('div', { class: 'inicio-cidade', 'aria-hidden': 'true' });
+  fundo.innerHTML = svgCidade();
 
   const campo = h('input', {
     id: 'apelido',
@@ -25,28 +25,10 @@ export function telaInicio(salvo: Estado | null, acoes: AcoesInicio): HTMLElemen
     'data-testid': 'apelido',
   });
 
-  const formulario = h(
-    'form',
-    {
-      class: 'inicio-form',
-      onsubmit: (evento: Event) => {
-        evento.preventDefault();
-        acoes.comecar(campo.value);
-      },
-    },
-    h('label', { for: 'apelido', class: 'rotulo' }, 'Apelido'),
-    campo,
-    h('p', { id: 'apelido-ajuda', class: 'ajuda' }, 'Opcional. Fica só neste aparelho; não use seu nome completo.'),
-    h(
-      'button',
-      { type: 'submit', class: emAndamento ? 'botao secundario' : 'botao', 'data-testid': 'comecar' },
-      emAndamento ? 'Nova partida' : 'Começar',
-    ),
-  );
-
   return h(
     'main',
     { class: 'tela inicio' },
+    fundo,
     h(
       'header',
       { class: 'marca' },
@@ -55,18 +37,27 @@ export function telaInicio(salvo: Estado | null, acoes: AcoesInicio): HTMLElemen
       h('p', { class: 'slogan' }, 'Suas escolhas. Seu código. Seu futuro.'),
     ),
     h(
-      'p',
-      { class: 'chamada' },
-      'Você começa com R$ 2.500 e a vontade de trabalhar com tecnologia. Cada decisão mexe no seu dinheiro, na sua energia e no que você sabe.',
+      'section',
+      { class: 'relevo inicio-painel' },
+      h('p', {}, 'Comece numa garagem com R$ 2.500. Vença as fases, faça o caixa render e monte a sua empresa de tecnologia.'),
+      salvo !== null
+        ? h('button', { type: 'button', class: 'botao', 'data-testid': 'continuar', onclick: () => acoes.continuar() }, `Continuar como ${salvo.apelido}`)
+        : null,
+      h(
+        'form',
+        {
+          class: 'inicio-form',
+          onsubmit: (evento: Event) => {
+            evento.preventDefault();
+            acoes.comecar(campo.value);
+          },
+        },
+        h('label', { for: 'apelido', class: 'rotulo' }, 'Apelido'),
+        campo,
+        h('p', { id: 'apelido-ajuda', class: 'ajuda' }, 'Opcional. Fica só neste aparelho; não use seu nome completo.'),
+        h('button', { type: 'submit', class: salvo !== null ? 'botao secundario' : 'botao', 'data-testid': 'comecar' }, salvo !== null ? 'Começar do zero' : 'Jogar'),
+      ),
     ),
-    emAndamento && fase !== undefined
-      ? h(
-          'button',
-          { type: 'button', class: 'botao', 'data-testid': 'continuar', onclick: () => acoes.continuar() },
-          `Continuar: fase ${fase.numero}, passo ${salvo.passo + 1} de ${fase.passos.length}`,
-        )
-      : null,
-    formulario,
     h('footer', { class: 'rodape', 'data-testid': 'versao' }, `v${__APP_VERSAO__} · ${__APP_SHA__}`),
   );
 }
