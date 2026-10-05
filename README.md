@@ -42,8 +42,8 @@ tests/
   unit/         regras do core e máquina de estados do rollout
   integration/  schema do conteúdo, gate do build, partida completa
   e2e/          Playwright: regressao.spec.ts e smoke.spec.ts
-pages/       carregador de produção (lê rollout.json)
-scripts/     publicação, rollout, versão, validação de conteúdo, GDD
+pages/       carregador de produção (lê rollout.json) e painel /status/
+scripts/     publicação, rollout, versão, validação de conteúdo, GDD, monitor e DORA
 docs/        GDD e matriz de conformidade
 ```
 
@@ -76,6 +76,7 @@ tag vX.Y.Z -> release.yml -> GitHub Release com build.zip, checksum, SBOM e GDD.
 | `esteira.yml` | push na `main` e pull requests | CI, regressão, homologação e produção |
 | `rollback.yml` | manual (`workflow_dispatch`) | Volta `estavel` para a release anterior |
 | `release.yml` | tag `vX.Y.Z` | Publica a GitHub Release com o artefato da esteira |
+| `monitor.yml` | a cada 15 minutos e manual | Sonda produção e homologação, mantém os alertas e recalcula o DORA |
 
 O `build.zip` gerado no job `ci` é o único artefato: homologação, produção e GitHub Release usam o mesmo arquivo. O deploy de produção confere que o checksum publicado é o do artefato, e o `publicar.sh` recusa um zip cujo `version.json` não seja do commit esperado.
 
@@ -95,6 +96,17 @@ O `build.zip` gerado no job `ci` é o único artefato: homologação, produção
 - **Manual:** em *Actions → rollback → Run workflow*, informando o motivo. O resumo da execução mostra o tempo até a URL pública confirmar.
 
 Com canário aberto, o rollback só retira o canário (a versão estável nunca saiu do ar). Sem canário, `estavel` volta para `anterior`. Nada é recompilado nem apagado.
+
+### Monitoramento
+
+O workflow `monitor` roda a cada 15 minutos (o GitHub pode atrasar ou pular execuções agendadas em horários de pico) e só a partir da `main`.
+
+- **Sondas:** código HTTP, tempo de resposta e versão servida de produção e de homologação. Em produção, a página responder não basta: a sonda segue o `rollout.json` e confere o `version.json` da release estável. Cada medida vira uma linha em `status/sondas.csv`, no branch `observabilidade`, que fica fora do `gh-pages` para uma sonda não disparar uma publicação do Pages.
+- **Alertas:** `JogoForaDoAr` (resposta diferente de 200) e `LatenciaAlta` (mais de 2 s) abrem uma Issue com o label `alerta` e se fecham sozinhos quando a sonda volta ao normal. Antes de alertar, a sonda tenta até três vezes: uma tentativa lenta ou perdida sozinha não vira alerta. Para receber o aviso, cada integrante precisa "assistir" o repositório.
+- **Painel:** `SITE_URL/status/` mostra disponibilidade, latência, versão em produção, canário, alertas abertos e as métricas DORA.
+- **DORA:** `node scripts/dora.mjs --dias 30` calcula frequência de deploy, lead time, taxa de falha e tempo de recuperação a partir dos deploys do environment `producao`, dos rollbacks e das Issues de alerta, e compara o lead time com a linha de base de 11 dias da Carparts.
+
+O monitoramento não coleta nada do jogador: mede só a resposta do próprio site.
 
 ### Configuração do repositório (uma vez)
 
