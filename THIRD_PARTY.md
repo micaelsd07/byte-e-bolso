@@ -56,6 +56,10 @@ Usadas para compilar, testar e publicar. Não são distribuídas com o jogo.
 
 Trilha, imagens e fontes do `pitch.mp4` entram aqui quando o vídeo for gravado (INT-10).
 
+## Referência visual
+
+O layout (tema escuro em relevo, grade de blocos, lista de fases em cartões e barra de navegação embaixo) segue o estilo de uma imagem de referência de interface trazida pelo squad. Origem e autoria da imagem: PREENCHER. Nenhum arquivo, ícone, ilustração ou texto dessa referência foi usado: os ícones (`src/ui/icones.ts`) e a ilustração da tela inicial (`src/ui/heroi.ts`) foram desenhados por código para o jogo. Os ícones das trilhas são desenhos genéricos, e não os logotipos das linguagens.
+
 ## Marcas
 
 O jogo e o vídeo não usam marcas, logotipos ou personagens de terceiros, incluindo os da Framework, do Programadores do Amanhã e do SENAI.
