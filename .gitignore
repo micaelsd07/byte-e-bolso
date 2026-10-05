@@ -1,0 +1,22 @@
+node_modules/
+dist/
+reports/
+submissao/
+playwright-report/
+test-results/
+build.zip
+build.zip.sha256
+docs/GDD.pdf
+docs/relatorio.pdf
+
+# segredos e configuração local nunca entram no repositório (INT-05)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

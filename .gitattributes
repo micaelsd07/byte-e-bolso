@@ -1,0 +1,8 @@
+# Fim de linha LF em tudo: os scripts rodam nos runners Linux do GitHub Actions,
+# e um .sh salvo com CRLF no Windows quebra lá ("bad interpreter").
+* text=auto eol=lf
+*.sh text eol=lf
+*.png binary
+*.mp4 binary
+*.pdf binary
+*.zip binary
