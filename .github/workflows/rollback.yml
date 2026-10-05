@@ -1,0 +1,53 @@
+name: rollback
+
+# Rollback manual de produção (INT-07): volta o ponteiro `estavel` do
+# rollout.json para a release anterior. Não recompila nada.
+
+on:
+  workflow_dispatch:
+    inputs:
+      motivo:
+        description: Por que a versão atual está sendo retirada?
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  # Grupo próprio: um rollback nunca espera atrás de um deploy aguardando aprovação.
+  group: rollback
+  cancel-in-progress: false
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      MOTIVO: ${{ inputs.motivo }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Voltar para a release anterior
+        run: |
+          echo "INICIO=$(date +%s)" >> "$GITHUB_ENV"
+          bash scripts/rollout.sh rollback "$MOTIVO"
+          echo "ESTAVEL=$(bash scripts/rollout.sh mostrar estavel)" >> "$GITHUB_ENV"
+
+      - name: Esperar o Pages servir o ponteiro novo
+        run: bash scripts/aguardar.sh "$SITE_URL/rollout.json" estavel "$ESTAVEL"
+
+      - name: Conferir que a release estável responde
+        run: |
+          curl -fsS -o /dev/null "$SITE_URL/releases/$ESTAVEL/"
+          {
+            echo "### Rollback concluído"
+            echo "- estável agora: \`$ESTAVEL\`"
+            echo "- motivo: $MOTIVO"
+            echo "- disparado por: $GITHUB_ACTOR"
+            echo "- tempo até a URL pública confirmar: $(( $(date +%s) - INICIO )) s"
+          } >> "$GITHUB_STEP_SUMMARY"

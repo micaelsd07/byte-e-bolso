@@ -1,0 +1,59 @@
+name: release
+
+# Cada tag vX.Y.Z gera uma GitHub Release (INT-06) com o build.zip, o checksum,
+# o SBOM e o GDD.pdf. Nada é reconstruído aqui: os arquivos vêm do artefato que
+# a esteira gerou para o mesmo commit, então o hash da release é o de produção.
+
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+']
+
+permissions:
+  contents: write
+  actions: read # baixar o artefato de outra execução
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TAG: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Conferir a tag
+        run: |
+          # O checkout de uma tag pode trazê-la como leve; busca o objeto real.
+          git fetch --quiet --force origin "refs/tags/$TAG:refs/tags/$TAG"
+          if [ "$(git cat-file -t "refs/tags/$TAG")" != "tag" ]; then
+            echo "::error::$TAG não é uma tag anotada. Use: git tag -a $TAG -m \"...\""
+            exit 1
+          fi
+          versao="v$(node -p "require('./package.json').version")"
+          if [ "$versao" != "$TAG" ]; then
+            echo "::error::a tag é $TAG, mas o package.json diz $versao"
+            exit 1
+          fi
+
+      - name: Baixar o artefato aprovado na esteira
+        run: |
+          commit="$(git rev-list -n 1 "refs/tags/$TAG")"
+          execucao="$(gh run list --workflow esteira.yml --commit "$commit" --event push --json databaseId --jq '.[0].databaseId')"
+          if [ -z "$execucao" ]; then
+            echo "::error::nenhuma execução da esteira para $commit. A tag precisa apontar para um commit da main."
+            exit 1
+          fi
+          gh run download "$execucao" --name "build-$commit" --dir artefato
+          (cd artefato && sha256sum --check build.zip.sha256)
+
+      - name: Publicar a GitHub Release
+        run: |
+          notas=()
+          # Notas de versão escritas e revisadas pelo squad, quando existirem.
+          [ -f "docs/notas/$TAG.md" ] && notas=(--notes-file "docs/notas/$TAG.md")
+          gh release create "$TAG" --verify-tag --title "Byte & Bolso $TAG" --generate-notes "${notas[@]}" \
+            artefato/build.zip \
+            artefato/build.zip.sha256 \
+            artefato/reports/sbom.json \
+            artefato/docs/GDD.pdf

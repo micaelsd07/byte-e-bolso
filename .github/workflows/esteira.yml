@@ -1,0 +1,243 @@
+name: esteira-jogo
+
+# Um commit percorre: ci -> e2e -> homologação -> (aprovação) -> produção.
+# O build.zip gerado no job ci é o único artefato: homologação e produção
+# baixam esse mesmo arquivo, nada é recompilado entre ambientes.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: read # o gitleaks lista os commits do PR
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # o gitleaks precisa do histórico
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint e tipos
+        run: npm run lint
+
+      - name: Testes de unidade e integração (JUnit + cobertura)
+        run: npm run test:ci
+
+      - name: Segredos (gitleaks)
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dependências e SBOM
+        run: |
+          mkdir -p reports
+          # O relatório completo vira artefato mesmo quando o gate abaixo passa.
+          npm audit --omit=dev --json > reports/npm-audit.json || true
+          npm audit --omit=dev --audit-level=critical
+          npm sbom --sbom-format cyclonedx > reports/sbom.json
+
+      - name: Build versionado
+        run: npm run build
+
+      - name: Build reprodutível
+        run: |
+          # Dois builds do mesmo commit têm de gerar o mesmo dist/, exceto a data do version.json.
+          cp -r dist "$RUNNER_TEMP/dist-primeiro"
+          npm run build
+          diff -r --exclude=version.json "$RUNNER_TEMP/dist-primeiro" dist
+
+      - name: GDD.pdf
+        run: |
+          sudo apt-get install -y -qq poppler-utils
+          npx playwright install --with-deps chromium
+          npm run gdd:pdf
+          pdfinfo docs/GDD.pdf
+
+      - name: Empacotar build.zip
+        run: |
+          (cd dist && zip -qr -X ../build.zip .)
+          sha256sum build.zip > build.zip.sha256
+          bytes=$(stat -c %s build.zip)
+          echo "build.zip: $bytes bytes"
+          # INT-06: pacote abaixo de 25 MB.
+          [ "$bytes" -lt $((25 * 1024 * 1024)) ]
+          {
+            echo "### Artefato"
+            echo "- versão: \`$(cat dist/version.json)\`"
+            echo "- sha256: \`$(cut -d' ' -f1 build.zip.sha256)\`"
+            echo "- tamanho: $bytes bytes"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-${{ github.sha }}
+          if-no-files-found: warn
+          path: |
+            build.zip
+            build.zip.sha256
+            docs/GDD.pdf
+            reports/
+
+  e2e:
+    # Regressão de ponta a ponta contra o artefato do ci, nos seis viewports.
+    # Roda também em pull request: é o gate que impede merge com o jogo quebrado.
+    needs: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+      - run: unzip -q build.zip -d dist
+      - run: npx playwright install --with-deps chromium
+      - name: Regressão E2E no artefato
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-${{ github.sha }}
+          path: reports/
+
+  deploy-hml:
+    needs: [ci, e2e]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # escrever no branch gh-pages
+    concurrency:
+      group: deploy-hml
+      cancel-in-progress: false # nunca interromper um deploy no meio
+    environment:
+      name: homologacao
+      url: ${{ vars.SITE_URL }}/hml/
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+      - name: Publicar em /hml/
+        run: bash scripts/publicar.sh hml build.zip
+      - name: Esperar a publicação do Pages
+        run: bash scripts/aguardar.sh "$SITE_URL/hml/version.json" sha "${GITHUB_SHA::7}"
+      - name: Regressão E2E em homologação
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          BASE_URL="$SITE_URL/hml/" npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-hml-${{ github.sha }}
+          path: reports/
+
+  deploy-prd:
+    needs: deploy-hml
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write # avisar o squad quando o deploy falha
+    concurrency:
+      group: deploy-prd
+      cancel-in-progress: false
+    environment:
+      name: producao # revisor obrigatório no environment = gate de aprovação
+      url: ${{ vars.SITE_URL }}/
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+      - run: echo "SHA7=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+
+      - name: Publicar a release em /releases/<sha>/
+        run: bash scripts/publicar.sh release build.zip "$SHA7"
+
+      - name: Esperar a publicação do Pages
+        run: bash scripts/aguardar.sh "$SITE_URL/releases/$SHA7/version.json" sha "$SHA7"
+
+      - name: Conferir que o checksum publicado é o do artefato
+        run: curl -fsS "$SITE_URL/releases/$SHA7/build.zip.sha256" | diff - build.zip.sha256
+
+      - name: Abrir o canário (10% das sessões novas)
+        run: bash scripts/rollout.sh canario "$SHA7" 10
+
+      - name: Smoke na release nova, com rollback automático
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          if ! BASE_URL="$SITE_URL/releases/$SHA7/" npx playwright test tests/e2e/smoke.spec.ts --project=celular-360; then
+            bash scripts/rollout.sh rollback "smoke falhou na release $SHA7"
+            exit 1
+          fi
+
+      - name: Observar o canário
+        run: |
+          # Três sondas com 20 s de intervalo: resposta 200 em menos de 2 s.
+          for i in 1 2 3; do
+            read -r codigo tempo < <(curl -s -o /dev/null -w '%{http_code} %{time_total}' "$SITE_URL/releases/$SHA7/?t=$(date +%s)")
+            echo "sonda $i: HTTP $codigo em ${tempo}s"
+            if [ "$codigo" != "200" ] || ! awk -v t="$tempo" 'BEGIN { exit !(t < 2) }'; then
+              bash scripts/rollout.sh rollback "observação do canário $SHA7: HTTP $codigo em ${tempo}s"
+              exit 1
+            fi
+            [ "$i" -eq 3 ] || sleep 20
+          done
+
+      - name: Promover a 100%
+        run: |
+          # No primeiro deploy do repositório não há canário: a release já entrou como estável.
+          if [ -n "$(bash scripts/rollout.sh mostrar canario)" ]; then
+            bash scripts/rollout.sh promover
+          fi
+
+      - name: Conferir a URL pública
+        run: |
+          if ! bash scripts/aguardar.sh "$SITE_URL/rollout.json" estavel "$SHA7" || ! curl -fsS -o /dev/null "$SITE_URL/"; then
+            bash scripts/rollout.sh rollback "URL pública não confirmou a release $SHA7"
+            exit 1
+          fi
+
+      - name: Avisar o squad se o deploy falhou
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create alerta --color B60205 --description "Alerta da esteira ou do monitoramento" -R "$GITHUB_REPOSITORY" 2>/dev/null || true
+          gh issue create -R "$GITHUB_REPOSITORY" --label alerta \
+            --title "DeployFalhou: release $SHA7" \
+            --body "O deploy de produção da release \`$SHA7\` falhou e o rollout foi revertido quando possível. Execução: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

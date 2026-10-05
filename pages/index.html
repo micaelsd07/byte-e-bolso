@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#14161a" />
+    <title>Byte &amp; Bolso</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: #f3f0e8;
+        color: #14161a;
+        font: 1rem/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="mensagem" role="status">Carregando o jogo…</p>
+    <noscript>O jogo precisa de JavaScript ativado para funcionar.</noscript>
+    <script>
+      // Carregador de produção (INT-07): lê /rollout.json e leva o jogador para a
+      // release certa. Este arquivo é publicado na raiz do gh-pages pela pipeline.
+      (function () {
+        // A origem usuario.github.io é dividida com outros projetos do mesmo
+        // usuário, então a chave leva o nome do jogo.
+        var CHAVE = 'byte-e-bolso:versao';
+        fetch('rollout.json?t=' + Date.now(), { cache: 'no-store' })
+          .then(function (resposta) {
+            if (!resposta.ok) throw new Error('rollout.json ' + resposta.status);
+            return resposta.json();
+          })
+          .then(function (rollout) {
+            var validas = [rollout.estavel, rollout.canario].filter(Boolean);
+            if (validas.length === 0) throw new Error('nenhuma release publicada');
+            var versao = null;
+            try {
+              versao = localStorage.getItem(CHAVE);
+            } catch (e) {}
+            // Sessão nova, ou a versão em que o jogador estava foi retirada (rollback).
+            if (validas.indexOf(versao) < 0) {
+              var noCanario = rollout.canario && Math.random() * 100 < rollout.percentual;
+              versao = noCanario ? rollout.canario : rollout.estavel || rollout.canario;
+              try {
+                localStorage.setItem(CHAVE, versao);
+              } catch (e) {}
+            }
+            location.replace('releases/' + versao + '/');
+          })
+          .catch(function () {
+            document.getElementById('mensagem').textContent =
+              'Jogo indisponível no momento. Tente de novo em alguns minutos.';
+          });
+      })();
+    </script>
+  </body>
+</html>
