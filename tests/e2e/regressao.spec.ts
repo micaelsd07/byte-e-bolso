@@ -190,30 +190,53 @@ test('ranking do aparelho: só aparece para quem tem apelido e guarda quem jogou
     await page.getByTestId('continuar-licao').click();
   }
   await page.getByTestId('voltar-cidade').click();
-  await page.getByTestId('aba-perfil').click();
+  await page.getByTestId('aba-ranking').click();
+  await expect(page.getByTestId('minha-posicao')).toContainText('Você está em 1º lugar de 1.');
   await expect(page.getByTestId('colocado-1')).toContainText('Ana');
   await expect(page.getByTestId('colocado-1')).toContainText('3 ★');
-  await conferirLayout(page, 'perfil com ranking');
+  await conferirLayout(page, 'ranking com pódio');
 
-  // Outra pessoa joga no mesmo aparelho, como visitante: o ranking não aparece para ela.
+  // Outra pessoa joga no mesmo aparelho, como visitante: o pódio não aparece para ela.
+  await page.getByTestId('aba-perfil').click();
   page.once('dialog', (dialogo) => void dialogo.accept());
   await page.getByTestId('recomecar-tudo').click();
   await page.getByTestId('comecar').click();
   await page.getByTestId('trilha-python').click();
-  await page.getByTestId('aba-perfil').click();
+  await page.getByTestId('aba-ranking').click();
   await expect(page.getByTestId('ranking-convite')).toBeVisible();
   await expect(page.getByTestId('colocado-1')).toHaveCount(0);
+  await conferirLayout(page, 'ranking para visitante');
 
-  // Com apelido, ela passa a ver quem já jogou; só entra na lista depois da primeira estrela.
+  // Com apelido, ela passa a ver quem já jogou; só entra no pódio depois da primeira estrela.
+  await page.getByTestId('ir-para-perfil').click();
   await page.getByTestId('novo-apelido').fill('Bia');
   await page.getByTestId('salvar-apelido').click();
+  await page.getByTestId('aba-ranking').click();
   await expect(page.getByTestId('colocado-1')).toContainText('Ana');
-  await expect(page.getByTestId('ranking')).toContainText('Você entra no ranking quando ganhar a primeira estrela.');
+  await expect(page.getByTestId('minha-posicao')).toContainText('Você ainda não está no ranking.');
 
   await page.reload();
   await page.getByTestId('continuar').click();
-  await page.getByTestId('aba-perfil').click();
+  await page.getByTestId('aba-ranking').click();
   await expect(page.getByTestId('colocado-1')).toContainText('Ana');
+});
+
+test('ranking: o pódio ordena por estrelas e a lista segue do quarto lugar em diante', async ({ page }) => {
+  await page.goto('./');
+  await page.evaluate(() => {
+    const de = (apelido: string, estrelas: number, avatar: string) => ({ apelido, avatar, estrelas, mvp: 100 + estrelas });
+    localStorage.setItem('byte-e-bolso:ranking:v1:prd', JSON.stringify([de('Caio', 6, 'foguete'), de('Ana', 12, 'estrela'), de('Bia', 9, 'chip'), de('Duda', 4, 'planeta'), de('Edu', 2, 'codigo')]));
+  });
+  await entrarCom(page, { apelido: 'Duda', avatar: 'planeta', trilha: 'python' });
+  await page.getByTestId('aba-ranking').click();
+
+  await expect(page.getByTestId('colocado-1')).toContainText('Ana');
+  await expect(page.getByTestId('colocado-2')).toContainText('Bia');
+  await expect(page.getByTestId('colocado-3')).toContainText('Caio');
+  await expect(page.getByTestId('colocado-4')).toContainText('Duda');
+  await expect(page.getByTestId('colocado-5')).toContainText('Edu');
+  await expect(page.getByTestId('minha-posicao')).toContainText('Você está em 4º lugar de 5.');
+  await conferirLayout(page, 'ranking cheio');
 });
 
 test('perfil: personagem, título, sequência de dias e números do jogador', async ({ page }) => {
@@ -466,7 +489,7 @@ test('cabe na tela e tem alvos de toque confortáveis em todas as telas', async 
   }
   await entrarCom(page, { nos: TRILHA_ABERTA, rodadas: 5, melhorias: ['duas-etapas', 'internet-fibra'] });
   await conferirLayout(page, 'cidade');
-  for (const aba of ['empresa', 'mercado', 'noticias', 'perfil']) {
+  for (const aba of ['empresa', 'mercado', 'noticias', 'ranking', 'perfil']) {
     await page.getByTestId(`aba-${aba}`).click();
     await conferirLayout(page, aba);
   }

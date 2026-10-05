@@ -2231,7 +2231,114 @@ button.jogador {
 }
 
 .abas {
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+
+.aba {
+  font-size: 0.64rem;
+}
+
+/* ---------- ranking ---------- */
+
+.sua-posicao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.sua-posicao .icone {
+  width: 28px;
+  height: 28px;
+  color: var(--amarelo);
+}
+
+.sua-posicao strong {
+  color: var(--amarelo);
+}
+
+.podio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  gap: 10px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.degrau {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  text-align: center;
+}
+
+.degrau strong {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 0.86rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.degrau .colocado-pontos {
+  min-height: 1.2em;
+  align-items: center;
+}
+
+.degrau .avatar {
+  width: 52px;
+  height: 52px;
+}
+
+.degrau.voce .avatar {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+}
+
+.avatar.vazio {
+  background: var(--fundo-2);
+  color: #7a85a6 !important;
+  box-shadow: var(--afundado);
+}
+
+.degrau.vago strong {
+  color: var(--texto-2);
+  font-weight: 600;
+}
+
+.pedestal {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 64px;
+  margin-top: 4px;
+  border-radius: 16px 16px 6px 6px;
+  background: linear-gradient(180deg, #7ba4ff, #2f5fe0);
+  color: #fff;
+  font: 800 1.3rem var(--mono);
+  box-shadow: 0 8px 18px rgba(47, 95, 224, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.lugar-1 .pedestal {
+  height: 96px;
+  background: linear-gradient(180deg, #ffe08a, #f0a91f);
+  color: #3a2a00;
+  box-shadow: 0 8px 18px rgba(240, 169, 31, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.lugar-3 .pedestal {
+  height: 44px;
+  background: linear-gradient(180deg, #4b5674, #343c55);
+  box-shadow: var(--relevo);
+}
+
+.degrau.vago .pedestal {
+  opacity: 0.45;
 }
 
 /* ---------- animações ---------- */
@@ -2379,6 +2486,7 @@ button.jogador {
 
   .cidade,
   .escolha-trilha,
+  .ranking,
   .perfil {
     max-width: 38rem;
     width: 100%;

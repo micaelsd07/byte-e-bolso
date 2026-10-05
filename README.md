@@ -35,7 +35,7 @@ Para testar contra um ambiente publicado: `BASE_URL=https://USUARIO.github.io/RE
 src/
   core/      regras puras do jogo, sem DOM, rede ou armazenamento (cobertura >= 70%)
   content/   trilhas por linguagem (lições e exercícios) e melhorias da empresa em JSON + schema
-  scenes/    telas: início, escolha da trilha, lista de fases, lição, fases, empresa, mercado, notícias, perfil e resultado
+  scenes/    telas: início, escolha da trilha, lista de fases, lição, fases, empresa, mercado, notícias, ranking, perfil e resultado
   ui/        ilustração inicial em SVG, ícones, efeitos e estilos
   services/  save local e busca dos dados ao vivo
 tests/
