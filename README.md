@@ -115,6 +115,7 @@ O jogo **não coleta nenhum dado do jogador**. Não há cadastro, login, telemet
 |---|---|---|
 | Apelido (opcional, até 16 caracteres, só letras, números, espaço, hífen e sublinhado) | `localStorage` do navegador | Identificar a partida neste aparelho |
 | Progresso: saldo, melhor pontuação de cada fase e melhorias compradas | `localStorage` do navegador | Continuar depois de fechar a página |
+| Ranking do aparelho: apelido, personagem, estrelas e MVP de até 10 jogadores que usaram este navegador | `localStorage` do navegador | Comparar quem jogou no mesmo aparelho; só aparece para quem escolheu um apelido |
 | Última cotação e últimas notícias buscadas | `localStorage` do navegador | Mostrar o último valor quando não há internet |
 | Versão sorteada pelo carregador | `localStorage` do navegador | Manter o jogador na mesma versão durante o canário |
 

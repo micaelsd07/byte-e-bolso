@@ -7,6 +7,8 @@ export const CUSTO_BASE = 60;
 /** Juros por rodada sobre saldo negativo, como um cheque especial. */
 export const JUROS = 0.08;
 export const APELIDO_MAX = 16;
+/** Apelido de quem não escolheu um: é o jogador visitante. */
+export const APELIDO_PADRAO = 'Visitante';
 export const VIDAS_MAXIMAS = 5;
 /** Preço, em dinheiro do jogo, para encher as vidas sem esperar o dia seguinte. */
 export const CUSTO_RECARGA = 100;
@@ -21,7 +23,7 @@ export function limparApelido(bruto: string): string {
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, APELIDO_MAX);
-  return limpo === '' ? 'Visitante' : limpo;
+  return limpo === '' ? APELIDO_PADRAO : limpo;
 }
 
 export function novoEstado(apelido: string): Estado {

@@ -1,4 +1,4 @@
-import { CATALOGO, MELHORIAS, noPorId, noSeguinte, trilhaDoNo, trilhaPorId } from './content';
+import { CATALOGO, MELHORIAS, TRILHAS, UNIDADES, fasesDa, noPorId, noSeguinte, trilhaDoNo, trilhaPorId } from './content';
 import {
   abrirDia,
   comprar,
@@ -7,15 +7,18 @@ import {
   escolherAvatar,
   escolherTrilha,
   maximoDeVidas,
+  mvp,
   novoEstado,
   recarregarVidas,
   registrarPratica,
   renomear,
+  totalEstrelas,
   vantagens,
 } from './core/jogo';
 import { gabarito, pontosDaSessao } from './core/licao';
 import { pontosDoDuelo, precoFechado } from './core/negociacao';
 import { avaliarOrcamento } from './core/orcamento';
+import { desserializarRanking, registrar, retirar, serializarRanking, type Colocado } from './core/ranking';
 import { desserializar, serializar } from './core/save';
 import type { Estado, No } from './core/tipos';
 import { telaMercado, telaNoticias } from './scenes/aovivo';
@@ -44,7 +47,10 @@ const raiz = document.getElementById('app');
 if (raiz === null) throw new Error('Elemento #app ausente em index.html');
 const app: HTMLElement = raiz;
 
-const store = saveLocal('byte-e-bolso:save:v2:' + (/\/hml(\/|$)/.test(location.pathname) ? 'hml' : 'prd'));
+const ambiente = /\/hml(\/|$)/.test(location.pathname) ? 'hml' : 'prd';
+const store = saveLocal('byte-e-bolso:save:v2:' + ambiente);
+/** Ranking do aparelho: apelidos e resultados de quem jogou neste navegador. Nada sai dele. */
+const quadro = saveLocal('byte-e-bolso:ranking:v1:' + ambiente);
 
 /** Dia de hoje no fuso do aparelho, como AAAA-MM-DD. */
 function hoje(): string {
@@ -72,6 +78,16 @@ function salvar(novo: Estado): void {
   store.salvar(serializar(novo));
 }
 
+const lerRanking = (): Colocado[] => desserializarRanking(quadro.carregar());
+
+/** Leva o resultado do jogador ao ranking. `apelidoAntigo` sai de lá quando ele troca de nome. */
+function pontuarNoRanking(jogador: Estado, apelidoAntigo?: string): void {
+  const iniciadas = TRILHAS.filter((t) => fasesDa(t).some((n) => jogador.nos[n.id] !== undefined)).flatMap((t) => t.unidades);
+  const base = apelidoAntigo === undefined ? lerRanking() : retirar(lerRanking(), apelidoAntigo);
+  const colocado = { apelido: jogador.apelido, avatar: jogador.avatar, estrelas: totalEstrelas(jogador, UNIDADES), mvp: mvp(jogador, iniciadas) };
+  quadro.salvar(serializarRanking(registrar(base, colocado)));
+}
+
 function ir(nova: Tela): void {
   tela = nova;
   render();
@@ -83,6 +99,7 @@ function terminar(no: No, pontos: number, revisao: Revisao | null, aprendizado: 
   // Fase concluída (1 estrela ou mais) conta como dia de prática na sequência.
   const novo = fechamento.estrelas > 0 ? registrarPratica(fechado, hoje()) : fechado;
   salvar(novo);
+  pontuarNoRanking(novo);
   unidadeVista = null;
   const proximo = noSeguinte(no.id);
   const unidades = trilhaDoNo(no.id)?.unidades ?? [];
@@ -157,7 +174,11 @@ function montar(): HTMLElement {
         unidadeVista = null;
         ir({ nome: 'cidade' });
       },
-      continuar: () => ir({ nome: 'cidade' }),
+      continuar: () => {
+        // Quem já tinha estrelas antes de o ranking existir entra nele ao voltar ao jogo.
+        if (estado !== null) pontuarNoRanking(estado);
+        ir({ nome: 'cidade' });
+      },
     });
   }
   // Primeira abertura do dia: as vidas voltam cheias.
@@ -202,13 +223,21 @@ function montar(): HTMLElement {
   } else if (aba === 'noticias') {
     conteudo = telaNoticias();
   } else if (aba === 'perfil') {
-    conteudo = telaPerfil(atual, {
+    conteudo = telaPerfil(atual, lerRanking(), {
       escolherAvatar: (avatar) => {
-        salvar(escolherAvatar(atual, avatar));
+        const novo = escolherAvatar(atual, avatar);
+        salvar(novo);
+        pontuarNoRanking(novo);
         render();
       },
       renomear: (apelido) => {
-        salvar(renomear(atual, apelido));
+        const novo = renomear(atual, apelido);
+        salvar(novo);
+        pontuarNoRanking(novo, atual.apelido);
+        render();
+      },
+      limparRanking: () => {
+        quadro.apagar();
         render();
       },
       recarregarVidas: recarregar,

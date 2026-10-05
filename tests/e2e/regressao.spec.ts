@@ -181,6 +181,41 @@ test('perfil: troca o apelido e o personagem, e os dois ficam guardados', async 
   await expect(page.getByTestId('avatar-foguete')).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('ranking do aparelho: só aparece para quem tem apelido e guarda quem jogou antes', async ({ page }) => {
+  await comecar(page, 'Ana', 'python');
+  await page.getByTestId('jogar').click();
+  await page.getByTestId('praticar').click();
+  for (let i = 0; i < 5; i++) {
+    await resolver(page, 'python', 'python-saida');
+    await page.getByTestId('continuar-licao').click();
+  }
+  await page.getByTestId('voltar-cidade').click();
+  await page.getByTestId('aba-perfil').click();
+  await expect(page.getByTestId('colocado-1')).toContainText('Ana');
+  await expect(page.getByTestId('colocado-1')).toContainText('3 ★');
+  await conferirLayout(page, 'perfil com ranking');
+
+  // Outra pessoa joga no mesmo aparelho, como visitante: o ranking não aparece para ela.
+  page.once('dialog', (dialogo) => void dialogo.accept());
+  await page.getByTestId('recomecar-tudo').click();
+  await page.getByTestId('comecar').click();
+  await page.getByTestId('trilha-python').click();
+  await page.getByTestId('aba-perfil').click();
+  await expect(page.getByTestId('ranking-convite')).toBeVisible();
+  await expect(page.getByTestId('colocado-1')).toHaveCount(0);
+
+  // Com apelido, ela passa a ver quem já jogou; só entra na lista depois da primeira estrela.
+  await page.getByTestId('novo-apelido').fill('Bia');
+  await page.getByTestId('salvar-apelido').click();
+  await expect(page.getByTestId('colocado-1')).toContainText('Ana');
+  await expect(page.getByTestId('ranking')).toContainText('Você entra no ranking quando ganhar a primeira estrela.');
+
+  await page.reload();
+  await page.getByTestId('continuar').click();
+  await page.getByTestId('aba-perfil').click();
+  await expect(page.getByTestId('colocado-1')).toContainText('Ana');
+});
+
 test('perfil: personagem, título, sequência de dias e números do jogador', async ({ page }) => {
   await comecar(page, 'Mica', 'python');
   await expect(page.getByTestId('sequencia')).toHaveText('0');
