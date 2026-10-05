@@ -1,0 +1,103 @@
+name: triagem
+
+# Triagem como código (INT-09). Monta o pacote de submissão com o artefato que
+# está em produção e faz as mesmas perguntas da triagem do concurso: os arquivos
+# abrem? o jogo responde? o vídeo cabe em 90 s? o squad está completo?
+#
+# Roda agendada até a banca: se a URL pública cair ou o pacote quebrar, abre uma
+# Issue com o label `alerta`, que se fecha sozinha quando a triagem volta a passar.
+# Workflow agendado só roda a partir do branch padrão (main).
+
+on:
+  schedule:
+    - cron: '23 */3 * * *' # a cada 3 horas, UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read # baixar o artefato da execução da esteira
+  issues: write # avisar o squad quando a triagem reprova
+
+concurrency:
+  group: triagem
+  cancel-in-progress: false
+
+jobs:
+  triagem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Início da aula da entrega. Para o concurso, troque a variável para 2026-10-21T23:59:00-03:00.
+      PRAZO: ${{ vars.PRAZO_ENTREGA || '2026-10-09T19:00:00-03:00' }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Ferramentas da triagem
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils ffmpeg unzip
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Baixar o artefato que está em produção
+        id: artefato
+        # Sem produção ainda, o pacote fica sem build e sem GDD: a triagem reprova e diz por quê.
+        continue-on-error: true
+        run: |
+          estavel="$(curl -fsS "$SITE_URL/rollout.json?t=$(date +%s)" | node -e 'let t="";process.stdin.on("data",d=>t+=d).on("end",()=>console.log(JSON.parse(t).estavel??""))')"
+          [ -n "$estavel" ] || { echo "::error::rollout.json sem release estável: ainda não houve deploy em produção"; exit 1; }
+          execucao="$(gh run list --workflow esteira.yml --branch main --event push --limit 100 --json databaseId,headSha \
+            --jq "[.[] | select(.headSha | startswith(\"$estavel\"))][0] | \"\(.databaseId) \(.headSha)\"")"
+          read -r id commit <<< "$execucao"
+          [ -n "${id:-}" ] || { echo "::error::nenhuma execução da esteira para a release $estavel"; exit 1; }
+          gh run download "$id" --name "build-$commit" --dir artefato
+          (cd artefato && sha256sum --check build.zip.sha256)
+          # O pacote leva o mesmo arquivo que está no ar: os hashes têm de ser iguais.
+          curl -fsS "$SITE_URL/releases/$estavel/build.zip.sha256" | diff - artefato/build.zip.sha256
+          echo "release em produção: $estavel (execução $id)"
+
+      - name: Montar o pacote de submissão
+        run: BUILD_ZIP=artefato/build.zip GDD_PDF=artefato/docs/GDD.pdf bash scripts/submissao.sh submissao
+
+      - name: Triagem
+        id: triagem
+        run: |
+          set -o pipefail
+          bash scripts/triagem.sh submissao | tee triagem.log
+          {
+            echo '### Triagem'
+            echo '```text'
+            cat triagem.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: submissao-${{ github.run_id }}
+          if-no-files-found: warn
+          path: |
+            submissao/
+            triagem.log
+
+      - name: Avisar o squad se a triagem reprovou
+        if: failure()
+        run: |
+          aberta="$(gh issue list -R "$GITHUB_REPOSITORY" --label alerta --state open --search 'TriagemReprovada in:title' --json number --jq '.[0].number')"
+          if [ -z "$aberta" ]; then
+            gh issue create -R "$GITHUB_REPOSITORY" --label alerta --title "TriagemReprovada: o pacote de submissão não passaria na triagem" \
+              --body "$(printf 'A triagem como código reprovou. Enquanto esta Issue estiver aberta, a entrega seria desclassificada na triagem do concurso (regulamento, item 7.2).\n\n```text\n%s\n```\n\nExecução: %s/%s/actions/runs/%s\n\nEsta Issue se fecha sozinha quando a triagem voltar a passar.' "$(cat triagem.log 2>/dev/null || echo 'A triagem não chegou a rodar: veja a execução.')" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")"
+          fi
+
+      - name: Fechar o aviso quando a triagem volta a passar
+        if: success()
+        run: |
+          for numero in $(gh issue list -R "$GITHUB_REPOSITORY" --label alerta --state open --search 'TriagemReprovada in:title' --json number --jq '.[].number'); do
+            gh issue close "$numero" -R "$GITHUB_REPOSITORY" --comment "A triagem voltou a passar em $(date -u +%FT%TZ)."
+          done

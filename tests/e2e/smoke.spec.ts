@@ -4,16 +4,18 @@ import { expect, test } from '@playwright/test';
 // pelo rollback automático e pela triagem (INT-04, INT-07, INT-09). Não depende
 // das fontes ao vivo: confere só o que o próprio jogo entrega.
 test('o jogo abre, mostra a versão publicada e aceita a primeira jogada', async ({ page, request }) => {
-  const resposta = await request.get('./version.json');
-  expect(resposta.status()).toBe(200);
-  const versao = (await resposta.json()) as { versao: string; sha: string; build: string };
-  expect(versao.versao).toMatch(/^\d+\.\d+\.\d+$/);
-
   const erros: string[] = [];
   page.on('pageerror', (erro) => erros.push(erro.message));
 
   await page.goto('./');
   await expect(page).toHaveTitle('Byte & Bolso');
+  // Na URL pública, quem responde primeiro é o carregador, que leva à release
+  // estável. O version.json conferido é o da release em que o jogador caiu.
+  await expect(page.getByTestId('versao')).toBeVisible();
+  const resposta = await request.get(new URL('version.json', page.url()).href);
+  expect(resposta.status()).toBe(200);
+  const versao = (await resposta.json()) as { versao: string; sha: string; build: string };
+  expect(versao.versao).toMatch(/^\d+\.\d+\.\d+$/);
   await expect(page.getByTestId('versao')).toHaveText(`v${versao.versao} · ${versao.sha}`);
 
   await page.getByTestId('comecar').click();

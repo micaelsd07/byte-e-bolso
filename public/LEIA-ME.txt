@@ -1,0 +1,25 @@
+BYTE & BOLSO
+Jogo educativo de programação e tecnologia.
+
+COMO JOGAR SEM INTERNET
+1. Descompacte o build.zip em uma pasta.
+2. Abra o arquivo index.html no navegador (dois cliques).
+
+Se o navegador bloquear a abertura direta do arquivo, sirva a pasta:
+   npx serve .
+e abra o endereço que aparecer no terminal.
+
+O QUE FUNCIONA SEM INTERNET
+Todas as trilhas, lições, provas, a empresa, o perfil e o ranking do
+aparelho. O progresso fica guardado no próprio navegador.
+
+O QUE PRECISA DE INTERNET
+Só as telas Mercado e Notícias, que buscam dados públicos ao vivo. Sem
+conexão, elas avisam e o resto do jogo segue normalmente.
+
+DADOS
+O jogo não tem cadastro e não envia nenhuma informação do jogador.
+
+VERSÃO
+O arquivo version.json, nesta mesma pasta, diz a versão, o commit e a
+data deste build.
