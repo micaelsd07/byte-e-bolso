@@ -147,7 +147,7 @@ Cada requisito dos dois documentos oficiais (Regulamento do Framework Arcade, ed
 
 | Conceito original | O que o oficial diz | Decisão | Impacto | Alternativa adotada |
 |---|---|---|---|---|
-| Firebase Hosting | Ambientes no GitHub Pages, com `/hml/`, `/releases/` e `rollout.json` (INT-07) | GitHub Pages | Nenhum para o jogador | n/a |
+| Firebase Hosting | Ambientes no GitHub Pages, com `/hml/`, `/releases/` e `rollout.json` (INT-07) | GitHub Pages é a produção avaliada | Nenhum para o jogador | Espelho de demonstração no Firebase Hosting, publicado à mão e fora da esteira (`firebase.json`), por decisão do squad depois de o professor falar em sala sobre o Firebase. Confirmar com ele que o espelho não conta como "produção alterada fora da pipeline" |
 | Login com Google ou e-mail; perfil com nome | "O jogo não pede nome, e-mail, idade, localização nem qualquer dado que identifique o jogador" (seção 09) | Sem conta nesta entrega | Não há sincronização entre aparelhos | Apelido opcional, guardado no navegador |
 | Ranking global, semanal e mensal validado por servidor | "Ranking, se houver, só com apelido escolhido na hora e guardado no próprio navegador"; "nada de nuvem paga" | Ranking local | Não há competição entre aparelhos | Ranking local por apelido; desenho do ranking online fica no relatório |
 | Rede de contatos com busca de pessoas e LinkedIn | Mesma regra de dados pessoais | Sem busca de pessoas | A camada social fica menor | Cartão compartilhado por link pelo próprio jogador, sem servidor |
