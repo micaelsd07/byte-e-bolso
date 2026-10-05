@@ -344,8 +344,8 @@
     {
       "id": "python-py-world-1",
       "numero": 2,
-      "titulo": "O Despertar da Serpente",
-      "resumo": "Inicie sua jornada em Python. Aprenda a imprimir na tela, manipular variáveis, f-strings e operações matemáticas.",
+      "titulo": "Primeiros passos em Python",
+      "resumo": "Mostre texto na tela, guarde valores, use f-strings e faça contas.",
       "dificuldade": "facil",
       "nos": [
         {
@@ -626,8 +626,8 @@
     {
       "id": "python-py-world-2",
       "numero": 3,
-      "titulo": "A Lógica das Decisões & Listas",
-      "resumo": "Domine a indentação do Python com if/elif/else, crie listas dinâmicas e automatize tarefas com laços for.",
+      "titulo": "Decisões e listas",
+      "resumo": "Use if, elif e else, crie listas e repita tarefas com for.",
       "dificuldade": "medio",
       "nos": [
         {
@@ -814,8 +814,8 @@
     {
       "id": "python-py-world-3",
       "numero": 4,
-      "titulo": "Mestria Funcional & Dicionários",
-      "resumo": "Crie funções reutilizáveis com def e return, manipule dados com dicionários e construa pipelines de processamento.",
+      "titulo": "Funções e dicionários",
+      "resumo": "Crie funções com def e return e organize dados em dicionários.",
       "dificuldade": "medio",
       "nos": [
         {
@@ -934,7 +934,7 @@
         {
           "tipo": "licao",
           "id": "python-py-level-9",
-          "titulo": "Desafio Mestre: Filtro de Números",
+          "titulo": "Desafio: filtro de números",
           "resumo": "Construa um algoritmo que filtra e soma apenas os números pares de uma lista.",
           "explicacao": [
             {
@@ -995,8 +995,8 @@
     {
       "id": "python-py-world-4",
       "numero": 5,
-      "titulo": "A Forja dos Objetos & Automação",
-      "resumo": "Blinde seus scripts com try/except, modele classes orientadas a objetos com __init__ e self, e conclua o Projeto Final Python.",
+      "titulo": "Erros e objetos",
+      "resumo": "Trate erros com try/except e modele classes com __init__ e self.",
       "dificuldade": "dificil",
       "nos": [
         {

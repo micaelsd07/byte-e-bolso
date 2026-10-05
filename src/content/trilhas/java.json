@@ -345,8 +345,8 @@
     {
       "id": "java-world-1",
       "numero": 2,
-      "titulo": "O Primeiro Feitiço",
-      "resumo": "Descubra a anatomia do Java, desvende o método main e domine variáveis e operações matemáticas do zero.",
+      "titulo": "Primeiros passos em Java",
+      "resumo": "A anatomia de um programa Java, o método main, variáveis e operações.",
       "dificuldade": "facil",
       "nos": [
         {
@@ -717,8 +717,8 @@
     {
       "id": "java-world-2",
       "numero": 3,
-      "titulo": "O Labirinto das Decisões",
-      "resumo": "Ensine seu programa a tomar decisões inteligentes com if, else, operadores lógicos e switch.",
+      "titulo": "Decisões",
+      "resumo": "Faça o programa escolher o caminho com if, else, operadores lógicos e switch.",
       "dificuldade": "medio",
       "nos": [
         {
@@ -1026,8 +1026,8 @@
     {
       "id": "java-world-3",
       "numero": 4,
-      "titulo": "A Roda do Tempo",
-      "resumo": "Automatize tarefas repetitivas com loops for e while, e guarde coleções de dados usando Arrays.",
+      "titulo": "Repetição e arrays",
+      "resumo": "Repita tarefas com for e while e guarde vários valores em arrays.",
       "dificuldade": "medio",
       "nos": [
         {
@@ -1303,8 +1303,8 @@
     {
       "id": "java-world-4",
       "numero": 5,
-      "titulo": "A Forja dos Objetos",
-      "resumo": "Dê vida a entidades do mundo real modelando Classes, Objetos, Métodos, Construtores e Encapsulamento.",
+      "titulo": "Orientação a objetos",
+      "resumo": "Modele classes, objetos, métodos, construtores e encapsulamento.",
       "dificuldade": "dificil",
       "nos": [
         {

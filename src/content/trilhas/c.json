@@ -345,8 +345,8 @@
     {
       "id": "c-c-world-1",
       "numero": 2,
-      "titulo": "A Raiz da Máquina",
-      "resumo": "Aprenda a linguagem que construiu os sistemas operacionais modernos: sintaxe, diretivas de pré-processador e controle de tipos.",
+      "titulo": "Sintaxe e tipos",
+      "resumo": "A anatomia de um programa em C: bibliotecas, tipos, formatos do printf e decisões.",
       "dificuldade": "facil",
       "nos": [
         {
@@ -560,10 +560,342 @@
       ]
     },
     {
-      "id": "c-c-world-4",
+      "id": "c-funcoes-vetores",
       "numero": 3,
-      "titulo": "Alocação Dinâmica & Projeto Final C",
-      "resumo": "Requisite memória do sistema operacional em tempo de execução com malloc() e free(), e vença o Chefão de C!",
+      "titulo": "Funções, vetores e ponteiros",
+      "resumo": "Divida o programa em funções, guarde vários valores e entenda endereços de memória.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "c-funcoes",
+          "titulo": "Funções",
+          "resumo": "Dê nome a um trecho de código e use quantas vezes quiser.",
+          "explicacao": [
+            {
+              "titulo": "Tipo, nome e parâmetros",
+              "texto": "Uma função em C tem o tipo do valor que devolve, um nome e os parâmetros entre parênteses, cada um com seu tipo. O return devolve o resultado a quem chamou. Uma função que não devolve nada tem tipo void. Ela precisa aparecer antes do ponto em que é chamada.",
+              "codigo": "int dobro(int n) {\n    return n * 2;\n}\n\nint main(void) {\n    printf(\"%d\", dobro(21));\n    return 0;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este programa mostra?",
+              "codigo": "int soma(int a, int b) {\n    return a + b;\n}\n\nint main(void) {\n    printf(\"%d\", soma(3, 4));\n    return 0;\n}",
+              "opcoes": [
+                "7",
+                "34",
+                "soma"
+              ],
+              "correta": 0,
+              "explicacao": "soma devolve 3 + 4, e o printf mostra o número.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a primeira linha de uma função chamada metade, que recebe um inteiro n e devolve um inteiro.",
+              "pecas": [
+                "int",
+                "metade",
+                "(",
+                "int n",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "void",
+                "return"
+              ],
+              "explicacao": "Primeiro o tipo do retorno, depois o nome e os parâmetros com tipo.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para a função devolver o resultado.",
+              "antes": "int cubo(int n) {\n    ",
+              "depois": " n * n * n;\n}",
+              "respostas": [
+                "return"
+              ],
+              "explicacao": "O return entrega o valor a quem chamou a função.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o tipo de uma função que não devolve valor?",
+              "opcoes": [
+                "void",
+                "null",
+                "int"
+              ],
+              "correta": 0,
+              "explicacao": "void quer dizer vazio: a função faz o trabalho e não devolve nada.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual chamada passa os argumentos certos para int maior(int a, int b)?",
+              "opcoes": [
+                "maior(3, 8)",
+                "maior(3)",
+                "maior(\"3\", \"8\")"
+              ],
+              "correta": 0,
+              "explicacao": "A função espera dois inteiros: essa quantidade e esse tipo.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-vetores",
+          "titulo": "Vetores",
+          "resumo": "Guarde vários valores do mesmo tipo.",
+          "explicacao": [
+            {
+              "titulo": "Vários valores, um nome",
+              "texto": "Um vetor guarda vários valores do mesmo tipo, um ao lado do outro. O tamanho vai entre colchetes na declaração e não muda depois. As posições começam em 0, então um vetor de 3 itens vai de 0 a 2. C não avisa quando você passa do fim: evitar esse erro é trabalho de quem programa.",
+              "codigo": "int notas[3] = {7, 8, 10};\nprintf(\"%d\", notas[0]);  // 7\n\nfor (int i = 0; i < 3; i++) {\n    printf(\"%d \", notas[i]);\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é a última posição válida de int v[5]?",
+              "opcoes": [
+                "4",
+                "5",
+                "6"
+              ],
+              "correta": 0,
+              "explicacao": "São 5 itens, numerados de 0 a 4.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a declaração de um vetor de 4 inteiros chamado idades.",
+              "pecas": [
+                "int",
+                "idades",
+                "[",
+                "4",
+                "]",
+                ";"
+              ],
+              "extras": [
+                "(",
+                "array"
+              ],
+              "explicacao": "O tipo vem antes do nome e o tamanho vai entre colchetes.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para guardar 9 na primeira posição.",
+              "antes": "int notas[3];\nnotas[",
+              "depois": "] = 9;",
+              "respostas": [
+                "0"
+              ],
+              "explicacao": "A primeira posição é a 0.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "int v[3] = {2, 4, 6};\nprintf(\"%d\", v[1] + v[2]);",
+              "opcoes": [
+                "6",
+                "10",
+                "8"
+              ],
+              "correta": 1,
+              "explicacao": "v[1] é 4 e v[2] é 6: a soma dá 10.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que acontece ao ler v[10] em um vetor de 3 itens?",
+              "opcoes": [
+                "O compilador sempre impede",
+                "O programa lê memória que não é do vetor",
+                "O vetor cresce sozinho"
+              ],
+              "correta": 1,
+              "explicacao": "C não confere o limite. Ler fora do vetor traz lixo ou derruba o programa.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-ponteiros",
+          "titulo": "Ponteiros",
+          "resumo": "Guarde o endereço de uma variável e chegue ao valor por ele.",
+          "explicacao": [
+            {
+              "titulo": "Endereço e conteúdo",
+              "texto": "Toda variável mora em um endereço de memória. O operador & dá o endereço de uma variável. Um ponteiro é uma variável que guarda um endereço, e é declarado com um asterisco. Na hora de usar, o asterisco antes do ponteiro acessa o valor que está naquele endereço.",
+              "codigo": "int idade = 20;\nint *p = &idade;   // p guarda o endereço de idade\n\nprintf(\"%d\", *p);  // 20\n*p = 21;           // muda idade para 21"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que &x devolve?",
+              "opcoes": [
+                "O endereço de x",
+                "O valor de x",
+                "O dobro de x"
+              ],
+              "correta": 0,
+              "explicacao": "& é o operador de endereço.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha que faz o ponteiro p apontar para a variável n.",
+              "pecas": [
+                "int",
+                "*p",
+                "=",
+                "&n",
+                ";"
+              ],
+              "extras": [
+                "n",
+                "*n"
+              ],
+              "explicacao": "O ponteiro recebe o endereço, por isso o & antes de n.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para mostrar o valor guardado no endereço que p aponta.",
+              "antes": "int n = 7;\nint *p = &n;\nprintf(\"%d\", ",
+              "depois": ");",
+              "respostas": [
+                "*p"
+              ],
+              "explicacao": "O asterisco antes do ponteiro acessa o valor apontado.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quanto vale n no fim?",
+              "codigo": "int n = 5;\nint *p = &n;\n*p = 9;",
+              "opcoes": [
+                "5",
+                "9",
+                "O endereço de n"
+              ],
+              "correta": 1,
+              "explicacao": "*p é o próprio n, visto pelo endereço. Mudar *p muda n.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Por que o scanf recebe &idade, e não idade?",
+              "opcoes": [
+                "Ele precisa do endereço para gravar o valor lido",
+                "Para ler mais rápido",
+                "Porque idade é um texto"
+              ],
+              "correta": 0,
+              "explicacao": "A função só consegue alterar a variável se souber onde ela está.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-strings",
+          "titulo": "Textos em C",
+          "resumo": "Entenda o texto como um vetor de caracteres.",
+          "explicacao": [
+            {
+              "titulo": "Vetor de char",
+              "texto": "Em C, um texto é um vetor de char que termina com o caractere '\\0', que marca o fim. Por isso \"Ana\" ocupa 4 posições. O printf mostra texto com %s, e strlen, da biblioteca string.h, conta os caracteres sem o '\\0'.",
+              "codigo": "#include <string.h>\n\nchar nome[] = \"Ana\";\nprintf(\"%s\", nome);          // Ana\nprintf(\"%zu\", strlen(nome)); // 3"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual especificador do printf mostra um texto?",
+              "opcoes": [
+                "%d",
+                "%s",
+                "%c"
+              ],
+              "correta": 1,
+              "explicacao": "%s é de string. %d é inteiro e %c é um caractere só.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a declaração de um texto com o valor Oi.",
+              "pecas": [
+                "char",
+                "saudacao",
+                "[",
+                "]",
+                "=",
+                "\"Oi\"",
+                ";"
+              ],
+              "extras": [
+                "string",
+                "'Oi'"
+              ],
+              "explicacao": "C não tem tipo string: texto é vetor de char, entre aspas duplas.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com a função que conta os caracteres do texto.",
+              "antes": "int tamanho = ",
+              "depois": "(nome);",
+              "respostas": [
+                "strlen"
+              ],
+              "explicacao": "strlen vem de string length, tamanho do texto.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas posições o vetor char cor[] = \"azul\" ocupa?",
+              "opcoes": [
+                "4",
+                "5",
+                "6"
+              ],
+              "correta": 1,
+              "explicacao": "São 4 letras e mais o '\\0' que marca o fim.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Para que serve o '\\0' no fim do texto?",
+              "opcoes": [
+                "Marca onde o texto termina",
+                "Pula uma linha",
+                "Deixa o texto em maiúsculas"
+              ],
+              "correta": 0,
+              "explicacao": "Funções como printf e strlen leem caractere por caractere até achar o '\\0'.",
+              "id": "e5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-c-world-4",
+      "numero": 4,
+      "titulo": "Memória dinâmica",
+      "resumo": "Peça memória ao sistema em tempo de execução com malloc() e devolva com free().",
       "dificuldade": "dificil",
       "nos": [
         {
@@ -642,7 +974,7 @@
         {
           "tipo": "licao",
           "id": "c-c-level-12",
-          "titulo": "Chefão Final C: O Núcleo do Sistema",
+          "titulo": "Desafio final de C",
           "resumo": "Construa uma função de busca em vetor com ponteiros e retorne a posição do elemento.",
           "explicacao": [
             {

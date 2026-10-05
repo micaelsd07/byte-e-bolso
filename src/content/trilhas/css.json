@@ -331,8 +331,8 @@
     {
       "id": "css-css-world-1",
       "numero": 2,
-      "titulo": "Cores, Fontes & Box Model",
-      "resumo": "Aprenda seletores CSS, propriedades de cor, fontes, alinhamentos e o sagrado Box Model (padding, border e margin).",
+      "titulo": "Fontes e box model",
+      "resumo": "Ajuste o texto e entenda as camadas de toda caixa: padding, border e margin.",
       "dificuldade": "facil",
       "nos": [
         {
@@ -462,10 +462,335 @@
       ]
     },
     {
-      "id": "css-css-world-4",
+      "id": "css-layout-interacao",
       "numero": 3,
-      "titulo": "CSS Grid, Animações & Responsividade",
-      "resumo": "Domine CSS Grid moderno com repeat(auto-fit), crie animações suaves com @keyframes e adapte qualquer tela com media queries!",
+      "titulo": "Posição, estados e telas",
+      "resumo": "Tire elementos do fluxo, reaja ao mouse e adapte a página ao tamanho da tela.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-posicao",
+          "titulo": "Posicionamento",
+          "resumo": "Mova um elemento com position, top e left.",
+          "explicacao": [
+            {
+              "titulo": "relative, absolute e fixed",
+              "texto": "Por padrão, cada elemento fica onde o fluxo da página o coloca. Com position: relative, ele se desloca a partir do próprio lugar. Com absolute, sai do fluxo e se posiciona em relação ao ancestral posicionado mais próximo. Com fixed, fica preso à janela, mesmo quando a página rola. top, right, bottom e left dizem a distância.",
+              "codigo": ".selo {\n  position: absolute;\n  top: 8px;\n  right: 8px;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual valor mantém o elemento preso à janela enquanto a página rola?",
+              "opcoes": [
+                "relative",
+                "absolute",
+                "fixed"
+              ],
+              "correta": 2,
+              "explicacao": "fixed usa a janela como referência, então não acompanha a rolagem.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a regra que tira o elemento do fluxo da página.",
+              "pecas": [
+                "position",
+                ":",
+                "absolute",
+                ";"
+              ],
+              "extras": [
+                "static",
+                "float"
+              ],
+              "explicacao": "absolute tira o elemento do fluxo. static é o valor padrão.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para afastar o elemento 10px do topo.",
+              "antes": ".aviso {\n  position: absolute;\n  ",
+              "depois": ": 10px;\n}",
+              "respostas": [
+                "top"
+              ],
+              "explicacao": "top é a distância a partir da borda de cima.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Um elemento absolute se posiciona em relação a quê?",
+              "opcoes": [
+                "Ao ancestral posicionado mais próximo",
+                "Sempre ao elemento anterior",
+                "Ao centro da tela"
+              ],
+              "correta": 0,
+              "explicacao": "Por isso é comum pôr position: relative no elemento pai.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Dois elementos se sobrepõem. Qual propriedade decide quem fica na frente?",
+              "opcoes": [
+                "z-index",
+                "order",
+                "top"
+              ],
+              "correta": 0,
+              "explicacao": "Entre elementos posicionados, o z-index maior fica na frente.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-estados",
+          "titulo": "Estados e transições",
+          "resumo": "Mude o estilo quando o ponteiro passa e suavize a mudança.",
+          "explicacao": [
+            {
+              "titulo": ":hover, :focus e transition",
+              "texto": "Uma pseudoclasse aplica o estilo só em um estado do elemento. :hover vale enquanto o ponteiro está em cima; :focus, enquanto o elemento está com o foco do teclado. A propriedade transition faz a mudança acontecer aos poucos, no tempo indicado.",
+              "codigo": ".botao {\n  background: blue;\n  transition: background 0.3s;\n}\n.botao:hover {\n  background: navy;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quando o estilo de .botao:hover é aplicado?",
+              "opcoes": [
+                "Enquanto o ponteiro está sobre o botão",
+                "Depois que o botão é clicado, para sempre",
+                "Só no celular"
+              ],
+              "correta": 0,
+              "explicacao": "Quando o ponteiro sai, o estilo normal volta.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o seletor do link com o ponteiro em cima.",
+              "pecas": [
+                "a",
+                ":",
+                "hover"
+              ],
+              "extras": [
+                "#",
+                ".hover"
+              ],
+              "explicacao": "A pseudoclasse vem colada ao seletor, depois de dois-pontos.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para a mudança durar meio segundo.",
+              "antes": ".cartao {\n  ",
+              "depois": ": opacity 0.5s;\n}",
+              "respostas": [
+                "transition"
+              ],
+              "explicacao": "transition recebe a propriedade que muda e o tempo da mudança.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Por que estilizar também o :focus, e não só o :hover?",
+              "opcoes": [
+                "Quem navega pelo teclado não tem ponteiro",
+                "O :hover não funciona em botões",
+                "O :focus deixa a página mais leve"
+              ],
+              "correta": 0,
+              "explicacao": "O foco mostra onde a pessoa está na página quando ela usa o Tab.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quanto tempo leva a mudança de cor?",
+              "codigo": "a {\n  color: black;\n  transition: color 2s;\n}\na:hover {\n  color: red;\n}",
+              "opcoes": [
+                "2 segundos",
+                "2 milissegundos",
+                "É instantânea"
+              ],
+              "correta": 0,
+              "explicacao": "O s é de segundos. Milissegundos seriam escritos como ms.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-unidades",
+          "titulo": "Unidades de medida",
+          "resumo": "Escolha entre px, %, rem e vw.",
+          "explicacao": [
+            {
+              "titulo": "px, %, rem e vw",
+              "texto": "px é um tamanho fixo. % é uma parte do tamanho do elemento pai. rem é relativo ao tamanho da fonte da página: se ela vale 16px, 2rem são 32px. vw é uma parte da largura da janela: 50vw é metade dela. Medidas relativas se adaptam melhor a telas e a preferências diferentes.",
+              "codigo": ".caixa {\n  width: 50%;\n  max-width: 600px;\n  font-size: 1.5rem;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "A fonte da página é 16px. Quanto vale 2rem?",
+              "opcoes": [
+                "18px",
+                "32px",
+                "2px"
+              ],
+              "correta": 1,
+              "explicacao": "rem multiplica o tamanho da fonte da página: 2 × 16 = 32.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a regra que deixa a largura com metade do elemento pai.",
+              "pecas": [
+                "width",
+                ":",
+                "50%",
+                ";"
+              ],
+              "extras": [
+                "50px",
+                "height"
+              ],
+              "explicacao": "% é sempre em relação ao elemento pai.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para a caixa nunca passar de 600px de largura.",
+              "antes": ".caixa {\n  width: 100%;\n  ",
+              "depois": ": 600px;\n}",
+              "respostas": [
+                "max-width"
+              ],
+              "explicacao": "max-width é o teto: a caixa ocupa tudo até 600px e para de crescer.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual unidade acompanha o tamanho de fonte que a pessoa configurou no navegador?",
+              "opcoes": [
+                "px",
+                "rem",
+                "vw"
+              ],
+              "correta": 1,
+              "explicacao": "Quem aumenta a fonte do navegador vê os tamanhos em rem crescerem junto.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual largura ocupa a janela inteira?",
+              "opcoes": [
+                "100vw",
+                "100px",
+                "1rem"
+              ],
+              "correta": 0,
+              "explicacao": "vw é um centésimo da largura da janela: 100vw é ela inteira.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-responsivo",
+          "titulo": "Telas diferentes",
+          "resumo": "Mude o layout conforme a largura da tela com @media.",
+          "explicacao": [
+            {
+              "titulo": "@media",
+              "texto": "Uma media query aplica um bloco de regras só quando a condição é verdadeira. Com (max-width: 600px), as regras valem em telas de até 600px de largura; com (min-width: 600px), valem de 600px para cima. É assim que a mesma página serve ao celular e ao computador.",
+              "codigo": ".menu {\n  display: flex;\n}\n@media (max-width: 600px) {\n  .menu {\n    flex-direction: column;\n  }\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quando as regras de @media (max-width: 600px) valem?",
+              "opcoes": [
+                "Em telas de até 600px de largura",
+                "Em telas com mais de 600px",
+                "Só na impressão"
+              ],
+              "correta": 0,
+              "explicacao": "max-width é o limite de cima: até 600px.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a abertura de uma media query para telas a partir de 900px.",
+              "pecas": [
+                "@media",
+                "(",
+                "min-width",
+                ":",
+                "900px",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "max-width",
+                "@screen"
+              ],
+              "explicacao": "min-width é o limite de baixo: de 900px para cima.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para as regras valerem em telas de até 480px.",
+              "antes": "@media (",
+              "depois": ": 480px) {\n  .lateral { display: none; }\n}",
+              "respostas": [
+                "max-width"
+              ],
+              "explicacao": "max-width: 480px cobre de zero até 480px.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Em uma tela de 400px de largura, qual é a cor do título?",
+              "codigo": "h1 {\n  color: blue;\n}\n@media (min-width: 800px) {\n  h1 {\n    color: green;\n  }\n}",
+              "opcoes": [
+                "Azul",
+                "Verde",
+                "Nenhuma"
+              ],
+              "correta": 0,
+              "explicacao": "400px é menos do que 800px, então a media query não entra e vale a regra de fora.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que é escrever o CSS \"mobile-first\"?",
+              "opcoes": [
+                "Fazer primeiro a tela pequena e ampliar com min-width",
+                "Fazer um site separado para celular",
+                "Esconder o site no computador"
+              ],
+              "correta": 0,
+              "explicacao": "A base atende o celular, e as media queries acrescentam o que as telas maiores permitem.",
+              "id": "e5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "css-css-world-4",
+      "numero": 4,
+      "titulo": "Grid e desafio final",
+      "resumo": "Monte layouts em linhas e colunas com CSS Grid e feche a trilha com um desafio.",
       "dificuldade": "dificil",
       "nos": [
         {
@@ -528,7 +853,7 @@
         {
           "tipo": "licao",
           "id": "css-css-level-12",
-          "titulo": "Chefão Final CSS3: O Dashboard Futurista",
+          "titulo": "Desafio final de CSS",
           "resumo": "Construa a folha de estilo definitiva combinando Glassmorphism, CSS Grid, Flexbox e sombras neon.",
           "explicacao": [
             {

@@ -325,10 +325,332 @@
       "dificuldade": "facil"
     },
     {
-      "id": "html-html-world-4",
+      "id": "html-formularios-tabelas",
       "numero": 2,
-      "titulo": "Acessibilidade, Multimídia & Projeto Final",
-      "resumo": "Domine tags de mídia nativa (<video>, <audio>), acessibilidade com ARIA e conclua o Projeto Final de HTML5!",
+      "titulo": "Formulários, tabelas e estrutura",
+      "resumo": "Receba dados com formulários, organize dados em tabelas e dê nome às partes da página.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "html-formularios",
+          "titulo": "Formulários",
+          "resumo": "Monte um formulário com campo, rótulo e botão.",
+          "explicacao": [
+            {
+              "titulo": "form, label, input e button",
+              "texto": "O form agrupa os campos. O input é o campo: o atributo type diz o que ele aceita (text, email, password, number). O label é o rótulo do campo, ligado a ele pelo for, que repete o id do input. O button com type=\"submit\" envia o formulário.",
+              "codigo": "<form>\n  <label for=\"email\">E-mail</label>\n  <input type=\"email\" id=\"email\">\n  <button type=\"submit\">Enviar</button>\n</form>"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual atributo do input define o tipo de dado que ele aceita?",
+              "opcoes": [
+                "name",
+                "type",
+                "for"
+              ],
+              "correta": 1,
+              "explicacao": "type=\"email\", type=\"number\" e outros mudam o teclado e a validação do campo.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte um campo de senha.",
+              "pecas": [
+                "<input",
+                "type=\"password\"",
+                ">"
+              ],
+              "extras": [
+                "type=\"senha\"",
+                "</input>"
+              ],
+              "explicacao": "password esconde o que é digitado. O input não tem tag de fechamento.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para ligar o rótulo ao campo de id nome.",
+              "antes": "<label ",
+              "depois": "=\"nome\">Nome</label>",
+              "respostas": [
+                "for"
+              ],
+              "explicacao": "O for do label repete o id do input. Tocar no rótulo passa a focar o campo.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Por que usar label em vez de um texto solto ao lado do campo?",
+              "opcoes": [
+                "O leitor de tela anuncia o rótulo junto com o campo",
+                "O campo fica maior",
+                "O formulário é enviado mais rápido"
+              ],
+              "correta": 0,
+              "explicacao": "Com label, quem não vê a tela sabe o que cada campo pede.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este botão faz dentro de um form?",
+              "codigo": "<button type=\"submit\">Salvar</button>",
+              "opcoes": [
+                "Envia o formulário",
+                "Limpa os campos",
+                "Fecha a página"
+              ],
+              "correta": 0,
+              "explicacao": "submit envia. Para limpar existe type=\"reset\".",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "html-tabelas",
+          "titulo": "Tabelas",
+          "resumo": "Organize dados em linhas e colunas.",
+          "explicacao": [
+            {
+              "titulo": "table, tr, th e td",
+              "texto": "A table é a tabela. Cada tr é uma linha. Dentro da linha, th é uma célula de cabeçalho e td é uma célula de dado. Tabela serve para dados, como notas e preços, e não para posicionar partes da página.",
+              "codigo": "<table>\n  <tr>\n    <th>Nome</th>\n    <th>Nota</th>\n  </tr>\n  <tr>\n    <td>Ana</td>\n    <td>9</td>\n  </tr>\n</table>"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tag cria uma linha da tabela?",
+              "opcoes": [
+                "<td>",
+                "<tr>",
+                "<th>"
+              ],
+              "correta": 1,
+              "explicacao": "tr vem de table row, linha da tabela.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte uma célula de dado com o texto 10.",
+              "pecas": [
+                "<td>",
+                "10",
+                "</td>"
+              ],
+              "extras": [
+                "<tr>",
+                "</th>"
+              ],
+              "explicacao": "td vem de table data: é a célula comum.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com a tag de célula de cabeçalho.",
+              "antes": "<tr><",
+              "depois": ">Preço</th></tr>",
+              "respostas": [
+                "th"
+              ],
+              "explicacao": "th marca o título da coluna; o navegador mostra em negrito.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas colunas esta tabela tem?",
+              "codigo": "<table>\n  <tr><th>Item</th><th>Qtd</th><th>Preço</th></tr>\n  <tr><td>Cabo</td><td>2</td><td>15</td></tr>\n</table>",
+              "opcoes": [
+                "2",
+                "3",
+                "6"
+              ],
+              "correta": 1,
+              "explicacao": "Cada linha tem três células, então são três colunas. Seis é o total de células.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Para que a tabela deve ser usada?",
+              "opcoes": [
+                "Mostrar dados em linhas e colunas",
+                "Posicionar o menu ao lado do texto",
+                "Trocar a cor do fundo"
+              ],
+              "correta": 0,
+              "explicacao": "Posição e aparência são trabalho do CSS.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "html-semantica",
+          "titulo": "Partes da página",
+          "resumo": "Use tags que dizem o que cada parte da página é.",
+          "explicacao": [
+            {
+              "titulo": "header, nav, main e footer",
+              "texto": "Em vez de usar div para tudo, o HTML tem tags que dizem o papel de cada parte: header é o topo, nav é o menu de navegação, main é o conteúdo principal (um por página) e footer é o rodapé. Buscadores e leitores de tela usam esses nomes para entender a página.",
+              "codigo": "<header>\n  <nav>...</nav>\n</header>\n<main>\n  <h1>Notícias</h1>\n</main>\n<footer>Contato</footer>"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tag marca o conteúdo principal da página?",
+              "opcoes": [
+                "<main>",
+                "<body>",
+                "<section>"
+              ],
+              "correta": 0,
+              "explicacao": "O main guarda o que é próprio daquela página; o body guarda tudo o que aparece.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte um rodapé com o texto Contato.",
+              "pecas": [
+                "<footer>",
+                "Contato",
+                "</footer>"
+              ],
+              "extras": [
+                "<bottom>",
+                "</header>"
+              ],
+              "explicacao": "footer é o rodapé. A tag bottom não existe.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com a tag do menu de navegação.",
+              "antes": "<",
+              "depois": "><a href=\"/\">Início</a></nav>",
+              "respostas": [
+                "nav"
+              ],
+              "explicacao": "nav agrupa os links de navegação do site.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantos <main> uma página deve ter?",
+              "opcoes": [
+                "Um",
+                "Um por seção",
+                "Um para cada parágrafo"
+              ],
+              "correta": 0,
+              "explicacao": "Só existe um conteúdo principal por página.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual versão diz mais sobre a página para um leitor de tela?",
+              "opcoes": [
+                "<div>Menu</div>",
+                "<nav>Menu</nav>",
+                "As duas dizem o mesmo"
+              ],
+              "correta": 1,
+              "explicacao": "A div não tem significado. A nav avisa que ali está a navegação.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "html-atributos",
+          "titulo": "id, class, div e span",
+          "resumo": "Dê nome aos elementos para o CSS e o JavaScript encontrarem.",
+          "explicacao": [
+            {
+              "titulo": "id e class",
+              "texto": "O id é um nome único: só um elemento da página pode ter aquele id. A class é um nome de grupo: vários elementos podem ter a mesma, e um elemento pode ter várias, separadas por espaço. A div agrupa blocos e o span marca um trecho dentro de uma linha; nenhum dos dois tem significado próprio.",
+              "codigo": "<div id=\"topo\" class=\"caixa destaque\">\n  Olá, <span class=\"nome\">Ana</span>!\n</div>"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual atributo pode se repetir em vários elementos da página?",
+              "opcoes": [
+                "id",
+                "class",
+                "Os dois"
+              ],
+              "correta": 1,
+              "explicacao": "A class nomeia um grupo. O id é único na página.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte uma div com a classe cartao.",
+              "pecas": [
+                "<div",
+                "class=\"cartao\"",
+                ">",
+                "</div>"
+              ],
+              "extras": [
+                "id=\"cartao\"",
+                "<span"
+              ],
+              "explicacao": "O atributo fica dentro da tag de abertura.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para dar ao parágrafo o id aviso.",
+              "antes": "<p ",
+              "depois": ">Atenção</p>",
+              "respostas": [
+                "id=\"aviso\"",
+                "id=aviso"
+              ],
+              "explicacao": "O valor do atributo vai entre aspas, depois do sinal de igual.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas classes este elemento tem?",
+              "codigo": "<p class=\"aviso grande vermelho\">Cuidado</p>",
+              "opcoes": [
+                "1",
+                "3",
+                "Nenhuma"
+              ],
+              "correta": 1,
+              "explicacao": "As classes são separadas por espaço: aviso, grande e vermelho.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tag marca um trecho dentro de uma linha, sem quebrar a linha?",
+              "opcoes": [
+                "<div>",
+                "<span>",
+                "<p>"
+              ],
+              "correta": 1,
+              "explicacao": "O span fica na linha. A div e o p começam um bloco novo.",
+              "id": "e5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "html-html-world-4",
+      "numero": 3,
+      "titulo": "Mídia e acessibilidade",
+      "resumo": "Coloque vídeo e áudio na página e faça a página funcionar para quem usa leitor de tela.",
       "dificuldade": "dificil",
       "nos": [
         {
