@@ -30,7 +30,8 @@
               "opcoes": [
                 "Oi",
                 "print(\"Oi\")",
-                "\"Oi\""
+                "\"Oi\"",
+                "oi"
               ],
               "correta": 0,
               "explicacao": "As aspas marcam onde o texto começa e termina, mas não aparecem na tela.",
@@ -69,7 +70,8 @@
               "opcoes": [
                 "print(\"Oi\")",
                 "print(\"Oi)",
-                "print(7)"
+                "print(7)",
+                "print('Oi')"
               ],
               "correta": 1,
               "explicacao": "As aspas abrem e não fecham.",
@@ -115,7 +117,8 @@
               "opcoes": [
                 "5",
                 "7",
-                "x + 2"
+                "x + 2",
+                "52"
               ],
               "correta": 1,
               "explicacao": "x começa em 5 e passa a valer 5 + 2.",
@@ -153,7 +156,8 @@
               "opcoes": [
                 "int (inteiro)",
                 "float (número com casas decimais)",
-                "str (texto)"
+                "str (texto)",
+                "bool (verdadeiro ou falso)"
               ],
               "correta": 1,
               "explicacao": "Número com ponto decimal é float.",
@@ -165,7 +169,8 @@
               "opcoes": [
                 "2nome",
                 "meu nome",
-                "meu_nome"
+                "meu_nome",
+                "meu-nome"
               ],
               "correta": 2,
               "explicacao": "Nome não começa com número nem tem espaço. O sublinhado separa as palavras.",
@@ -193,7 +198,8 @@
               "opcoes": [
                 "Aprovado",
                 "Recuperação",
-                "Nada"
+                "Nada",
+                "Aprovado e Recuperação"
               ],
               "correta": 1,
               "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
@@ -233,7 +239,8 @@
               "opcoes": [
                 "Ponto e vírgula ;",
                 "Dois-pontos :",
-                "Chave {"
+                "Chave {",
+                "Nada"
               ],
               "correta": 1,
               "explicacao": "Os dois-pontos avisam que um bloco começa na linha seguinte.",
@@ -245,7 +252,8 @@
               "opcoes": [
                 "Pelas chaves { }",
                 "Pelo recuo das linhas",
-                "Pela palavra end"
+                "Pela palavra end",
+                "Pelos parênteses ( )"
               ],
               "correta": 1,
               "explicacao": "O recuo (indentação) é o que define o bloco. Linha sem recuo já está fora do if.",
@@ -273,7 +281,8 @@
               "opcoes": [
                 "3",
                 "4",
-                "5"
+                "5",
+                "Nenhuma"
               ],
               "correta": 1,
               "explicacao": "range(4) gera quatro valores: 0, 1, 2 e 3.",
@@ -286,7 +295,8 @@
               "opcoes": [
                 "1, 2, 3",
                 "0, 1, 2",
-                "0, 1, 2, 3"
+                "0, 1, 2, 3",
+                "0, 1"
               ],
               "correta": 1,
               "explicacao": "range começa em 0 e para antes do 3.",
@@ -330,7 +340,8 @@
               "opcoes": [
                 "x nunca muda: o laço não termina",
                 "Falta ponto e vírgula",
-                "print não funciona dentro de laço"
+                "print não funciona dentro de laço",
+                "x começa em 0, e o while não aceita zero"
               ],
               "correta": 0,
               "explicacao": "Sem x = x + 1 dentro do bloco, x fica em 0 para sempre.",
@@ -530,7 +541,8 @@
               "opcoes": [
                 "Cria um valor numérico inteiro (int).",
                 "Cria uma variável do tipo str (texto).",
-                "Booleano. Em Python, True e False começam com Maiúscula!"
+                "Booleano. Em Python, True e False começam com Maiúscula!",
+                "Cria uma lista com um item."
               ],
               "correta": 1,
               "explicacao": "Use o operador de igual (=) para associar um valor a uma variável.",
