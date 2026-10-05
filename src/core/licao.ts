@@ -45,6 +45,10 @@ export interface Sessao {
   erros: number;
   /** Exercícios errados ao menos uma vez, sem repetição: viram a revisão. */
   errados: string[];
+  /** Acertos seguidos agora. Qualquer erro zera. */
+  seguidas: number;
+  /** Maior sequência de acertos da lição. */
+  melhorSequencia: number;
   fim: null | 'concluida' | 'vidas';
 }
 
@@ -56,6 +60,8 @@ export function iniciarSessao(licao: NoLicao, vidas = VIDAS_DA_LICAO): Sessao {
     vidas,
     erros: 0,
     errados: [],
+    seguidas: 0,
+    melhorSequencia: 0,
     fim: null,
   };
 }
@@ -70,13 +76,18 @@ export function progresso(sessao: Sessao): number {
   return sessao.total === 0 ? 1 : (sessao.total - sessao.fila.length) / sessao.total;
 }
 
-export function responderExercicio(sessao: Sessao, licao: NoLicao, resposta: Resposta): { sessao: Sessao; acertou: boolean } | null {
+/** `resposta` null é o relógio da prova zerando: vale como erro. */
+export function responderExercicio(sessao: Sessao, licao: NoLicao, resposta: Resposta | null): { sessao: Sessao; acertou: boolean } | null {
   const exercicio = exercicioAtual(sessao, licao);
   if (exercicio === null) return null;
   const [, ...resto] = sessao.fila;
 
-  if (conferir(exercicio, resposta)) {
-    return { acertou: true, sessao: { ...sessao, fila: resto, fim: resto.length === 0 ? 'concluida' : null } };
+  if (resposta !== null && conferir(exercicio, resposta)) {
+    const seguidas = sessao.seguidas + 1;
+    return {
+      acertou: true,
+      sessao: { ...sessao, fila: resto, seguidas, melhorSequencia: Math.max(sessao.melhorSequencia, seguidas), fim: resto.length === 0 ? 'concluida' : null },
+    };
   }
   const vidas = sessao.vidas - 1;
   return {
@@ -88,6 +99,7 @@ export function responderExercicio(sessao: Sessao, licao: NoLicao, resposta: Res
       vidas,
       erros: sessao.erros + 1,
       errados: sessao.errados.includes(exercicio.id) ? sessao.errados : [...sessao.errados, exercicio.id],
+      seguidas: 0,
       fim: vidas <= 0 ? 'vidas' : null,
     },
   };

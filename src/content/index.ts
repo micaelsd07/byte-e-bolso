@@ -1,3 +1,4 @@
+import { provaDaUnidade } from '../core/prova';
 import type { Catalogo } from '../core/save';
 import type { Capitulo, Melhoria, No, Trilha } from '../core/tipos';
 import melhoriasJson from './melhorias.json';
@@ -19,10 +20,12 @@ function montar(bruto: unknown): Trilha {
   const trilha = bruto as Trilha;
   return {
     ...trilha,
-    unidades: trilha.unidades.map((unidade) => ({
-      ...unidade,
-      nos: unidade.nos.map((no) => (no.tipo === 'licao' ? ({ ...PADRAO_DA_LICAO, ...no } as No) : no)),
-    })),
+    unidades: trilha.unidades.map((bruta) => {
+      const unidade = { ...bruta, nos: bruta.nos.map((no) => (no.tipo === 'licao' ? ({ ...PADRAO_DA_LICAO, ...no } as No) : no)) };
+      // A prova não está nos JSON: é montada aqui, das lições da própria unidade.
+      const prova = provaDaUnidade(unidade);
+      return prova === null ? unidade : { ...unidade, nos: [...unidade.nos, prova] };
+    }),
   };
 }
 

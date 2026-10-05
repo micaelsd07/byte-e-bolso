@@ -11,7 +11,7 @@ export const VIDAS_MAXIMAS = 5;
 /** Preço, em dinheiro do jogo, para encher as vidas sem esperar o dia seguinte. */
 export const CUSTO_RECARGA = 100;
 /** Personagens disponíveis no perfil. */
-export const AVATARES = ['foco', 'escudo', 'dica', 'moeda', 'cidade', 'negociacao'] as const;
+export const AVATARES = ['foco', 'escudo', 'dica', 'moeda', 'cidade', 'negociacao', 'codigo', 'foguete', 'estrela', 'chip', 'planeta', 'trofeu'] as const;
 
 /** Só letras, números, espaço, hífen e sublinhado: o apelido não é lugar para dado pessoal. */
 export function limparApelido(bruto: string): string {
@@ -38,6 +38,11 @@ export function novoEstado(apelido: string): Estado {
     melhorias: [],
     rodadas: 0,
   };
+}
+
+/** Troca o apelido no perfil. Passa pela mesma limpeza do apelido inicial. */
+export function renomear(estado: Estado, apelido: string): Estado {
+  return { ...estado, apelido: limparApelido(apelido) };
 }
 
 /** Troca a trilha que o jogador está seguindo. O progresso das outras trilhas fica guardado. */

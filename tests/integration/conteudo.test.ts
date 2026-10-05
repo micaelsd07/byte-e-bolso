@@ -5,7 +5,6 @@ import { conferir, iniciarSessao, pontosDaSessao, responderExercicio, type Respo
 import type { Exercicio } from '../../src/core/tipos';
 import { melhorPreco, precoJusto } from '../../src/core/negociacao';
 import { melhorPontuacao } from '../../src/core/orcamento';
-import { PARADAS } from '../../src/ui/cidade';
 
 const TRILHA = UNIDADES.flatMap((u) => u.nos);
 const certa = (e: Exercicio): Resposta => (e.tipo === 'escolha' ? e.correta : e.tipo === 'montar' ? e.pecas : e.respostas[0]!);
@@ -67,8 +66,24 @@ describe('conteúdo real do jogo', () => {
     }
   });
 
-  it('tem um lugar no mapa da cidade para cada fase de cada unidade', () => {
-    for (const unidade of UNIDADES) expect(unidade.nos.length, unidade.id).toBeLessThanOrEqual(PARADAS.length);
+  it('fecha cada unidade de linguagem com uma prova cronometrada, montada das lições dela', () => {
+    for (const trilha of TRILHAS) {
+      for (const unidade of trilha.unidades) {
+        const provas = unidade.nos.filter((n) => n.tipo === 'licao' && n.tempo !== undefined);
+        if (trilha.id === 'carreira') {
+          expect(provas, unidade.id).toHaveLength(0);
+          continue;
+        }
+        expect(provas, unidade.id).toHaveLength(1);
+        const prova = unidade.nos.at(-1)!;
+        expect(prova.id, unidade.id).toBe(`prova-${unidade.id}`);
+        if (prova.tipo !== 'licao') continue;
+        expect(prova.exercicios.length, unidade.id).toBeGreaterThanOrEqual(4);
+        // Todo exercício da prova veio de uma lição da mesma unidade.
+        const daUnidade = unidade.nos.flatMap((n) => (n.tipo === 'licao' && n.tempo === undefined ? n.exercicios.map((e) => e.pergunta) : []));
+        for (const e of prova.exercicios) expect(daUnidade, `${unidade.id}/${e.id}`).toContain(e.pergunta);
+      }
+    }
   });
 
   it('tem toda fase vencível com 3 estrelas', () => {

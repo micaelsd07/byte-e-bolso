@@ -130,8 +130,24 @@ describe('sessão da lição', () => {
     expect(sessao.erros).toBe(2);
   });
 
+  it('conta os acertos seguidos e zera a sequência no erro', () => {
+    let sessao = iniciarSessao(LICAO, 5);
+    sessao = responder(responder(sessao, true), true);
+    expect(sessao).toMatchObject({ seguidas: 2, melhorSequencia: 2 });
+    sessao = responder(sessao, false);
+    expect(sessao).toMatchObject({ seguidas: 0, melhorSequencia: 2 });
+    sessao = responder(sessao, true);
+    expect(sessao).toMatchObject({ seguidas: 1, melhorSequencia: 2, fim: 'concluida' });
+  });
+
+  it('trata o relógio zerado como erro: tira vida e devolve o exercício à fila', () => {
+    const resultado = responderExercicio(iniciarSessao(LICAO), LICAO, null)!;
+    expect(resultado.acertou).toBe(false);
+    expect(resultado.sessao).toMatchObject({ fila: ['e2', 'e3', 'e1'], vidas: 2, erros: 1, errados: ['e1'], seguidas: 0 });
+  });
+
   it('nunca dá menos de 10 pontos a quem concluiu', () => {
-    const sessao: Sessao = { fila: [], total: 3, vidas: 1, erros: 9, errados: ['e1'], fim: 'concluida' };
+    const sessao: Sessao = { fila: [], total: 3, vidas: 1, erros: 9, errados: ['e1'], seguidas: 0, melhorSequencia: 2, fim: 'concluida' };
     expect(pontosDaSessao(sessao)).toBe(10);
   });
 

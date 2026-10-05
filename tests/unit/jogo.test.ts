@@ -9,6 +9,7 @@ import {
   maximoDeVidas,
   recarregarVidas,
   registrarPratica,
+  renomear,
   tituloDoNivel,
   custoFixo,
   desbloqueado,
@@ -36,6 +37,14 @@ describe('apelido', () => {
   it('corta em 16 caracteres e usa Visitante quando fica vazio', () => {
     expect(limparApelido('a'.repeat(40))).toHaveLength(16);
     expect(limparApelido('@#$%')).toBe('Visitante');
+  });
+
+  it('pode ser trocado no perfil, com a mesma limpeza e sem mexer no progresso', () => {
+    const antes = com({ dinheiro: 900, nos: { triagem: 300 }, rodadas: 1 });
+    const depois = renomear(antes, '  Mica<script>  ');
+    expect(depois.apelido).toBe('Micascript');
+    expect(depois).toMatchObject({ dinheiro: 900, nos: { triagem: 300 }, rodadas: 1 });
+    expect(renomear(antes, '!!!').apelido).toBe('Visitante');
   });
 });
 

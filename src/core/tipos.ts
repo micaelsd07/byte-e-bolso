@@ -134,11 +134,13 @@ export interface NoLicao extends NoBase {
   tipo: 'licao';
   explicacao: Explicacao[];
   exercicios: Exercicio[];
+  /** Segundos por exercício. Só as provas de unidade têm relógio. */
+  tempo?: number;
 }
 
 export type No = NoTriagem | NoOrcamento | NoNegociacao | NoLicao;
 
-/** Uma unidade da trilha (Básico, Médio…): até 6 fases, que cabem em um mapa. */
+/** Uma unidade da trilha (Básico, Médio…): as lições dela e, no fim, a prova. */
 export type Dificuldade = 'facil' | 'medio' | 'dificil';
 
 export interface Capitulo {
