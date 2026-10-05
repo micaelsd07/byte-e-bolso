@@ -18,7 +18,7 @@ import {
 import { gabarito, pontosDaSessao } from './core/licao';
 import { pontosDoDuelo, precoFechado } from './core/negociacao';
 import { avaliarOrcamento } from './core/orcamento';
-import { desserializarRanking, registrar, retirar, serializarRanking, type Colocado } from './core/ranking';
+import { desserializarRanking, participa, registrar, retirar, serializarRanking, type Colocado } from './core/ranking';
 import { desserializar, serializar } from './core/save';
 import type { Estado, No } from './core/tipos';
 import { telaMercado, telaNoticias } from './scenes/aovivo';
@@ -35,6 +35,7 @@ import { telaResultado, type DadosResultado, type Revisao } from './scenes/resul
 import { telaTriagem } from './scenes/triagem';
 import { telaTrilhas } from './scenes/trilhas';
 import { saveLocal } from './services/armazenamento';
+import { entrarNoRankingOnline, enviarPontuacao, esquecerJogadorOnline, sairDoRankingOnline } from './services/rankingOnline';
 import { semMovimento } from './ui/efeitos';
 import './ui/estilos.css';
 
@@ -82,11 +83,17 @@ function salvar(novo: Estado): void {
 const lerRanking = (): Colocado[] => desserializarRanking(quadro.carregar());
 
 /** Leva o resultado do jogador ao ranking. `apelidoAntigo` sai de lá quando ele troca de nome. */
-function pontuarNoRanking(jogador: Estado, apelidoAntigo?: string): void {
+function colocadoDe(jogador: Estado): Colocado {
   const iniciadas = TRILHAS.filter((t) => fasesDa(t).some((n) => jogador.nos[n.id] !== undefined)).flatMap((t) => t.unidades);
+  return { apelido: jogador.apelido, avatar: jogador.avatar, estrelas: totalEstrelas(jogador, UNIDADES), mvp: mvp(jogador, iniciadas) };
+}
+
+function pontuarNoRanking(jogador: Estado, apelidoAntigo?: string): void {
   const base = apelidoAntigo === undefined ? lerRanking() : retirar(lerRanking(), apelidoAntigo);
-  const colocado = { apelido: jogador.apelido, avatar: jogador.avatar, estrelas: totalEstrelas(jogador, UNIDADES), mvp: mvp(jogador, iniciadas) };
+  const colocado = colocadoDe(jogador);
   quadro.salvar(serializarRanking(registrar(base, colocado)));
+  // O ranking online só recebe a pontuação de quem escolheu entrar nele, tem apelido e já tem estrela.
+  if (participa(colocado.apelido) && colocado.estrelas > 0) void enviarPontuacao(colocado);
 }
 
 function ir(nova: Tela): void {
@@ -230,6 +237,15 @@ function montar(): HTMLElement {
         quadro.apagar();
         render();
       },
+      entrarOnline: () => {
+        entrarNoRankingOnline();
+        const colocado = colocadoDe(atual);
+        // Espera o envio para a lista já voltar com a linha do jogador.
+        void (colocado.estrelas > 0 ? enviarPontuacao(colocado) : Promise.resolve(true)).then(render);
+      },
+      sairOnline: () => {
+        void sairDoRankingOnline().then(render);
+      },
     });
   } else if (aba === 'perfil') {
     conteudo = telaPerfil(atual, {
@@ -248,6 +264,7 @@ function montar(): HTMLElement {
       recarregarVidas: recarregar,
       recomecar: () => {
         store.apagar();
+        esquecerJogadorOnline();
         estado = null;
         unidadeVista = null;
         ir({ nome: 'inicio' });

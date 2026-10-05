@@ -213,7 +213,7 @@ test('ranking do aparelho: só aparece para quem tem apelido e guarda quem jogou
   await page.getByTestId('salvar-apelido').click();
   await page.getByTestId('aba-ranking').click();
   await expect(page.getByTestId('colocado-1')).toContainText('Ana');
-  await expect(page.getByTestId('minha-posicao')).toContainText('Você ainda não está no ranking.');
+  await expect(page.getByTestId('minha-posicao')).toContainText('Você ainda não está neste ranking.');
 
   await page.reload();
   await page.getByTestId('continuar').click();
@@ -237,6 +237,73 @@ test('ranking: o pódio ordena por estrelas e a lista segue do quarto lugar em d
   await expect(page.getByTestId('colocado-5')).toContainText('Edu');
   await expect(page.getByTestId('minha-posicao')).toContainText('Você está em 4º lugar de 5.');
   await conferirLayout(page, 'ranking cheio');
+});
+
+test('ranking online: entrar é opcional, envia só apelido e pontuação, e dá para sair', async ({ page }) => {
+  await entrarCom(page, { apelido: 'Duda', avatar: 'planeta', trilha: 'python', nos: { 'python-saida': 100 }, rodadas: 1 });
+  await page.getByTestId('aba-ranking').click();
+  await page.getByTestId('ranking-online').click();
+
+  // Sem as variáveis do banco no build (como no build.zip offline), a visão online avisa e o jogo segue.
+  if ((await page.getByTestId('online-indisponivel').count()) > 0) {
+    await expect(page.getByTestId('online-indisponivel')).toContainText('não está ligado nesta versão');
+    await page.getByTestId('ranking-aparelho').click();
+    await expect(page.getByTestId('minha-posicao')).toBeVisible();
+    return;
+  }
+
+  // Banco simulado: guarda o que o jogo enviou e responde como as funções de verdade.
+  const enviados: Record<string, unknown>[] = [];
+  let noBanco = false;
+  await page.route(/supabase\.co\/rest\/v1\/rpc\/registrar_pontuacao/, async (rota) => {
+    enviados.push(rota.request().postDataJSON() as Record<string, unknown>);
+    noBanco = true;
+    await rota.fulfill({ status: 204, body: '' });
+  });
+  await page.route(/supabase\.co\/rest\/v1\/rpc\/sair_do_ranking/, async (rota) => {
+    noBanco = false;
+    await rota.fulfill({ status: 204, body: '' });
+  });
+  await page.route(/supabase\.co\/rest\/v1\/rpc\/ranking_online/, async (rota) => {
+    const outros = [{ apelido: 'Ana', avatar: 'estrela', estrelas: 12, mvp: 400, voce: false }];
+    const eu = { apelido: 'Duda', avatar: 'planeta', estrelas: 3, mvp: 150, voce: true };
+    await rota.fulfill({ json: noBanco ? { total: 2, posicao: 2, colocados: [...outros, eu] } : { total: 1, posicao: null, colocados: outros } });
+  });
+  await page.getByTestId('ranking-aparelho').click();
+  await page.getByTestId('ranking-online').click();
+
+  // Antes de entrar: vê o ranking, mas nada dela foi enviado.
+  await expect(page.getByTestId('colocado-1')).toContainText('Ana');
+  await expect(page.getByTestId('minha-posicao')).toContainText('Entre no ranking online para aparecer.');
+  expect(enviados).toEqual([]);
+  await conferirLayout(page, 'ranking online, antes de entrar');
+
+  await page.getByTestId('entrar-online').click();
+  await expect(page.getByTestId('minha-posicao')).toContainText('Você está em 2º lugar de 2.');
+  await expect(page.getByTestId('colocado-2')).toContainText('Duda');
+  // O que sai do aparelho: apelido, personagem, estrelas, MVP e o identificador aleatório. Nada mais.
+  expect(enviados).toHaveLength(1);
+  expect(Object.keys(enviados[0]!).sort()).toEqual(['p_apelido', 'p_avatar', 'p_dispositivo', 'p_estrelas', 'p_mvp']);
+  expect(enviados[0]).toMatchObject({ p_apelido: 'Duda', p_avatar: 'planeta', p_estrelas: 3 });
+  expect(String(enviados[0]!.p_dispositivo)).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
+  await conferirLayout(page, 'ranking online, dentro');
+
+  page.once('dialog', (dialogo) => void dialogo.accept());
+  await page.getByTestId('sair-online').click();
+  await expect(page.getByTestId('entrar-online')).toBeVisible();
+  await expect(page.getByTestId('minha-posicao')).toContainText('Você ainda não está neste ranking.');
+});
+
+test('ranking online: sem conexão, a visão online avisa e a do aparelho continua', async ({ page }) => {
+  await entrarCom(page, { apelido: 'Duda', trilha: 'python', nos: { 'python-saida': 100 }, rodadas: 1 });
+  await page.getByTestId('aba-ranking').click();
+  await page.getByTestId('ranking-online').click();
+  test.skip((await page.getByTestId('online-indisponivel').count()) > 0, 'este build não tem o ranking online ligado');
+
+  // O apoio dos testes bloqueia o banco: é o mesmo que estar sem internet.
+  await expect(page.getByTestId('online-offline')).toBeVisible();
+  await page.getByTestId('ranking-aparelho').click();
+  await expect(page.getByTestId('minha-posicao')).toBeVisible();
 });
 
 test('perfil: personagem, título, sequência de dias e números do jogador', async ({ page }) => {

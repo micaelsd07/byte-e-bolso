@@ -52,6 +52,16 @@ export function serializarRanking(ranking: readonly Colocado[]): string {
 
 const ehInteiro = (v: unknown, max: number): v is number => typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= max;
 
+/** Confere uma linha vinda de fora (do navegador ou do servidor). null se algo não bate. */
+function lerColocado(item: unknown): Colocado | null {
+  if (typeof item !== 'object' || item === null) return null;
+  const { apelido, avatar, estrelas, mvp } = item as Record<string, unknown>;
+  if (typeof apelido !== 'string' || limparApelido(apelido) !== apelido || !participa(apelido)) return null;
+  if (typeof avatar !== 'string' || !(AVATARES as readonly string[]).includes(avatar)) return null;
+  if (!ehInteiro(estrelas, 3000) || estrelas === 0 || !ehInteiro(mvp, 1000)) return null;
+  return { apelido, avatar, estrelas, mvp };
+}
+
 /**
  * Lê o ranking guardado no navegador. Qualquer linha fora do formato faz o
  * ranking inteiro ser descartado, como acontece com um save adulterado.
@@ -68,13 +78,50 @@ export function desserializarRanking(texto: string | null): Colocado[] {
 
   const lido: Colocado[] = [];
   for (const item of bruto as unknown[]) {
-    if (typeof item !== 'object' || item === null) return [];
-    const { apelido, avatar, estrelas, mvp } = item as Record<string, unknown>;
-    if (typeof apelido !== 'string' || limparApelido(apelido) !== apelido || !participa(apelido)) return [];
-    if (lido.some((c) => c.apelido === apelido)) return [];
-    if (typeof avatar !== 'string' || !(AVATARES as readonly string[]).includes(avatar)) return [];
-    if (!ehInteiro(estrelas, 3000) || estrelas === 0 || !ehInteiro(mvp, 1000)) return [];
-    lido.push({ apelido, avatar, estrelas, mvp });
+    const colocado = lerColocado(item);
+    if (colocado === null || lido.some((c) => c.apelido === colocado.apelido)) return [];
+    lido.push(colocado);
   }
   return lido.sort(ordem);
+}
+
+/* ---------- ranking online ---------- */
+
+/** Quantas linhas o servidor devolve, no máximo. */
+export const TAMANHO_DO_RANKING_ONLINE = 50;
+
+/** Uma linha do ranking mostrado na tela. `voce` marca a linha do próprio jogador. */
+export interface ColocadoOnline extends Colocado {
+  voce: boolean;
+}
+
+export interface RankingOnline {
+  /** Os primeiros colocados, já em ordem. No ranking online, apelidos podem se repetir. */
+  colocados: ColocadoOnline[];
+  /** Posição do jogador, a partir de 1, ou null se ele não está no ranking. */
+  posicao: number | null;
+  total: number;
+}
+
+/**
+ * Confere a resposta do servidor antes de ela chegar à tela. O que vem de fora
+ * não é confiável: qualquer campo fora do formato faz a resposta inteira ser
+ * recusada, e a tela avisa que o ranking online está indisponível.
+ */
+export function lerRankingOnline(bruto: unknown): RankingOnline | null {
+  if (typeof bruto !== 'object' || bruto === null) return null;
+  const { colocados, posicao: lugar, total } = bruto as Record<string, unknown>;
+  if (!Array.isArray(colocados) || colocados.length > TAMANHO_DO_RANKING_ONLINE) return null;
+  if (!ehInteiro(total, 1_000_000) || total < colocados.length) return null;
+  if (lugar !== null && (!ehInteiro(lugar, 1_000_000) || lugar < 1 || lugar > total)) return null;
+
+  const lidos: ColocadoOnline[] = [];
+  for (const item of colocados as unknown[]) {
+    const colocado = lerColocado(item);
+    if (colocado === null) return null;
+    lidos.push({ ...colocado, voce: (item as Record<string, unknown>).voce === true });
+  }
+  // Só uma linha pode ser a do jogador.
+  if (lidos.filter((c) => c.voce).length > 1) return null;
+  return { colocados: lidos, posicao: lugar, total };
 }
