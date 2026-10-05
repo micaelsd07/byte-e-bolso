@@ -26,7 +26,8 @@ function fasesDa(trilha: string): FaseDoConteudo[] {
 }
 const CARREIRA = fasesDa('carreira');
 
-const FONTES_AO_VIVO = /awesomeapi\.com\.br|brapi\.dev|tabnews\.com\.br/;
+// O banco do ranking online entra na lista: nenhum teste escreve no banco de verdade.
+const FONTES_AO_VIVO = /awesomeapi\.com\.br|brapi\.dev|tabnews\.com\.br|supabase\.co/;
 
 /**
  * Deixa o teste independente do mundo de fora: as fontes ao vivo ficam
