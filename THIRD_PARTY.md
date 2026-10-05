@@ -14,6 +14,18 @@ Regulamento do Framework Arcade, itens 14.2 e 15.1 d. Toda biblioteca, imagem, s
 
 Nenhuma biblioteca de terceiros é incluída no pacote que o jogador recebe: o jogo não tem dependências de execução (`dependencies` vazio no `package.json`).
 
+## Fontes de dados ao vivo
+
+Consultadas pelo navegador do jogador nas telas Mercado e Notícias. Nenhum dado delas é incluído no pacote do jogo, e o jogo mostra o nome da fonte ao lado de cada painel.
+
+| Fonte | O que fornece | Condições de uso |
+|---|---|---|
+| [AwesomeAPI](https://docs.awesomeapi.com.br/api-de-moedas) | Cotação de moedas em reais | API pública e gratuita, sem chave |
+| [brapi](https://brapi.dev) | Preço de 4 códigos da B3 liberados sem chave | Plano gratuito, sem chave para esses códigos |
+| [TabNews](https://www.tabnews.com.br) | Títulos e links de publicações da comunidade | API pública; o jogo exibe só título, autor e link para o texto original |
+
+O jogo exibe apenas o código de negociação das ações, sem nome nem logotipo de empresa. Os títulos das notícias são de quem publicou e podem citar marcas.
+
 ## Ferramentas de desenvolvimento e de pipeline
 
 Usadas para compilar, testar e publicar. Não são distribuídas com o jogo.
