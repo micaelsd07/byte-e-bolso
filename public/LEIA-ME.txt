@@ -1,4 +1,4 @@
-BYTE & BOLSO
+BYTE
 Jogo educativo de programação e tecnologia.
 
 COMO JOGAR SEM INTERNET

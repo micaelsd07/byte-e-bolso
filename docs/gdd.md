@@ -1,4 +1,4 @@
-# Byte & Bolso
+# Byte
 
 **Game Design Document** · versão {{versao}} ({{sha}}) · {{data}}
 
@@ -16,7 +16,7 @@ O acesso à educação em tecnologia depende, então, de três coisas que costum
 
 ### A solução
 
-Byte & Bolso é um simulador de início de carreira em tecnologia. O jogador começa com R$ 2.500 e a vontade de trabalhar na área. A cada passo toma uma decisão ou resolve um desafio, e vê o que mudou no seu dinheiro, na sua energia e no que sabe. Depois de cada escolha, o jogo explica o porquê: o erro também ensina.
+Byte é um simulador de início de carreira em tecnologia. O jogador começa com R$ 2.500 e a vontade de trabalhar na área. A cada passo toma uma decisão ou resolve um desafio, e vê o que mudou no seu dinheiro, na sua energia e no que sabe. Depois de cada escolha, o jogo explica o porquê: o erro também ensina.
 
 ### Público-alvo
 
@@ -154,7 +154,7 @@ Wireframes das três telas principais na largura de 360 px. As capturas da build
 INÍCIO                    JOGO                      FIM
 +----------------------+  +----------------------+  +----------------------+
 | TECNOLOGIA·FINANÇAS  |  | R$ 900  80%  NV1 MVP |  | FASE 1               |
-| Byte & Bolso         |  | Fase 1          2/5  |  | Fase concluída       |
+| Byte                 |  | Fase 1          2/5  |  | Fase concluída       |
 | Suas escolhas...     |  | [=====------------]  |  | * * *                |
 |                      |  +----------------------+  | MVP 960  NV 2  R$... |
 | | Você começa com    |  | FINANÇAS             |  +----------------------+

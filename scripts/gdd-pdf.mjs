@@ -18,8 +18,8 @@ if (faltando.length > 0) {
 const { bytes, paginas } = await gerarPdf({
   markdown,
   destino: DESTINO,
-  titulo: `Byte &amp; Bolso · Game Design Document v${ctx.versao}`,
-  rodape: `Byte &amp; Bolso · GDD v${ctx.versao} (${ctx.sha}) · ${ctx.data}`,
+  titulo: `Byte · Game Design Document v${ctx.versao}`,
+  rodape: `Byte · GDD v${ctx.versao} (${ctx.sha}) · ${ctx.data}`,
 });
 
 console.log(`${DESTINO}: v${ctx.versao} (${ctx.sha}), ${ctx.data}, ${paginas} páginas, ${bytes} bytes`);

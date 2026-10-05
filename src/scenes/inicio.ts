@@ -31,7 +31,7 @@ export function telaInicio(salvo: Estado | null, acoes: AcoesInicio): HTMLElemen
     h(
       'header',
       { class: 'marca' },
-      h('h1', { tabindex: -1 }, 'Byte ', h('span', { class: 'e-comercial' }, '&'), ' Bolso'),
+      h('h1', { tabindex: -1 }, 'Byte', h('span', { class: 'cursor', 'aria-hidden': 'true' }, '_')),
       h('p', { class: 'slogan' }, 'Aprenda a programar jogando.'),
     ),
     heroi,

@@ -18,12 +18,12 @@ O vídeo precisa mostrar três coisas: a proposta de gamificação, o conceito e
 | Tempo | O que aparece | Narração |
 |---|---|---|
 | 0:00 a 0:07 | Tela inicial do jogo no celular. O dedo toca em "Jogar". | Aprender a programar costuma começar com um cadastro, um vídeo longo e um computador. E se começasse com um toque? |
-| 0:07 a 0:18 | Grade de trilhas: Python, JavaScript, Java, C, C++, HTML, CSS, Carreira. O dedo escolhe uma. | Este é o Byte & Bolso. Você escolhe uma linguagem e joga lições de três minutos, no celular, sem criar conta. |
+| 0:07 a 0:18 | Grade de trilhas: Python, JavaScript, Java, C, C++, HTML, CSS, Carreira. O dedo escolhe uma. | Este é o Byte. Você escolhe uma linguagem e joga lições de três minutos, no celular, sem criar conta. |
 | 0:18 a 0:38 | Uma lição inteira, acelerada: resumo com código, escolher a resposta, montar o código com peças, digitar o trecho que falta. Um erro: a vida some e a explicação aparece. | Cada lição mostra como funciona e põe você para praticar: escolher, montar o código peça por peça e digitar o que falta. Errou? O jogo mostra a resposta, explica o porquê e traz o exercício de volta. |
 | 0:38 a 0:50 | Lista de fases com a "Prova da unidade". Relógio correndo, contador de acertos seguidos, tela de resultado com 3 estrelas. | No fim de cada unidade vem a prova: os mesmos exercícios, agora com relógio. É ela que abre a próxima unidade. |
 | 0:50 a 1:03 | Tela da empresa: comprar uma melhoria, o caixa desce, o custo fixo sobe. Depois, a negociação com o cliente. | O que você ganha vira o caixa da sua empresa. Cada melhoria tem preço e custo fixo, e saldo negativo paga juros. Programar e cuidar do dinheiro, no mesmo jogo. |
 | 1:03 a 1:15 | Painel `/status/` e a aba Actions com a esteira verde. Depois, o `build.zip` aberto sem internet. | Por trás, uma esteira leva cada mudança do commit até a produção, com testes, canário e rollback. E o jogo inteiro cabe em um arquivo que roda sem internet. |
-| 1:15 a 1:25 | Tela inicial de novo, com o endereço do jogo em texto na tela. | Byte & Bolso: aprenda a programar jogando. O link está na descrição. |
+| 1:15 a 1:25 | Tela inicial de novo, com o endereço do jogo em texto na tela. | Byte: aprenda a programar jogando. O link está na descrição. |
 
 A narração tem cerca de 190 palavras, o que dá por volta de 80 segundos em fala natural. Se passar, corte primeiro o trecho da empresa (0:50 a 1:03).
 
@@ -42,7 +42,7 @@ Uma linha por trecho, na ordem do roteiro. Ajuste os tempos ao vídeo final.
 ```text
 Aprender a programar costuma começar com um cadastro, um vídeo longo e um computador.
 E se começasse com um toque?
-Este é o Byte & Bolso.
+Este é o Byte.
 Você escolhe uma linguagem e joga lições de três minutos, no celular, sem criar conta.
 Cada lição mostra como funciona e põe você para praticar:
 escolher, montar o código peça por peça e digitar o que falta.
@@ -55,7 +55,7 @@ Programar e cuidar do dinheiro, no mesmo jogo.
 Por trás, uma esteira leva cada mudança do commit até a produção,
 com testes, canário e rollback.
 E o jogo inteiro cabe em um arquivo que roda sem internet.
-Byte & Bolso: aprenda a programar jogando.
+Byte: aprenda a programar jogando.
 ```
 
 ## Depois de gravar

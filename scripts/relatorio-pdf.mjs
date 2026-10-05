@@ -21,8 +21,8 @@ if (faltando.length > 0) {
 const { bytes, paginas } = await gerarPdf({
   markdown,
   destino: DESTINO,
-  titulo: `Byte &amp; Bolso · Relatório técnico v${ctx.versao}`,
-  rodape: `Byte &amp; Bolso · Relatório técnico v${ctx.versao} (${ctx.sha}) · ${ctx.data}`,
+  titulo: `Byte · Relatório técnico v${ctx.versao}`,
+  rodape: `Byte · Relatório técnico v${ctx.versao} (${ctx.sha}) · ${ctx.data}`,
 });
 
 // Campo que só o squad pode preencher (evidência, nome, retrospectiva) fica marcado no texto.

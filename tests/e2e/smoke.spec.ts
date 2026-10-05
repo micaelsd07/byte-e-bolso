@@ -8,7 +8,7 @@ test('o jogo abre, mostra a versão publicada e aceita a primeira jogada', async
   page.on('pageerror', (erro) => erros.push(erro.message));
 
   await page.goto('./');
-  await expect(page).toHaveTitle('Byte & Bolso');
+  await expect(page).toHaveTitle('Byte');
   // Na URL pública, quem responde primeiro é o carregador, que leva à release
   // estável. O version.json conferido é o da release em que o jogador caiu.
   await expect(page.getByTestId('versao')).toBeVisible();

@@ -1,7 +1,7 @@
 /**
  * Ilustração da tela inicial, desenhada por código: um notebook com código na
- * tela (o "byte") e uma moeda (o "bolso"). O desenho é fixo e próprio do jogo:
- * não leva dado do jogador nem imagem de fora.
+ * tela e uma moeda, que é o dinheiro do jogo. O desenho é fixo e próprio do
+ * jogo: não leva dado do jogador nem imagem de fora.
  */
 export function svgHeroi(): string {
   return (
