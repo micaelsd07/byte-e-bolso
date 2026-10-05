@@ -119,11 +119,12 @@ Cada requisito dos dois documentos oficiais (Regulamento do Framework Arcade, ed
 
 | Requisito | Implementação | Arquivo | Status |
 |---|---|---|---|
-| `monitor.yml` a cada 15 min: HTTP, tempo e versão | n/a | n/a | Pendente |
-| `status/sondas.csv` na branch `observabilidade` | n/a | n/a | Pendente |
-| Alertas `JogoForaDoAr` e `LatenciaAlta` como Issues que se fecham sozinhas | Só o aviso de deploy falho existe hoje | `esteira.yml` | Pendente |
-| Painel `/status/` | n/a | n/a | Pendente |
-| `scripts/dora.mjs` e comparação com a linha de base de 11 dias | n/a | n/a | Pendente |
+| `monitor.yml` a cada 15 min: HTTP, tempo e versão | Sonda com até 3 tentativas; em produção segue o `rollout.json` até o `version.json` da release | `monitor.yml`, `scripts/monitor.mjs` | Script verificado local contra a URL real (404: Pages ainda desligado). Falta rodar agendado no GitHub |
+| `status/sondas.csv` na branch `observabilidade` | Branch criado pela primeira execução; CSV limitado a 6.000 linhas | `scripts/lib/observabilidade.sh`, `scripts/lib/monitor.mjs` | Regras com teste de unidade. Falta rodar no GitHub |
+| Alertas `JogoForaDoAr` e `LatenciaAlta` como Issues que se fecham sozinhas | Abre, mantém e fecha comparando a rodada com as Issues abertas | `scripts/lib/monitor.mjs` | Decisão com teste de unidade. A chamada à API de Issues falta rodar no GitHub |
+| Painel `/status/` | Lê o CSV e o `dora.json` do branch `observabilidade`, o `rollout.json` e as Issues abertas | `pages/status/index.html` | Verificado por E2E com respostas simuladas. Falta ver publicado |
+| `scripts/dora.mjs` e comparação com a linha de base de 11 dias | Deploys do environment `producao`, rollbacks e Issues de alerta | `scripts/dora.mjs`, `scripts/lib/dora.mjs` | Conta com teste de unidade; leitura da API verificada no repositório real (0 deploys até agora) |
+| Uma decisão de melhoria a partir das métricas, e o efeito dela | n/a | `docs/relatorio.md` | Pendente: depende de dados reais e é do squad |
 
 ### INT-09 · Build pública e pacote de submissão (8%, prazo 09/10)
 

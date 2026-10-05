@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#262b3d" />
+    <meta name="robots" content="noindex" />
+    <title>Status · Byte &amp; Bolso</title>
+    <style>
+      :root {
+        --fundo: #262b3d;
+        --fundo-2: #1d2130;
+        --sup: #2c3348;
+        --texto: #eef2ff;
+        --texto-2: #a3aecd;
+        --azul: #5b8cff;
+        --amarelo: #ffc93c;
+        --verde: #3ddc97;
+        --coral: #ff6b6b;
+        --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--fundo);
+        color: var(--texto);
+        font: 500 1rem/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 46rem;
+        margin: 0 auto;
+        padding: 20px 16px 32px;
+      }
+      h1,
+      h2,
+      p,
+      ul {
+        margin: 0;
+      }
+      h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--texto-2);
+      }
+      a {
+        color: #9db9ff;
+      }
+      a:focus-visible {
+        outline: 3px solid var(--amarelo);
+        outline-offset: 2px;
+      }
+      .sub {
+        color: var(--texto-2);
+        font-size: 0.9rem;
+      }
+      .cartao {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 18px;
+        border-radius: 20px;
+        background: var(--sup);
+        box-shadow: 6px 6px 16px rgba(8, 10, 20, 0.5), -4px -4px 12px rgba(140, 155, 205, 0.1);
+      }
+      .geral {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+      .luz {
+        width: 14px;
+        height: 14px;
+        flex: none;
+        border-radius: 50%;
+        background: var(--texto-2);
+      }
+      .ok .luz {
+        background: var(--verde);
+      }
+      .ruim .luz {
+        background: var(--coral);
+      }
+      .atencao .luz {
+        background: var(--amarelo);
+      }
+      .grade {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .numero {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: var(--fundo-2);
+        min-width: 0;
+      }
+      .numero b {
+        font: 800 1.2rem var(--mono);
+        overflow-wrap: anywhere;
+      }
+      .numero small {
+        color: var(--texto-2);
+        font-size: 0.74rem;
+      }
+      .topo {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .selo {
+        padding: 2px 10px;
+        border-radius: 999px;
+        background: var(--fundo-2);
+        font: 700 0.72rem var(--mono);
+      }
+      .selo.ok {
+        color: var(--verde);
+      }
+      .selo.ruim {
+        color: var(--coral);
+      }
+      .selo.atencao {
+        color: var(--amarelo);
+      }
+      svg.traco {
+        display: block;
+        width: 100%;
+        height: 56px;
+      }
+      ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      li {
+        overflow-wrap: anywhere;
+      }
+      footer {
+        color: var(--texto-2);
+        font-size: 0.8rem;
+      }
+      @media (min-width: 600px) {
+        .grade {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Status do Byte &amp; Bolso</h1>
+        <p class="sub" id="atualizado">Carregando as medições…</p>
+      </header>
+
+      <section class="cartao geral" id="geral" role="status"><span class="luz"></span><span id="geral-texto">Carregando…</span></section>
+
+      <section class="cartao" id="producao" aria-labelledby="t-producao"></section>
+      <section class="cartao" id="homologacao" aria-labelledby="t-homologacao"></section>
+
+      <section class="cartao" aria-labelledby="t-entrega">
+        <h2 id="t-entrega">Entrega em produção</h2>
+        <div class="grade" id="entrega"></div>
+      </section>
+
+      <section class="cartao" aria-labelledby="t-alertas">
+        <h2 id="t-alertas">Alertas abertos</h2>
+        <ul id="alertas"><li class="sub">Carregando…</li></ul>
+      </section>
+
+      <section class="cartao" aria-labelledby="t-dora">
+        <h2 id="t-dora">Métricas DORA</h2>
+        <div class="grade" id="dora"></div>
+        <p class="sub" id="dora-nota"></p>
+      </section>
+
+      <footer>
+        <p id="fonte"></p>
+        <p>As sondas rodam a cada 15 minutos no GitHub Actions; execuções agendadas podem atrasar em horários de pico. Este painel não coleta nenhum dado de quem o visita.</p>
+      </footer>
+    </main>
+
+    <script>
+      // Painel de status (INT-08). Só lê: as medições vêm do branch `observabilidade`,
+      // o rollout.json e os version.json vêm do próprio GitHub Pages.
+      (function () {
+        'use strict';
+        var LIMITE_LATENCIA = 2;
+        var HORA = 3600000;
+
+        // usuario.github.io/repositorio/status/ -> usuario/repositorio
+        var dono = /\.github\.io$/.test(location.hostname) ? location.hostname.replace(/\.github\.io$/, '') : '';
+        var repo = location.pathname.split('/')[1] || '';
+        var dados = 'https://raw.githubusercontent.com/' + dono + '/' + repo + '/observabilidade/status/';
+
+        function el(tag, classe, texto) {
+          var no = document.createElement(tag);
+          if (classe) no.className = classe;
+          if (texto !== undefined) no.textContent = texto;
+          return no;
+        }
+        function numero(valor, rotulo) {
+          var caixa = el('div', 'numero');
+          caixa.append(el('b', '', valor), el('small', '', rotulo));
+          return caixa;
+        }
+        function buscar(url, comoJson) {
+          return fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 't=' + Date.now(), { cache: 'no-store' })
+            .then(function (r) {
+              if (!r.ok) throw new Error(String(r.status));
+              return comoJson ? r.json() : r.text();
+            })
+            .catch(function () {
+              return null;
+            });
+        }
+        function haQuanto(ms) {
+          var min = Math.max(0, Math.round((Date.now() - ms) / 60000));
+          if (min < 1) return 'agora';
+          if (min < 60) return 'há ' + min + ' min';
+          var h = Math.round(min / 60);
+          return h < 48 ? 'há ' + h + ' h' : 'há ' + Math.round(h / 24) + ' dias';
+        }
+        function pct(fracao) {
+          return fracao === null ? 'sem dados' : (fracao * 100).toFixed(fracao === 1 ? 0 : 1).replace('.', ',') + '%';
+        }
+        function seg(valor) {
+          return valor === null ? 'sem dados' : valor.toFixed(2).replace('.', ',') + ' s';
+        }
+        function mediana(valores) {
+          if (valores.length === 0) return null;
+          var v = valores.slice().sort(function (a, b) {
+            return a - b;
+          });
+          var meio = Math.floor(v.length / 2);
+          return v.length % 2 ? v[meio] : (v[meio - 1] + v[meio]) / 2;
+        }
+
+        function lerCsv(texto) {
+          return (texto || '')
+            .split('\n')
+            .slice(1)
+            .map(function (linha) {
+              var c = linha.trim().split(',');
+              return { quando: Date.parse(c[0]), ambiente: c[1], codigo: Number(c[3]), tempo: Number(c[4]), versao: c[5] || '' };
+            })
+            .filter(function (s) {
+              return !isNaN(s.quando) && !isNaN(s.codigo);
+            });
+        }
+        function disponibilidade(sondas, horas) {
+          var desde = Date.now() - horas * HORA;
+          var janela = sondas.filter(function (s) {
+            return s.quando >= desde;
+          });
+          if (janela.length === 0) return null;
+          return (
+            janela.filter(function (s) {
+              return s.codigo === 200;
+            }).length / janela.length
+          );
+        }
+
+        /** Latência das últimas sondas, com as falhas marcadas em vermelho. */
+        function traco(sondas) {
+          var ultimas = sondas.slice(-48);
+          var ns = 'http://www.w3.org/2000/svg';
+          var svg = document.createElementNS(ns, 'svg');
+          svg.setAttribute('class', 'traco');
+          svg.setAttribute('viewBox', '0 0 240 56');
+          svg.setAttribute('preserveAspectRatio', 'none');
+          svg.setAttribute('role', 'img');
+          svg.setAttribute('aria-label', 'Latência das últimas ' + ultimas.length + ' sondas');
+          var teto = Math.max.apply(
+            null,
+            [LIMITE_LATENCIA * 1.1].concat(
+              ultimas.map(function (s) {
+                return s.tempo;
+              }),
+            ),
+          );
+          var x = function (i) {
+            return ultimas.length < 2 ? 120 : (i / (ultimas.length - 1)) * 236 + 2;
+          };
+          var y = function (t) {
+            return 52 - (Math.min(t, teto) / teto) * 48;
+          };
+          var limite = document.createElementNS(ns, 'line');
+          limite.setAttribute('x1', '0');
+          limite.setAttribute('x2', '240');
+          limite.setAttribute('y1', String(y(LIMITE_LATENCIA)));
+          limite.setAttribute('y2', String(y(LIMITE_LATENCIA)));
+          limite.setAttribute('stroke', '#ffc93c');
+          limite.setAttribute('stroke-dasharray', '4 4');
+          limite.setAttribute('stroke-width', '1');
+          svg.append(limite);
+          var linha = document.createElementNS(ns, 'polyline');
+          linha.setAttribute(
+            'points',
+            ultimas
+              .map(function (s, i) {
+                return x(i).toFixed(1) + ',' + y(s.tempo).toFixed(1);
+              })
+              .join(' '),
+          );
+          linha.setAttribute('fill', 'none');
+          linha.setAttribute('stroke', '#5b8cff');
+          linha.setAttribute('stroke-width', '2');
+          linha.setAttribute('vector-effect', 'non-scaling-stroke');
+          svg.append(linha);
+          ultimas.forEach(function (s, i) {
+            if (s.codigo === 200) return;
+            var falha = document.createElementNS(ns, 'circle');
+            falha.setAttribute('cx', x(i).toFixed(1));
+            falha.setAttribute('cy', '50');
+            falha.setAttribute('r', '3');
+            falha.setAttribute('fill', '#ff6b6b');
+            svg.append(falha);
+          });
+          return svg;
+        }
+
+        /** Desenha o cartão de um ambiente e devolve a situação dele: ok, atencao, ruim ou vazio. */
+        function ambiente(id, titulo, sondas) {
+          var cartao = document.getElementById(id);
+          var ultima = sondas[sondas.length - 1];
+          var situacao = !ultima ? 'vazio' : ultima.codigo !== 200 ? 'ruim' : ultima.tempo > LIMITE_LATENCIA ? 'atencao' : 'ok';
+          var rotulo = { vazio: 'sem medição', ruim: 'fora do ar', atencao: 'lento', ok: 'no ar' }[situacao];
+          var topo = el('div', 'topo');
+          var h2 = el('h2', '', titulo);
+          h2.id = 't-' + id;
+          topo.append(h2, el('span', 'selo ' + situacao, rotulo));
+          cartao.replaceChildren(topo);
+          if (!ultima) {
+            cartao.append(el('p', 'sub', 'Nenhuma sonda registrada ainda para este ambiente.'));
+            return situacao;
+          }
+          var dia = sondas.filter(function (s) {
+            return s.quando >= Date.now() - 24 * HORA && s.codigo === 200;
+          });
+          var grade = el('div', 'grade');
+          grade.append(
+            numero(pct(disponibilidade(sondas, 24)), 'Disponibilidade em 24 h'),
+            numero(pct(disponibilidade(sondas, 24 * 7)), 'Disponibilidade em 7 dias'),
+            numero(
+              seg(
+                mediana(
+                  dia.map(function (s) {
+                    return s.tempo;
+                  }),
+                ),
+              ),
+              'Latência mediana em 24 h',
+            ),
+            numero(ultima.versao || 'não identificada', 'Versão servida'),
+          );
+          cartao.append(
+            grade,
+            traco(sondas),
+            el('p', 'sub', 'Última sonda ' + haQuanto(ultima.quando) + ': HTTP ' + (ultima.codigo || 'sem resposta') + ' em ' + seg(ultima.tempo) + '. A linha tracejada é o limite de ' + LIMITE_LATENCIA + ' s.'),
+          );
+          return situacao;
+        }
+
+        function entrega(rollout, versao) {
+          var caixa = document.getElementById('entrega');
+          if (!rollout) {
+            caixa.replaceChildren(el('p', 'sub', 'rollout.json não encontrado: ainda não houve deploy em produção.'));
+            return;
+          }
+          caixa.replaceChildren(
+            numero(versao && versao.versao ? 'v' + versao.versao : 'sem dados', 'Versão em produção'),
+            numero(rollout.estavel || 'nenhuma', 'Release estável'),
+            numero(rollout.canario ? rollout.canario + ' em ' + (rollout.percentual || 0) + '%' : 'sem canário', 'Canário'),
+            numero(rollout.anterior || 'nenhuma', 'Alvo do rollback'),
+          );
+        }
+
+        function alertas(issues) {
+          var lista = document.getElementById('alertas');
+          if (issues === null) {
+            lista.replaceChildren(el('li', 'sub', 'Não foi possível consultar as Issues agora.'));
+            return 0;
+          }
+          var abertas = issues.filter(function (i) {
+            return !i.pull_request;
+          });
+          if (abertas.length === 0) {
+            lista.replaceChildren(el('li', 'sub', 'Nenhum alerta aberto.'));
+            return 0;
+          }
+          lista.replaceChildren.apply(
+            lista,
+            abertas.map(function (i) {
+              var item = el('li');
+              var link = el('a', '', '#' + i.number + ' ' + i.title);
+              // Só aceita endereço do próprio GitHub: o texto vem de fora.
+              if (typeof i.html_url === 'string' && i.html_url.indexOf('https://github.com/') === 0) link.href = i.html_url;
+              item.append(link, el('span', 'sub', ' · aberto ' + haQuanto(Date.parse(i.created_at))));
+              return item;
+            }),
+          );
+          return abertas.length;
+        }
+
+        function dora(m) {
+          var caixa = document.getElementById('dora');
+          var nota = document.getElementById('dora-nota');
+          if (!m || !m.leadTime) {
+            caixa.replaceChildren();
+            nota.textContent = 'O relatório DORA ainda não foi gerado.';
+            return;
+          }
+          var vazio = function (v, texto) {
+            return v === null || v === undefined ? 'sem dados' : texto;
+          };
+          caixa.replaceChildren(
+            numero(String(m.frequenciaDeDeploy.porSemana).replace('.', ',') + ' / semana', 'Frequência de deploy (' + m.frequenciaDeDeploy.deploys + ' no período)'),
+            numero(vazio(m.leadTime.horas, String(m.leadTime.horas).replace('.', ',') + ' h'), 'Lead time de mudança'),
+            numero(vazio(m.taxaDeFalha.percentual, String(m.taxaDeFalha.percentual).replace('.', ',') + '%'), 'Taxa de falha de mudança'),
+            numero(vazio(m.tempoDeRecuperacao.minutos, String(m.tempoDeRecuperacao.minutos).replace('.', ',') + ' min'), 'Tempo de recuperação'),
+          );
+          var comparacao =
+            m.leadTime.vezesMaisRapido === null
+              ? 'Linha de base da Carparts: lead time de ' + m.leadTime.linhaDeBaseDias + ' dias. Ainda não há deploy para comparar.'
+              : 'Linha de base da Carparts: ' + m.leadTime.linhaDeBaseDias + ' dias. A esteira do jogo é ' + String(m.leadTime.vezesMaisRapido).replace('.', ',') + ' vezes mais rápida.';
+          nota.textContent = comparacao + ' Período de ' + m.periodo.dias + ' dias, calculado ' + haQuanto(Date.parse(m.geradoEm)) + '.';
+        }
+
+        function geral(classe, texto) {
+          document.getElementById('geral').className = 'cartao geral ' + classe;
+          document.getElementById('geral-texto').textContent = texto;
+        }
+
+        if (!dono || !repo) {
+          geral('atencao', 'Este painel só tem dados quando publicado no GitHub Pages.');
+          document.getElementById('atualizado').textContent = '';
+          return;
+        }
+        var repositorio = 'https://github.com/' + dono + '/' + repo;
+        var fonte = document.getElementById('fonte');
+        var link = el('a', '', dono + '/' + repo);
+        link.href = repositorio;
+        fonte.append('Dados: branch observabilidade de ', link, '.');
+
+        Promise.all([
+          buscar(dados + 'sondas.csv', false),
+          buscar(dados + 'dora.json', true),
+          buscar('../rollout.json', true),
+          buscar('https://api.github.com/repos/' + dono + '/' + repo + '/issues?state=open&labels=alerta&per_page=20', true),
+        ]).then(function (r) {
+          var sondas = lerCsv(r[0]);
+          var doAmbiente = function (nome) {
+            return sondas.filter(function (s) {
+              return s.ambiente === nome;
+            });
+          };
+          var producao = ambiente('producao', 'Produção', doAmbiente('producao'));
+          var homologacao = ambiente('homologacao', 'Homologação', doAmbiente('homologacao'));
+          var abertos = alertas(r[3]);
+          dora(r[1]);
+
+          var rollout = r[2];
+          entrega(rollout, null);
+          if (rollout && rollout.estavel) {
+            buscar('../releases/' + encodeURIComponent(rollout.estavel) + '/version.json', true).then(function (versao) {
+              entrega(rollout, versao);
+            });
+          }
+
+          var ultima = sondas[sondas.length - 1];
+          document.getElementById('atualizado').textContent = ultima ? 'Última medição ' + haQuanto(ultima.quando) + '.' : 'Ainda não há medições.';
+          if (producao === 'ruim') geral('ruim', 'Produção fora do ar');
+          else if (producao === 'vazio') geral('atencao', 'Sem medições de produção ainda');
+          else if (producao === 'atencao') geral('atencao', 'Produção no ar, mas lenta');
+          else if (homologacao === 'ruim') geral('atencao', 'Produção no ar; homologação fora do ar');
+          else if (abertos > 0) geral('atencao', 'No ar, com alerta aberto');
+          else geral('ok', 'Tudo no ar');
+        });
+      })();
+    </script>
+  </body>
+</html>

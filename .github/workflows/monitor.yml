@@ -1,0 +1,56 @@
+name: monitor
+
+# Monitoramento como código (INT-08). A cada 15 minutos sonda produção e
+# homologação, grava o resultado no branch `observabilidade`, abre ou fecha as
+# Issues de alerta e recalcula as métricas DORA.
+#
+# Limite conhecido: o GitHub atrasa execuções agendadas em horários de pico, e
+# pode pular algumas. O intervalo real entre duas sondas fica no sondas.csv.
+# Workflow agendado só roda a partir do branch padrão (main).
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write # gravar no branch observabilidade
+  issues: write # abrir e fechar os alertas
+  actions: read # ler as execuções do rollback para o DORA
+  deployments: read # ler os deploys de produção para o DORA
+
+concurrency:
+  # Duas sondas ao mesmo tempo brigariam pelo mesmo arquivo.
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Sondar e sincronizar os alertas
+        run: |
+          source scripts/lib/observabilidade.sh
+          abrir_observabilidade
+          echo "OBS_DIR=$OBS_DIR" >> "$GITHUB_ENV"
+          node scripts/monitor.mjs --pasta "$OBS_DIR/status"
+
+      - name: Métricas DORA
+        # Uma falha na API não pode impedir a sonda de ser gravada.
+        continue-on-error: true
+        run: node scripts/dora.mjs --dias 30 --json "$OBS_DIR/status/dora.json" --md "$OBS_DIR/status/dora.md"
+
+      - name: Gravar no branch observabilidade
+        if: always()
+        run: |
+          source scripts/lib/observabilidade.sh
+          enviar_observabilidade "monitor: sonda de $(date -u +%FT%TZ)"
