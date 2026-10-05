@@ -129,6 +129,22 @@ Se a triagem reprova, abre a Issue `TriagemReprovada` com o label `alerta`; quan
 
 Para rodar na sua máquina (precisa de `poppler-utils` e `ffmpeg`): `SITE_URL=... bash scripts/submissao.sh && bash scripts/triagem.sh`.
 
+### Espelho de demonstração no Firebase Hosting
+
+Além do GitHub Pages, o jogo pode ser publicado em um endereço `*.web.app` do Firebase Hosting, para demonstração. O `firebase.json` publica a pasta `dist/` como está.
+
+```bash
+npm run build
+firebase deploy --only hosting --project ID_DO_PROJETO
+```
+
+O que este espelho é, e o que não é:
+
+- **Não é a produção avaliada.** A produção é o GitHub Pages, escrito só pela pipeline, com canário, rollback e monitoramento. O espelho é publicado à mão, sem nada disso.
+- **Não tem o carregador nem o `rollout.json`:** serve sempre o último `dist/` enviado.
+- **Não guarda dado do jogador:** é só hospedagem de arquivos estáticos. O jogo continua sem cadastro e sem servidor.
+- A decisão de manter o espelho foi do squad, depois de o professor falar em sala sobre hospedar no Firebase. Se ele pedir, basta `firebase hosting:disable --project ID_DO_PROJETO`.
+
 ### Configuração do repositório (uma vez)
 
 1. Repositório **público**, com os 4 integrantes como colaboradores.
