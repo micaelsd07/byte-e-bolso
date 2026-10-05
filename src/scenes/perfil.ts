@@ -1,12 +1,13 @@
 import { MELHORIAS, TRILHAS, UNIDADES, fasesDa } from '../content';
-import { AVATARES, CUSTO_RECARGA, estrelasDoNo, maximoDeVidas, mvp, nivel, tituloDoNivel, totalEstrelas } from '../core/jogo';
+import { APELIDO_MAX, AVATARES, CUSTO_RECARGA, estrelasDoNo, maximoDeVidas, mvp, nivel, tituloDoNivel, totalEstrelas } from '../core/jogo';
 import type { Estado } from '../core/tipos';
 import { h } from '../ui/dom';
 import { barra, dinheiro } from '../ui/formato';
-import { icone, type Icone } from '../ui/icones';
+import { icone, iconeDaTrilha, type Icone } from '../ui/icones';
 
 export interface AcoesPerfil {
   escolherAvatar(avatar: string): void;
+  renomear(apelido: string): void;
   recarregarVidas(): void;
   recomecar(): void;
 }
@@ -18,6 +19,12 @@ const NOME_DO_AVATAR: Record<string, string> = {
   moeda: 'Moeda',
   cidade: 'Cidade',
   negociacao: 'Conversa',
+  codigo: 'Código',
+  foguete: 'Foguete',
+  estrela: 'Estrela',
+  chip: 'Chip',
+  planeta: 'Planeta',
+  trofeu: 'Troféu',
 };
 
 /** Perfil do personagem: quem ele é, o que já conquistou e como está em cada trilha. */
@@ -38,7 +45,7 @@ export function telaPerfil(estado: Estado, acoes: AcoesPerfil): HTMLElement {
     return h(
       'li',
       { class: 'progresso-trilha' },
-      h('span', { class: `sigla t-${t.id}`, 'aria-hidden': 'true' }, t.sigla),
+      iconeDaTrilha(t.id, 'bolha'),
       h('div', {}, h('strong', {}, t.nome), h('small', {}, `${feitas} de ${fases.length * 3} estrelas`), barra(feitas / (fases.length * 3), `Progresso em ${t.nome}`)),
     );
   });
@@ -57,6 +64,19 @@ export function telaPerfil(estado: Estado, acoes: AcoesPerfil): HTMLElement {
       icone(id as Icone),
     ),
   );
+
+  const campoApelido = h('input', {
+    id: 'novo-apelido',
+    class: 'campo',
+    type: 'text',
+    maxlength: APELIDO_MAX,
+    autocomplete: 'off',
+    autocapitalize: 'words',
+    spellcheck: 'false',
+    value: estado.apelido,
+    'aria-describedby': 'novo-apelido-ajuda',
+    'data-testid': 'novo-apelido',
+  });
 
   return h(
     'div',
@@ -96,7 +116,25 @@ export function telaPerfil(estado: Estado, acoes: AcoesPerfil): HTMLElement {
           )
         : null,
     ),
-    h('section', { class: 'relevo bloco' }, h('h2', {}, 'Personagem'), h('div', { class: 'avatares' }, ...avatares)),
+    h(
+      'section',
+      { class: 'relevo bloco' },
+      h('h2', {}, 'Personagem'),
+      h('div', { class: 'avatares' }, ...avatares),
+      h(
+        'form',
+        {
+          class: 'apelido-form',
+          onsubmit: (evento: Event) => {
+            evento.preventDefault();
+            acoes.renomear(campoApelido.value);
+          },
+        },
+        h('label', { for: 'novo-apelido', class: 'rotulo' }, 'Apelido'),
+        h('div', { class: 'apelido-linha' }, campoApelido, h('button', { type: 'submit', class: 'botao pequeno', 'data-testid': 'salvar-apelido' }, 'Salvar')),
+        h('p', { id: 'novo-apelido-ajuda', class: 'ajuda' }, 'Fica só neste aparelho. Não use seu nome completo.'),
+      ),
+    ),
     trilhas.length > 0 ? h('section', { class: 'relevo bloco' }, h('h2', {}, 'Suas trilhas'), h('ul', {}, ...trilhas)) : null,
     h(
       'button',

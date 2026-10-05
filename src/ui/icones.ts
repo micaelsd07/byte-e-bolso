@@ -17,9 +17,38 @@ const TRACOS = {
   negociacao: 'M4 5h16v10H9l-5 4z',
   cambio: 'M4 9h13l-3-3M20 15H7l3 3',
   perfil: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  codigo: 'M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16',
+  foguete: 'M12 3c4 2 6 6 6 10l-3 3H9l-3-3c0-4 2-8 6-10zM12 9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9 16l-1 5 4-2 4 2-1-5',
+  estrela: 'M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9l-5.4 2.9 1.1-6.1L3.2 9.4l6.1-.8z',
+  chip: 'M7 7h10v10H7zM10 10h4v4h-4zM9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4',
+  planeta: 'M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM2.5 15.5c2.5 2.5 16.5-4.5 19-7',
+  trofeu: 'M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4',
+  grade: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z',
+  relogio: 'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM12 8v4l3 2',
+  certo: 'M5 12.5l4.5 4.5L19 7.5',
+  terminal: 'M4 5h16v14H4zM7.5 10l3 2-3 2M12.5 15h4',
+  chaves: 'M9 4C7 4 6 5 6 7v2.5C6 10.8 5.2 11.5 4 12c1.2.5 2 1.2 2 2.5V17c0 2 1 3 3 3M15 4c2 0 3 1 3 3v2.5c0 1.3.8 2 2 2.5-1.2.5-2 1.2-2 2.5V17c0 2-1 3-3 3',
+  camadas: 'M12 3l9 4.5-9 4.5-9-4.5zM3 12l9 4.5 9-4.5M3 16.5L12 21l9-4.5',
+  cubo: 'M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5',
+  layout: 'M4 5h16v14H4zM4 10h16M10 10v9',
 } as const;
 
 export type Icone = keyof typeof TRACOS;
+
+/**
+ * Ícone de cada trilha. São desenhos genéricos (terminal, chaves, camadas…), e
+ * não o logotipo das linguagens, que é marca de terceiros.
+ */
+const DA_TRILHA: Record<string, Icone> = {
+  python: 'terminal',
+  javascript: 'chaves',
+  java: 'camadas',
+  c: 'chip',
+  cpp: 'cubo',
+  html: 'codigo',
+  css: 'layout',
+  carreira: 'empresa',
+};
 
 export function icone(nome: Icone, classe = ''): HTMLElement {
   const caixa = document.createElement('span');
@@ -27,4 +56,8 @@ export function icone(nome: Icone, classe = ''): HTMLElement {
   caixa.setAttribute('aria-hidden', 'true');
   caixa.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${TRACOS[nome]}"/></svg>`;
   return caixa;
+}
+
+export function iconeDaTrilha(trilhaId: string, classe = ''): HTMLElement {
+  return icone(DA_TRILHA[trilhaId] ?? 'codigo', classe);
 }

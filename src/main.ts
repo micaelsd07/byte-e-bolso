@@ -10,6 +10,7 @@ import {
   novoEstado,
   recarregarVidas,
   registrarPratica,
+  renomear,
   vantagens,
 } from './core/jogo';
 import { gabarito, pontosDaSessao } from './core/licao';
@@ -95,6 +96,8 @@ function telaDaFase(no: No, atual: Estado): HTMLElement {
     return telaLicao(
       no,
       atual.vidas,
+      // Melhoria que dá tempo extra nas fases com relógio vale também para a prova.
+      vantagens(atual, MELHORIAS).tempoExtra,
       (sessao) => {
         // As vidas gastas na lição saem do perfil.
         if (estado !== null) salvar({ ...estado, vidas: sessao.vidas });
@@ -202,6 +205,10 @@ function montar(): HTMLElement {
     conteudo = telaPerfil(atual, {
       escolherAvatar: (avatar) => {
         salvar(escolherAvatar(atual, avatar));
+        render();
+      },
+      renomear: (apelido) => {
+        salvar(renomear(atual, apelido));
         render();
       },
       recarregarVidas: recarregar,

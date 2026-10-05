@@ -72,7 +72,7 @@ export function telaResultado(dados: DadosResultado, acoes: AcoesResultado): HTM
         ? h('button', { type: 'button', class: 'botao', 'data-testid': 'proxima', onclick: () => acoes.proxima(seguinte.id) }, `Próxima: ${seguinte.titulo}`)
         : null,
       h('button', { type: 'button', class: seguinte !== null ? 'botao secundario' : 'botao', 'data-testid': 'repetir', onclick: acoes.repetir }, 'Jogar de novo'),
-      h('button', { type: 'button', class: 'botao secundario', 'data-testid': 'voltar-cidade', onclick: acoes.cidade }, 'Voltar à cidade'),
+      h('button', { type: 'button', class: 'botao secundario', 'data-testid': 'voltar-cidade', onclick: acoes.cidade }, 'Voltar às fases'),
     ),
   );
 

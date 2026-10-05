@@ -23,6 +23,9 @@ test('escolhe Python e conclui a primeira lição sem errar', async ({ page }) =
   for (let i = 0; i < 5; i++) {
     await resolver(page, 'python', 'python-saida');
     await expect(page.getByTestId('retorno')).toContainText('Certo!');
+    // Do segundo acerto seguido em diante, o placar mostra a sequência.
+    if (i === 0) await expect(page.getByTestId('seguidas')).toBeHidden();
+    if (i === 2) await expect(page.getByTestId('seguidas')).toHaveText('3 seguidas');
     await page.getByTestId('continuar-licao').click();
   }
 
@@ -132,6 +135,50 @@ test('mostra as unidades por dificuldade e mantém as de trás fechadas', async 
 
   await page.getByTestId('unidade-1').click();
   await expect(page.getByTestId('jogar')).toBeVisible();
+});
+
+test('a prova da unidade tem relógio: tempo esgotado conta como erro e custa uma vida', async ({ page }) => {
+  const feitas = { 'python-saida': 100, 'python-variaveis': 100, 'python-condicoes': 100, 'python-lacos': 100 };
+  await entrarCom(page, { trilha: 'python', nos: feitas, rodadas: 4 });
+  await expect(page.getByTestId('ficha-titulo')).toHaveText('5. Prova da unidade');
+  // A unidade seguinte só abre depois da prova.
+  await expect(page.getByTestId('unidade-2')).toContainText('Fechada');
+
+  await page.getByTestId('jogar').click();
+  await expect(page.getByRole('heading', { name: 'Valendo a unidade' })).toBeVisible();
+  await page.getByTestId('praticar').click();
+  await expect(page.getByTestId('relogio')).toBeVisible();
+  await conferirLayout(page, 'prova');
+
+  // Unidade fácil: 40 segundos por exercício de escolher ou digitar.
+  await page.clock.runFor(41_000);
+  await expect(page.getByTestId('retorno')).toContainText('O tempo acabou.');
+  await expect(page.getByTestId('retorno')).toContainText('Resposta:');
+  await expect(page.getByTestId('vidas')).toHaveAttribute('aria-label', '4 vidas');
+
+  // Depois do erro, o jogo segue: o próximo exercício vem com o relógio cheio de novo.
+  await page.getByTestId('continuar-licao').click();
+  await expect(page.getByTestId('conferir')).toBeVisible();
+  await expect(page.getByTestId('relogio')).toHaveText(/^[34]\d s$/);
+});
+
+test('perfil: troca o apelido e o personagem, e os dois ficam guardados', async ({ page }) => {
+  await comecar(page, 'Mica', 'python');
+  await page.getByTestId('aba-perfil').click();
+  await page.getByTestId('novo-apelido').fill('  Ana <Dev>  ');
+  await page.getByTestId('salvar-apelido').click();
+  // O apelido passa pela mesma limpeza do início: só letras, números, espaço, hífen e sublinhado.
+  await expect(page.getByTestId('apelido-atual')).toHaveText('Ana Dev');
+  await expect(page.getByRole('heading', { name: 'Ana Dev' })).toBeVisible();
+
+  await page.getByTestId('avatar-foguete').click();
+  await expect(page.getByTestId('avatar-foguete')).toHaveAttribute('aria-pressed', 'true');
+
+  await page.reload();
+  await expect(page.getByTestId('continuar')).toHaveText('Continuar como Ana Dev');
+  await page.getByTestId('continuar').click();
+  await page.getByTestId('aba-perfil').click();
+  await expect(page.getByTestId('avatar-foguete')).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('perfil: personagem, título, sequência de dias e números do jogador', async ({ page }) => {

@@ -1,7 +1,7 @@
 import { APELIDO_MAX } from '../core/jogo';
 import type { Estado } from '../core/tipos';
-import { svgCidade } from '../ui/cidade';
 import { h } from '../ui/dom';
+import { svgHeroi } from '../ui/heroi';
 
 export interface AcoesInicio {
   comecar(apelido: string): void;
@@ -9,8 +9,8 @@ export interface AcoesInicio {
 }
 
 export function telaInicio(salvo: Estado | null, acoes: AcoesInicio): HTMLElement {
-  const fundo = h('div', { class: 'inicio-cidade', 'aria-hidden': 'true' });
-  fundo.innerHTML = svgCidade();
+  const heroi = h('div', { class: 'heroi', 'aria-hidden': 'true' });
+  heroi.innerHTML = svgHeroi();
 
   const campo = h('input', {
     id: 'apelido',
@@ -28,35 +28,33 @@ export function telaInicio(salvo: Estado | null, acoes: AcoesInicio): HTMLElemen
   return h(
     'main',
     { class: 'tela inicio' },
-    fundo,
     h(
       'header',
       { class: 'marca' },
-      h('p', { class: 'sobretitulo' }, 'Tecnologia · Finanças · Carreira'),
       h('h1', { tabindex: -1 }, 'Byte ', h('span', { class: 'e-comercial' }, '&'), ' Bolso'),
-      h('p', { class: 'slogan' }, 'Suas escolhas. Seu código. Seu futuro.'),
+      h('p', { class: 'slogan' }, 'Aprenda a programar jogando.'),
     ),
+    heroi,
+    salvo !== null
+      ? h('button', { type: 'button', class: 'botao brilho', 'data-testid': 'continuar', onclick: () => acoes.continuar() }, `Continuar como ${salvo.apelido}`)
+      : null,
     h(
-      'section',
-      { class: 'relevo inicio-painel' },
-      h('p', {}, 'Comece numa garagem com R$ 2.500. Vença as fases, faça o caixa render e monte a sua empresa de tecnologia.'),
-      salvo !== null
-        ? h('button', { type: 'button', class: 'botao', 'data-testid': 'continuar', onclick: () => acoes.continuar() }, `Continuar como ${salvo.apelido}`)
-        : null,
-      h(
-        'form',
-        {
-          class: 'inicio-form',
-          onsubmit: (evento: Event) => {
-            evento.preventDefault();
-            acoes.comecar(campo.value);
-          },
+      'form',
+      {
+        class: 'inicio-form',
+        onsubmit: (evento: Event) => {
+          evento.preventDefault();
+          acoes.comecar(campo.value);
         },
-        h('label', { for: 'apelido', class: 'rotulo' }, 'Apelido'),
+      },
+      h(
+        'div',
+        { class: 'relevo inicio-painel' },
+        h('label', { for: 'apelido', class: 'rotulo' }, salvo !== null ? 'Novo jogador' : 'Seu apelido'),
         campo,
-        h('p', { id: 'apelido-ajuda', class: 'ajuda' }, 'Opcional. Fica só neste aparelho; não use seu nome completo.'),
-        h('button', { type: 'submit', class: salvo !== null ? 'botao secundario' : 'botao', 'data-testid': 'comecar' }, salvo !== null ? 'Começar do zero' : 'Jogar'),
+        h('p', { id: 'apelido-ajuda', class: 'ajuda' }, 'Opcional. Sem cadastro: fica só neste aparelho. Não use seu nome completo.'),
       ),
+      h('button', { type: 'submit', class: salvo !== null ? 'botao secundario' : 'botao brilho', 'data-testid': 'comecar' }, salvo !== null ? 'Começar do zero' : 'Jogar'),
     ),
     h('footer', { class: 'rodape', 'data-testid': 'versao' }, `v${__APP_VERSAO__} · ${__APP_SHA__}`),
   );
