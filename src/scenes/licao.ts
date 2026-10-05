@@ -1,4 +1,5 @@
 import {
+  embaralhar,
   exercicioAtual,
   gabarito,
   iniciarSessao,
@@ -28,6 +29,10 @@ export function telaLicao(no: NoLicao, vidasIniciais: number, tempoExtra: number
   let pagina = 0;
   let resposta: Resposta | null = null;
   let conferido = false;
+  // A ordem das opções muda a cada lição e a cada vez que o exercício volta:
+  // quem decora a posição da resposta certa não acerta de novo por isso.
+  const sorteio = Math.floor(Math.random() * 0x7fffffff);
+  let mostrados = 0;
   let prazo = 0;
   let duracao = 0;
   let tique: number | undefined;
@@ -131,7 +136,7 @@ export function telaLicao(no: NoLicao, vidasIniciais: number, tempoExtra: number
           texto,
         ),
       );
-      return h('div', { class: 'opcoes', role: 'radiogroup', 'aria-label': 'Opções' }, ...opcoes);
+      return h('div', { class: 'opcoes', role: 'radiogroup', 'aria-label': 'Opções' }, ...embaralhar(opcoes, sorteio + mostrados));
     }
 
     if (exercicio.tipo === 'montar') {
@@ -203,6 +208,7 @@ export function telaLicao(no: NoLicao, vidasIniciais: number, tempoExtra: number
     const exercicio = exercicioAtual(sessao, no);
     if (exercicio === null) return;
     conferido = false;
+    mostrados++;
     por(
       corpo,
       h('p', { class: 'sobretitulo' }, exercicio.tipo === 'escolha' ? 'Escolha a resposta' : exercicio.tipo === 'montar' ? 'Monte o código' : 'Digite o código'),

@@ -43,7 +43,14 @@ describe('validador de conteúdo', () => {
 
   it('acusa exercício com opção certa inexistente, peça extra repetida ou sem resposta', () => {
     const exercicio = (licoes: Solto[], tipo: string): Solto => licoes[0]!.exercicios.find((e: Solto) => e.tipo === tipo);
-    expect(comDefeito((c) => (exercicio(c.licoes, 'escolha').correta = 3))).toContain('opção correta não existe');
+    expect(
+      comDefeito((c) => {
+        // Duas opções e a certa na posição 3: vale para qualquer quantidade de opções do exercício real.
+        const escolha = exercicio(c.licoes, 'escolha');
+        escolha.opcoes = escolha.opcoes.slice(0, 2);
+        escolha.correta = 3;
+      }),
+    ).toContain('opção correta não existe');
     expect(comDefeito((c) => (exercicio(c.licoes, 'montar').extras = ['print']))).toContain('peça extra igual');
     expect(comDefeito((c) => (exercicio(c.licoes, 'completar').respostas = []))).not.toBe('');
     expect(comDefeito((c) => delete c.licoes[0]!.explicacao)).toContain('explicacao');

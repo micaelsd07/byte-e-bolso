@@ -30,7 +30,8 @@
               "opcoes": [
                 "Oi",
                 "cout << \"Oi\"",
-                "\"Oi\""
+                "\"Oi\"",
+                "Nada, porque falta o endl"
               ],
               "correta": 0,
               "explicacao": "As aspas marcam o texto, mas não aparecem.",
@@ -58,7 +59,8 @@
               "opcoes": [
                 "Traz cout e cin, de saída e entrada",
                 "Cria a função main",
-                "Declara uma variável"
+                "Declara uma variável",
+                "Deixa o programa mais rápido"
               ],
               "correta": 0,
               "explicacao": "Sem esse include, o compilador não conhece o cout.",
@@ -81,7 +83,8 @@
               "opcoes": [
                 "Termina o programa",
                 "Pula para a próxima linha",
-                "Mostra a palavra endl"
+                "Mostra a palavra endl",
+                "Apaga o que já foi mostrado"
               ],
               "correta": 1,
               "explicacao": "endl vem de end line, fim de linha.",
@@ -108,7 +111,8 @@
               "opcoes": [
                 "bool",
                 "int",
-                "double"
+                "double",
+                "char"
               ],
               "correta": 0,
               "explicacao": "bool guarda true ou false.",
@@ -149,7 +153,8 @@
               "opcoes": [
                 "std::cout << idade;",
                 "std::cout << \"idade\";",
-                "std::cout >> idade;"
+                "std::cout >> idade;",
+                "print(idade);"
               ],
               "correta": 0,
               "explicacao": "Sem aspas, o cout mostra o valor da variável. Com aspas, mostraria a palavra idade.",
@@ -162,7 +167,8 @@
               "opcoes": [
                 "5",
                 "7",
-                "52"
+                "52",
+                "x + 2"
               ],
               "correta": 1,
               "explicacao": "x começa em 5 e passa a valer 5 + 2.",
@@ -190,7 +196,8 @@
               "opcoes": [
                 "Aprovado",
                 "Recuperação",
-                "Nada"
+                "Nada",
+                "Aprovado e Recuperação"
               ],
               "correta": 1,
               "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
@@ -232,7 +239,8 @@
               "opcoes": [
                 "a == b",
                 "a.equals(b)",
-                "a = b"
+                "a = b",
+                "a === b"
               ],
               "correta": 0,
               "explicacao": "Em C++, == compara o conteúdo das strings. O equals é do Java.",
@@ -244,7 +252,8 @@
               "opcoes": [
                 "true",
                 "false",
-                "erro"
+                "erro",
+                "2"
               ],
               "correta": 1,
               "explicacao": "O && só é verdadeiro quando os dois lados são. 2 > 4 é falso.",
@@ -272,7 +281,8 @@
               "opcoes": [
                 "3",
                 "4",
-                "5"
+                "5",
+                "Nenhuma"
               ],
               "correta": 1,
               "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
@@ -285,7 +295,8 @@
               "opcoes": [
                 "1, 2, 3",
                 "0, 1, 2",
-                "0, 1, 2, 3"
+                "0, 1, 2, 3",
+                "0, 1"
               ],
               "correta": 1,
               "explicacao": "Começa em 0 e para antes de chegar a 3.",
@@ -329,7 +340,8 @@
               "opcoes": [
                 "i diminui e nunca chega a 5: o laço não termina",
                 "Falta declarar o i",
-                "5 é um número grande demais"
+                "5 é um número grande demais",
+                "O laço roda só uma vez"
               ],
               "correta": 0,
               "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
@@ -367,7 +379,8 @@
               "opcoes": [
                 "7",
                 "25",
-                "soma"
+                "soma",
+                "10"
               ],
               "correta": 0,
               "explicacao": "soma recebe 2 e 5 e devolve 2 + 5.",
@@ -408,7 +421,8 @@
               "opcoes": [
                 "int",
                 "void",
-                "string"
+                "string",
+                "bool"
               ],
               "correta": 1,
               "explicacao": "void quer dizer que a função não devolve nada.",
@@ -420,7 +434,8 @@
               "opcoes": [
                 "saudar(\"Ana\");",
                 "saudar \"Ana\";",
-                "void saudar(\"Ana\");"
+                "void saudar(\"Ana\");",
+                "saudar = \"Ana\";"
               ],
               "correta": 0,
               "explicacao": "Na chamada vão só o nome da função e os argumentos entre parênteses.",
@@ -448,7 +463,8 @@
               "opcoes": [
                 "4",
                 "8",
-                "6"
+                "6",
+                "1"
               ],
               "correta": 1,
               "explicacao": "A contagem começa em 0: notas[0] é 4 e notas[1] é 8.",
@@ -490,7 +506,8 @@
               "opcoes": [
                 "std::vector<std::string> nomes;",
                 "std::vector nomes<string>;",
-                "vector[] nomes;"
+                "vector[] nomes;",
+                "std::string<vector> nomes;"
               ],
               "correta": 0,
               "explicacao": "O tipo dos itens vai entre < e >, logo depois de vector.",
@@ -503,7 +520,8 @@
               "opcoes": [
                 "2",
                 "3",
-                "4"
+                "4",
+                "1"
               ],
               "correta": 1,
               "explicacao": "O for com dois-pontos passa uma vez por item, e o vetor tem três.",
@@ -531,7 +549,8 @@
               "opcoes": [
                 "Bom dia",
                 "a + b",
-                "Bomdia"
+                "Bomdia",
+                "dia Bom"
               ],
               "correta": 0,
               "explicacao": "O + junta os textos como estão: o espaço já está no fim de \"Bom \".",
@@ -573,7 +592,8 @@
               "opcoes": [
                 "'C'",
                 "'a'",
-                "\"Caio\""
+                "\"Caio\"",
+                "'o'"
               ],
               "correta": 0,
               "explicacao": "A posição 0 é o primeiro caractere.",
@@ -585,7 +605,8 @@
               "opcoes": [
                 "'A'",
                 "\"A\"",
-                "A"
+                "A",
+                "\"AB\""
               ],
               "correta": 0,
               "explicacao": "Aspas simples marcam um único caractere.",
@@ -613,7 +634,8 @@
               "opcoes": [
                 "Um objeto da classe Conta",
                 "Uma classe nova",
-                "Um método"
+                "Um método",
+                "Um atributo"
               ],
               "correta": 0,
               "explicacao": "Conta é o tipo; c é um objeto desse tipo.",
@@ -656,7 +678,8 @@
               "opcoes": [
                 "Um ponto e vírgula depois da chave",
                 "A palavra end",
-                "Nada"
+                "Nada",
+                "Um return"
               ],
               "correta": 0,
               "explicacao": "Em C++, a definição de uma classe termina com };",
@@ -669,7 +692,8 @@
               "opcoes": [
                 "20",
                 "30",
-                "50"
+                "50",
+                "0"
               ],
               "correta": 2,
               "explicacao": "O saldo começa em 0 e cada depósito soma: 30 + 20.",

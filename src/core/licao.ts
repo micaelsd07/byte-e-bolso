@@ -114,14 +114,20 @@ export function pontosDaSessao(sessao: Sessao): number {
   return Math.max(10, 100 - 15 * sessao.erros);
 }
 
-/** Peças do exercício de montar, embaralhadas de forma repetível. */
-export function pecasEmbaralhadas(pecas: readonly string[], extras: readonly string[], semente: number): string[] {
-  const todas = [...pecas, ...extras];
+/** Embaralha de forma repetível: a mesma semente dá sempre a mesma ordem. */
+export function embaralhar<T>(itens: readonly T[], semente: number): T[] {
+  const todos = [...itens];
   let a = semente >>> 0;
-  for (let i = todas.length - 1; i > 0; i--) {
+  for (let i = todos.length - 1; i > 0; i--) {
     a = (Math.imul(a, 1664525) + 1013904223) >>> 0;
-    const j = a % (i + 1);
-    [todas[i], todas[j]] = [todas[j]!, todas[i]!];
+    // Os bits de cima do gerador variam mais do que os de baixo.
+    const j = (a >>> 8) % (i + 1);
+    [todos[i], todos[j]] = [todos[j]!, todos[i]!];
   }
-  return todas;
+  return todos;
+}
+
+/** Peças do exercício de montar, com as extras no meio. */
+export function pecasEmbaralhadas(pecas: readonly string[], extras: readonly string[], semente: number): string[] {
+  return embaralhar([...pecas, ...extras], semente);
 }

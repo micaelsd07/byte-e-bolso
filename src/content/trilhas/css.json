@@ -29,7 +29,8 @@
               "opcoes": [
                 "p",
                 ".p",
-                "#p"
+                "#p",
+                "<p>"
               ],
               "correta": 0,
               "explicacao": "Sem ponto nem cerquilha, o seletor é o nome da tag.",
@@ -41,7 +42,8 @@
               "opcoes": [
                 ".destaque",
                 "#destaque",
-                "destaque"
+                "destaque",
+                "*destaque"
               ],
               "correta": 0,
               "explicacao": "Classe começa com ponto.",
@@ -83,7 +85,8 @@
               "opcoes": [
                 "Dois-pontos :",
                 "Igual =",
-                "Seta ->"
+                "Seta ->",
+                "Ponto e vírgula ;"
               ],
               "correta": 0,
               "explicacao": "Em CSS se escreve propriedade: valor;",
@@ -110,7 +113,8 @@
               "opcoes": [
                 "color",
                 "text-color",
-                "font-color"
+                "font-color",
+                "foreground-color"
               ],
               "correta": 0,
               "explicacao": "É só color.",
@@ -122,7 +126,8 @@
               "opcoes": [
                 "background-color",
                 "color",
-                "fill"
+                "fill",
+                "bg-color"
               ],
               "correta": 0,
               "explicacao": "color é a cor do texto; background-color, a do fundo.",
@@ -161,7 +166,8 @@
               "opcoes": [
                 "Branco",
                 "Preto",
-                "Transparente"
+                "Transparente",
+                "Cinza"
               ],
               "correta": 1,
               "explicacao": "Zero de vermelho, de verde e de azul: preto. Branco é #ffffff.",
@@ -188,7 +194,8 @@
               "opcoes": [
                 "margin",
                 "padding",
-                "border"
+                "border",
+                "gap"
               ],
               "correta": 1,
               "explicacao": "padding é o enchimento da caixa.",
@@ -200,7 +207,8 @@
               "opcoes": [
                 "margin",
                 "padding",
-                "outside"
+                "outside",
+                "spacing"
               ],
               "correta": 0,
               "explicacao": "margin é a margem externa.",
@@ -239,7 +247,8 @@
               "opcoes": [
                 "conteúdo, padding, borda, margin",
                 "conteúdo, margin, borda, padding",
-                "conteúdo, borda, padding, margin"
+                "conteúdo, borda, padding, margin",
+                "padding, conteúdo, margin, borda"
               ],
               "correta": 0,
               "explicacao": "O padding fica dentro da borda e a margin, fora.",
@@ -266,7 +275,8 @@
               "opcoes": [
                 "Coloca lado a lado, em linha",
                 "Esconde todos",
-                "Deixa em negrito"
+                "Deixa em negrito",
+                "Empilha um embaixo do outro"
               ],
               "correta": 0,
               "explicacao": "Por padrão, o flex organiza os filhos em uma linha.",
@@ -305,7 +315,8 @@
               "opcoes": [
                 "gap",
                 "space",
-                "between"
+                "between",
+                "margin-between"
               ],
               "correta": 0,
               "explicacao": "gap separa os itens sem precisar de margin em cada um.",
@@ -317,7 +328,8 @@
               "opcoes": [
                 "flex-direction: column;",
                 "display: vertical;",
-                "flex: down;"
+                "flex: down;",
+                "align: vertical;"
               ],
               "correta": 0,
               "explicacao": "flex-direction troca a direção principal de linha para coluna.",
@@ -487,7 +499,8 @@
               "opcoes": [
                 "relative",
                 "absolute",
-                "fixed"
+                "fixed",
+                "static"
               ],
               "correta": 2,
               "explicacao": "fixed usa a janela como referência, então não acompanha a rolagem.",
@@ -526,7 +539,8 @@
               "opcoes": [
                 "Ao ancestral posicionado mais próximo",
                 "Sempre ao elemento anterior",
-                "Ao centro da tela"
+                "Ao centro da tela",
+                "Ao último elemento da página"
               ],
               "correta": 0,
               "explicacao": "Por isso é comum pôr position: relative no elemento pai.",
@@ -538,7 +552,8 @@
               "opcoes": [
                 "z-index",
                 "order",
-                "top"
+                "top",
+                "display"
               ],
               "correta": 0,
               "explicacao": "Entre elementos posicionados, o z-index maior fica na frente.",
@@ -565,7 +580,8 @@
               "opcoes": [
                 "Enquanto o ponteiro está sobre o botão",
                 "Depois que o botão é clicado, para sempre",
-                "Só no celular"
+                "Só no celular",
+                "Quando a página termina de carregar"
               ],
               "correta": 0,
               "explicacao": "Quando o ponteiro sai, o estilo normal volta.",
@@ -603,7 +619,8 @@
               "opcoes": [
                 "Quem navega pelo teclado não tem ponteiro",
                 "O :hover não funciona em botões",
-                "O :focus deixa a página mais leve"
+                "O :focus deixa a página mais leve",
+                "O :focus só funciona em links"
               ],
               "correta": 0,
               "explicacao": "O foco mostra onde a pessoa está na página quando ela usa o Tab.",
@@ -616,7 +633,8 @@
               "opcoes": [
                 "2 segundos",
                 "2 milissegundos",
-                "É instantânea"
+                "É instantânea",
+                "20 segundos"
               ],
               "correta": 0,
               "explicacao": "O s é de segundos. Milissegundos seriam escritos como ms.",
@@ -643,7 +661,8 @@
               "opcoes": [
                 "18px",
                 "32px",
-                "2px"
+                "2px",
+                "16px"
               ],
               "correta": 1,
               "explicacao": "rem multiplica o tamanho da fonte da página: 2 × 16 = 32.",
@@ -682,7 +701,8 @@
               "opcoes": [
                 "px",
                 "rem",
-                "vw"
+                "vw",
+                "cm"
               ],
               "correta": 1,
               "explicacao": "Quem aumenta a fonte do navegador vê os tamanhos em rem crescerem junto.",
@@ -694,7 +714,8 @@
               "opcoes": [
                 "100vw",
                 "100px",
-                "1rem"
+                "1rem",
+                "50vw"
               ],
               "correta": 0,
               "explicacao": "vw é um centésimo da largura da janela: 100vw é ela inteira.",
@@ -721,7 +742,8 @@
               "opcoes": [
                 "Em telas de até 600px de largura",
                 "Em telas com mais de 600px",
-                "Só na impressão"
+                "Só na impressão",
+                "Em qualquer tela, sempre"
               ],
               "correta": 0,
               "explicacao": "max-width é o limite de cima: até 600px.",
@@ -764,7 +786,8 @@
               "opcoes": [
                 "Azul",
                 "Verde",
-                "Nenhuma"
+                "Nenhuma",
+                "Vermelho"
               ],
               "correta": 0,
               "explicacao": "400px é menos do que 800px, então a media query não entra e vale a regra de fora.",
@@ -776,7 +799,8 @@
               "opcoes": [
                 "Fazer primeiro a tela pequena e ampliar com min-width",
                 "Fazer um site separado para celular",
-                "Esconder o site no computador"
+                "Esconder o site no computador",
+                "Usar só medidas em px"
               ],
               "correta": 0,
               "explicacao": "A base atende o celular, e as media queries acrescentam o que as telas maiores permitem.",

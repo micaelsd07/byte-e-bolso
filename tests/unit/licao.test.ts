@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   conferir,
+  embaralhar,
   exercicioAtual,
   gabarito,
   iniciarSessao,
@@ -149,6 +150,18 @@ describe('sessão da lição', () => {
   it('nunca dá menos de 10 pontos a quem concluiu', () => {
     const sessao: Sessao = { fila: [], total: 3, vidas: 1, erros: 9, errados: ['e1'], seguidas: 0, melhorSequencia: 2, fim: 'concluida' };
     expect(pontosDaSessao(sessao)).toBe(10);
+  });
+
+  it('embaralha qualquer lista de forma repetível, e sementes diferentes dão ordens diferentes', () => {
+    const itens = [0, 1, 2, 3];
+    expect(embaralhar(itens, 42)).toEqual(embaralhar(itens, 42));
+    expect([...embaralhar(itens, 42)].sort()).toEqual(itens);
+    // A lista original não é alterada.
+    expect(itens).toEqual([0, 1, 2, 3]);
+    // Em 40 sementes seguidas, a resposta que estava em primeiro precisa aparecer nas quatro posições.
+    const posicoes = new Set(Array.from({ length: 40 }, (_, s) => embaralhar(itens, 1000 + s).indexOf(0)));
+    expect(posicoes.size).toBe(4);
+    expect(embaralhar([], 7)).toEqual([]);
   });
 
   it('embaralha as peças de forma repetível e sem perder nenhuma', () => {

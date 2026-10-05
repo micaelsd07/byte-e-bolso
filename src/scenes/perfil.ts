@@ -1,6 +1,5 @@
 import { MELHORIAS, TRILHAS, UNIDADES, fasesDa } from '../content';
 import { APELIDO_MAX, AVATARES, CUSTO_RECARGA, estrelasDoNo, maximoDeVidas, mvp, nivel, tituloDoNivel, totalEstrelas } from '../core/jogo';
-import { participa, posicao, type Colocado } from '../core/ranking';
 import type { Estado } from '../core/tipos';
 import { h } from '../ui/dom';
 import { barra, dinheiro } from '../ui/formato';
@@ -9,7 +8,6 @@ import { icone, iconeDaTrilha, type Icone } from '../ui/icones';
 export interface AcoesPerfil {
   escolherAvatar(avatar: string): void;
   renomear(apelido: string): void;
-  limparRanking(): void;
   recarregarVidas(): void;
   recomecar(): void;
 }
@@ -30,55 +28,7 @@ const NOME_DO_AVATAR: Record<string, string> = {
 };
 
 /** Perfil do personagem: quem ele é, o que já conquistou e como está em cada trilha. */
-/** Ranking do aparelho. Quem joga como visitante vê só o convite para escolher um apelido. */
-function blocoDoRanking(estado: Estado, ranking: readonly Colocado[], acoes: AcoesPerfil): HTMLElement {
-  const lugar = posicao(ranking, estado.apelido);
-  let miolo: HTMLElement;
-  if (!participa(estado.apelido)) {
-    miolo = h('p', { class: 'aviso neutro', 'data-testid': 'ranking-convite' }, icone('trofeu'), 'O ranking é de quem tem apelido. Escolha o seu em Personagem, logo abaixo.');
-  } else if (ranking.length === 0) {
-    miolo = h('p', { class: 'ficha-detalhe' }, 'Ninguém pontuou neste aparelho ainda. Conclua uma fase para abrir o ranking.');
-  } else {
-    miolo = h(
-      'ol',
-      { class: 'colocados' },
-      ...ranking.map((c, i) =>
-        h(
-          'li',
-          { class: c.apelido === estado.apelido ? 'colocado voce' : 'colocado', 'data-testid': `colocado-${i + 1}` },
-          h('b', { class: 'lugar' }, `${i + 1}º`),
-          h('span', { class: `avatar av-${c.avatar}`, 'aria-hidden': 'true' }, icone(c.avatar as Icone)),
-          h('strong', {}, c.apelido),
-          h('span', { class: 'colocado-pontos' }, `${c.estrelas} ★`, h('small', {}, `MVP ${c.mvp}`)),
-        ),
-      ),
-    );
-  }
-  return h(
-    'section',
-    { class: 'relevo bloco', 'data-testid': 'ranking' },
-    h('h2', {}, 'Ranking deste aparelho'),
-    miolo,
-    participa(estado.apelido) && ranking.length > 0 && lugar === null ? h('p', { class: 'ficha-detalhe' }, 'Você entra no ranking quando ganhar a primeira estrela.') : null,
-    h('p', { class: 'ajuda' }, 'Mostra quem jogou neste navegador. Fica guardado só aqui: nada é enviado para fora.'),
-    participa(estado.apelido) && ranking.length > 0
-      ? h(
-          'button',
-          {
-            type: 'button',
-            class: 'botao secundario pequeno',
-            'data-testid': 'limpar-ranking',
-            onclick: () => {
-              if (window.confirm('Apagar o ranking deste aparelho?')) acoes.limparRanking();
-            },
-          },
-          'Limpar ranking',
-        )
-      : null,
-  );
-}
-
-export function telaPerfil(estado: Estado, ranking: readonly Colocado[], acoes: AcoesPerfil): HTMLElement {
+export function telaPerfil(estado: Estado, acoes: AcoesPerfil): HTMLElement {
   const nivelAtual = nivel(estado, UNIDADES);
   const estrelasTotais = totalEstrelas(estado, UNIDADES);
   const paraProximo = 3 - (estrelasTotais % 3);
@@ -148,7 +98,6 @@ export function telaPerfil(estado: Estado, ranking: readonly Colocado[], acoes: 
       numero('Dias seguidos', String(estado.sequencia), 'perfil-sequencia'),
       numero('MVP', String(mvp(estado, iniciadas.flatMap((t) => t.unidades))), 'mvp'),
     ),
-    blocoDoRanking(estado, ranking, acoes),
     h(
       'section',
       { class: 'relevo bloco' },

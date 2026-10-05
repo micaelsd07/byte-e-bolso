@@ -30,7 +30,8 @@
               "opcoes": [
                 "Oi",
                 "printf(\"Oi\")",
-                "\"Oi\""
+                "\"Oi\"",
+                "Nada, porque falta o \\n"
               ],
               "correta": 0,
               "explicacao": "As aspas marcam o texto, mas não aparecem.",
@@ -59,7 +60,8 @@
               "opcoes": [
                 "Traz as funções de entrada e saída, como printf",
                 "Cria a função main",
-                "Termina o programa"
+                "Termina o programa",
+                "Deixa o programa mais rápido"
               ],
               "correta": 0,
               "explicacao": "Sem esse include, o compilador não conhece o printf.",
@@ -71,7 +73,8 @@
               "opcoes": [
                 "Mostra a letra n",
                 "Pula para a próxima linha",
-                "Apaga a linha"
+                "Apaga a linha",
+                "Mostra uma barra invertida"
               ],
               "correta": 1,
               "explicacao": "A barra invertida com n é a quebra de linha.",
@@ -109,7 +112,8 @@
               "opcoes": [
                 "int",
                 "float",
-                "char"
+                "char",
+                "double"
               ],
               "correta": 0,
               "explicacao": "int vem de integer, inteiro.",
@@ -138,7 +142,8 @@
               "opcoes": [
                 "printf(\"%d\", idade);",
                 "printf(\"idade\");",
-                "printf(idade);"
+                "printf(idade);",
+                "print(idade);"
               ],
               "correta": 0,
               "explicacao": "O %d marca o lugar onde o valor da variável entra no texto.",
@@ -163,7 +168,8 @@
               "opcoes": [
                 "5",
                 "7",
-                "52"
+                "52",
+                "x + 2"
               ],
               "correta": 1,
               "explicacao": "x começa em 5 e passa a valer 5 + 2.",
@@ -191,7 +197,8 @@
               "opcoes": [
                 "Aprovado",
                 "Recuperação",
-                "Nada"
+                "Nada",
+                "Aprovado e Recuperação"
               ],
               "correta": 1,
               "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
@@ -234,7 +241,8 @@
               "opcoes": [
                 "Compara x com 5",
                 "Guarda 5 em x, e a condição vira verdadeira",
-                "Não compila"
+                "Não compila",
+                "Testa se x é diferente de 5"
               ],
               "correta": 1,
               "explicacao": "Um = sozinho guarda valor. Como 5 não é zero, a condição é sempre verdadeira.",
@@ -246,7 +254,8 @@
               "opcoes": [
                 "0",
                 "1",
-                "-1"
+                "-1",
+                "Qualquer número negativo"
               ],
               "correta": 0,
               "explicacao": "Zero é falso. Qualquer outro número é verdadeiro.",
@@ -274,7 +283,8 @@
               "opcoes": [
                 "3",
                 "4",
-                "5"
+                "5",
+                "Nenhuma"
               ],
               "correta": 1,
               "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
@@ -287,7 +297,8 @@
               "opcoes": [
                 "1, 2, 3",
                 "0, 1, 2",
-                "0, 1, 2, 3"
+                "0, 1, 2, 3",
+                "0, 1"
               ],
               "correta": 1,
               "explicacao": "Começa em 0 e para antes de chegar a 3.",
@@ -331,7 +342,8 @@
               "opcoes": [
                 "i diminui e nunca chega a 5: o laço não termina",
                 "Falta declarar o i",
-                "5 é um número grande demais"
+                "5 é um número grande demais",
+                "O laço roda só uma vez"
               ],
               "correta": 0,
               "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
@@ -418,7 +430,8 @@
               "opcoes": [
                 "Print formatted: imprime texto no console.",
                 "Caractere especial de quebra de linha.",
-                "Diretiva do pré-processador para importar definições."
+                "Diretiva do pré-processador para importar definições.",
+                "Marca o fim do programa."
               ],
               "correta": 2,
               "explicacao": "main() devolve um número inteiro (int). Retornar 0 indica ao sistema operacional que o programa terminou com sucesso.",
@@ -586,7 +599,8 @@
               "opcoes": [
                 "7",
                 "34",
-                "soma"
+                "soma",
+                "12"
               ],
               "correta": 0,
               "explicacao": "soma devolve 3 + 4, e o printf mostra o número.",
@@ -627,7 +641,8 @@
               "opcoes": [
                 "void",
                 "null",
-                "int"
+                "int",
+                "empty"
               ],
               "correta": 0,
               "explicacao": "void quer dizer vazio: a função faz o trabalho e não devolve nada.",
@@ -639,7 +654,8 @@
               "opcoes": [
                 "maior(3, 8)",
                 "maior(3)",
-                "maior(\"3\", \"8\")"
+                "maior(\"3\", \"8\")",
+                "maior(3; 8)"
               ],
               "correta": 0,
               "explicacao": "A função espera dois inteiros: essa quantidade e esse tipo.",
@@ -666,7 +682,8 @@
               "opcoes": [
                 "4",
                 "5",
-                "6"
+                "6",
+                "0"
               ],
               "correta": 0,
               "explicacao": "São 5 itens, numerados de 0 a 4.",
@@ -708,7 +725,8 @@
               "opcoes": [
                 "6",
                 "10",
-                "8"
+                "8",
+                "12"
               ],
               "correta": 1,
               "explicacao": "v[1] é 4 e v[2] é 6: a soma dá 10.",
@@ -720,7 +738,8 @@
               "opcoes": [
                 "O compilador sempre impede",
                 "O programa lê memória que não é do vetor",
-                "O vetor cresce sozinho"
+                "O vetor cresce sozinho",
+                "Devolve sempre 0"
               ],
               "correta": 1,
               "explicacao": "C não confere o limite. Ler fora do vetor traz lixo ou derruba o programa.",
@@ -747,7 +766,8 @@
               "opcoes": [
                 "O endereço de x",
                 "O valor de x",
-                "O dobro de x"
+                "O dobro de x",
+                "Uma cópia de x"
               ],
               "correta": 0,
               "explicacao": "& é o operador de endereço.",
@@ -788,7 +808,8 @@
               "opcoes": [
                 "5",
                 "9",
-                "O endereço de n"
+                "O endereço de n",
+                "14"
               ],
               "correta": 1,
               "explicacao": "*p é o próprio n, visto pelo endereço. Mudar *p muda n.",
@@ -800,7 +821,8 @@
               "opcoes": [
                 "Ele precisa do endereço para gravar o valor lido",
                 "Para ler mais rápido",
-                "Porque idade é um texto"
+                "Porque idade é um texto",
+                "Para a variável virar um ponteiro"
               ],
               "correta": 0,
               "explicacao": "A função só consegue alterar a variável se souber onde ela está.",
@@ -827,7 +849,8 @@
               "opcoes": [
                 "%d",
                 "%s",
-                "%c"
+                "%c",
+                "%f"
               ],
               "correta": 1,
               "explicacao": "%s é de string. %d é inteiro e %c é um caractere só.",
@@ -869,7 +892,8 @@
               "opcoes": [
                 "4",
                 "5",
-                "6"
+                "6",
+                "1"
               ],
               "correta": 1,
               "explicacao": "São 4 letras e mais o '\\0' que marca o fim.",
@@ -881,7 +905,8 @@
               "opcoes": [
                 "Marca onde o texto termina",
                 "Pula uma linha",
-                "Deixa o texto em maiúsculas"
+                "Deixa o texto em maiúsculas",
+                "Separa as palavras do texto"
               ],
               "correta": 0,
               "explicacao": "Funções como printf e strlen leem caractere por caractere até achar o '\\0'.",

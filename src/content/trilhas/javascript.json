@@ -30,7 +30,8 @@
               "opcoes": [
                 "Oi",
                 "console.log(\"Oi\")",
-                "\"Oi\""
+                "\"Oi\"",
+                "undefined"
               ],
               "correta": 0,
               "explicacao": "As aspas marcam o texto, mas não aparecem.",
@@ -70,7 +71,8 @@
               "opcoes": [
                 "console.log(\"Oi\");",
                 "console.log(Oi\");",
-                "console.log(7);"
+                "console.log(7);",
+                "console.log('Oi');"
               ],
               "correta": 1,
               "explicacao": "Falta a aspa que abre o texto.",
@@ -117,7 +119,8 @@
               "opcoes": [
                 "5",
                 "7",
-                "x + 2"
+                "x + 2",
+                "52"
               ],
               "correta": 1,
               "explicacao": "x começa em 5 e passa a valer 5 + 2.",
@@ -147,7 +150,8 @@
               "opcoes": [
                 "PI passa a valer 3",
                 "Dá erro: constante não pode mudar",
-                "PI vira texto"
+                "PI vira texto",
+                "Nada acontece: a segunda linha é ignorada"
               ],
               "correta": 1,
               "explicacao": "const não aceita um segundo valor.",
@@ -170,7 +174,8 @@
               "opcoes": [
                 "number",
                 "string (texto)",
-                "boolean"
+                "boolean",
+                "undefined"
               ],
               "correta": 1,
               "explicacao": "Entre aspas é texto, mesmo que pareça número.",
@@ -198,7 +203,8 @@
               "opcoes": [
                 "Aprovado",
                 "Recuperação",
-                "Nada"
+                "Nada",
+                "Aprovado e Recuperação"
               ],
               "correta": 1,
               "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
@@ -242,7 +248,8 @@
               "opcoes": [
                 "Compara x com 5",
                 "Guarda 5 em x: é um erro comum",
-                "Dá erro de sintaxe"
+                "Dá erro de sintaxe",
+                "Testa se x é diferente de 5"
               ],
               "correta": 1,
               "explicacao": "Um = sozinho guarda valor. Para comparar, use ===.",
@@ -254,7 +261,8 @@
               "opcoes": [
                 "true",
                 "false",
-                "5"
+                "5",
+                "2"
               ],
               "correta": 1,
               "explicacao": "O && só é verdadeiro quando os dois lados são. 2 > 4 é falso.",
@@ -282,7 +290,8 @@
               "opcoes": [
                 "3",
                 "4",
-                "5"
+                "5",
+                "Nenhuma"
               ],
               "correta": 1,
               "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
@@ -295,7 +304,8 @@
               "opcoes": [
                 "1, 2, 3",
                 "0, 1, 2",
-                "0, 1, 2, 3"
+                "0, 1, 2, 3",
+                "0, 1"
               ],
               "correta": 1,
               "explicacao": "Começa em 0 e para antes de chegar a 3.",
@@ -339,7 +349,8 @@
               "opcoes": [
                 "i diminui e nunca chega a 5: o laço não termina",
                 "Falta declarar o i",
-                "5 é um número grande demais"
+                "5 é um número grande demais",
+                "O laço roda só uma vez"
               ],
               "correta": 0,
               "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
@@ -377,7 +388,8 @@
               "opcoes": [
                 "5",
                 "23",
-                "undefined"
+                "undefined",
+                "6"
               ],
               "correta": 0,
               "explicacao": "soma devolve 2 + 3.",
@@ -419,7 +431,8 @@
               "opcoes": [
                 "Oi e depois undefined",
                 "Oi e depois Oi",
-                "Só undefined"
+                "Só undefined",
+                "Nada aparece"
               ],
               "correta": 0,
               "explicacao": "A função mostra Oi, mas não tem return: o valor devolvido é undefined.",
@@ -431,7 +444,8 @@
               "opcoes": [
                 "(n) => n * n",
                 "(n) -> n * n",
-                "(n) => { n * n }"
+                "(n) => { n * n }",
+                "(n) => n + n"
               ],
               "correta": 0,
               "explicacao": "A seta é =>. Com chaves, seria preciso escrever o return.",
@@ -459,7 +473,8 @@
               "opcoes": [
                 "verde",
                 "roxo",
-                "undefined"
+                "undefined",
+                "azul"
               ],
               "correta": 1,
               "explicacao": "A contagem começa em 0: a posição 2 é o terceiro item.",
@@ -502,7 +517,8 @@
               "opcoes": [
                 "2",
                 "3",
-                "30"
+                "30",
+                "20"
               ],
               "correta": 1,
               "explicacao": "Eram 2 itens e o push acrescentou mais um.",
@@ -514,7 +530,8 @@
               "opcoes": [
                 "lista[lista.length - 1]",
                 "lista[lista.length]",
-                "lista[-1]"
+                "lista[-1]",
+                "lista.last"
               ],
               "correta": 0,
               "explicacao": "A última posição é o tamanho menos 1. lista[-1] não funciona em JavaScript.",
@@ -542,7 +559,8 @@
               "opcoes": [
                 "2015",
                 "ano",
-                "sedã"
+                "sedã",
+                "undefined"
               ],
               "correta": 0,
               "explicacao": "carro.ano pega o valor da propriedade ano.",
@@ -584,7 +602,8 @@
               "opcoes": [
                 "100",
                 "70",
-                "30"
+                "30",
+                "130"
               ],
               "correta": 1,
               "explicacao": "A propriedade recebe o valor antigo menos 30.",
@@ -596,7 +615,8 @@
               "opcoes": [
                 "{ x: 1, y: 2 }",
                 "[1, 2]",
-                "(x: 1, y: 2)"
+                "(x: 1, y: 2)",
+                "\"x: 1, y: 2\""
               ],
               "correta": 0,
               "explicacao": "Objeto usa chaves e pares de chave e valor. Colchetes criam um array.",
@@ -623,7 +643,8 @@
               "opcoes": [
                 "O primeiro elemento com a classe menu",
                 "O elemento com id menu",
-                "Todas as tags <menu>"
+                "Todas as tags <menu>",
+                "O texto \"menu\" escrito na página"
               ],
               "correta": 0,
               "explicacao": "O ponto é o seletor de classe, igual ao do CSS. Para id, usa-se #.",
@@ -667,7 +688,8 @@
               "opcoes": [
                 "Cada vez que o botão é clicado",
                 "Uma vez, quando a página abre",
-                "Nunca"
+                "Nunca",
+                "A cada segundo"
               ],
               "correta": 0,
               "explicacao": "A função fica guardada e roda a cada clique.",
@@ -679,7 +701,8 @@
               "opcoes": [
                 "\"#aviso\"",
                 "\".aviso\"",
-                "\"aviso\""
+                "\"aviso\"",
+                "\"<aviso>\""
               ],
               "correta": 0,
               "explicacao": "# seleciona por id; ponto, por classe; sem nada, pelo nome da tag.",

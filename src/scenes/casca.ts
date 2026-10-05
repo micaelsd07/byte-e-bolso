@@ -5,13 +5,14 @@ import { h } from '../ui/dom';
 import { dinheiro } from '../ui/formato';
 import { icone, type Icone } from '../ui/icones';
 
-export type Aba = 'cidade' | 'empresa' | 'mercado' | 'noticias' | 'perfil';
+export type Aba = 'cidade' | 'empresa' | 'mercado' | 'noticias' | 'ranking' | 'perfil';
 
 const ABAS: { id: Aba; rotulo: string; icone: Icone }[] = [
   { id: 'cidade', rotulo: 'Aprender', icone: 'cidade' },
   { id: 'empresa', rotulo: 'Empresa', icone: 'empresa' },
   { id: 'mercado', rotulo: 'Mercado', icone: 'mercado' },
   { id: 'noticias', rotulo: 'Notícias', icone: 'noticias' },
+  { id: 'ranking', rotulo: 'Ranking', icone: 'trofeu' },
   { id: 'perfil', rotulo: 'Perfil', icone: 'perfil' },
 ];
 

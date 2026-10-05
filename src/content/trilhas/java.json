@@ -30,7 +30,8 @@
               "opcoes": [
                 "Oi",
                 "println(\"Oi\")",
-                "\"Oi\""
+                "\"Oi\"",
+                "System.out"
               ],
               "correta": 0,
               "explicacao": "As aspas marcam o texto, mas não aparecem.",
@@ -71,7 +72,8 @@
               "opcoes": [
                 "Dois-pontos :",
                 "Ponto e vírgula ;",
-                "Nada"
+                "Nada",
+                "Vírgula ,"
               ],
               "correta": 1,
               "explicacao": "Sem o ponto e vírgula, o código não compila.",
@@ -83,7 +85,8 @@
               "opcoes": [
                 "Pelo método main",
                 "Pela primeira linha do arquivo",
-                "Pela classe System"
+                "Pela classe System",
+                "Pelo último método da classe"
               ],
               "correta": 0,
               "explicacao": "O main é o ponto de entrada do programa.",
@@ -110,7 +113,8 @@
               "opcoes": [
                 "int",
                 "String",
-                "boolean"
+                "boolean",
+                "char"
               ],
               "correta": 1,
               "explicacao": "String é o tipo de texto, e começa com letra maiúscula.",
@@ -151,7 +155,8 @@
               "opcoes": [
                 "x passa a valer 10",
                 "Erro: texto não cabe em int",
-                "x passa a valer \"dez\""
+                "x passa a valer \"dez\"",
+                "x passa a valer 0"
               ],
               "correta": 1,
               "explicacao": "O tipo é conferido antes de o programa rodar: int só aceita número inteiro.",
@@ -164,7 +169,8 @@
               "opcoes": [
                 "5",
                 "7",
-                "52"
+                "52",
+                "x + 2"
               ],
               "correta": 1,
               "explicacao": "x começa em 5 e passa a valer 5 + 2.",
@@ -192,7 +198,8 @@
               "opcoes": [
                 "Aprovado",
                 "Recuperação",
-                "Nada"
+                "Nada",
+                "Aprovado e Recuperação"
               ],
               "correta": 1,
               "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
@@ -234,7 +241,8 @@
               "opcoes": [
                 "a == b",
                 "a.equals(b)",
-                "a = b"
+                "a = b",
+                "a === b"
               ],
               "correta": 1,
               "explicacao": "Em String, == confere se é o mesmo objeto. equals compara o conteúdo.",
@@ -246,7 +254,8 @@
               "opcoes": [
                 "true",
                 "false",
-                "erro"
+                "erro",
+                "2"
               ],
               "correta": 0,
               "explicacao": "O || é verdadeiro quando pelo menos um lado é. 5 > 3 é verdadeiro.",
@@ -274,7 +283,8 @@
               "opcoes": [
                 "3",
                 "4",
-                "5"
+                "5",
+                "Nenhuma"
               ],
               "correta": 1,
               "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
@@ -287,7 +297,8 @@
               "opcoes": [
                 "1, 2, 3",
                 "0, 1, 2",
-                "0, 1, 2, 3"
+                "0, 1, 2, 3",
+                "0, 1"
               ],
               "correta": 1,
               "explicacao": "Começa em 0 e para antes de chegar a 3.",
@@ -331,7 +342,8 @@
               "opcoes": [
                 "i diminui e nunca chega a 5: o laço não termina",
                 "Falta declarar o i",
-                "5 é um número grande demais"
+                "5 é um número grande demais",
+                "O laço roda só uma vez"
               ],
               "correta": 0,
               "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
@@ -445,7 +457,8 @@
               "opcoes": [
                 "Indica que essa classe é acessível por qualquer parte do programa.",
                 "Palavra-chave sagrada que define um molde/estrutura de código.",
-                "O nome da classe. Deve bater com o nome do arquivo Java."
+                "O nome da classe. Deve bater com o nome do arquivo Java.",
+                "Indica que o método não devolve valor."
               ],
               "correta": 0,
               "explicacao": "Em Java, todo código precisa de um nome de classe. Por convenção, o nome de uma classe começa com letra Maiúscula (PascalCase).",
@@ -458,7 +471,8 @@
               "opcoes": [
                 "Modificadores que permitem ao Java rodar este método sem instanciar a classe e sem esperar retorno.",
                 "Indica que essa classe é acessível por qualquer parte do programa.",
-                "Palavra-chave sagrada que define um molde/estrutura de código."
+                "Palavra-chave sagrada que define um molde/estrutura de código.",
+                "O nome do método principal do programa."
               ],
               "correta": 0,
               "explicacao": "Quando você manda o Java executar, o computador procura exatamente esta linha para saber por onde começar a ler.",
@@ -563,7 +577,8 @@
               "opcoes": [
                 "O identificador: o nome que você usará para acessar esse valor.",
                 "Operador de atribuição: guarda o valor da direita dentro da variável da esquerda.",
-                "O tipo: diz ao Java que armazenará um número inteiro."
+                "O tipo: diz ao Java que armazenará um número inteiro.",
+                "O ponto e vírgula que encerra a instrução."
               ],
               "correta": 2,
               "explicacao": "A sintaxe é sempre: [TIPO] [NOME_DA_VARIAVEL] = [VALOR];",
@@ -1093,7 +1108,8 @@
               "opcoes": [
                 "Condição: roda enquanto \"i\" for menor ou igual a 5.",
                 "Incremento: soma +1 em \"i\" a cada volta (i++ é o mesmo que i = i + 1).",
-                "Inicialização: cria o contador \"i\" começando em 1."
+                "Inicialização: cria o contador \"i\" começando em 1.",
+                "Corpo do laço: o que se repete a cada volta."
               ],
               "correta": 2,
               "explicacao": "O loop for reúne 3 instruções separadas por ponto e vírgula:",
@@ -1290,7 +1306,8 @@
               "opcoes": [
                 "Lê-se \"dentro de\" ou \"em\".",
                 "Cria uma variável temporária que recebe um item a cada volta.",
-                "O array que será percorrido do primeiro ao último item."
+                "O array que será percorrido do primeiro ao último item.",
+                "A condição que encerra o laço."
               ],
               "correta": 1,
               "explicacao": "Lê-se: \"para cada [tipo] [item] dentro de [colecao]\":",
@@ -1391,7 +1408,8 @@
               "opcoes": [
                 "Aloca um novo objeto na memória Heap do Java.",
                 "Declara uma variável de referência do tipo Guerreiro.",
-                "O ponto (.) é usado para acessar os atributos daquele objeto específico."
+                "O ponto (.) é usado para acessar os atributos daquele objeto específico.",
+                "Chama o construtor da classe Guerreiro."
               ],
               "correta": 1,
               "explicacao": "Para transformar a ideia em realidade na memória do computador, usamos o operador \"new\":",

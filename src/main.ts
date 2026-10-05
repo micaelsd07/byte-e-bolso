@@ -30,6 +30,7 @@ import { telaLicao } from './scenes/licao';
 import { telaNegociacao } from './scenes/negociacao';
 import { telaOrcamento } from './scenes/orcamento';
 import { telaPerfil } from './scenes/perfil';
+import { telaRanking } from './scenes/ranking';
 import { telaResultado, type DadosResultado, type Revisao } from './scenes/resultado';
 import { telaTriagem } from './scenes/triagem';
 import { telaTrilhas } from './scenes/trilhas';
@@ -222,8 +223,16 @@ function montar(): HTMLElement {
     conteudo = telaMercado(atual);
   } else if (aba === 'noticias') {
     conteudo = telaNoticias();
+  } else if (aba === 'ranking') {
+    conteudo = telaRanking(atual, lerRanking(), {
+      irParaPerfil: () => ir({ nome: 'perfil' }),
+      limpar: () => {
+        quadro.apagar();
+        render();
+      },
+    });
   } else if (aba === 'perfil') {
-    conteudo = telaPerfil(atual, lerRanking(), {
+    conteudo = telaPerfil(atual, {
       escolherAvatar: (avatar) => {
         const novo = escolherAvatar(atual, avatar);
         salvar(novo);
@@ -234,10 +243,6 @@ function montar(): HTMLElement {
         const novo = renomear(atual, apelido);
         salvar(novo);
         pontuarNoRanking(novo, atual.apelido);
-        render();
-      },
-      limparRanking: () => {
-        quadro.apagar();
         render();
       },
       recarregarVidas: recarregar,

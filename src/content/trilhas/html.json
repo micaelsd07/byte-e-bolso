@@ -29,7 +29,8 @@
               "opcoes": [
                 "<head>",
                 "<body>",
-                "<title>"
+                "<title>",
+                "<meta>"
               ],
               "correta": 1,
               "explicacao": "O body é o corpo da página.",
@@ -67,7 +68,8 @@
               "opcoes": [
                 "O texto da aba do navegador",
                 "O maior título da página",
-                "O rodapé"
+                "O rodapé",
+                "O nome do arquivo"
               ],
               "correta": 0,
               "explicacao": "O title fica no head e aparece na aba, não no corpo da página.",
@@ -79,7 +81,8 @@
               "opcoes": [
                 "<p>Oi<p>",
                 "<p>Oi</p>",
-                "<p>Oi<\\p>"
+                "<p>Oi<\\p>",
+                "<p>Oi</>"
               ],
               "correta": 1,
               "explicacao": "O fechamento usa a barra normal, antes do nome.",
@@ -106,7 +109,8 @@
               "opcoes": [
                 "<h6>",
                 "<h1>",
-                "<p>"
+                "<p>",
+                "<h0>"
               ],
               "correta": 1,
               "explicacao": "Quanto menor o número, mais importante o título.",
@@ -144,7 +148,8 @@
               "opcoes": [
                 "Um, o título principal",
                 "Um por parágrafo",
-                "Quantos couberem"
+                "Quantos couberem",
+                "Nenhum"
               ],
               "correta": 0,
               "explicacao": "O h1 diz do que a página trata; os outros níveis organizam o resto.",
@@ -156,7 +161,8 @@
               "opcoes": [
                 "<br>",
                 "<lb>",
-                "<break>"
+                "<break>",
+                "<nl>"
               ],
               "correta": 0,
               "explicacao": "br vem de break, quebra.",
@@ -183,7 +189,8 @@
               "opcoes": [
                 "src",
                 "href",
-                "link"
+                "link",
+                "url"
               ],
               "correta": 1,
               "explicacao": "href é o destino do link.",
@@ -223,7 +230,8 @@
               "opcoes": [
                 "Descreve a imagem para quem não pode vê-la",
                 "Define a largura",
-                "Muda a cor"
+                "Muda a cor",
+                "Faz a imagem carregar mais rápido"
               ],
               "correta": 0,
               "explicacao": "Leitores de tela leem o alt, e ele aparece se a imagem não carregar.",
@@ -235,7 +243,8 @@
               "opcoes": [
                 "Sim, sempre",
                 "Não: ela não tem conteúdo dentro",
-                "Só no celular"
+                "Só no celular",
+                "Sim, mas só se tiver alt"
               ],
               "correta": 1,
               "explicacao": "img é um elemento vazio: tudo o que ele precisa está nos atributos.",
@@ -262,7 +271,8 @@
               "opcoes": [
                 "<ul>",
                 "<ol>",
-                "<li>"
+                "<li>",
+                "<nl>"
               ],
               "correta": 1,
               "explicacao": "ol vem de ordered list, lista ordenada.",
@@ -300,7 +310,8 @@
               "opcoes": [
                 "Dentro de <ul> ou <ol>",
                 "Dentro de <p>",
-                "Soltos no <head>"
+                "Soltos no <head>",
+                "Dentro de <a>"
               ],
               "correta": 0,
               "explicacao": "O li é sempre filho de uma lista.",
@@ -313,7 +324,8 @@
               "opcoes": [
                 "2",
                 "3",
-                "4"
+                "4",
+                "1"
               ],
               "correta": 1,
               "explicacao": "Cada li é um item: A, B e C.",
@@ -350,7 +362,8 @@
               "opcoes": [
                 "name",
                 "type",
-                "for"
+                "for",
+                "id"
               ],
               "correta": 1,
               "explicacao": "type=\"email\", type=\"number\" e outros mudam o teclado e a validação do campo.",
@@ -388,7 +401,8 @@
               "opcoes": [
                 "O leitor de tela anuncia o rótulo junto com o campo",
                 "O campo fica maior",
-                "O formulário é enviado mais rápido"
+                "O formulário é enviado mais rápido",
+                "O campo passa a aceitar só letras"
               ],
               "correta": 0,
               "explicacao": "Com label, quem não vê a tela sabe o que cada campo pede.",
@@ -401,7 +415,8 @@
               "opcoes": [
                 "Envia o formulário",
                 "Limpa os campos",
-                "Fecha a página"
+                "Fecha a página",
+                "Abre outra página em branco"
               ],
               "correta": 0,
               "explicacao": "submit envia. Para limpar existe type=\"reset\".",
@@ -428,7 +443,8 @@
               "opcoes": [
                 "<td>",
                 "<tr>",
-                "<th>"
+                "<th>",
+                "<table>"
               ],
               "correta": 1,
               "explicacao": "tr vem de table row, linha da tabela.",
@@ -467,7 +483,8 @@
               "opcoes": [
                 "2",
                 "3",
-                "6"
+                "6",
+                "1"
               ],
               "correta": 1,
               "explicacao": "Cada linha tem três células, então são três colunas. Seis é o total de células.",
@@ -479,7 +496,8 @@
               "opcoes": [
                 "Mostrar dados em linhas e colunas",
                 "Posicionar o menu ao lado do texto",
-                "Trocar a cor do fundo"
+                "Trocar a cor do fundo",
+                "Montar o layout inteiro da página"
               ],
               "correta": 0,
               "explicacao": "Posição e aparência são trabalho do CSS.",
@@ -506,7 +524,8 @@
               "opcoes": [
                 "<main>",
                 "<body>",
-                "<section>"
+                "<section>",
+                "<header>"
               ],
               "correta": 0,
               "explicacao": "O main guarda o que é próprio daquela página; o body guarda tudo o que aparece.",
@@ -544,7 +563,8 @@
               "opcoes": [
                 "Um",
                 "Um por seção",
-                "Um para cada parágrafo"
+                "Um para cada parágrafo",
+                "Dois: um no topo e um no rodapé"
               ],
               "correta": 0,
               "explicacao": "Só existe um conteúdo principal por página.",
@@ -556,7 +576,8 @@
               "opcoes": [
                 "<div>Menu</div>",
                 "<nav>Menu</nav>",
-                "As duas dizem o mesmo"
+                "As duas dizem o mesmo",
+                "Nenhuma das duas é lida"
               ],
               "correta": 1,
               "explicacao": "A div não tem significado. A nav avisa que ali está a navegação.",
@@ -583,7 +604,8 @@
               "opcoes": [
                 "id",
                 "class",
-                "Os dois"
+                "Os dois",
+                "Nenhum dos dois"
               ],
               "correta": 1,
               "explicacao": "A class nomeia um grupo. O id é único na página.",
@@ -624,7 +646,8 @@
               "opcoes": [
                 "1",
                 "3",
-                "Nenhuma"
+                "Nenhuma",
+                "2"
               ],
               "correta": 1,
               "explicacao": "As classes são separadas por espaço: aviso, grande e vermelho.",
@@ -636,7 +659,8 @@
               "opcoes": [
                 "<div>",
                 "<span>",
-                "<p>"
+                "<p>",
+                "<br>"
               ],
               "correta": 1,
               "explicacao": "O span fica na linha. A div e o p começam um bloco novo.",
