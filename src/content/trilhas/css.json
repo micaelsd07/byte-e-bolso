@@ -1,0 +1,603 @@
+{
+  "id": "css",
+  "nome": "CSS",
+  "sigla": "CSS",
+  "resumo": "A aparência das páginas: cores, tamanhos, espaços e a posição de cada coisa.",
+  "unidades": [
+    {
+      "id": "css-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em CSS.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-seletores",
+          "titulo": "Seletores",
+          "resumo": "Escolha quais elementos uma regra vai mudar.",
+          "explicacao": [
+            {
+              "titulo": "Quem, o quê e como",
+              "texto": "Uma regra tem um seletor (quem muda) e declarações com propriedade e valor. Nome de tag seleciona a tag; ponto seleciona uma classe; cerquilha seleciona um id.",
+              "codigo": "p {\n  color: blue;\n}\n\n.destaque {\n  font-weight: bold;\n}\n\n#topo {\n  margin: 0;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual seletor pega todos os parágrafos?",
+              "opcoes": [
+                "p",
+                ".p",
+                "#p"
+              ],
+              "correta": 0,
+              "explicacao": "Sem ponto nem cerquilha, o seletor é o nome da tag.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como selecionar a classe destaque?",
+              "opcoes": [
+                ".destaque",
+                "#destaque",
+                "destaque"
+              ],
+              "correta": 0,
+              "explicacao": "Classe começa com ponto.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a regra que deixa os parágrafos vermelhos.",
+              "pecas": [
+                "p",
+                "{",
+                "color",
+                ":",
+                "red",
+                ";",
+                "}"
+              ],
+              "extras": [
+                "=",
+                "font"
+              ],
+              "explicacao": "Seletor, chave, propriedade, dois-pontos, valor, ponto e vírgula e chave.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o seletor do elemento com o id topo.",
+              "antes": "",
+              "depois": "topo { margin: 0; }",
+              "respostas": [
+                "#"
+              ],
+              "explicacao": "Id começa com cerquilha.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que separa a propriedade do valor?",
+              "opcoes": [
+                "Dois-pontos :",
+                "Igual =",
+                "Seta ->"
+              ],
+              "correta": 0,
+              "explicacao": "Em CSS se escreve propriedade: valor;",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-texto",
+          "titulo": "Cores e texto",
+          "resumo": "Mude cor, tamanho e alinhamento do texto.",
+          "explicacao": [
+            {
+              "titulo": "color, font-size e text-align",
+              "texto": "color muda a cor do texto, font-size muda o tamanho e text-align alinha. Cores podem ter nome (red) ou código (#1f6feb).",
+              "codigo": "h1 {\n  color: #1f6feb;\n  font-size: 32px;\n  text-align: center;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade muda a cor do texto?",
+              "opcoes": [
+                "color",
+                "text-color",
+                "font-color"
+              ],
+              "correta": 0,
+              "explicacao": "É só color.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade muda a cor do fundo?",
+              "opcoes": [
+                "background-color",
+                "color",
+                "fill"
+              ],
+              "correta": 0,
+              "explicacao": "color é a cor do texto; background-color, a do fundo.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a declaração que centraliza o texto.",
+              "pecas": [
+                "text-align",
+                ":",
+                "center",
+                ";"
+              ],
+              "extras": [
+                "align",
+                "middle"
+              ],
+              "explicacao": "A propriedade é text-align e o valor é center.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a propriedade do tamanho da letra.",
+              "antes": "",
+              "depois": ": 20px;",
+              "respostas": [
+                "font-size"
+              ],
+              "explicacao": "font-size define o tamanho da fonte.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Que cor é #000000?",
+              "opcoes": [
+                "Branco",
+                "Preto",
+                "Transparente"
+              ],
+              "correta": 1,
+              "explicacao": "Zero de vermelho, de verde e de azul: preto. Branco é #ffffff.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-caixa",
+          "titulo": "Espaços e bordas",
+          "resumo": "Controle o espaço por dentro e por fora dos elementos.",
+          "explicacao": [
+            {
+              "titulo": "padding, border e margin",
+              "texto": "Todo elemento é uma caixa. padding é o espaço por dentro, entre o conteúdo e a borda. border é a borda. margin é o espaço por fora, até o vizinho.",
+              "codigo": ".cartao {\n  padding: 16px;\n  border: 1px solid gray;\n  margin: 8px;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade cria espaço por dentro, entre a borda e o conteúdo?",
+              "opcoes": [
+                "margin",
+                "padding",
+                "border"
+              ],
+              "correta": 1,
+              "explicacao": "padding é o enchimento da caixa.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "E o espaço por fora, entre um elemento e o vizinho?",
+              "opcoes": [
+                "margin",
+                "padding",
+                "outside"
+              ],
+              "correta": 0,
+              "explicacao": "margin é a margem externa.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte uma borda de 2px, sólida e preta.",
+              "pecas": [
+                "border",
+                ":",
+                "2px solid black",
+                ";"
+              ],
+              "extras": [
+                "2px black",
+                "margin"
+              ],
+              "explicacao": "A borda precisa de espessura, estilo e cor. Sem o estilo (solid), ela não aparece.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a propriedade que arredonda os cantos.",
+              "antes": "",
+              "depois": ": 8px;",
+              "respostas": [
+                "border-radius"
+              ],
+              "explicacao": "border-radius define o raio dos cantos.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Do conteúdo para fora, qual é a ordem?",
+              "opcoes": [
+                "conteúdo, padding, borda, margin",
+                "conteúdo, margin, borda, padding",
+                "conteúdo, borda, padding, margin"
+              ],
+              "correta": 0,
+              "explicacao": "O padding fica dentro da borda e a margin, fora.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-flexbox",
+          "titulo": "Flexbox",
+          "resumo": "Coloque elementos lado a lado e alinhe sem esforço.",
+          "explicacao": [
+            {
+              "titulo": "display: flex",
+              "texto": "Com display: flex no elemento pai, os filhos ficam em linha. justify-content alinha ao longo da linha e gap cria espaço entre eles.",
+              "codigo": ".linha {\n  display: flex;\n  justify-content: center;\n  gap: 12px;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que display: flex faz com os filhos do elemento?",
+              "opcoes": [
+                "Coloca lado a lado, em linha",
+                "Esconde todos",
+                "Deixa em negrito"
+              ],
+              "correta": 0,
+              "explicacao": "Por padrão, o flex organiza os filhos em uma linha.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a declaração que liga o flexbox.",
+              "pecas": [
+                "display",
+                ":",
+                "flex",
+                ";"
+              ],
+              "extras": [
+                "flexbox",
+                "float"
+              ],
+              "explicacao": "A propriedade é display e o valor é flex.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a propriedade que alinha os itens ao longo da linha.",
+              "antes": "",
+              "depois": ": center;",
+              "respostas": [
+                "justify-content"
+              ],
+              "explicacao": "justify-content cuida da direção principal; align-items, da direção cruzada.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade cria espaço entre os itens?",
+              "opcoes": [
+                "gap",
+                "space",
+                "between"
+              ],
+              "correta": 0,
+              "explicacao": "gap separa os itens sem precisar de margin em cada um.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como empilhar os itens na vertical?",
+              "opcoes": [
+                "flex-direction: column;",
+                "display: vertical;",
+                "flex: down;"
+              ],
+              "correta": 0,
+              "explicacao": "flex-direction troca a direção principal de linha para coluna.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "css-css-world-1",
+      "numero": 2,
+      "titulo": "Cores, Fontes & Box Model",
+      "resumo": "Aprenda seletores CSS, propriedades de cor, fontes, alinhamentos e o sagrado Box Model (padding, border e margin).",
+      "dificuldade": "facil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-css-level-2",
+          "titulo": "Tipografia: font-size e font-weight",
+          "resumo": "Ajuste o tamanho, peso e espaçamento dos textos da sua página.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "A tipografia dita a elegância visual. Use rem ou px para font-size e números como 400, 600 ou 700 para font-weight."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual valor de font-weight representa o peso em negrito (bold) padrão?",
+              "opcoes": [
+                "100",
+                "400",
+                "700",
+                "900"
+              ],
+              "correta": 2,
+              "explicacao": "Correto! 400 é normal (regular) e 700 é negrito (bold).",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "font-size: ",
+              "depois": ";",
+              "respostas": [
+                "24px"
+              ],
+              "explicacao": "Medidas em CSS precisam de unidade (ex: px, rem, %).",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Configure o seletor .texto com font-size: 18px; e font-weight: 700;.",
+              "pecas": [
+                "font-size",
+                ":",
+                "18px",
+                ";",
+                "font-weight",
+                ":",
+                "700",
+                ";"
+              ],
+              "extras": [
+                "24"
+              ],
+              "explicacao": "Sempre inclua px na unidade de font-size.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-css-level-3",
+          "titulo": "O Sagrado Box Model: Padding, Border & Margin",
+          "resumo": "Aprenda a anatomia de caixas: preenchimento interno, bordas e margens externas.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Cada elemento no CSS é uma caixa retangular: o Conteúdo no centro, envolvido por Padding (espaço interno), Border (contorno) e Margin (espaço externo)."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade cria espaçamento DENTRO da caixa, entre o conteúdo e a borda?",
+              "opcoes": [
+                "margin",
+                "padding",
+                "outline",
+                "gap"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! Padding é o preenchimento interno.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: margin para afastar o texto interno da borda",
+              "pecas": [
+                "padding",
+                "para",
+                "afastar",
+                "o",
+                "conte",
+                "ú",
+                "do",
+                "interno"
+              ],
+              "extras": [
+                "margin",
+                "texto"
+              ],
+              "explicacao": "Padding é o espaço de dentro da caixa; margin é o espaço de fora.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Na classe .card, defina padding: 20px; e border-radius: 12px;.",
+              "pecas": [
+                "padding",
+                ":",
+                "20px",
+                ";",
+                "border-radius",
+                ":",
+                "12px",
+                ";"
+              ],
+              "extras": [
+                "margin",
+                "para"
+              ],
+              "explicacao": "border-radius arredonda os cantos da caixa.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "css-css-world-4",
+      "numero": 3,
+      "titulo": "CSS Grid, Animações & Responsividade",
+      "resumo": "Domine CSS Grid moderno com repeat(auto-fit), crie animações suaves com @keyframes e adapte qualquer tela com media queries!",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "css-css-level-10",
+          "titulo": "CSS Grid Layout (grid-template-columns)",
+          "resumo": "Construa layouts bidimensionais em linhas e colunas com a poderosa propriedade display: grid.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Enquanto o Flexbox é ideal para alinhamentos unidimensionais (uma linha ou uma coluna), o CSS Grid domina o controle bidimensional simultâneo."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que a unidade 1fr representa no CSS Grid?",
+              "opcoes": [
+                "Uma fração proporcional do espaço disponível",
+                "Um pixel fixo",
+                "Um frame de animação por segundo",
+                "Uma fonte relativa"
+              ],
+              "correta": 0,
+              "explicacao": "Exatamente! 1fr significa \"1 fraction\", dividindo o espaço restante de forma elástica.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: grid-template-columns: 3;",
+              "pecas": [
+                "grid-template-columns",
+                ":",
+                "repeat",
+                "(",
+                "3",
+                ",",
+                "1fr",
+                ")",
+                ";"
+              ],
+              "extras": [],
+              "explicacao": "Use unidades fr (fração) ou repeat(3, 1fr) para distribuir colunas proporcionais.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Ordene as propriedades para criar um grid de 2 colunas com espaçamento:",
+              "pecas": [
+                "display: grid;",
+                "grid-template-columns: 1fr 1fr;",
+                "gap: 20px;"
+              ],
+              "extras": [],
+              "explicacao": "Primeiro ativa-se display: grid, em seguida define-se as colunas e o gap.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "css-css-level-12",
+          "titulo": "Chefão Final CSS3: O Dashboard Futurista",
+          "resumo": "Construa a folha de estilo definitiva combinando Glassmorphism, CSS Grid, Flexbox e sombras neon.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Parabéns por dominar o design da web! No Chefão de CSS3 você unirá todos os poderes visuais em um design espetacular e moderno."
+            },
+            {
+              "titulo": "O Estilo Cyberpunk Clean",
+              "texto": "Fundos escuros, vidro fosco e acentos brilhantes definem interfaces de altíssimo valor percebido.",
+              "codigo": "background: rgba(15, 23, 42, 0.8);\nbackdrop-filter: blur(20px);\nborder: 1px solid rgba(6, 182, 212, 0.3);"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual propriedade CSS produz o efeito de vidro fosco em elementos sobrepostos?",
+              "opcoes": [
+                "backdrop-filter: blur(20px)",
+                "filter: invert(100%)",
+                "opacity: 0",
+                "text-shadow"
+              ],
+              "correta": 0,
+              "explicacao": "Exatamente! backdrop-filter desfoca o conteúdo que está atrás do elemento.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: cores puras saturadas sem transparência",
+              "pecas": [
+                "fundos",
+                "transl",
+                "ú",
+                "cidos",
+                "com",
+                "blur",
+                "e",
+                "acentos",
+                "vibrantes"
+              ],
+              "extras": [
+                "cores",
+                "puras"
+              ],
+              "explicacao": "Transparência e blur criam sensação espacial de profundidade e sofisticação.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: O Estilo Cyberpunk Clean",
+              "pecas": [
+                "backdrop-filter",
+                ":",
+                "blur",
+                "(",
+                "20px",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "background",
+                "rgba"
+              ],
+              "explicacao": "Fundos escuros, vidro fosco e acentos brilhantes definem interfaces de altíssimo valor percebido.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

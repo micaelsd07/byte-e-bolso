@@ -1,0 +1,446 @@
+{
+  "id": "html",
+  "nome": "HTML",
+  "sigla": "HTML",
+  "resumo": "A estrutura de toda página da web: títulos, textos, links, imagens e listas.",
+  "unidades": [
+    {
+      "id": "html-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em HTML.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "html-estrutura",
+          "titulo": "Estrutura da página",
+          "resumo": "Entenda as tags e o esqueleto de uma página.",
+          "explicacao": [
+            {
+              "titulo": "Tags que abrem e fecham",
+              "texto": "Uma página é feita de elementos. Cada um abre com <nome> e fecha com </nome>. O head guarda informações sobre a página; o que aparece na tela fica no body.",
+              "codigo": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Minha página</title>\n  </head>\n  <body>\n    <h1>Olá!</h1>\n  </body>\n</html>"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Onde fica o conteúdo que aparece na tela?",
+              "opcoes": [
+                "<head>",
+                "<body>",
+                "<title>"
+              ],
+              "correta": 1,
+              "explicacao": "O body é o corpo da página.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte um título principal com o texto Oi.",
+              "pecas": [
+                "<h1>",
+                "Oi",
+                "</h1>"
+              ],
+              "extras": [
+                "<h1/>",
+                "</title>"
+              ],
+              "explicacao": "Abre com <h1>, vem o texto e fecha com </h1>.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com a tag que fecha o parágrafo.",
+              "antes": "<p>Texto",
+              "depois": "",
+              "respostas": [
+                "</p>"
+              ],
+              "explicacao": "A tag de fechamento repete o nome com uma barra antes.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que o <title> define?",
+              "opcoes": [
+                "O texto da aba do navegador",
+                "O maior título da página",
+                "O rodapé"
+              ],
+              "correta": 0,
+              "explicacao": "O title fica no head e aparece na aba, não no corpo da página.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual está escrito certo?",
+              "opcoes": [
+                "<p>Oi<p>",
+                "<p>Oi</p>",
+                "<p>Oi<\\p>"
+              ],
+              "correta": 1,
+              "explicacao": "O fechamento usa a barra normal, antes do nome.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "html-texto",
+          "titulo": "Títulos e parágrafos",
+          "resumo": "Organize o texto com títulos, parágrafos e destaque.",
+          "explicacao": [
+            {
+              "titulo": "h1 a h6, p e strong",
+              "texto": "Os títulos vão de h1 (o mais importante) a h6. O p é um parágrafo. O strong marca um trecho importante.",
+              "codigo": "<h1>Título principal</h1>\n<h2>Subtítulo</h2>\n<p>Um parágrafo com <strong>destaque</strong>.</p>"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o título mais importante?",
+              "opcoes": [
+                "<h6>",
+                "<h1>",
+                "<p>"
+              ],
+              "correta": 1,
+              "explicacao": "Quanto menor o número, mais importante o título.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte um parágrafo com o texto Olá.",
+              "pecas": [
+                "<p>",
+                "Olá",
+                "</p>"
+              ],
+              "extras": [
+                "<h1>",
+                "</h1>"
+              ],
+              "explicacao": "O parágrafo usa a tag p.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para marcar a palavra como importante.",
+              "antes": "<",
+              "depois": ">urgente</strong>",
+              "respostas": [
+                "strong"
+              ],
+              "explicacao": "A abertura e o fechamento usam o mesmo nome.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantos <h1> uma página costuma ter?",
+              "opcoes": [
+                "Um, o título principal",
+                "Um por parágrafo",
+                "Quantos couberem"
+              ],
+              "correta": 0,
+              "explicacao": "O h1 diz do que a página trata; os outros níveis organizam o resto.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tag quebra a linha?",
+              "opcoes": [
+                "<br>",
+                "<lb>",
+                "<break>"
+              ],
+              "correta": 0,
+              "explicacao": "br vem de break, quebra.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "html-links",
+          "titulo": "Links e imagens",
+          "resumo": "Leve para outra página e mostre imagens.",
+          "explicacao": [
+            {
+              "titulo": "a e img",
+              "texto": "O a cria um link: o atributo href diz para onde ele leva. O img mostra uma imagem: src é o arquivo e alt é a descrição para quem não pode ver.",
+              "codigo": "<a href=\"https://exemplo.com\">Visitar</a>\n<img src=\"foto.jpg\" alt=\"Descrição da foto\">"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual atributo guarda o endereço do link?",
+              "opcoes": [
+                "src",
+                "href",
+                "link"
+              ],
+              "correta": 1,
+              "explicacao": "href é o destino do link.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte um link com o texto Abrir.",
+              "pecas": [
+                "<a",
+                "href=\"pagina.html\"",
+                ">",
+                "Abrir",
+                "</a>"
+              ],
+              "extras": [
+                "src=\"pagina.html\"",
+                "</link>"
+              ],
+              "explicacao": "O atributo fica dentro da tag de abertura; o texto, entre a abertura e o fechamento.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o atributo que indica o arquivo da imagem.",
+              "antes": "<img ",
+              "depois": "=\"foto.jpg\" alt=\"Foto\">",
+              "respostas": [
+                "src"
+              ],
+              "explicacao": "src vem de source, origem.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Para que serve o atributo alt da imagem?",
+              "opcoes": [
+                "Descreve a imagem para quem não pode vê-la",
+                "Define a largura",
+                "Muda a cor"
+              ],
+              "correta": 0,
+              "explicacao": "Leitores de tela leem o alt, e ele aparece se a imagem não carregar.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "A tag <img> precisa do fechamento </img>?",
+              "opcoes": [
+                "Sim, sempre",
+                "Não: ela não tem conteúdo dentro",
+                "Só no celular"
+              ],
+              "correta": 1,
+              "explicacao": "img é um elemento vazio: tudo o que ele precisa está nos atributos.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "html-listas",
+          "titulo": "Listas",
+          "resumo": "Agrupe itens em listas com marcadores ou números.",
+          "explicacao": [
+            {
+              "titulo": "ul, ol e li",
+              "texto": "ul cria uma lista com marcadores e ol, uma lista numerada. Cada item fica em um li, dentro da lista.",
+              "codigo": "<ul>\n  <li>Arroz</li>\n  <li>Feijão</li>\n</ul>"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tag cria uma lista numerada?",
+              "opcoes": [
+                "<ul>",
+                "<ol>",
+                "<li>"
+              ],
+              "correta": 1,
+              "explicacao": "ol vem de ordered list, lista ordenada.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte um item de lista com o texto Café.",
+              "pecas": [
+                "<li>",
+                "Café",
+                "</li>"
+              ],
+              "extras": [
+                "<ul>",
+                "</ol>"
+              ],
+              "explicacao": "Cada item usa a tag li.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com a tag que fecha a lista.",
+              "antes": "<ul><li>Um</li>",
+              "depois": "",
+              "respostas": [
+                "</ul>"
+              ],
+              "explicacao": "A lista fecha com a mesma tag que abriu.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Onde os <li> devem ficar?",
+              "opcoes": [
+                "Dentro de <ul> ou <ol>",
+                "Dentro de <p>",
+                "Soltos no <head>"
+              ],
+              "correta": 0,
+              "explicacao": "O li é sempre filho de uma lista.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantos itens esta lista tem?",
+              "codigo": "<ol>\n  <li>A</li>\n  <li>B</li>\n  <li>C</li>\n</ol>",
+              "opcoes": [
+                "2",
+                "3",
+                "4"
+              ],
+              "correta": 1,
+              "explicacao": "Cada li é um item: A, B e C.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "html-html-world-4",
+      "numero": 2,
+      "titulo": "Acessibilidade, Multimídia & Projeto Final",
+      "resumo": "Domine tags de mídia nativa (<video>, <audio>), acessibilidade com ARIA e conclua o Projeto Final de HTML5!",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "html-html-level-10",
+          "titulo": "Elementos Multimídia (<video> e <audio>)",
+          "resumo": "Aprenda a reproduzir mídia nativa sem plugins usando as tags modernas de áudio e vídeo do HTML5.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "O HTML5 padronizou a web multimídia. Com a tag <video> e o atributo controls, o navegador renderiza controles de reprodução nativos automaticamente."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual atributo é obrigatório para exibir os botões de play, pause e volume em um <video>?",
+              "opcoes": [
+                "controls",
+                "autoplay",
+                "loop",
+                "buttons"
+              ],
+              "correta": 0,
+              "explicacao": "Exato! O atributo booleano controls instrui o browser a renderizar a barra de controle.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "<video src=\"video.mp4\"> // sem controls",
+                "<video src=\"video.mp4\" controls>"
+              ],
+              "correta": 1,
+              "explicacao": "Sem o atributo controls, os botões de play/pause não aparecem na tela do usuário.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a tag de vídeo HTML5 com controles nativos:",
+              "pecas": [
+                "<video",
+                "src=\"game.mp4\"",
+                "controls>",
+                "</video>"
+              ],
+              "extras": [],
+              "explicacao": "A tag video recebe os atributos src e controls antes de ser fechada.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "html-html-level-11",
+          "titulo": "Acessibilidade Web & Atributos ARIA",
+          "resumo": "Construa interfaces inclusivas com aria-label, roles semânticos e textos alternativos para leitores de tela.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Acessibilidade garante que pessoas com deficiência visual ou motora possam utilizar a web. O atributo aria-label fornece rótulos em áudio para leitores de tela."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Por que o atributo alt é indispensável em elementos <img>?",
+              "opcoes": [
+                "Descreve a imagem para leitores de tela e melhora SEO",
+                "Aumenta a resolução da foto",
+                "Faz a imagem carregar instantaneamente",
+                "Muda a cor de fundo"
+              ],
+              "correta": 0,
+              "explicacao": "Correto! alt descreve textualmente o conteúdo visual.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: <button>✕</button> // leitor de tela lê apenas \"x\"",
+              "pecas": [
+                "<button aria-label=\"Fechar modal\">",
+                "✕",
+                "</button>"
+              ],
+              "extras": [
+                "<button>",
+                "/"
+              ],
+              "explicacao": "Sem aria-label, botões compostos por ícones não comunicam sua finalidade a usuários cegos.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Crie um botão acessível contendo aria-label=\"Menu Principal\" e texto \"☰ Menu\".",
+              "pecas": [
+                "<button type=\"button\" aria-label=\"Menu Principal\">",
+                "☰",
+                "Menu",
+                "</button>"
+              ],
+              "extras": [
+                "<button>",
+                "✕"
+              ],
+              "explicacao": "Use <button type=\"button\" aria-label=\"Menu Principal\">☰ Menu</button>",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

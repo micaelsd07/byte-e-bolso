@@ -1,0 +1,1144 @@
+{
+  "id": "python",
+  "nome": "Python",
+  "sigla": "Py",
+  "resumo": "Sintaxe limpa, muito usada em dados, automação e inteligência artificial.",
+  "unidades": [
+    {
+      "id": "python-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em Python.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "python-saida",
+          "titulo": "Primeiro programa",
+          "resumo": "Mostre texto e contas na tela com print.",
+          "explicacao": [
+            {
+              "titulo": "print",
+              "texto": "print mostra na tela o que está entre os parênteses. Texto vai entre aspas; números e contas, não.",
+              "codigo": "print(\"Olá, mundo!\")\nprint(2 + 3)"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra na tela?",
+              "codigo": "print(\"Oi\")",
+              "opcoes": [
+                "Oi",
+                "print(\"Oi\")",
+                "\"Oi\""
+              ],
+              "correta": 0,
+              "explicacao": "As aspas marcam onde o texto começa e termina, mas não aparecem na tela.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o código que mostra Python na tela.",
+              "pecas": [
+                "print",
+                "(",
+                "\"Python\"",
+                ")"
+              ],
+              "extras": [
+                "echo",
+                "{"
+              ],
+              "explicacao": "print, parênteses e o texto entre aspas.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para mostrar o número 7.",
+              "antes": "",
+              "depois": "(7)",
+              "respostas": [
+                "print"
+              ],
+              "explicacao": "print serve para texto e para números.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual linha tem erro?",
+              "opcoes": [
+                "print(\"Oi\")",
+                "print(\"Oi)",
+                "print(7)"
+              ],
+              "correta": 1,
+              "explicacao": "As aspas abrem e não fecham.",
+              "id": "e4"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Mostre o resultado de 10 menos 4.",
+              "pecas": [
+                "print",
+                "(",
+                "10",
+                "-",
+                "4",
+                ")"
+              ],
+              "extras": [
+                "+",
+                "\"10\""
+              ],
+              "explicacao": "Sem aspas, o Python faz a conta e mostra 6.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-variaveis",
+          "titulo": "Variáveis",
+          "resumo": "Guarde valores com um nome para usar depois.",
+          "explicacao": [
+            {
+              "titulo": "Guardar um valor",
+              "texto": "Uma variável é um nome para um valor. O sinal = guarda o valor da direita no nome da esquerda; não é comparação.",
+              "codigo": "idade = 18\nnome = \"Ana\"\nprint(nome)"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "x = 5\nx = x + 2\nprint(x)",
+              "opcoes": [
+                "5",
+                "7",
+                "x + 2"
+              ],
+              "correta": 1,
+              "explicacao": "x começa em 5 e passa a valer 5 + 2.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Guarde 10 na variável pontos.",
+              "pecas": [
+                "pontos",
+                "=",
+                "10"
+              ],
+              "extras": [
+                "==",
+                "let"
+              ],
+              "explicacao": "Nome, sinal de igual e valor. Python não usa let nem ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para guardar o texto Ana em nome.",
+              "antes": "nome = ",
+              "depois": "",
+              "respostas": [
+                "\"Ana\""
+              ],
+              "explicacao": "Texto precisa de aspas. Sem elas, o Python procuraria uma variável chamada Ana.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o tipo do valor 3.5?",
+              "opcoes": [
+                "int (inteiro)",
+                "float (número com casas decimais)",
+                "str (texto)"
+              ],
+              "correta": 1,
+              "explicacao": "Número com ponto decimal é float.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual nome de variável é válido?",
+              "opcoes": [
+                "2nome",
+                "meu nome",
+                "meu_nome"
+              ],
+              "correta": 2,
+              "explicacao": "Nome não começa com número nem tem espaço. O sublinhado separa as palavras.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-condicoes",
+          "titulo": "Condições",
+          "resumo": "Faça o programa decidir com if e else.",
+          "explicacao": [
+            {
+              "titulo": "if e else",
+              "texto": "O if executa um bloco só quando a condição é verdadeira. A linha termina com dois-pontos e o bloco fica recuado.",
+              "codigo": "if idade >= 18:\n    print(\"Maior\")\nelse:\n    print(\"Menor\")"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "nota = 6\nif nota >= 7:\n    print(\"Aprovado\")\nelse:\n    print(\"Recuperação\")",
+              "opcoes": [
+                "Aprovado",
+                "Recuperação",
+                "Nada"
+              ],
+              "correta": 1,
+              "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a condição: se x for maior que 10.",
+              "pecas": [
+                "if",
+                "x",
+                ">",
+                "10",
+                ":"
+              ],
+              "extras": [
+                "then",
+                "<"
+              ],
+              "explicacao": "Em Python não há parênteses obrigatórios nem then: a linha termina com dois-pontos.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o operador que compara se dois valores são iguais.",
+              "antes": "if senha ",
+              "depois": " \"1234\":",
+              "respostas": [
+                "=="
+              ],
+              "explicacao": "Dois sinais de igual comparam. Um só guarda valor.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que vem no fim da linha do if?",
+              "opcoes": [
+                "Ponto e vírgula ;",
+                "Dois-pontos :",
+                "Chave {"
+              ],
+              "correta": 1,
+              "explicacao": "Os dois-pontos avisam que um bloco começa na linha seguinte.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como o Python sabe o que está dentro do if?",
+              "opcoes": [
+                "Pelas chaves { }",
+                "Pelo recuo das linhas",
+                "Pela palavra end"
+              ],
+              "correta": 1,
+              "explicacao": "O recuo (indentação) é o que define o bloco. Linha sem recuo já está fora do if.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-lacos",
+          "titulo": "Laços",
+          "resumo": "Repita um bloco com for e while.",
+          "explicacao": [
+            {
+              "titulo": "for e range",
+              "texto": "O for repete um bloco para cada valor. range(3) gera 0, 1 e 2: começa em zero e para antes do número informado.",
+              "codigo": "for i in range(3):\n    print(i)"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas vezes Oi aparece?",
+              "codigo": "for i in range(4):\n    print(\"Oi\")",
+              "opcoes": [
+                "3",
+                "4",
+                "5"
+              ],
+              "correta": 1,
+              "explicacao": "range(4) gera quatro valores: 0, 1, 2 e 3.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais números aparecem?",
+              "codigo": "for i in range(3):\n    print(i)",
+              "opcoes": [
+                "1, 2, 3",
+                "0, 1, 2",
+                "0, 1, 2, 3"
+              ],
+              "correta": 1,
+              "explicacao": "range começa em 0 e para antes do 3.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o laço que repete 5 vezes.",
+              "pecas": [
+                "for",
+                "i",
+                "in",
+                "range",
+                "(",
+                "5",
+                ")",
+                ":"
+              ],
+              "extras": [
+                "while",
+                "to"
+              ],
+              "explicacao": "for, a variável, in, range com a quantidade e dois-pontos.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para repetir enquanto x for menor que 10.",
+              "antes": "",
+              "depois": " x < 10:",
+              "respostas": [
+                "while"
+              ],
+              "explicacao": "O while repete o bloco enquanto a condição for verdadeira.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o problema deste laço?",
+              "codigo": "x = 0\nwhile x < 5:\n    print(x)",
+              "opcoes": [
+                "x nunca muda: o laço não termina",
+                "Falta ponto e vírgula",
+                "print não funciona dentro de laço"
+              ],
+              "correta": 0,
+              "explicacao": "Sem x = x + 1 dentro do bloco, x fica em 0 para sempre.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "python-py-world-1",
+      "numero": 2,
+      "titulo": "O Despertar da Serpente",
+      "resumo": "Inicie sua jornada em Python. Aprenda a imprimir na tela, manipular variáveis, f-strings e operações matemáticas.",
+      "dificuldade": "facil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "python-py-level-1",
+          "titulo": "Olá, Mundo Python!",
+          "resumo": "Aprenda a função print() do Python e execute seu primeiro script sem rodeios.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Python é famoso por sua sintaxe limpa e legível. Ao contrário de Java ou C, você não precisa criar classes ou método main para imprimir algo; basta uma única linha de código!"
+            },
+            {
+              "titulo": "A Função print()",
+              "texto": "Para exibir qualquer mensagem no terminal em Python, chamamos a função nativa print(). Dica: Em Python não usamos ponto e vírgula (;) no final da linha!",
+              "codigo": "print(\"Olá, Mundo!\")"
+            },
+            {
+              "titulo": "Comentários com #",
+              "texto": "Linhas que começam com o símbolo sustenido (#) são ignoradas pelo interpretador e servem como anotações.",
+              "codigo": "# Isso é um comentário em Python\nprint(\"Executa normal\")"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Como se imprime uma mensagem no terminal em Python 3?",
+              "opcoes": [
+                "echo \"Olá\"",
+                "System.out.println(\"Olá\")",
+                "print(\"Olá\")",
+                "console.log(\"Olá\")"
+              ],
+              "correta": 2,
+              "explicacao": "Exato! Em Python basta invocar print(\"sua mensagem\").",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "",
+              "depois": "(\"Olá\")",
+              "respostas": [
+                "print"
+              ],
+              "explicacao": "Python é sensível a maiúsculas. O nome da função é \"print\" com \"p\" minúsculo.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: print Olá Mundo",
+              "pecas": [
+                "print",
+                "(",
+                "\"Olá Mundo\"",
+                ")"
+              ],
+              "extras": [
+                "Ol",
+                "á"
+              ],
+              "explicacao": "No Python 3 os parênteses () e as aspas \"\" são obrigatórios.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Reorganize os blocos para exibir \"Python e Incrivel!\"",
+              "pecas": [
+                "print(",
+                "\"Python e Incrivel!\"",
+                ")"
+              ],
+              "extras": [],
+              "explicacao": "Primeiro a função print, depois o texto entre aspas e o fechamento de parênteses.",
+              "id": "e4"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: A Função print()",
+              "antes": "",
+              "depois": "(\"Olá, Mundo!\")",
+              "respostas": [
+                "print"
+              ],
+              "explicacao": "Para exibir qualquer mensagem no terminal em Python, chamamos a função nativa print().",
+              "id": "e5"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "print(...)",
+              "opcoes": [
+                "Função integrada que envia dados para a saída padrão (terminal).",
+                "Texto (string) delimitado por aspas simples ou duplas."
+              ],
+              "correta": 0,
+              "explicacao": "Para exibir qualquer mensagem no terminal em Python, chamamos a função nativa print().",
+              "id": "e6"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Comentários com #",
+              "antes": "",
+              "depois": "(\"Executa normal\")",
+              "respostas": [
+                "print"
+              ],
+              "explicacao": "Linhas que começam com o símbolo sustenido (#) são ignoradas pelo interpretador e servem como anotações.",
+              "id": "e7"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-py-level-2",
+          "titulo": "Variáveis & Tipos Dinâmicos",
+          "resumo": "Guarde números, textos e booleanos sem precisar declarar tipos explicitamente.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Em Python, você não precisa escrever \"int\" ou \"String\" antes do nome da variável. O interpretador deduz automaticamente o tipo do dado no momento da atribuição."
+            },
+            {
+              "titulo": "Atribuição Simples",
+              "texto": "Use o operador de igual (=) para associar um valor a uma variável.",
+              "codigo": "nome = \"Alex\"\nidade = 22\naltura = 1.78\nativo = True"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual valor booleano é válido em Python?",
+              "opcoes": [
+                "true",
+                "TRUE",
+                "True",
+                "1b"
+              ],
+              "correta": 2,
+              "explicacao": "Correto! Em Python os booleanos são grafados exatamente como True ou False.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "ativo = ",
+              "depois": "",
+              "respostas": [
+                "True"
+              ],
+              "explicacao": "Em Python, valores booleanos começam com inicial maiúscula: True ou False.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Ordene para criar a variável pontuacao valendo 100",
+              "pecas": [
+                "pontuacao",
+                "=",
+                "100"
+              ],
+              "extras": [],
+              "explicacao": "Nome da variável, sinal de igual, e valor numérico.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Atribuição Simples",
+              "pecas": [
+                "nome",
+                "=",
+                "\"Alex\""
+              ],
+              "extras": [],
+              "explicacao": "Use o operador de igual (=) para associar um valor a uma variável.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "nome = \"Alex\"",
+              "opcoes": [
+                "Cria um valor numérico inteiro (int).",
+                "Cria uma variável do tipo str (texto).",
+                "Booleano. Em Python, True e False começam com Maiúscula!"
+              ],
+              "correta": 1,
+              "explicacao": "Use o operador de igual (=) para associar um valor a uma variável.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-py-level-3",
+          "titulo": "F-Strings & Contas Matemáticas",
+          "resumo": "Interpole variáveis em textos de forma elegante e execute operações aritméticas.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "F-Strings (formatted string literals) são a maneira mais rápida e legível de juntar textos e variáveis em Python, bastando colocar a letra f antes das aspas."
+            },
+            {
+              "titulo": "O Poder das F-Strings",
+              "texto": "Coloque as variáveis ou expressões entre chaves {} dentro da f-string.",
+              "codigo": "nome = \"Ana\"\nxp = 150\nprint(f\"Heroi: {nome} tem {xp} de XP\")"
+            },
+            {
+              "titulo": "Operadores Matemáticos",
+              "texto": "Python suporta +, -, *, / (divisão float), // (divisão inteira), % (módulo/resto) e ** (potência).",
+              "codigo": "total = 10 * 5\npotencia = 2 ** 3  # 8"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que o operador ** faz em Python?",
+              "opcoes": [
+                "Multiplicação dupla",
+                "Potenciação (exponenciação)",
+                "Divisão inteira",
+                "Raiz quadrada"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! 2 ** 3 em Python resulta em 8.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: print(\"Ola {nome}\")",
+              "pecas": [
+                "print",
+                "(",
+                "f",
+                "\"Ola {nome}\"",
+                ")"
+              ],
+              "extras": [],
+              "explicacao": "Sem a letra \"f\" antes da aspa, as chaves serão impressas literalmente como texto.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: O Poder das F-Strings",
+              "pecas": [
+                "nome",
+                "=",
+                "\"Ana\""
+              ],
+              "extras": [
+                "total",
+                "10"
+              ],
+              "explicacao": "Coloque as variáveis ou expressões entre chaves {} dentro da f-string.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Operadores Matemáticos",
+              "pecas": [
+                "total",
+                "=",
+                "10",
+                "*",
+                "5"
+              ],
+              "extras": [
+                "nome",
+                "\"Ana\""
+              ],
+              "explicacao": "Python suporta +, -, *, / (divisão float), // (divisão inteira), % (módulo/resto) e ** (potência).",
+              "id": "e4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python-py-world-2",
+      "numero": 3,
+      "titulo": "A Lógica das Decisões & Listas",
+      "resumo": "Domine a indentação do Python com if/elif/else, crie listas dinâmicas e automatize tarefas com laços for.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "python-py-level-4",
+          "titulo": "Condicionais if, elif e else",
+          "resumo": "Aprenda a controlar o fluxo de execução com indentação obrigatória de 4 espaços.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Em Python, o código NÃO usa chaves {} para blocos! Em vez disso, a indentação (espaços à esquerda) determina quais linhas pertencem à condição."
+            },
+            {
+              "titulo": "A Estrutura if e dois pontos (:)",
+              "texto": "Toda instrução if, elif ou else deve terminar com dois pontos (:). As linhas subordinadas devem ter 4 espaços de recuo.",
+              "codigo": "nivel = 10\nif nivel >= 10:\n    print(\"Acesso liberado!\")\nelse:\n    print(\"Acesso negado!\")"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que define o escopo de um bloco de código em Python?",
+              "opcoes": [
+                "Chaves {}",
+                "A palavra-chave end",
+                "A indentação (espaços)",
+                "Ponto e vírgula (;)"
+              ],
+              "correta": 2,
+              "explicacao": "Correto! Python utiliza a indentação consistente para delimitar blocos.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "if nivel > 5 print(\"OK\")",
+                "if nivel > 5: print(\"OK\")"
+              ],
+              "correta": 1,
+              "explicacao": "Faltou o caractere de dois pontos (:) após a expressão do if.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: A Estrutura if e dois pontos (:)",
+              "pecas": [
+                "nivel",
+                "=",
+                "10"
+              ],
+              "extras": [],
+              "explicacao": "Toda instrução if, elif ou else deve terminar com dois pontos (:). As linhas subordinadas devem ter 4 espaços de recuo.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-py-level-5",
+          "titulo": "Listas Dinâmicas em Python",
+          "resumo": "Armazene e manipule coleções ordenadas de dados com colchetes [].",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Listas em Python são mutáveis, dinâmicas e suportam qualquer tipo de elemento. Você pode adicionar com .append(), remover com .remove() e consultar o tamanho com len()."
+            },
+            {
+              "titulo": "Criando e Acessando Itens",
+              "texto": "Índices começam em 0. Python também suporta índices negativos como [-1] para o último elemento!",
+              "codigo": "frutas = [\"Maca\", \"Banana\", \"Uva\"]\nprint(frutas[0])   # Maca\nprint(frutas[-1])  # Uva\nfrutas.append(\"Laranja\")"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Como adicionar um novo elemento ao final de uma lista em Python?",
+              "opcoes": [
+                "lista.push(item)",
+                "lista.append(item)",
+                "lista.add(item)",
+                "lista.insertEnd(item)"
+              ],
+              "correta": 1,
+              "explicacao": "Exato! O método oficial da lista é .append(valor).",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "",
+              "depois": "(\"item\")",
+              "respostas": [
+                "lista.append"
+              ],
+              "explicacao": "Em listas de Python o método para adicionar ao final se chama append, não add.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Criando e Acessando Itens",
+              "pecas": [
+                "frutas",
+                "=",
+                "[",
+                "\"Maca\"",
+                ",",
+                "\"Banana\"",
+                ",",
+                "\"Uva\"",
+                "]"
+              ],
+              "extras": [],
+              "explicacao": "Índices começam em 0. Python também suporta índices negativos como [-1] para o último elemento!",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-py-level-6",
+          "titulo": "Laços for & range()",
+          "resumo": "Itere sobre sequências e repita comandos com elegância.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "O for em Python é um \"for-each\" por padrão: ele percorre diretamente os itens de uma lista ou os números gerados pela função range()."
+            },
+            {
+              "titulo": "O Laço com range(inicio, fim)",
+              "texto": "range(1, 4) gera os números 1, 2 e 3 (o limite final é exclusivo).",
+              "codigo": "for i in range(1, 4):\n    print(f\"Volta {i}\")"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais valores são gerados por range(1, 5)?",
+              "opcoes": [
+                "1, 2, 3, 4, 5",
+                "1, 2, 3, 4",
+                "0, 1, 2, 3, 4",
+                "2, 3, 4, 5"
+              ],
+              "correta": 1,
+              "explicacao": "Em Python o valor de parada no range() nunca é incluído (exclusivo).",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: for (i=0; i<5; i++)",
+              "pecas": [
+                "for",
+                "i",
+                "in",
+                "range",
+                "(",
+                "5",
+                ")",
+                ":"
+              ],
+              "extras": [
+                "=",
+                "0"
+              ],
+              "explicacao": "Python não possui a sintaxe clássica de C/Java para loops for; use \"for x in range(...)\".",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Laço com range(inicio, fim)",
+              "antes": "",
+              "depois": " i in range(1, 4):",
+              "respostas": [
+                "for"
+              ],
+              "explicacao": "range(1, 4) gera os números 1, 2 e 3 (o limite final é exclusivo).",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python-py-world-3",
+      "numero": 4,
+      "titulo": "Mestria Funcional & Dicionários",
+      "resumo": "Crie funções reutilizáveis com def e return, manipule dados com dicionários e construa pipelines de processamento.",
+      "dificuldade": "medio",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "python-py-level-7",
+          "titulo": "Funções com def & return",
+          "resumo": "Encapsule lógica em blocos reutilizáveis com parâmetros e retornos claros.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Funções são blocos de código nomeados que recebem argumentos e podem devolver um resultado usando a instrução return."
+            },
+            {
+              "titulo": "Definindo com def",
+              "texto": "A palavra-chave def introduz a função.",
+              "codigo": "def somar(a, b):\n    return a + b\n\nresultado = somar(10, 5)\nprint(resultado)  # 15"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual palavra-chave é usada para declarar uma função em Python?",
+              "opcoes": [
+                "func",
+                "function",
+                "def",
+                "method"
+              ],
+              "correta": 2,
+              "explicacao": "Exato! Em Python funções são criadas com def nome_da_funcao(args):",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "function somar(a, b) { return a+b; }",
+                "def somar(a, b): return a + b"
+              ],
+              "correta": 1,
+              "explicacao": "Python usa a palavra-chave \"def\" e dois pontos (:), não \"function\".",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Definindo com def",
+              "antes": "",
+              "depois": " somar(a, b):",
+              "respostas": [
+                "def"
+              ],
+              "explicacao": "A palavra-chave def introduz a função.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-py-level-8",
+          "titulo": "Dicionários chave-valor",
+          "resumo": "Mapeie dados estruturados com rapidez usando dicts {} em Python.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Dicionários armazenam associações chave-valor, semelhantes a objetos JSON em JavaScript. O acesso é instantâneo via colchetes ou .get()."
+            },
+            {
+              "titulo": "Sintaxe de Chaves {}",
+              "texto": "Chaves são separadas de valores por dois pontos (:).",
+              "codigo": "jogador = {\n    \"nome\": \"Guilherme\",\n    \"nivel\": 42,\n    \"classe\": \"Mago\"\n}\nprint(jogador[\"nome\"])"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Como acessar o valor associado à chave \"xp\" em um dicionário dados?",
+              "opcoes": [
+                "dados->xp",
+                "dados[\"xp\"]",
+                "dados(xp)",
+                "dados::xp"
+              ],
+              "correta": 1,
+              "explicacao": "Correto! Em Python usamos dados[\"chave\"].",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: jogador.nome",
+              "pecas": [
+                "jogador",
+                "[",
+                "\"nome\"",
+                "]"
+              ],
+              "extras": [
+                "jogador.nome"
+              ],
+              "explicacao": "Em dicionários padrão do Python acessamos as chaves por colchetes [].",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Sintaxe de Chaves {}",
+              "pecas": [
+                "jogador",
+                "=",
+                "{"
+              ],
+              "extras": [],
+              "explicacao": "Chaves são separadas de valores por dois pontos (:).",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-py-level-9",
+          "titulo": "Desafio Mestre: Filtro de Números",
+          "resumo": "Construa um algoritmo que filtra e soma apenas os números pares de uma lista.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Neste desafio mestre de Python você aplicará listas, loops, operadores de resto (%) e funções para solucionar um problema real de análise de dados."
+            },
+            {
+              "titulo": "O Operador Módulo %",
+              "texto": "Um número n é par quando n % 2 == 0.",
+              "codigo": "if numero % 2 == 0:\n    # e par!"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual expressão verifica se um número num é ímpar em Python?",
+              "opcoes": [
+                "num % 2 != 0",
+                "num / 2 != 0",
+                "num.isOdd()",
+                "num ** 2 == 1"
+              ],
+              "correta": 0,
+              "explicacao": "Exato! Se o resto da divisão por 2 for diferente de zero, o número é ímpar.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "if n ",
+              "depois": " 2 == 0",
+              "respostas": [
+                "%"
+              ],
+              "explicacao": "A barra / é divisão comum. Para checar paridade use o operador de resto %.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: O Operador Módulo %",
+              "pecas": [
+                "if",
+                "numero",
+                "%",
+                "2",
+                "==",
+                "0",
+                ":"
+              ],
+              "extras": [],
+              "explicacao": "Um número n é par quando n % 2 == 0.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python-py-world-4",
+      "numero": 5,
+      "titulo": "A Forja dos Objetos & Automação",
+      "resumo": "Blinde seus scripts com try/except, modele classes orientadas a objetos com __init__ e self, e conclua o Projeto Final Python.",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "python-py-level-10",
+          "titulo": "Tratamento de Exceções (try / except)",
+          "resumo": "Aprenda a capturar erros em tempo de execução para evitar que seu script Python falhe inesperadamente.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Em programação, erros acontecem. Com try e except você tenta executar um bloco arriscado e, se uma exceção ocorrer, define uma rota segura de contingência."
+            },
+            {
+              "titulo": "A Estrutura try / except",
+              "texto": "O bloco try tenta executar; se falhar, o bloco except captura e trata o erro sem travar o programa.",
+              "codigo": "try:\n    resultado = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Divisao por zero bloqueada!\")"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual bloco é executado quando ocorre um erro dentro do bloco try?",
+              "opcoes": [
+                "O bloco except",
+                "O bloco catch",
+                "O bloco error",
+                "O programa encerra imediatamente"
+              ],
+              "correta": 0,
+              "explicacao": "Perfeito! Em Python usa-se except para capturar a exceção tratada.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "try: resultado = 10 / 0 except Exception: print(\"Erro\")",
+                "try: resultado = 10 / 0"
+              ],
+              "correta": 0,
+              "explicacao": "Lembre-se da indentação obrigatória e de sempre fornecer um bloco except correspondente.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Ordene os tokens para proteger uma conversão de texto para inteiro:",
+              "pecas": [
+                "try:",
+                "num = int(\"abc\")",
+                "except:",
+                "print(\"Falha na conversao\")"
+              ],
+              "extras": [],
+              "explicacao": "O bloco try envolve o código propenso a erro e except recebe a contingência.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: A Estrutura try / except",
+              "pecas": [
+                "resultado",
+                "=",
+                "10",
+                "/",
+                "0"
+              ],
+              "extras": [
+                "try",
+                ":"
+              ],
+              "explicacao": "O bloco try tenta executar; se falhar, o bloco except captura e trata o erro sem travar o programa.",
+              "id": "e4"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "python-py-level-11",
+          "titulo": "Classes, Objetos e __init__",
+          "resumo": "Dê seus primeiros passos em POO com Python modelando uma classe com atributos e métodos.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Uma classe é um molde para criar objetos. O método especial __init__ é o construtor executado quando o objeto nasce, e self representa a própria instância."
+            },
+            {
+              "titulo": "Criando uma Classe",
+              "texto": "Defina a classe com class e use self para anexar atributos ao objeto.",
+              "codigo": "class Robo:\n    def __init__(self, nome):\n        self.nome = nome\n    def saudar(self):\n        print(f\"Bip! Eu sou {self.nome}\")"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que o parâmetro self representa nos métodos de uma classe Python?",
+              "opcoes": [
+                "A instância específica do objeto que está executando o método",
+                "O nome da classe global",
+                "Um módulo de biblioteca",
+                "O ponteiro de memória do SO"
+              ],
+              "correta": 0,
+              "explicacao": "Correto! self é a referência explícita para a própria instância do objeto.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "def __init__(self, nome): self.nome = nome",
+                "def __init__(nome): self.nome = nome"
+              ],
+              "correta": 0,
+              "explicacao": "Em Python, o primeiro parâmetro de qualquer método de instância deve ser explicitamente self.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a declaração de um método construtor de classe:",
+              "pecas": [
+                "class Jogador:",
+                "def __init__(self):",
+                "self.vida = 100"
+              ],
+              "extras": [],
+              "explicacao": "A classe é definida primeiro, seguida pelo método __init__ e a atribuição de atributos em self.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: Criando uma Classe",
+              "antes": "",
+              "depois": " Robo:",
+              "respostas": [
+                "class"
+              ],
+              "explicacao": "Defina a classe com class e use self para anexar atributos ao objeto.",
+              "id": "e4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

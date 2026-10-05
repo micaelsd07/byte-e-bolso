@@ -1,0 +1,589 @@
+{
+  "id": "carreira",
+  "nome": "Carreira e dinheiro",
+  "sigla": "R$",
+  "resumo": "Fora do código: equipamento, orçamento, golpes e a negociação com o primeiro cliente.",
+  "unidades": [
+    {
+      "id": "carreira-garagem",
+      "numero": 1,
+      "titulo": "Da garagem ao primeiro cliente",
+      "resumo": "Você tem R$ 2.500, um canto na garagem e a vontade de viver de tecnologia.",
+      "nos": [
+        {
+          "tipo": "triagem",
+          "id": "monte-seu-setup",
+          "categoria": "tecnologia",
+          "titulo": "Monte seu setup",
+          "resumo": "Separe o que ajuda a programar do que é só enfeite.",
+          "instrucao": "Arraste cada item para o lado certo antes que o tempo acabe.",
+          "esquerda": "Pode esperar",
+          "direita": "Ajuda a programar",
+          "duracao": 40,
+          "recompensa": 300,
+          "metas": [
+            150,
+            350,
+            600
+          ],
+          "teto": 6000,
+          "cartas": [
+            {
+              "id": "memoria",
+              "texto": "8 GB de memória",
+              "lado": "direita",
+              "porque": "Editor, navegador e terminal abertos juntos precisam de memória."
+            },
+            {
+              "id": "ssd",
+              "texto": "SSD no lugar do HD",
+              "lado": "direita",
+              "porque": "Tudo abre em segundos. É a troca que mais muda o dia a dia."
+            },
+            {
+              "id": "rgb",
+              "texto": "Luzes RGB no gabinete",
+              "lado": "esquerda",
+              "porque": "Luz colorida não compila código."
+            },
+            {
+              "id": "placa-video",
+              "texto": "Placa de vídeo de última geração",
+              "lado": "esquerda",
+              "porque": "Pesa em jogos e edição de vídeo. Para aprender a programar, quase não é usada."
+            },
+            {
+              "id": "editor",
+              "texto": "Editor de código gratuito",
+              "lado": "direita",
+              "porque": "As melhores ferramentas para começar não custam nada."
+            },
+            {
+              "id": "tela-4k",
+              "texto": "Tela 4K de 17 polegadas",
+              "lado": "esquerda",
+              "porque": "É conforto, não capacidade. Com pouca memória, trava do mesmo jeito."
+            },
+            {
+              "id": "internet",
+              "texto": "Internet estável em casa",
+              "lado": "direita",
+              "porque": "Aula, documentação e envio do código dependem dela."
+            },
+            {
+              "id": "cadeira",
+              "texto": "Cadeira gamer de R$ 2.000",
+              "lado": "esquerda",
+              "porque": "Postura importa, mas uma cadeira comum bem ajustada resolve por muito menos."
+            },
+            {
+              "id": "curso",
+              "texto": "Curso de lógica de programação",
+              "lado": "direita",
+              "porque": "Lógica vale para qualquer linguagem que você aprender depois."
+            },
+            {
+              "id": "teclado",
+              "texto": "Teclado mecânico importado",
+              "lado": "esquerda",
+              "porque": "Digitar bem vem de prática, não do preço do teclado."
+            },
+            {
+              "id": "backup",
+              "texto": "Cópia de segurança dos arquivos",
+              "lado": "direita",
+              "porque": "Perder o projeto por um disco queimado ensina isso do jeito difícil."
+            },
+            {
+              "id": "usado",
+              "texto": "Notebook usado e revisado",
+              "lado": "direita",
+              "porque": "Usado em bom estado resolve e deixa dinheiro de folga."
+            },
+            {
+              "id": "fone",
+              "texto": "Fone 7.1 com microfone de estúdio",
+              "lado": "esquerda",
+              "porque": "Para estudar, qualquer fone que funcione serve."
+            },
+            {
+              "id": "repositorio",
+              "texto": "Conta para guardar o código online",
+              "lado": "direita",
+              "porque": "Código guardado online é cópia de segurança e portfólio ao mesmo tempo."
+            }
+          ]
+        },
+        {
+          "tipo": "triagem",
+          "id": "essencial-ou-desejo",
+          "categoria": "financas",
+          "titulo": "Essencial ou desejo?",
+          "resumo": "O salário caiu. Separe o que precisa ser pago do que pode esperar.",
+          "instrucao": "Conta que não pode faltar vai para a direita. O que é vontade vai para a esquerda.",
+          "esquerda": "Desejo",
+          "direita": "Essencial",
+          "duracao": 40,
+          "recompensa": 300,
+          "metas": [
+            150,
+            350,
+            600
+          ],
+          "teto": 6000,
+          "cartas": [
+            {
+              "id": "aluguel",
+              "texto": "Aluguel",
+              "lado": "direita",
+              "porque": "Moradia vem antes de tudo."
+            },
+            {
+              "id": "luz",
+              "texto": "Conta de luz",
+              "lado": "direita",
+              "porque": "Sem luz não tem estudo nem trabalho."
+            },
+            {
+              "id": "onibus",
+              "texto": "Passagem para ir ao trabalho",
+              "lado": "direita",
+              "porque": "É o que garante a sua renda."
+            },
+            {
+              "id": "mercado",
+              "texto": "Mercado do mês",
+              "lado": "direita",
+              "porque": "Comida em casa é essencial."
+            },
+            {
+              "id": "internet",
+              "texto": "Internet de casa",
+              "lado": "direita",
+              "porque": "Para quem estuda e trabalha com tecnologia, é ferramenta."
+            },
+            {
+              "id": "remedio",
+              "texto": "Remédio de uso contínuo",
+              "lado": "direita",
+              "porque": "Saúde não se adia."
+            },
+            {
+              "id": "gas",
+              "texto": "Botijão de gás",
+              "lado": "direita",
+              "porque": "Sem gás não se cozinha o mercado do mês."
+            },
+            {
+              "id": "streaming",
+              "texto": "Terceira assinatura de streaming",
+              "lado": "esquerda",
+              "porque": "Uma já é lazer. A terceira é dinheiro parado."
+            },
+            {
+              "id": "tenis",
+              "texto": "Tênis novo em 10 parcelas",
+              "lado": "esquerda",
+              "porque": "Parcela pequena também é conta, e dura dez meses."
+            },
+            {
+              "id": "delivery",
+              "texto": "Pedir comida todo dia",
+              "lado": "esquerda",
+              "porque": "Comer é essencial. Pedir todo dia é escolha."
+            },
+            {
+              "id": "skin",
+              "texto": "Visual novo para o personagem do jogo",
+              "lado": "esquerda",
+              "porque": "Não muda nada fora da tela."
+            },
+            {
+              "id": "celular",
+              "texto": "Celular do ano",
+              "lado": "esquerda",
+              "porque": "Se o seu funciona, trocar é desejo."
+            },
+            {
+              "id": "cafe",
+              "texto": "Café especial todo dia na rua",
+              "lado": "esquerda",
+              "porque": "R$ 12 por dia viram mais de R$ 250 no mês."
+            },
+            {
+              "id": "roupa",
+              "texto": "Roupa nova para a festa de sábado",
+              "lado": "esquerda",
+              "porque": "Pode esperar a reserva estar feita."
+            }
+          ]
+        },
+        {
+          "tipo": "orcamento",
+          "id": "primeiro-mes",
+          "categoria": "financas",
+          "titulo": "O orçamento do mês",
+          "resumo": "Sem relógio desta vez: monte o mês com R$ 900.",
+          "contexto": "Você conseguiu uma vaga de jovem aprendiz e vai receber R$ 900. Marque o que entra no orçamento. O que sobrar vai para a reserva de emergência.",
+          "renda": 900,
+          "metaReserva": 100,
+          "recompensa": 400,
+          "metas": [
+            50,
+            75,
+            90
+          ],
+          "teto": 100,
+          "itens": [
+            {
+              "id": "transporte",
+              "nome": "Transporte",
+              "valor": 180,
+              "classe": "essencial"
+            },
+            {
+              "id": "internet",
+              "nome": "Sua parte da internet",
+              "valor": 50,
+              "classe": "essencial"
+            },
+            {
+              "id": "ajuda-em-casa",
+              "nome": "Ajuda nas contas de casa",
+              "valor": 200,
+              "classe": "essencial"
+            },
+            {
+              "id": "curso-logica",
+              "nome": "Curso de lógica de programação",
+              "valor": 60,
+              "classe": "futuro"
+            },
+            {
+              "id": "teclado-mouse",
+              "nome": "Teclado e mouse usados",
+              "valor": 70,
+              "classe": "futuro"
+            },
+            {
+              "id": "lanche-fora",
+              "nome": "Lanche fora de casa",
+              "valor": 160,
+              "classe": "desejo"
+            },
+            {
+              "id": "streaming",
+              "nome": "Assinatura de streaming",
+              "valor": 60,
+              "classe": "desejo"
+            },
+            {
+              "id": "jogo-promocao",
+              "nome": "Jogo em promoção",
+              "valor": 80,
+              "classe": "desejo"
+            },
+            {
+              "id": "tenis-parcelado",
+              "nome": "Tênis novo, 1ª de 3 parcelas",
+              "valor": 150,
+              "classe": "desejo"
+            }
+          ],
+          "aprendizado": "Orçamento é decidir antes para onde o dinheiro vai: primeiro o essencial, depois a reserva e o seu futuro, e só então os desejos."
+        },
+        {
+          "tipo": "triagem",
+          "id": "golpe-ou-seguro",
+          "categoria": "seguranca",
+          "titulo": "Golpe ou seguro?",
+          "resumo": "As mensagens não param de chegar. Uma delas quer o seu dinheiro.",
+          "instrucao": "Se for golpe, jogue para a esquerda. Se for seguro, para a direita.",
+          "esquerda": "Golpe",
+          "direita": "Seguro",
+          "duracao": 45,
+          "recompensa": 400,
+          "metas": [
+            150,
+            350,
+            600
+          ],
+          "teto": 6000,
+          "cartas": [
+            {
+              "id": "frete",
+              "texto": "\"Você ganhou um notebook! Pague só o frete de R$ 49 por Pix em 10 minutos.\"",
+              "lado": "esquerda",
+              "porque": "Prêmio de sorteio em que você não entrou, pressa e pagamento adiantado."
+            },
+            {
+              "id": "banco-link",
+              "texto": "\"Seu banco: acesso suspeito. Clique no link e confirme sua senha.\"",
+              "lado": "esquerda",
+              "porque": "Banco não pede senha por link. Entre pelo aplicativo oficial."
+            },
+            {
+              "id": "vaga-taxa",
+              "texto": "\"Vaga em casa, R$ 500 por dia, sem experiência. Pague a taxa de cadastro.\"",
+              "lado": "esquerda",
+              "porque": "Empresa séria não cobra para contratar."
+            },
+            {
+              "id": "novo-numero",
+              "texto": "\"Oi, mãe, troquei de número. Faz um Pix para mim agora?\"",
+              "lado": "esquerda",
+              "porque": "Ligue para o número antigo antes de qualquer transferência."
+            },
+            {
+              "id": "codigo-pedido",
+              "texto": "Você pediu para entrar na sua conta e chegou um código com o aviso \"não compartilhe\".",
+              "lado": "direita",
+              "porque": "É a verificação funcionando. Golpe é quando alguém pede esse código a você."
+            },
+            {
+              "id": "codigo-ligacao",
+              "texto": "Alguém liga pedindo o código que acabou de chegar no seu celular.",
+              "lado": "esquerda",
+              "porque": "Esse código abre a sua conta. Ninguém de verdade pede por telefone."
+            },
+            {
+              "id": "app-oficial",
+              "texto": "Você mesmo digita o endereço do banco e entra pelo aplicativo oficial.",
+              "lado": "direita",
+              "porque": "O caminho seguro é o que você escolhe, não o que chega por mensagem."
+            },
+            {
+              "id": "loja-80",
+              "texto": "Loja desconhecida, 80% mais barato, só aceita Pix.",
+              "lado": "esquerda",
+              "porque": "Preço impossível e pagamento sem volta."
+            },
+            {
+              "id": "entrevista",
+              "texto": "Entrevista de emprego por videochamada; ninguém pede dinheiro.",
+              "lado": "direita",
+              "porque": "Processo seletivo de verdade não custa nada ao candidato."
+            },
+            {
+              "id": "duas-etapas",
+              "texto": "Ativar a verificação em duas etapas na sua conta.",
+              "lado": "direita",
+              "porque": "Mesmo com a senha vazada, o invasor para na segunda etapa."
+            },
+            {
+              "id": "boleto-exe",
+              "texto": "Arquivo \"boleto.exe\" enviado por um contato desconhecido.",
+              "lado": "esquerda",
+              "porque": "Boleto não é programa. Arquivo .exe de desconhecido não se abre."
+            },
+            {
+              "id": "https",
+              "texto": "O endereço é o oficial, digitado por você, e começa com https.",
+              "lado": "direita",
+              "porque": "Endereço certo e conexão protegida."
+            },
+            {
+              "id": "cartao-mensagem",
+              "texto": "\"Promoção: mande o número do cartão e o código de trás por mensagem.\"",
+              "lado": "esquerda",
+              "porque": "Com esses dois números qualquer pessoa compra no seu nome."
+            },
+            {
+              "id": "atualizar",
+              "texto": "Atualizar o sistema do celular pela loja oficial.",
+              "lado": "direita",
+              "porque": "Atualização fecha as brechas que os golpes usam."
+            }
+          ]
+        },
+        {
+          "tipo": "triagem",
+          "id": "bug-ou-certo",
+          "categoria": "tecnologia",
+          "titulo": "Bug ou certo?",
+          "resumo": "Seu primeiro projeto está quase pronto. Leia cada linha antes de publicar.",
+          "instrucao": "Linha com erro vai para a esquerda. Linha correta vai para a direita.",
+          "esquerda": "Tem bug",
+          "direita": "Está certo",
+          "duracao": 45,
+          "recompensa": 450,
+          "metas": [
+            150,
+            350,
+            600
+          ],
+          "teto": 6000,
+          "cartas": [
+            {
+              "id": "total",
+              "codigo": true,
+              "texto": "let total = preco * quantidade;",
+              "lado": "direita",
+              "porque": "Declara a variável e guarda o resultado da conta."
+            },
+            {
+              "id": "atribuicao",
+              "codigo": true,
+              "texto": "if (idade = 18) { entrar(); }",
+              "lado": "esquerda",
+              "porque": "Um = sozinho guarda o valor. Para comparar, use ===."
+            },
+            {
+              "id": "laco",
+              "codigo": true,
+              "texto": "for (let i = 0; i < 10; i--) { }",
+              "lado": "esquerda",
+              "porque": "O i diminui e nunca chega a 10: o laço não termina."
+            },
+            {
+              "id": "nome",
+              "codigo": true,
+              "texto": "const nome = \"Ana\";",
+              "lado": "direita",
+              "porque": "Texto entre aspas, guardado em uma constante."
+            },
+            {
+              "id": "aspas",
+              "codigo": true,
+              "texto": "console.log(\"Olá);",
+              "lado": "esquerda",
+              "porque": "As aspas abrem e não fecham."
+            },
+            {
+              "id": "saldo",
+              "codigo": true,
+              "texto": "if (saldo >= 0) { pagar(); }",
+              "lado": "direita",
+              "porque": "Só paga quando o saldo não é negativo."
+            },
+            {
+              "id": "soma",
+              "codigo": true,
+              "texto": "function soma(a, b) { return a - b; }",
+              "lado": "esquerda",
+              "porque": "O nome promete soma e o código subtrai."
+            },
+            {
+              "id": "indice",
+              "codigo": true,
+              "texto": "const lista = [1, 2, 3]; lista[3];",
+              "lado": "esquerda",
+              "porque": "As posições vão de 0 a 2. A posição 3 não existe."
+            },
+            {
+              "id": "incremento",
+              "codigo": true,
+              "texto": "let x = 5; x = x + 1;",
+              "lado": "direita",
+              "porque": "Variável com let pode mudar de valor."
+            },
+            {
+              "id": "infinito",
+              "codigo": true,
+              "texto": "while (true) { contar(); }",
+              "lado": "esquerda",
+              "porque": "Sem condição de saída, o programa trava."
+            },
+            {
+              "id": "constante",
+              "codigo": true,
+              "texto": "const PI = 3.14; PI = 3;",
+              "lado": "esquerda",
+              "porque": "Constante não pode receber outro valor."
+            },
+            {
+              "id": "desconto",
+              "codigo": true,
+              "texto": "return preco * 0.9; // 10% de desconto",
+              "lado": "direita",
+              "porque": "Multiplicar por 0.9 tira exatamente 10%."
+            },
+            {
+              "id": "senha",
+              "codigo": true,
+              "texto": "if (senha.length >= 8) { aceitar(); }",
+              "lado": "direita",
+              "porque": "Aceita só senha com 8 caracteres ou mais."
+            },
+            {
+              "id": "media-certa",
+              "codigo": true,
+              "texto": "let media = (a + b) / 2;",
+              "lado": "direita",
+              "porque": "Os parênteses fazem a soma antes da divisão."
+            },
+            {
+              "id": "media-errada",
+              "codigo": true,
+              "texto": "let media = a + b / 2;",
+              "lado": "esquerda",
+              "porque": "A divisão vem antes da soma: só o b é dividido."
+            }
+          ]
+        },
+        {
+          "tipo": "negociacao",
+          "id": "primeiro-cliente",
+          "categoria": "carreira",
+          "titulo": "O primeiro cliente",
+          "resumo": "Dona Marta quer um site para a padaria e começou oferecendo pouco.",
+          "cliente": "Dona Marta",
+          "perfil": "economico",
+          "pedido": "Um site simples para a padaria, com cardápio e pedido pelo celular.",
+          "horas": 20,
+          "valorHora": 30,
+          "ofertaInicial": 300,
+          "maximo": 900,
+          "paciencia": 5,
+          "recompensa": 900,
+          "metas": [
+            1,
+            67,
+            90
+          ],
+          "teto": 100,
+          "argumentos": [
+            {
+              "id": "retorno",
+              "tipo": "valor",
+              "texto": "Com pedido pelo celular, o site se paga em poucas semanas.",
+              "porque": "Quem cuida de cada centavo quer saber quando o dinheiro volta."
+            },
+            {
+              "id": "conta-aberta",
+              "tipo": "valor",
+              "texto": "Mostro a conta: são 20 horas de trabalho a R$ 30 cada.",
+              "porque": "Preço explicado deixa de parecer caro."
+            },
+            {
+              "id": "prazo",
+              "tipo": "prazo",
+              "texto": "Entrego em duas semanas, com a data no contrato.",
+              "porque": "Ajuda, mas pressa não é a preocupação dela."
+            },
+            {
+              "id": "suporte",
+              "tipo": "qualidade",
+              "texto": "Funciona bem no celular e eu ensino a atualizar o cardápio.",
+              "porque": "Ajuda, mas ela ainda está olhando para o preço."
+            },
+            {
+              "id": "de-graca",
+              "tipo": "fraco",
+              "texto": "Faço quase de graça, é bom para o meu portfólio.",
+              "porque": "Trabalhar de graça ensina ao cliente que o seu trabalho não vale nada."
+            },
+            {
+              "id": "preciso",
+              "tipo": "fraco",
+              "texto": "Estou precisando muito desse dinheiro.",
+              "porque": "Sua necessidade não é argumento: o cliente paga pelo que recebe."
+            }
+          ],
+          "aprendizado": "Preço se defende com conta e com o que o cliente ganha. Calcule suas horas antes de entrar na conversa e saiba a hora de fechar."
+        }
+      ],
+      "dificuldade": "facil"
+    }
+  ]
+}

@@ -1,0 +1,635 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "capitulo.schema.json",
+  "title": "Unidade de uma trilha",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "numero",
+    "titulo",
+    "resumo",
+    "nos",
+    "dificuldade"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "numero": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "titulo": {
+      "$ref": "#/definitions/curto"
+    },
+    "resumo": {
+      "$ref": "#/definitions/texto"
+    },
+    "nos": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/triagem"
+          },
+          {
+            "$ref": "#/definitions/orcamento"
+          },
+          {
+            "$ref": "#/definitions/negociacao"
+          },
+          {
+            "$ref": "#/definitions/licao"
+          }
+        ]
+      }
+    },
+    "dificuldade": {
+      "enum": [
+        "facil",
+        "medio",
+        "dificil"
+      ]
+    }
+  },
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 40
+    },
+    "curto": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 60
+    },
+    "texto": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 320
+    },
+    "categoria": {
+      "enum": [
+        "tecnologia",
+        "financas",
+        "seguranca",
+        "carreira"
+      ]
+    },
+    "dinheiro": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "metas": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "triagem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tipo",
+        "id",
+        "categoria",
+        "titulo",
+        "resumo",
+        "instrucao",
+        "esquerda",
+        "direita",
+        "duracao",
+        "recompensa",
+        "metas",
+        "teto",
+        "cartas"
+      ],
+      "properties": {
+        "tipo": {
+          "const": "triagem"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "categoria": {
+          "$ref": "#/definitions/categoria"
+        },
+        "titulo": {
+          "$ref": "#/definitions/curto"
+        },
+        "resumo": {
+          "$ref": "#/definitions/texto"
+        },
+        "instrucao": {
+          "$ref": "#/definitions/texto"
+        },
+        "esquerda": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 20
+        },
+        "direita": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 20
+        },
+        "duracao": {
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 90
+        },
+        "recompensa": {
+          "$ref": "#/definitions/dinheiro"
+        },
+        "metas": {
+          "$ref": "#/definitions/metas"
+        },
+        "teto": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "cartas": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 30,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "texto",
+              "lado",
+              "porque"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/id"
+              },
+              "texto": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 110
+              },
+              "lado": {
+                "enum": [
+                  "esquerda",
+                  "direita"
+                ]
+              },
+              "porque": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 120
+              },
+              "codigo": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "orcamento": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tipo",
+        "id",
+        "categoria",
+        "titulo",
+        "resumo",
+        "contexto",
+        "renda",
+        "metaReserva",
+        "recompensa",
+        "metas",
+        "teto",
+        "itens",
+        "aprendizado"
+      ],
+      "properties": {
+        "tipo": {
+          "const": "orcamento"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "categoria": {
+          "const": "financas"
+        },
+        "titulo": {
+          "$ref": "#/definitions/curto"
+        },
+        "resumo": {
+          "$ref": "#/definitions/texto"
+        },
+        "contexto": {
+          "$ref": "#/definitions/texto"
+        },
+        "renda": {
+          "$ref": "#/definitions/dinheiro"
+        },
+        "metaReserva": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "recompensa": {
+          "$ref": "#/definitions/dinheiro"
+        },
+        "metas": {
+          "$ref": "#/definitions/metas"
+        },
+        "teto": {
+          "const": 100
+        },
+        "itens": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "nome",
+              "valor",
+              "classe"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/id"
+              },
+              "nome": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 40
+              },
+              "valor": {
+                "$ref": "#/definitions/dinheiro"
+              },
+              "classe": {
+                "enum": [
+                  "essencial",
+                  "desejo",
+                  "futuro"
+                ]
+              }
+            }
+          }
+        },
+        "aprendizado": {
+          "$ref": "#/definitions/texto"
+        }
+      }
+    },
+    "negociacao": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tipo",
+        "id",
+        "categoria",
+        "titulo",
+        "resumo",
+        "cliente",
+        "perfil",
+        "pedido",
+        "horas",
+        "valorHora",
+        "ofertaInicial",
+        "maximo",
+        "paciencia",
+        "recompensa",
+        "metas",
+        "teto",
+        "argumentos",
+        "aprendizado"
+      ],
+      "properties": {
+        "tipo": {
+          "const": "negociacao"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "categoria": {
+          "$ref": "#/definitions/categoria"
+        },
+        "titulo": {
+          "$ref": "#/definitions/curto"
+        },
+        "resumo": {
+          "$ref": "#/definitions/texto"
+        },
+        "cliente": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 24
+        },
+        "perfil": {
+          "enum": [
+            "apressado",
+            "economico",
+            "exigente"
+          ]
+        },
+        "pedido": {
+          "$ref": "#/definitions/texto"
+        },
+        "horas": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 400
+        },
+        "valorHora": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "ofertaInicial": {
+          "$ref": "#/definitions/dinheiro"
+        },
+        "maximo": {
+          "$ref": "#/definitions/dinheiro"
+        },
+        "paciencia": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 8
+        },
+        "recompensa": {
+          "$ref": "#/definitions/dinheiro"
+        },
+        "metas": {
+          "$ref": "#/definitions/metas"
+        },
+        "teto": {
+          "const": 100
+        },
+        "argumentos": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "tipo",
+              "texto",
+              "porque"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/id"
+              },
+              "tipo": {
+                "enum": [
+                  "prazo",
+                  "valor",
+                  "qualidade",
+                  "fraco"
+                ]
+              },
+              "texto": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 100
+              },
+              "porque": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 120
+              }
+            }
+          }
+        },
+        "aprendizado": {
+          "$ref": "#/definitions/texto"
+        }
+      }
+    },
+    "licao": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tipo",
+        "id",
+        "titulo",
+        "resumo",
+        "explicacao",
+        "exercicios"
+      ],
+      "properties": {
+        "tipo": {
+          "const": "licao"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "titulo": {
+          "$ref": "#/definitions/curto"
+        },
+        "resumo": {
+          "$ref": "#/definitions/texto"
+        },
+        "explicacao": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "titulo",
+              "texto"
+            ],
+            "properties": {
+              "titulo": {
+                "$ref": "#/definitions/curto"
+              },
+              "texto": {
+                "type": "string",
+                "minLength": 20,
+                "maxLength": 400
+              },
+              "codigo": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 900
+              }
+            }
+          }
+        },
+        "exercicios": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 12,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "tipo",
+                  "id",
+                  "pergunta",
+                  "opcoes",
+                  "correta",
+                  "explicacao"
+                ],
+                "properties": {
+                  "tipo": {
+                    "const": "escolha"
+                  },
+                  "id": {
+                    "$ref": "#/definitions/id"
+                  },
+                  "pergunta": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 220
+                  },
+                  "explicacao": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 300
+                  },
+                  "codigo": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "opcoes": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 160
+                    }
+                  },
+                  "correta": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "tipo",
+                  "id",
+                  "pergunta",
+                  "pecas",
+                  "extras",
+                  "explicacao"
+                ],
+                "properties": {
+                  "tipo": {
+                    "const": "montar"
+                  },
+                  "id": {
+                    "$ref": "#/definitions/id"
+                  },
+                  "pergunta": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 220
+                  },
+                  "explicacao": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 300
+                  },
+                  "pecas": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 10,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    }
+                  },
+                  "extras": {
+                    "type": "array",
+                    "minItems": 0,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "tipo",
+                  "id",
+                  "pergunta",
+                  "antes",
+                  "depois",
+                  "respostas",
+                  "explicacao"
+                ],
+                "properties": {
+                  "tipo": {
+                    "const": "completar"
+                  },
+                  "id": {
+                    "$ref": "#/definitions/id"
+                  },
+                  "pergunta": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 220
+                  },
+                  "explicacao": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 300
+                  },
+                  "antes": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "depois": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "respostas": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 5,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 60
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

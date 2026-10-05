@@ -1,7 +1,6 @@
 export interface ConteudoBruto {
-  fases: { arquivo: string; dados: unknown }[];
-  habilidades: unknown;
-  conquistas: unknown;
+  trilhas: { arquivo: string; dados: unknown }[];
+  melhorias: unknown;
 }
 
 export const PASTA_CONTEUDO: string;

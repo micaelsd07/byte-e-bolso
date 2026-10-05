@@ -1,0 +1,716 @@
+{
+  "id": "c",
+  "nome": "C",
+  "sigla": "C",
+  "resumo": "A base de sistemas operacionais e de dispositivos: perto da máquina e muito rápida.",
+  "unidades": [
+    {
+      "id": "c-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em C.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "c-saida",
+          "titulo": "Primeiro programa",
+          "resumo": "Conheça o main, o include e o printf.",
+          "explicacao": [
+            {
+              "titulo": "include, main e printf",
+              "texto": "O #include traz funções prontas; stdio.h tem o printf, que mostra texto. O programa começa no main e devolve 0 quando termina bem. O \\n pula de linha.",
+              "codigo": "#include <stdio.h>\n\nint main() {\n  printf(\"Olá, mundo!\\n\");\n  return 0;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "printf(\"Oi\");",
+              "opcoes": [
+                "Oi",
+                "printf(\"Oi\")",
+                "\"Oi\""
+              ],
+              "correta": 0,
+              "explicacao": "As aspas marcam o texto, mas não aparecem.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o código que mostra C na tela.",
+              "pecas": [
+                "printf",
+                "(",
+                "\"C\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "print",
+                "cout"
+              ],
+              "explicacao": "printf, parênteses, texto entre aspas e ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Para que serve #include <stdio.h>?",
+              "opcoes": [
+                "Traz as funções de entrada e saída, como printf",
+                "Cria a função main",
+                "Termina o programa"
+              ],
+              "correta": 0,
+              "explicacao": "Sem esse include, o compilador não conhece o printf.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que o \\n faz dentro do texto?",
+              "opcoes": [
+                "Mostra a letra n",
+                "Pula para a próxima linha",
+                "Apaga a linha"
+              ],
+              "correta": 1,
+              "explicacao": "A barra invertida com n é a quebra de linha.",
+              "id": "e4"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete: o main devolve zero quando tudo deu certo.",
+              "antes": "",
+              "depois": " 0;",
+              "respostas": [
+                "return"
+              ],
+              "explicacao": "return 0 avisa ao sistema que o programa terminou sem erro.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-variaveis",
+          "titulo": "Variáveis e tipos",
+          "resumo": "Declare o tipo e mostre o valor com um marcador.",
+          "explicacao": [
+            {
+              "titulo": "Tipo, nome e marcador",
+              "texto": "Toda variável declara o tipo: int para inteiro, float para casas decimais, char para um caractere. Para mostrar um inteiro, o printf usa o marcador %d.",
+              "codigo": "int idade = 18;\nfloat preco = 9.90;\nchar letra = 'A';\nprintf(\"%d\", idade);"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tipo guarda um número inteiro?",
+              "opcoes": [
+                "int",
+                "float",
+                "char"
+              ],
+              "correta": 0,
+              "explicacao": "int vem de integer, inteiro.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Declare a variável inteira pontos com o valor 10.",
+              "pecas": [
+                "int",
+                "pontos",
+                "=",
+                "10",
+                ";"
+              ],
+              "extras": [
+                "float",
+                "=="
+              ],
+              "explicacao": "Tipo, nome, sinal de igual, valor e ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual código mostra o valor guardado em idade?",
+              "opcoes": [
+                "printf(\"%d\", idade);",
+                "printf(\"idade\");",
+                "printf(idade);"
+              ],
+              "correta": 0,
+              "explicacao": "O %d marca o lugar onde o valor da variável entra no texto.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o marcador de número inteiro.",
+              "antes": "printf(\"",
+              "depois": "\", idade);",
+              "respostas": [
+                "%d",
+                "%i"
+              ],
+              "explicacao": "%d (ou %i) é o marcador de inteiro.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "int x = 5;\nx = x + 2;\nprintf(\"%d\", x);",
+              "opcoes": [
+                "5",
+                "7",
+                "52"
+              ],
+              "correta": 1,
+              "explicacao": "x começa em 5 e passa a valer 5 + 2.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-condicoes",
+          "titulo": "Condições",
+          "resumo": "Faça o programa decidir com if e else.",
+          "explicacao": [
+            {
+              "titulo": "if e else",
+              "texto": "O if executa o bloco entre chaves só quando a condição entre parênteses é verdadeira. O else cuida do caso contrário.",
+              "codigo": "if (idade >= 18) {\n  printf(\"Maior\");\n} else {\n  printf(\"Menor\");\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "int nota = 6;\nif (nota >= 7) {\n  printf(\"Aprovado\");\n} else {\n  printf(\"Recuperação\");\n}",
+              "opcoes": [
+                "Aprovado",
+                "Recuperação",
+                "Nada"
+              ],
+              "correta": 1,
+              "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo da condição: se x for maior que 10.",
+              "pecas": [
+                "if",
+                "(",
+                "x",
+                ">",
+                "10",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "then",
+                ":"
+              ],
+              "explicacao": "A condição vai entre parênteses e o bloco abre com chave.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o operador que compara se dois números são iguais.",
+              "antes": "if (x ",
+              "depois": " 10) {",
+              "respostas": [
+                "=="
+              ],
+              "explicacao": "Dois sinais de igual comparam. Um só guarda valor na variável.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código faz?",
+              "codigo": "if (x = 5) { }",
+              "opcoes": [
+                "Compara x com 5",
+                "Guarda 5 em x, e a condição vira verdadeira",
+                "Não compila"
+              ],
+              "correta": 1,
+              "explicacao": "Um = sozinho guarda valor. Como 5 não é zero, a condição é sempre verdadeira.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Em C, qual valor conta como falso em uma condição?",
+              "opcoes": [
+                "0",
+                "1",
+                "-1"
+              ],
+              "correta": 0,
+              "explicacao": "Zero é falso. Qualquer outro número é verdadeiro.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-lacos",
+          "titulo": "Laços",
+          "resumo": "Repita um bloco com for e while.",
+          "explicacao": [
+            {
+              "titulo": "for",
+              "texto": "O for tem três partes: onde começa, até quando repete e o que muda a cada volta. Aqui, i vale 0, 1 e 2.",
+              "codigo": "for (int i = 0; i < 3; i++) {\n  printf(\"%d\", i);\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas vezes Oi aparece?",
+              "codigo": "for (int i = 0; i < 4; i++) {\n  printf(\"Oi\");\n}",
+              "opcoes": [
+                "3",
+                "4",
+                "5"
+              ],
+              "correta": 1,
+              "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais números aparecem?",
+              "codigo": "for (int i = 0; i < 3; i++) {\n  printf(\"%d\", i);\n}",
+              "opcoes": [
+                "1, 2, 3",
+                "0, 1, 2",
+                "0, 1, 2, 3"
+              ],
+              "correta": 1,
+              "explicacao": "Começa em 0 e para antes de chegar a 3.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo do laço em que i vai de 0 a 4.",
+              "pecas": [
+                "for",
+                "(",
+                "int i = 0",
+                ";",
+                "i < 5",
+                ";",
+                "i++",
+                ")"
+              ],
+              "extras": [
+                "i--",
+                "i > 5"
+              ],
+              "explicacao": "Começa em 0, repete enquanto i for menor que 5 e soma 1 a cada volta.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para repetir enquanto x for menor que 10.",
+              "antes": "",
+              "depois": " (x < 10) {",
+              "respostas": [
+                "while"
+              ],
+              "explicacao": "O while repete o bloco enquanto a condição for verdadeira.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o problema deste laço?",
+              "codigo": "for (int i = 0; i < 5; i--) { }",
+              "opcoes": [
+                "i diminui e nunca chega a 5: o laço não termina",
+                "Falta declarar o i",
+                "5 é um número grande demais"
+              ],
+              "correta": 0,
+              "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "c-c-world-1",
+      "numero": 2,
+      "titulo": "A Raiz da Máquina",
+      "resumo": "Aprenda a linguagem que construiu os sistemas operacionais modernos: sintaxe, diretivas de pré-processador e controle de tipos.",
+      "dificuldade": "facil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "c-c-level-1",
+          "titulo": "Olá, Mundo em C!",
+          "resumo": "Conheça o ponto de partida do C: #include <stdio.h>, a função main e printf().",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "A linguagem C é compilada diretamente para código de máquina nativo. Todo programa em C começa incluindo bibliotecas padrão de cabeçalho e executando a função int main()."
+            },
+            {
+              "titulo": "A Biblioteca <stdio.h>",
+              "texto": "Standard Input Output: contém funções essenciais como printf e scanf.",
+              "codigo": "#include <stdio.h>"
+            },
+            {
+              "titulo": "A Função main e return 0",
+              "texto": "main() devolve um número inteiro (int). Retornar 0 indica ao sistema operacional que o programa terminou com sucesso.",
+              "codigo": "int main() {\n    printf(\"Ola, Mundo!\\n\");\n    return 0;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual biblioteca padrão deve ser incluída para usar a função printf em C?",
+              "opcoes": [
+                "<math.h>",
+                "<stdlib.h>",
+                "<stdio.h>",
+                "<string.h>"
+              ],
+              "correta": 2,
+              "explicacao": "Exato! <stdio.h> fornece printf() e scanf().",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: printf(\"Ola Mundo\")",
+              "pecas": [
+                "printf",
+                "(",
+                "\"Ola Mundo\\n\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "\"Ola Mundo\""
+              ],
+              "explicacao": "Em C toda instrução deve terminar com ponto e vírgula (;).",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: A Função main e return 0",
+              "antes": "",
+              "depois": " main() {",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "main() devolve um número inteiro (int). Retornar 0 indica ao sistema operacional que o programa terminou com sucesso.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este trecho faz?",
+              "codigo": "#include",
+              "opcoes": [
+                "Print formatted: imprime texto no console.",
+                "Caractere especial de quebra de linha.",
+                "Diretiva do pré-processador para importar definições."
+              ],
+              "correta": 2,
+              "explicacao": "main() devolve um número inteiro (int). Retornar 0 indica ao sistema operacional que o programa terminou com sucesso.",
+              "id": "e4"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-c-level-2",
+          "titulo": "Variáveis & Format Specifiers",
+          "resumo": "Aprenda os tipos fundamentais int, float, char e os especificadores %d, %f e %c.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Em C, o printf usa especificadores de formato precedidos por % para indicar onde e como cada valor de variável deve ser inserido na mensagem."
+            },
+            {
+              "titulo": "%d para Inteiros e %f para Reais",
+              "texto": "Cada % é substituído pelos argumentos passados após a vírgula.",
+              "codigo": "int idade = 25;\nprintf(\"Idade: %d anos\\n\", idade);"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual especificador de formato é usado para imprimir um número inteiro (int) em C?",
+              "opcoes": [
+                "%s",
+                "%d",
+                "%f",
+                "%c"
+              ],
+              "correta": 1,
+              "explicacao": "Correto! %d (ou %i) é reservado para números decimais inteiros.",
+              "id": "e1"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete o código com o trecho que falta.",
+              "antes": "printf(",
+              "depois": ", idade);",
+              "respostas": [
+                "\"Idade: %d\""
+              ],
+              "explicacao": "%s é para strings (textos). Para inteiros usa-se %d.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Crie uma variável int pontos = 100; e use printf(\"Pontos: %d\", pontos); para exibi-la.",
+              "pecas": [
+                "printf",
+                "(",
+                "\"Pontos: %d\"",
+                ",",
+                "pontos",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "\"Idade: %s\"",
+                "idade"
+              ],
+              "explicacao": "Não esqueça do argumento pontos após a vírgula no printf.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: %d para Inteiros e %f para Reais",
+              "antes": "",
+              "depois": " idade = 25;",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "Cada % é substituído pelos argumentos passados após a vírgula.",
+              "id": "e4"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-c-level-3",
+          "titulo": "Decisões com if / else em C",
+          "resumo": "Controle o caminho do seu algoritmo com condições booleanas e operadores relacionais.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Em C tradicional, o valor 0 representa falso e qualquer número diferente de zero é considerado verdadeiro."
+            },
+            {
+              "titulo": "A Sintaxe do if em C",
+              "texto": "A condição fica entre parênteses () e o bloco entre chaves {}.",
+              "codigo": "int vidas = 1;\nif (vidas > 0) {\n    printf(\"Vivo!\\n\");\n} else {\n    printf(\"Fim de Jogo!\\n\");\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Em C puro original, qual valor numérico representa falso?",
+              "opcoes": [
+                "1",
+                "-1",
+                "0",
+                "null"
+              ],
+              "correta": 2,
+              "explicacao": "Exato! Em C, 0 é falso e qualquer valor diferente de zero é verdadeiro.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: if vidas > 0",
+              "pecas": [
+                "if",
+                "(",
+                "vidas",
+                ">",
+                "0",
+                ")"
+              ],
+              "extras": [],
+              "explicacao": "Em C os parênteses em volta da condição do if são obrigatórios.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: A Sintaxe do if em C",
+              "antes": "",
+              "depois": " vidas = 1;",
+              "respostas": [
+                "int"
+              ],
+              "explicacao": "A condição fica entre parênteses () e o bloco entre chaves {}.",
+              "id": "e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-c-world-4",
+      "numero": 3,
+      "titulo": "Alocação Dinâmica & Projeto Final C",
+      "resumo": "Requisite memória do sistema operacional em tempo de execução com malloc() e free(), e vença o Chefão de C!",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "c-c-level-10",
+          "titulo": "Alocação Dinâmica com malloc() e free()",
+          "resumo": "Aprenda a solicitar memória do heap ao sistema operacional e devolvê-la para evitar vazamentos.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Em C, a função malloc() da biblioteca stdlib.h aloca um bloco de bytes contíguos no Heap. Toda memória alocada dinamicamente deve ser liberada com free()!"
+            },
+            {
+              "titulo": "Alocando com malloc",
+              "texto": "Use sizeof para garantir o tamanho exato de bytes na plataforma.",
+              "codigo": "#include <stdlib.h>\nint *ptr = (int*) malloc(sizeof(int));\n*ptr = 42;\nfree(ptr); // Liberar sempre!"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que acontece quando você esquece de chamar free() em um ponteiro alocado com malloc()?",
+              "opcoes": [
+                "Ocorre vazamento de memória (Memory Leak)",
+                "O compilador gera erro de sintaxe",
+                "A memória é liberada automaticamente no próximo comando",
+                "O programa roda mais rápido"
+              ],
+              "correta": 0,
+              "explicacao": "Exato! A memória permanece ocupada indefinidamente gerando vazamento (leak).",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "int *p = malloc(sizeof(int));",
+                "int *p = malloc(4); // tamanho fixo arriscado"
+              ],
+              "correta": 0,
+              "explicacao": "O tamanho de int varia conforme a arquitetura (32 vs 64 bits). Use sempre sizeof(int).",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Ordene a sequência correta de alocação e liberação:",
+              "pecas": [
+                "int *p;",
+                "p = malloc(sizeof(int));",
+                "*p = 100;",
+                "free(p);"
+              ],
+              "extras": [],
+              "explicacao": "Declara-se o ponteiro, aloca-se memória, atribui-se o valor e por fim libera-se.",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: Alocando com malloc",
+              "pecas": [
+                "free",
+                "(",
+                "ptr",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "#include",
+                "<stdlib.h>"
+              ],
+              "explicacao": "Use sizeof para garantir o tamanho exato de bytes na plataforma.",
+              "id": "e4"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "c-c-level-12",
+          "titulo": "Chefão Final C: O Núcleo do Sistema",
+          "resumo": "Construa uma função de busca em vetor com ponteiros e retorne a posição do elemento.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Parabéns por dominar a base de todos os sistemas operacionais! No Chefão de C, você integrará structs, ponteiros e controle de memória."
+            },
+            {
+              "titulo": "O Poder do C Nativo",
+              "texto": "Você agora compreende como memória, registradores e ponteiros operam na raiz da máquina.",
+              "codigo": "printf(\"C Master: %s\\n\", \"Completo!\");"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Onde variáveis criadas com malloc() residem na memória do computador?",
+              "opcoes": [
+                "No Heap (Memória Livre)",
+                "Na Stack (Pilha de Execução)",
+                "Na ROM da placa-mãe",
+                "No cache L1"
+              ],
+              "correta": 0,
+              "explicacao": "Exatamente! A memória dinâmica fica no Heap gerenciada pelo sistema operacional.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "return &variavel_local; // ponteiro pendente",
+                "return malloc(...); ou ponteiro passado por parametro"
+              ],
+              "correta": 1,
+              "explicacao": "Variáveis locais morrem na pilha (stack) quando a função encerra.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Crie um programa que imprima exatamente \"C Master: Concluido com Sucesso!\" para finalizar a trilha.",
+              "pecas": [
+                "printf",
+                "(",
+                "\"C Master: Concluido com Sucesso!\"",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "return",
+                "&"
+              ],
+              "explicacao": "printf(\"C Master: Concluido com Sucesso!\");",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete a linha do exemplo: O Poder do C Nativo",
+              "antes": "",
+              "depois": "(\"C Master: %s\\n\", \"Completo!\");",
+              "respostas": [
+                "printf"
+              ],
+              "explicacao": "Você agora compreende como memória, registradores e ponteiros operam na raiz da máquina.",
+              "id": "e4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

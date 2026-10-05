@@ -1,15 +1,19 @@
-import { LIMITES } from './atributos';
-import { limparApelido } from './partida';
-import { XP_MAX } from './progressao';
-import { ATRIBUTOS, CATEGORIAS, type Atributos, type Estado, type Registro } from './tipos';
+import { AVATARES, VIDAS_MAXIMAS, limparApelido } from './jogo';
+import type { Estado } from './tipos';
 
 /** O que a validação precisa saber do conteúdo, sem depender de src/content. */
 export interface Catalogo {
-  /** id da fase -> ids dos passos, na ordem */
-  fases: Record<string, readonly string[]>;
-  conquistas: readonly string[];
-  habilidades: readonly string[];
+  /** id da fase -> maior pontuação que ela admite */
+  tetos: Record<string, number>;
+  /** id da trilha -> ids das fases dela, na ordem */
+  trilhas: Record<string, readonly string[]>;
+  /** id da fase -> pontos para 1 estrela */
+  minimos: Record<string, number>;
+  melhorias: readonly string[];
 }
+
+export const SALDO_MINIMO = -1_000_000;
+export const SALDO_MAXIMO = 10_000_000;
 
 export function serializar(estado: Estado): string {
   return JSON.stringify(estado);
@@ -18,49 +22,11 @@ export function serializar(estado: Estado): string {
 const ehObjeto = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const ehInteiro = (v: unknown, min: number, max: number): v is number =>
   typeof v === 'number' && Number.isInteger(v) && v >= min && v <= max;
-const semRepetidos = (v: readonly string[]): boolean => new Set(v).size === v.length;
-
-function lerAtributos(v: unknown): Atributos | null {
-  if (!ehObjeto(v)) return null;
-  const atributos = {} as Atributos;
-  for (const a of ATRIBUTOS) {
-    const valor = v[a];
-    if (!ehInteiro(valor, LIMITES[a].min, LIMITES[a].max)) return null;
-    atributos[a] = valor;
-  }
-  return atributos;
-}
-
-function lerHistorico(v: unknown, catalogo: Catalogo): Registro[] | null {
-  if (!Array.isArray(v)) return null;
-  const vistos = new Set<string>();
-  const historico: Registro[] = [];
-  for (const item of v) {
-    if (!ehObjeto(item)) return null;
-    const { faseId, passoId, tipo, categoria, nota } = item;
-    if (typeof faseId !== 'string' || typeof passoId !== 'string') return null;
-    if (!catalogo.fases[faseId]?.includes(passoId)) return null;
-    if (tipo !== 'decisao' && tipo !== 'orcamento') return null;
-    if (!CATEGORIAS.some((c) => c === categoria)) return null;
-    if (typeof nota !== 'number' || !(nota >= 0 && nota <= 1)) return null;
-    // Um passo só é resolvido uma vez: repetição é recompensa duplicada.
-    const chave = `${faseId}/${passoId}`;
-    if (vistos.has(chave)) return null;
-    vistos.add(chave);
-    historico.push({ faseId, passoId, tipo, categoria: categoria as Registro['categoria'], nota });
-  }
-  return historico;
-}
-
-function listaDe(v: unknown, permitidos: readonly string[]): string[] | null {
-  if (!Array.isArray(v) || !v.every((x): x is string => typeof x === 'string')) return null;
-  return semRepetidos(v) && v.every((x) => permitidos.includes(x)) ? v : null;
-}
 
 /**
  * Lê um save vindo do armazenamento do navegador. Qualquer coisa fora do
- * formato, fora dos limites ou incoerente com o histórico devolve null, e o
- * jogo começa uma partida nova em vez de confiar no que leu.
+ * formato, fora dos limites ou incoerente com a trilha devolve null, e o jogo
+ * começa do zero em vez de confiar no que leu.
  */
 export function desserializar(texto: string, catalogo: Catalogo): Estado | null {
   let bruto: unknown;
@@ -69,55 +35,41 @@ export function desserializar(texto: string, catalogo: Catalogo): Estado | null 
   } catch {
     return null;
   }
-  if (!ehObjeto(bruto) || bruto.versao !== 1) return null;
+  if (!ehObjeto(bruto) || bruto.versao !== 2) return null;
 
-  const atributos = lerAtributos(bruto.atributos);
-  const historico = lerHistorico(bruto.historico, catalogo);
-  const conquistas = listaDe(bruto.conquistas, catalogo.conquistas);
-  const fasesConcluidas = listaDe(bruto.fasesConcluidas, Object.keys(catalogo.fases));
-  if (atributos === null || historico === null || conquistas === null || fasesConcluidas === null) return null;
-
-  const { apelido, faseId, status, motivoDerrota, recargas } = bruto;
+  const { apelido, dinheiro, rodadas, melhorias, trilha, avatar, vidas, sequencia, ultimoDia, diaDasVidas } = bruto;
+  if (typeof avatar !== 'string' || !(AVATARES as readonly string[]).includes(avatar)) return null;
+  // Até 3 vidas além do máximo: é a folga das melhorias que dão vida extra.
+  if (!ehInteiro(vidas, 0, VIDAS_MAXIMAS + 3)) return null;
+  if (!ehInteiro(sequencia, 0, 5000)) return null;
+  const ehDia = (v: unknown): v is string | null => v === null || (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v));
+  if (!ehDia(ultimoDia) || !ehDia(diaDasVidas)) return null;
+  // Sequência sem dia de prática registrado, ou o contrário, é incoerente.
+  if ((sequencia === 0) !== (ultimoDia === null)) return null;
+  if (trilha !== null && (typeof trilha !== 'string' || catalogo.trilhas[trilha] === undefined)) return null;
   if (typeof apelido !== 'string' || limparApelido(apelido) !== apelido) return null;
-  if (typeof faseId !== 'string') return null;
-  const passosDaFase = catalogo.fases[faseId];
-  if (passosDaFase === undefined) return null;
-  if (!ehInteiro(bruto.passo, 0, passosDaFase.length)) return null;
-  if (status !== 'jogando' && status !== 'faseConcluida' && status !== 'derrota') return null;
-  if (motivoDerrota !== null && motivoDerrota !== 'falencia' && motivoDerrota !== 'burnout') return null;
-  if ((status === 'derrota') !== (motivoDerrota !== null)) return null;
-  if (status === 'faseConcluida' && bruto.passo !== passosDaFase.length) return null;
+  if (!ehInteiro(dinheiro, SALDO_MINIMO, SALDO_MAXIMO)) return null;
 
-  // Coerência com o histórico: rodada conta passos resolvidos e o XP tem teto por passo.
-  if (bruto.rodada !== historico.length) return null;
-  const xpMaximo = historico.reduce((s, r) => s + XP_MAX[r.tipo], 0);
-  if (!ehInteiro(bruto.xp, 0, xpMaximo)) return null;
-  if (!ehInteiro(bruto.rodadasNoVermelho, 0, historico.length)) return null;
-  if (!ehInteiro(bruto.bonusDesafio, 0, 50)) return null;
-  if (!fasesConcluidas.every((f) => historico.some((r) => r.faseId === f))) return null;
-
-  if (!ehObjeto(recargas)) return null;
-  const recargasLidas: Record<string, number> = {};
-  for (const [id, rodada] of Object.entries(recargas)) {
-    if (!catalogo.habilidades.includes(id) || !ehInteiro(rodada, 0, historico.length + 20)) return null;
-    recargasLidas[id] = rodada;
+  if (!ehObjeto(bruto.nos)) return null;
+  const nos: Record<string, number> = {};
+  for (const [id, pontos] of Object.entries(bruto.nos)) {
+    const teto = catalogo.tetos[id];
+    if (teto === undefined || !ehInteiro(pontos, 0, teto)) return null;
+    nos[id] = pontos;
   }
+  // Uma fase só tem pontuação se a anterior rendeu ao menos 1 estrela: não se pula fase.
+  for (const ordem of Object.values(catalogo.trilhas)) {
+    for (let i = 1; i < ordem.length; i++) {
+      const anterior = ordem[i - 1]!;
+      if (nos[ordem[i]!] !== undefined && (nos[anterior] ?? 0) < (catalogo.minimos[anterior] ?? Infinity)) return null;
+    }
+  }
+  // Cada fase pontuada foi jogada ao menos uma vez.
+  if (!ehInteiro(rodadas, Object.keys(nos).length, 100_000)) return null;
 
-  return {
-    versao: 1,
-    apelido,
-    atributos,
-    xp: bruto.xp,
-    faseId,
-    passo: bruto.passo,
-    rodada: bruto.rodada,
-    recargas: recargasLidas,
-    bonusDesafio: bruto.bonusDesafio,
-    rodadasNoVermelho: bruto.rodadasNoVermelho,
-    historico,
-    conquistas,
-    fasesConcluidas,
-    status,
-    motivoDerrota,
-  };
+  if (!Array.isArray(melhorias) || !melhorias.every((m): m is string => typeof m === 'string')) return null;
+  if (new Set(melhorias).size !== melhorias.length) return null;
+  if (!melhorias.every((m) => catalogo.melhorias.includes(m))) return null;
+
+  return { versao: 2, apelido, avatar, trilha, vidas, sequencia, ultimoDia, diaDasVidas, dinheiro, nos, melhorias, rodadas };
 }

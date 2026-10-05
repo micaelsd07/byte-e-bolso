@@ -1,0 +1,550 @@
+{
+  "id": "cpp",
+  "nome": "C++",
+  "sigla": "C++",
+  "resumo": "C com mais recursos: usada em jogos, motores gráficos e programas de alto desempenho.",
+  "unidades": [
+    {
+      "id": "cpp-basico",
+      "numero": 1,
+      "titulo": "Fundamentos",
+      "resumo": "Os primeiros passos em C++.",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "cpp-saida",
+          "titulo": "Primeiro programa",
+          "resumo": "Conheça o main, o include e o cout.",
+          "explicacao": [
+            {
+              "titulo": "include, main e cout",
+              "texto": "O #include <iostream> traz o cout, que mostra texto. O operador << envia o que vem depois para a saída. std::endl pula de linha.",
+              "codigo": "#include <iostream>\n\nint main() {\n  std::cout << \"Olá, mundo!\" << std::endl;\n  return 0;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que este código mostra?",
+              "codigo": "std::cout << \"Oi\";",
+              "opcoes": [
+                "Oi",
+                "cout << \"Oi\"",
+                "\"Oi\""
+              ],
+              "correta": 0,
+              "explicacao": "As aspas marcam o texto, mas não aparecem.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o código que mostra C++ na tela.",
+              "pecas": [
+                "std::cout",
+                "<<",
+                "\"C++\"",
+                ";"
+              ],
+              "extras": [
+                ">>",
+                "printf"
+              ],
+              "explicacao": "std::cout, o operador <<, o texto e ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Para que serve #include <iostream>?",
+              "opcoes": [
+                "Traz cout e cin, de saída e entrada",
+                "Cria a função main",
+                "Declara uma variável"
+              ],
+              "correta": 0,
+              "explicacao": "Sem esse include, o compilador não conhece o cout.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o operador que envia o texto para o cout.",
+              "antes": "std::cout ",
+              "depois": " \"Oi\";",
+              "respostas": [
+                "<<"
+              ],
+              "explicacao": "As setas apontam para onde o dado vai: para o cout.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que std::endl faz?",
+              "opcoes": [
+                "Termina o programa",
+                "Pula para a próxima linha",
+                "Mostra a palavra endl"
+              ],
+              "correta": 1,
+              "explicacao": "endl vem de end line, fim de linha.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "cpp-variaveis",
+          "titulo": "Variáveis e tipos",
+          "resumo": "Declare o tipo do que cada variável guarda.",
+          "explicacao": [
+            {
+              "titulo": "Tipo antes do nome",
+              "texto": "Antes do nome vem o tipo: int para inteiro, double para casas decimais, std::string para texto e bool para verdadeiro ou falso.",
+              "codigo": "int idade = 18;\ndouble preco = 9.90;\nstd::string nome = \"Ana\";\nbool ativo = true;"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual tipo guarda verdadeiro ou falso?",
+              "opcoes": [
+                "bool",
+                "int",
+                "double"
+              ],
+              "correta": 0,
+              "explicacao": "bool guarda true ou false.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Declare a variável inteira pontos com o valor 10.",
+              "pecas": [
+                "int",
+                "pontos",
+                "=",
+                "10",
+                ";"
+              ],
+              "extras": [
+                "string",
+                "=="
+              ],
+              "explicacao": "Tipo, nome, sinal de igual, valor e ponto e vírgula.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o tipo para número com casas decimais.",
+              "antes": "",
+              "depois": " preco = 9.90;",
+              "respostas": [
+                "double",
+                "float"
+              ],
+              "explicacao": "double e float guardam casas decimais; double tem mais precisão.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual código mostra o valor guardado em idade?",
+              "opcoes": [
+                "std::cout << idade;",
+                "std::cout << \"idade\";",
+                "std::cout >> idade;"
+              ],
+              "correta": 0,
+              "explicacao": "Sem aspas, o cout mostra o valor da variável. Com aspas, mostraria a palavra idade.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "int x = 5;\nx = x + 2;\nstd::cout << x;",
+              "opcoes": [
+                "5",
+                "7",
+                "52"
+              ],
+              "correta": 1,
+              "explicacao": "x começa em 5 e passa a valer 5 + 2.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "cpp-condicoes",
+          "titulo": "Condições",
+          "resumo": "Faça o programa decidir com if e else.",
+          "explicacao": [
+            {
+              "titulo": "if e else",
+              "texto": "O if executa o bloco entre chaves só quando a condição entre parênteses é verdadeira. O else cuida do caso contrário.",
+              "codigo": "if (idade >= 18) {\n  std::cout << \"Maior\";\n} else {\n  std::cout << \"Menor\";\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que aparece na tela?",
+              "codigo": "int nota = 6;\nif (nota >= 7) {\n  std::cout << \"Aprovado\";\n} else {\n  std::cout << \"Recuperação\";\n}",
+              "opcoes": [
+                "Aprovado",
+                "Recuperação",
+                "Nada"
+              ],
+              "correta": 1,
+              "explicacao": "Como 6 não é maior ou igual a 7, roda o bloco do else.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo da condição: se x for maior que 10.",
+              "pecas": [
+                "if",
+                "(",
+                "x",
+                ">",
+                "10",
+                ")",
+                "{"
+              ],
+              "extras": [
+                "then",
+                ":"
+              ],
+              "explicacao": "A condição vai entre parênteses e o bloco abre com chave.",
+              "id": "e2"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete com o operador que compara se dois números são iguais.",
+              "antes": "if (x ",
+              "depois": " 10) {",
+              "respostas": [
+                "=="
+              ],
+              "explicacao": "Dois sinais de igual comparam. Um só guarda valor na variável.",
+              "id": "e3"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Como comparar o conteúdo de duas std::string?",
+              "opcoes": [
+                "a == b",
+                "a.equals(b)",
+                "a = b"
+              ],
+              "correta": 0,
+              "explicacao": "Em C++, == compara o conteúdo das strings. O equals é do Java.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quanto vale 5 > 3 && 2 > 4?",
+              "opcoes": [
+                "true",
+                "false",
+                "erro"
+              ],
+              "correta": 1,
+              "explicacao": "O && só é verdadeiro quando os dois lados são. 2 > 4 é falso.",
+              "id": "e5"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "cpp-lacos",
+          "titulo": "Laços",
+          "resumo": "Repita um bloco com for e while.",
+          "explicacao": [
+            {
+              "titulo": "for",
+              "texto": "O for tem três partes: onde começa, até quando repete e o que muda a cada volta. Aqui, i vale 0, 1 e 2.",
+              "codigo": "for (int i = 0; i < 3; i++) {\n  std::cout << i;\n}"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quantas vezes Oi aparece?",
+              "codigo": "for (int i = 0; i < 4; i++) {\n  std::cout << \"Oi\";\n}",
+              "opcoes": [
+                "3",
+                "4",
+                "5"
+              ],
+              "correta": 1,
+              "explicacao": "i vale 0, 1, 2 e 3: são quatro voltas.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais números aparecem?",
+              "codigo": "for (int i = 0; i < 3; i++) {\n  std::cout << i;\n}",
+              "opcoes": [
+                "1, 2, 3",
+                "0, 1, 2",
+                "0, 1, 2, 3"
+              ],
+              "correta": 1,
+              "explicacao": "Começa em 0 e para antes de chegar a 3.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte o começo do laço em que i vai de 0 a 4.",
+              "pecas": [
+                "for",
+                "(",
+                "int i = 0",
+                ";",
+                "i < 5",
+                ";",
+                "i++",
+                ")"
+              ],
+              "extras": [
+                "i--",
+                "i > 5"
+              ],
+              "explicacao": "Começa em 0, repete enquanto i for menor que 5 e soma 1 a cada volta.",
+              "id": "e3"
+            },
+            {
+              "tipo": "completar",
+              "pergunta": "Complete para repetir enquanto x for menor que 10.",
+              "antes": "",
+              "depois": " (x < 10) {",
+              "respostas": [
+                "while"
+              ],
+              "explicacao": "O while repete o bloco enquanto a condição for verdadeira.",
+              "id": "e4"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual é o problema deste laço?",
+              "codigo": "for (int i = 0; i < 5; i--) { }",
+              "opcoes": [
+                "i diminui e nunca chega a 5: o laço não termina",
+                "Falta declarar o i",
+                "5 é um número grande demais"
+              ],
+              "correta": 0,
+              "explicacao": "Com i--, o i fica cada vez menor e a condição i < 5 é sempre verdadeira.",
+              "id": "e5"
+            }
+          ]
+        }
+      ],
+      "dificuldade": "facil"
+    },
+    {
+      "id": "cpp-cpp-world-4",
+      "numero": 2,
+      "titulo": "Herança, Polimorfismo & Game Engine",
+      "resumo": "Domine a herança de classes orientada a objetos, métodos virtuais com polimorfismo dinâmico e o Chefão de C++!",
+      "dificuldade": "dificil",
+      "nos": [
+        {
+          "tipo": "licao",
+          "id": "cpp-cpp-level-10",
+          "titulo": "Herança de Classes (class Mago : public Heroi)",
+          "resumo": "Reutilize código e modele hierarquias de jogos estendendo classes base com herança pública.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Em C++, uma classe derivada herda membros da classe base usando a sintaxe : public NomeDaBase. Isso permite especializar entidades como Personagem -> Guerreiro ou Inimigo -> Boss."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual modificador de herança mantém membros públicos da classe base acessíveis como públicos na derivada?",
+              "opcoes": [
+                "public",
+                "private",
+                "protected",
+                "virtual"
+              ],
+              "correta": 0,
+              "explicacao": "Exato! A herança : public Base mantém a visibilidade original.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: class Jogador : Entidade // herança privada por padrão em classes",
+              "pecas": [
+                "class",
+                "Jogador",
+                ":",
+                "public",
+                "Entidade"
+              ],
+              "extras": [
+                "/",
+                "heran"
+              ],
+              "explicacao": "Se você omitir \"public\", a herança será privada por padrão e membros públicos da base ficarão inacessíveis.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Ordene a declaração de herança de classes em C++:",
+              "pecas": [
+                "class Heroi : public Personagem {",
+                "public:",
+                "int mana = 50;",
+                "};"
+              ],
+              "extras": [],
+              "explicacao": "Primeiro a classe com : public Base, depois o especificador de acesso e os membros.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "cpp-cpp-level-11",
+          "titulo": "Métodos Virtuais & Polimorfismo",
+          "resumo": "Descubra a palavra-chave virtual para permitir que classes filhas sobrescrevam o comportamento dinamicamente.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Polimorfismo permite tratar diferentes tipos derivados através de um ponteiro da classe base. A palavra-chave virtual ativa a tabela de métodos virtuais (vtable)."
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "O que a palavra-chave virtual habilita em métodos de classes C++?",
+              "opcoes": [
+                "Ligação dinâmica (Dynamic Dispatch) em tempo de execução",
+                "Compilação sem arquivos .h",
+                "Alocação exclusiva em memória ROM",
+                "Execução em threads paralelas"
+              ],
+              "correta": 0,
+              "explicacao": "Correto! virtual habilita despacho dinâmico via tabela vtable.",
+              "id": "e1"
+            },
+            {
+              "tipo": "escolha",
+              "pergunta": "Qual das duas versões está correta?",
+              "opcoes": [
+                "virtual void disparar() na base, e override na derivada",
+                "void disparar() override // sem virtual na base"
+              ],
+              "correta": 0,
+              "explicacao": "A palavra-chave override exige que o método seja virtual na classe mãe.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Crie uma classe Mago com método falar() imprimindo \"Lançando Magia!\". Chame mago.falar() no main.",
+              "pecas": [
+                "gandalf.falar",
+                "(",
+                ")",
+                ";"
+              ],
+              "extras": [
+                "void",
+                "disparar"
+              ],
+              "explicacao": "Execute gandalf.falar() na função main.",
+              "id": "e3"
+            }
+          ]
+        },
+        {
+          "tipo": "licao",
+          "id": "cpp-cpp-level-12",
+          "titulo": "Chefão Final C++: Game Engine Arena",
+          "resumo": "Construa o loop de combate final combinando vetores, objetos e alta velocidade de processamento.",
+          "explicacao": [
+            {
+              "titulo": "Visão geral",
+              "texto": "Parabéns por conquistar a trilha de C++! Você aprendeu recursos modernos fundamentais para criar jogos 3D, simuladores e sistemas de máxima taxa de quadros."
+            },
+            {
+              "titulo": "O Padrão dos Campeões",
+              "texto": "Com C++, você domina desde registradores de memória até programação orientada a objetos moderna.",
+              "codigo": "std::cout << \"C++ Master: Arena Vencida!\" << std::endl;"
+            }
+          ],
+          "exercicios": [
+            {
+              "tipo": "escolha",
+              "pergunta": "Quais indústrias utilizam C++ como linguagem de escolha para seus núcleos?",
+              "opcoes": [
+                "Game Engines (Unreal), Sistemas Operacionais e Finanças de Alta Frequência",
+                "Apenas edição de planilhas",
+                "Apenas navegadores antigos",
+                "Nenhuma indústria moderna"
+              ],
+              "correta": 0,
+              "explicacao": "Exato! C++ lidera em qualquer domínio onde cada microssegundo conta.",
+              "id": "e1"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a versão correta. O erro era: std::cout >> \"erro\"",
+              "pecas": [
+                "std",
+                "::",
+                "cout",
+                "<<",
+                "\"correto\""
+              ],
+              "extras": [
+                ">>",
+                "\"erro\""
+              ],
+              "explicacao": "Para saída use o operador de inserção <<.",
+              "id": "e2"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Missão: Finalize a trilha imprimindo exatamente \"C++ Master: Arena Concluida!\".",
+              "pecas": [
+                "std",
+                "::",
+                "cout",
+                "<<",
+                "\"C++ Master: Arena Concluida!\"",
+                ";"
+              ],
+              "extras": [
+                ">>",
+                "\"erro\""
+              ],
+              "explicacao": "std::cout << \"C++ Master: Arena Concluida!\";",
+              "id": "e3"
+            },
+            {
+              "tipo": "montar",
+              "pergunta": "Monte a linha do exemplo: O Padrão dos Campeões",
+              "pecas": [
+                "std",
+                "::",
+                "cout",
+                "<<",
+                "\"C++ Master: Arena Vencida!\"",
+                "<<",
+                "std",
+                "::",
+                "endl",
+                ";"
+              ],
+              "extras": [],
+              "explicacao": "Com C++, você domina desde registradores de memória até programação orientada a objetos moderna.",
+              "id": "e4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "duas-etapas",
+    "nome": "Verificação em duas etapas",
+    "descricao": "Uma vida a mais em todas as fases.",
+    "custo": 0,
+    "manutencao": 0,
+    "efeito": { "tipo": "vida" },
+    "licao": "Segurança boa costuma ser de graça. O que ela cobra é o hábito."
+  },
+  {
+    "id": "internet-fibra",
+    "nome": "Internet de fibra",
+    "descricao": "5 segundos a mais em cada fase com relógio.",
+    "custo": 100,
+    "manutencao": 50,
+    "efeito": { "tipo": "tempo", "segundos": 5 },
+    "licao": "Custo fixo volta toda rodada. Vale quando rende mais do que cobra."
+  },
+  {
+    "id": "curso-logica",
+    "nome": "Curso de lógica",
+    "descricao": "O combo passa a chegar a 5x.",
+    "custo": 400,
+    "manutencao": 0,
+    "efeito": { "tipo": "combo" },
+    "licao": "Conhecimento é o único item que ninguém toma de você."
+  },
+  {
+    "id": "notebook-usado",
+    "nome": "Notebook usado com SSD",
+    "descricao": "As fases pagam 25% a mais.",
+    "custo": 1600,
+    "manutencao": 0,
+    "efeito": { "tipo": "renda", "percentual": 25 },
+    "licao": "Ferramenta de trabalho é investimento quando aumenta o que você produz."
+  },
+  {
+    "id": "notebook-parcelado",
+    "nome": "Notebook top parcelado",
+    "descricao": "As fases pagam 35% a mais. Sem entrada, parcela a cada rodada.",
+    "custo": 0,
+    "manutencao": 300,
+    "efeito": { "tipo": "renda", "percentual": 35 },
+    "licao": "Parcela é custo fixo: cobra igual nas rodadas boas e nas ruins. Compare o que rende com o que custa."
+  },
+  {
+    "id": "cadeira-gamer",
+    "nome": "Cadeira gamer com LED",
+    "descricao": "Só aparência. Não muda nada nas fases.",
+    "custo": 1200,
+    "manutencao": 0,
+    "efeito": { "tipo": "enfeite" },
+    "licao": "Desejo não é proibido, mas não rende. Ele entra depois do essencial e da reserva."
+  }
+]
